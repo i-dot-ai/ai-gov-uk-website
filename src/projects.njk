@@ -1,0 +1,34 @@
+---
+title: Projects
+layout: base.njk
+templateEngineOverride: njk
+---
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Projects", "A selection of projects we have been working on") }}
+
+<div class="container w-100 md:w-75">
+
+  <div class="projects flex flex-wrap justify-center pt-5">
+    {% for project in projects %}
+      <div class="card bg-slate-50 drop-shadow" style="width: 18rem;">
+        <img src="{{project.img}}" class="card-img-top aspect-video object-cover" alt="">
+        <div class="border-top card-body flex flex-col justify-between">
+          <div>
+            <h2 class="card-title font-semibold text-xl">{{project.title}}</h2>
+            <p class="card-text text-[16px]">{{project.synopsis}}</p>
+          </div>
+          {#<a href="{{project.url}}" class="btn btn-primary bg-[#c50978] border-[#c50978] mt-3 text-s">More details</a>#}
+          <a href="{{project.url}}" class="btn btn-dark mt-3 text-s focus:ring-2 focus:ring-offset-2 focus:ring-slate-700">
+            Visit page 
+            <span aria-hidden="true">&#8594;</span>
+            <span class="sr-only">{{project.title}}</span>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <p class="mt-5 text-center text-xl">More projects will be added soon.</p>
+
+</div>

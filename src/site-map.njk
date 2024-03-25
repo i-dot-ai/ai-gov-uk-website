@@ -1,0 +1,46 @@
+---
+title: Site Map
+layout: base.njk
+templateEngineOverride: njk
+---
+
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Site Map") }}
+
+
+<div class="container w-100 md:w-75 pt-[3rem]">
+
+  <ul class="list-disc pl-4">
+      <li>
+        <a class="link" href="/">Home page</a>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/about">About i.AI</a>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/join">Join our team</a>
+        <ul class="list-disc pl-4">
+          {% for job in jobs %}
+            <li class="mt-2">
+              <a class="link" href="/jobs/{{ job.title | slugify }}/">{{job.title | safe}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/projects">Projects</a>
+        <ul class="list-disc pl-4">
+          {% for project in projects %}
+            <li class="mt-2">
+              <a class="link" href="{{project.url}}">{{project.title}}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/accessibility">Accessibility statement</a>
+      </li>
+    </ul>
+
+</div>

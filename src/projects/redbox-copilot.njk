@@ -1,0 +1,66 @@
+---
+title: Redbox Copilot
+layout: base.njk
+templateEngineOverride: njk
+ogTitle: Redbox Copilot
+ogImage: https://ai.gov.uk/img/redbox3.png
+ogUrl: https://ai.gov.uk/projects/redbox-copilot
+---
+
+{% from "../_includes/banner.njk" import banner %}
+{{ banner("Redbox Copilot", "Bringing Generative AI to the way the Civil Service works") }}
+
+<div class="container w-100 md:w-75 pt-[3rem]">
+
+    <blockquote class="border-l-4 pl-4 lg:border-l-8 lg:pl-8 lg:py-4">
+        <p class="text-xl">“It will become, I believe, the institutional memory of the department.”</p>
+        <footer class="mt-2 text-sm">
+          Alex Burghart MP (Parliamentary Secretary for the Cabinet Office)
+          <dl>
+            <dd class="font-bold inline-block">Source:</dd>
+            <dt class="font-normal inline-block ml-1"><a class="link" href="https://www.bbc.co.uk/news/uk-politics-67944529">https://www.bbc.co.uk/news/uk-politics-67944529</a> (11th Jan 2024)</footer>
+    </blockquote>
+
+    <div class="gap-8 grid-cols-2 items-center mt-10 lg:grid">
+        <div>
+            <p>The ministerial redbox has been the primary destination for state papers since they came into government in the mid-19th century. Redbox Copilot was initially envisioned as a way to leverage AI to search through thousands of documents, interrogate them and summarise them into tailored briefings.</p>
+            <p class="mt-4">Following an Evidence House hackathon in 2023 which focussed on creating AI solutions to make civil service more efficient, we spun up a small prototyping team with members from the No 10 Innovation Fellowship and Evidence House. Within two months the prototype was being actively trialled within three different Private Offices with Cabinet Office. The trial gave us many future avenues of development and also helped test our rigorous AI safety mechanisms. With this alpha trial complete, we’re now broadening the scope of Redbox Copilot to address the entire civil service.</p>
+            <p class="mt-4">Just like ministers, civil servants deal with a wealth of information on a day to day basis. We’re now in the process of building the next generation of Redbox Copilot, which will become a powerful efficiency "multitool" for all departments; built by government, for government.</p>
+        </div>
+        <img class="block drop-shadow mt-4 w-full lg:!mt-0" src="/img/redbox3.png" alt=""/>
+    </div>
+
+    <div class="gap-8 grid-cols-2 items-center mt-4 lg:grid lg:!mt-10">
+        {# desktop image #}
+        <img class="hidden my-2 w-full lg:block" src="/img/redbox2.png" alt="Chat with Government Documents. Generate Summaries. Security and Safety."/>
+        <div>
+            <h2 class="mt-5 text-[24px] font-semibold lg:!mt-0">Features</h2>
+            <ul class="list-disc mt-4 pl-4">
+              <li class="mt-2"><strong>Robust Retrieval Augment Generation (RAG)</strong> based chat for data driven conversations with granular citations.</li>
+              <li class="mt-2"><strong>Guided summarisation</strong> where the human in the loop can review and guide summaries of multiple documents.</li>
+              <li class="mt-2"><strong>Advanced prompting techniques</strong> to ensure safety and balance in AI responses and outputs.</li>
+              <li class="mt-2">Proactive <strong>data privacy and retention</strong> features to maintain compliance and manage data.</li>
+              <li class="mt-2"><strong>Securely designed</strong> for on premises deployment and across clouds.</li>
+            </ul>
+        </div>
+        {# mobile image - because it appears below the text #}
+        <img class="block mt-4 lg:hidden" src="/img/redbox2.png" alt="Screenshot showing cluster chart of responses"/>
+    </div>
+
+    <h2 class="mt-5 text-[24px] font-semibold">Future</h2>
+    <p class="mt-4">We’re looking to open source our initial code in coming weeks to aid in transparency and collaboration with the developer community. As the Incubator for AI scales its initial team, we will be developing atop the features above with User oriented design and AI safety at the core.</p>
+    <p class="mt-4">A few of the potential growth areas include:</p>
+    <ul class="list-disc pl-4">
+      <li class="mt-2">AI Agent integration for advanced chat workflows</li>
+      <li class="mt-2">Data integrations to Hansard, Legislation and GOV.UK content</li>
+      <li class="mt-2">Correspondence and Commission drafting modes</li>
+    </ul>
+    <p class="mt-4">You can find our code on Github at <a class="link" href="https://github.com/i-dot-ai/redbox-copilot">https://github.com/i-dot-ai/redbox-copilot</a>. We welcome any contributions for the project and encourage experimentation!</p>
+
+    {#
+    <h2 class="mt-5 text-[24px] font-semibold">Register your interest</h2>
+    <p class="mt-4">If you would like to receive updates please take the time to complete our short form.</p>
+    <a href="https://forms.gle/FuFJQduw7xbQFRQ2A" class="text-white bg-[#000] align-items-center inline-flex mt-4 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-semibold h-12 px-6 rounded-lg items-center justify-center align-items-center">Register your interest</a>
+    #}
+
+</div>

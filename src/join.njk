@@ -1,0 +1,56 @@
+---
+title: Join
+layout: base.njk
+templateEngineOverride: njk
+---
+
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Join Our Team", "Our next round of recruitment will start soon. If you think you fit what we are looking for please reach out.") }}
+
+
+<section class="w-100 flex flex-col bg-black py-[2rem] m-0">
+    <div class="container flex flex-col w-75 pb-[3rem] text-white">
+        <div class="text-left mb-[3rem] mt-4">
+            <h2 class="text-[23px] font-semibold">We're looking for people to:</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 auto-cols-auto gap-12">
+            <div data-aos="fade-up">
+                <p class="text-xl mb-2 text-gray-300 font-semibold">Build</p>
+                <p class="text-[18px] text-gray-400">World class data and AI infrastructure for the entire public sector.</p>
+            </div>
+            <div data-aos="fade-up">
+                <p class="text-xl mb-2 text-gray-300 font-semibold">Deliver</p>
+                <p class="text-[18px] text-gray-400">High impact AI projects that will improve the lives of UK citizens.</p>
+            </div>
+            <div data-aos="fade-up">
+                <p class="text-xl mb-2 text-gray-300 font-semibold">Impact</p>
+                <p class="text-[18px] text-gray-400">Upgrade the capability of government and bring in more AI expertise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if jobs.length %}
+  <h2 class="sr-only">Jobs</h2>
+  <div class="container flex flex-col w-[70%] pt-[4rem] gap-[4rem]">
+      {% for job in jobs %}
+          <div class="flex flex-col gap-[0.7rem] border-b border-grey-300" data-aos="fade-up" data-aos-delay="200">
+              <h2 class="text-[23px] font-semibold pb-0">{{ job.title | safe }}</h2>
+              <p class="text-[13px] font-semibold text-slate-600">{{ job.location }} &#8226; {{ job.salary }}</p>
+              <p class="text-[18px] text-slate-800 font-light mb-2">{{ job.headline }}</p>
+              <div>
+                <a href="/jobs/{{ job.title | slugify }}/" class="rounded-full border-1 border-pink-600 inline-block hover:border-pink-400 mb-4 text-pink-600 hover:text-pink-600 font-normal px-3 text-[14px]">{{job.link.name}}<span> &#8594;</span></a>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+{% endif %}
+
+<section class="w-100 flex flex-col pb-3 pt-[4rem] m-0">
+    <div class="container flex flex-col text-center w-75" data-aos="fade-up">
+      <h2 class="text-[23px] font-semibold">Register your interest{% if jobs.length %} in other roles{% endif %}</h2>
+      <p class="mt-4">Please take the time to complete our short form.</p>
+      <a href="https://www.smartsurvey.co.uk/s/H4EHGB/" class="text-white bg-[#000] align-items-center mx-auto mt-4 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-semibold h-12 px-6 rounded-lg flex items-center justify-center align-items-center">Register your interest</a>
+    </div>
+</section>

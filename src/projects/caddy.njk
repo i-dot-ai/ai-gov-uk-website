@@ -1,0 +1,56 @@
+---
+title: Caddy
+layout: base.njk
+templateEngineOverride: njk
+ogTitle: Caddy
+ogImage: https://ai.gov.uk/img/caddy1.png
+ogUrl: https://ai.gov.uk/projects/caddy
+---
+
+{% from "../_includes/banner.njk" import banner %}
+{% from "../_includes/text-image-block.njk" import textImageBlock %}
+{{ banner("Caddy", "Caddy is our AI powered co-pilot for customer service functions everywhere. Built in collaboration with Citizens Advice, it seamlessly integrates into existing systems and provides expert advice to advisors and call handlers. Thanks to \"human in the loop\" oversight, Caddy ensures a safe and continuously improving advice service.") }}
+
+<div class="container w-100 md:w-75 pt-[2rem]">
+
+    {% set content %}
+        <p>Since its creation in 1939, the independent charity Citizens Advice has been a cornerstone of civic society: combined, the national organisation and network of 250 independent local <a class="link" href="https://assets.ctfassets.net/mfz4nbgura3g/1CvI8xMxxf8Qzm8uI2NKbF/ad0eec22a4379960bac66ca4ed5a84a4/Citizens_Advice_Annual_Report_2022-2023.pdf">Citizens Advice helped over 2.5 million people with one-to-one advice</a> last year.</p>
+        <p class="mt-4">Citizens Advice advisors, both staff and volunteers, tackle a broad spectrum of complex issues, mirroring challenges faced by government departments. From tax inquiries to social services, frontline staff serve as the crucial link connecting the public with essential services.</p>
+        <p class="mt-4">AI has the power to <a class="link" href="https://www.nber.org/papers/w31161">significantly enhance productivity in customer service environments</a>. Recognising this potential, Citizens Advice and the Incubator for Artificial Intelligence (i.AI) have collaborated to develop a product that will support their advisors, making it easier for their staff and volunteers to quickly find and share information with the people who come to the charity for help. </p>
+        <p class="mt-4">Together, we’ve built a customer service Artificial Intelligence (AI) copilot service, affectionately dubbed Caddy, specifically built from the ground up to help customer service advisors and supervisors in quickly locating and sharing information from reliable sources.</p>
+    {% endset %}
+    {{ textImageBlock ({
+        text: content,
+        image: {
+            src: "/img/caddy1.webp",
+            alt: ""
+        },
+        side: "left"
+    }) }}
+    
+    <div class="mt-5">
+        {% set content %}
+            <h2 class="text-[24px] font-semibold">About Caddy</h2>
+            <p class="mt-4">Caddy was born from a collaboration between i.AI and Citizens Advice Stockport, Oldham, Rochdale & Trafford (CASORT). This AI-powered assistant acts as a copilot for customer service agents, empowering them to provide high-quality, actionable advice quickly and securely.</p>
+            <p class="mt-4">Building upon the initial prototype developed by CASORT, we have evolved Caddy into a scalable framework suitable for integration across government and beyond. Designed with interoperability in mind, Caddy seamlessly integrates into existing chat environments, harnessing widely-used open-source technologies for backend operations and employing infrastructure as code for swift deployment across cloud platforms.</p>
+            <p class="mt-4">Caddy bases its advice on documentation provided to it. For the implementation at Citizens Advice, it uses a comprehensive range of public resources from GOV.UK and Citizens Advice, as well as Citizens Advice’s proprietary advice content. It can quickly incorporate any internal training materials, ensuring advice is always grounded in the most relevant information. A "human in the loop" validation system is employed to mitigate risk, ensuring advice accuracy and reliability.</p>
+        {% endset %}
+        {{ textImageBlock ({
+            text: content,
+            image: {
+                src: "/img/caddy2.png",
+                alt: "Screenshot show a conversation. A user has asked 'Both my client's parents have recently passed away, and my client doesn't know whether they wrote a will. What should I advise them to do?'. Caddy's response reads 'Status: Awaiting supervisor approval'"
+            },
+            image2 : {
+                src: "/img/caddy3.png",
+                alt: "A screenshot with a heading titled 'Reference links'. Below this are a series of links related to wills, along with text showing who approved the response.",
+                caption: "An example query showing Caddy sourcing responses from public guidance, and our human in the loop validation"
+            },
+            side: "right"
+        }) }}
+    </div>
+
+    <h2 class="mt-5 text-[24px] font-semibold">What's next</h2>
+    <p class="mb-2 mt-4">From April 2024, we will begin rolling out Caddy as a randomised controlled trial with two local Citizens Advice centres in Greater Manchester. Building on learnings from the prototype built and tested in CASORT last year, we will use our evaluation to gain valuable insights into how Caddy could be effectively and responsibly deployed across public services, prioritising safety and effectiveness. Following this initial phase, we aim to open-source Caddy over the summer and actively seek partners interested in exploring wider applications of this technology.</p>
+
+</div>

@@ -1,0 +1,286 @@
+---
+layout: base.njk
+templateEngineOverride: njk
+---
+
+{#
+<div class="w-screen py-[10px] bg-[#FB3640] text-center text-white align-center">
+  <a href="/partners" class="font-semi-bold text-[18px] hover:text-slate-100">We are on the hunt for partners</a>
+</div>
+#}
+
+<section id="heroBanner" class="bg-[#000] w-100 bg-[url('/img/code_stock_image.png')] bg-cover">
+
+  <div class="row h-100 max-w-[100vw] xs:py-[3rem] md:py-[5rem] py-[4rem]">
+    {# Blank left wrapper #}
+    <div class="col-xs-0 col-md-0 col-lg-6"></div>
+
+    <div class="col-xs-12 col-md-12 col-lg-6 h-100 flex js-carousel-container" role="region" aria-label="carousel">
+      <div id="backgroundBlur" class="flex flex-row z-1000 items-center self-center !mb-[2rem] !p-3 z-10000 rounded-lg items-center backdrop-blur-sm">
+
+        <a class="left-[-60px]" href="#heroCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">previous</span>
+        </a>
+
+        <div id="heroCarousel" class="items-center carousel slide carousel-fade m-2 p-[2rem]" data-interval="4000" data-pause="hover">
+
+          <div class="carousel-item active" tabindex="-1">
+            <div class="flex flex-column gap-2">
+              <p class="text-white font-normal md:text-[30px] text-[20px] animate__animated animate__fadeInDown">
+                <span class="sr-only">Slide 1 of 3</span>
+                I am unashamedly optimistic about the power of technology to make life better for everyone.
+                <span class="carousel__secondary-text block text-slate-300 min-w-[100%] text-[15px] md:text-[20px] uppercase animate__animated animate__fadeInUp">Rishi Sunak <span aria-hidden="true">|</span> Prime Minister's speech on AI <span aria-hidden="true">|</span> 26 October 2023</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="carousel-item" tabindex="-1">
+            <div class="flex flex-column gap-2">
+              <p class="text-white font-normal md:text-[30px] text-[20px] animate__animated animate__fadeInDown">
+                <span class="sr-only">Slide 2 of 3</span>
+                AI has the potential to empower millions of people across our planet, it can be a tool for all.
+                <span class="carousel__secondary-text block text-slate-300 uppercase text-[15px] md:text-[20px] animate__animated animate__fadeInUp">Deputy Prime Minister <span aria-hidden="true">|</span> UN General Assembly Speech <span aria-hidden="true">|</span> 22 September 2023</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="carousel-item" tabindex="-1">
+            <div class="flex flex-column gap-2">
+              <p class="text-white font-normal md:text-[30px] text-[20px] animate__animated animate__fadeInDown">
+                <span class="sr-only">Slide 3 of 3</span>
+                We are on the cusp of a tech revolution that we haven't seen since the birth of the internet.
+                <span class="carousel__secondary-text block text-slate-300 min-w-[100%] text-[15px] md:text-[20px] uppercase animate__animated animate__fadeInUp">Technology Secretary <span aria-hidden="true">|</span> CogX <span aria-hidden="true">|</span> 12 September 2023</span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="right-[-60px]" href="#heroCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">next</span>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<div class="container flex w-90 md:w-75 gap-5" id="introduction">
+  <div class="flex gap-3 flex-col align-center justify-center text-center">
+    <h1 class="text-[33px] font-semibold">Introducing the Incubator for Artificial Intelligence</h1>
+    <p class="description text-[20px] w-[75%] place-self-center text-slate-800 font-light">
+    The Government is establishing an elite team of highly empowered technical experts at the heart of
+    government. Their mission is to help departments harness the potential of AI to improve lives and the delivery
+    of public services.
+  </p>
+
+    <div class="flex flex-col mt-3 gap-4 text-center items-center">
+      <img src="/img/i-dot-ai-Official-Logo.svg" class="w-[150px] place-self-center text-center" alt="I dot A I"/>
+      <a href="/join" class="text-white bg-[#000] align-items-center hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-semibold h-12 px-6 rounded-lg flex items-center justify-center align-items-center w-[150px]">
+        <p>Join Us</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<section class="services pt-5">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+        <a class="icon-box icon-box-cyan hover:text-black" href="/about#improve">
+          <div class="icon_new">
+            <img src="/img/Improve.png" class="img-fluid" alt="">
+          </div>
+          <h2 class="title">
+            <span>Improve Public Services </span>
+          </h2>
+          <p class="description">
+            We are working across government to identify and deliver targeted application of AI where it can make
+            the
+            greatest improvements to the quality of existing services and the lives of citizens.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <a class="icon-box icon-box-blue hover:text-black" href="/about#upgrade">
+          <div class="icon_new">
+            <img src="/img/Upgrade.svg" class="img-fluid" alt="">
+          </div>
+          <h2 class="title">
+            <span>Upgrade AI Capability</span>
+          </h2>
+          <p class="description">
+            We are helping the rest of government to seize the opportunities of AI, by building a new generation of
+            data
+            sharing and AI infrastructure for use across the public sector.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <a class="icon-box icon-box-pink hover:text-black" href="/about#upskill">
+          <div class="icon_new">
+            <img src="/img/Upskill.svg" class="img-fluid" alt="">
+          </div>
+          <h2 class="title">
+            <span>Upskill our people</span>
+          </h2>
+          <p class="description">
+            Seizing the full potential of technology takes skilled people. We are upskilling thousands of Civil
+            Servants with technical skills that will help them apply AI to every area of government.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <a class="icon-box icon-box-green hover:text-black" href="/about#hire">
+          <div class="icon_new">
+            <img src="/img/Hire.svg" class="img-fluid" alt="">
+          </div>
+          <h2 class="title">
+            <span>Hire The Best Talent</span>
+          </h2>
+          <p class="description">
+            We are hiring a small team of highly skilled, visionary AI and engineering experts to help us make the
+            UK the world leader in applying AI for public good.
+        </p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="features pb-2">
+  <div class="container">
+    <div class="w-100 flex justify-center">
+      <div class="flex flex-col section-title lg:w-3/4">
+        <h2 class="text-[33px] font-semibold">Learn More about AI in Government</h2>
+        <p class='text-[18px] text-slate-800 font-light self-center lg:w-3/4'>Due to radical steps we are taking today, the UK will once more be at the forefront of a new industrial
+          revolution. This means transforming public services for the better, leading the world in a coordinated
+          approach to AI safety and ensuring the UK economy is set up to reap its full potential.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+
+    <div class="row mt-18" data-aos="fade-up">
+      <div class="col-md-5 mt-[10px]">
+        <img src="/img/pmaispeech_optimised.jpg" class="img-fluid" alt="UK Prime Minister Rishi Sunak speaking at UK AI Safety Summit">
+      </div>
+      <div class="col-md-7">
+        <h3 class="text-2xl font-semibold">
+          AI Safety
+        </h3>
+        <p class="mt-3 text-[18px] text-slate-800 font-light">
+          The UK hosted the world's first ever global AI Safety Summit to make sure governments, industry, researchers and civil society work
+          together to seize the benefits of AI whilst mitigating the most serious risks.
+        </p>
+        <p class="mt-2 text-[18px] text-slate-800 font-light">
+          Our new team will work in close partnership with the Department for Science, Innovation and Technology (DSIT) to ensure the AI Safety Institute enables us to move at pace to
+          capture the benefits of the recent technological revolution whilst doing so responsibly. You can check out out the <a class="link" href="https://www.youtube.com/watch?v=dcj3FxcA__g" target="_blank" rel=”noopener noreferrer nofollow”>AI Safety Summit wrap up (opens in new tab)</a>.
+        </p>
+        <ul class="mt-3 text-slate-700 font-light">
+          <li>
+            <i class="bi bi-check"></i>
+            <a class="link" 
+              href="https://www.gov.uk/government/publications/ai-safety-institute-overview">AI Safety Institute</a>
+          </li>
+          <li>
+            <i class="bi bi-check"></i>
+            <a class="link" 
+              href="https://www.gov.uk/government/publications/ai-regulation-a-pro-innovation-approach">AI
+              Regulation: A Pro Innovation Approach</a>
+          </li>
+          <li>
+            <i class="bi bi-check"></i>
+            <a class="link" 
+              href="https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration/the-bletchley-declaration-by-countries-attending-the-ai-safety-summit-1-2-november-2023">The
+              Bletchley Declaration</a>
+          </li>
+          <li>
+            <i class="bi bi-check"></i>
+            <a class="link" href="https://www.gov.uk/government/topical-events/ai-safety-summit-2023">Updates from the AI Safety Summit</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <div class="col-md-5 order-1 order-md-2 mt-[10px]">
+        <img src="/img/aiforgood.png" class="img-fluid img-fluid-drop" alt="">
+      </div>
+      <div class="col-md-7 order-2 order-md-1">
+
+        <h3 class="text-2xl font-semibold">AI for the Public Good</h3>
+        <p class="mt-3 text-[18px] text-slate-800 font-light">
+          The UK's Science and Technology Framework has laid out how the UK is finding and attracting the next
+          generation of AI leaders from around the world, strengthening AI governance domestically and
+          internationally, as well as using AI to innovate within the public sector.
+        </p>
+        <ul class="mt-3 text-slate-700 font-light">
+          <li>
+            <i class="bi bi-check"></i>
+            <a class="link" 
+              href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1140217/uk-science-technology-framework.pdf">Science
+              and Technology Framework</a>
+          </li>
+        </ul>
+        <p class="mt-3 text-[18px] text-slate-800 font-light">
+          The UK's Advanced Research and Invention Agency (ARIA) launched with a mission to create transformational
+          research programs that have the potential to generate new technological capabilities for the benefit of
+          humanity. With a focus on high-risk, high-reward scientific endeavours, ARIA aims to be a global super
+          lab, allocating its £800 million budget to support frontier science and technology.
+        </p>
+        <ul class="mt-3 text-slate-700 font-light">
+          <li>
+            <i class="bi bi-check"></i>
+            <a class="link" href="https://www.aria.org.uk/">Aria</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <div class="col-md-5 mt-[10px]">
+        <img src="/img/DSIT.png" class="img-fluid  img-fluid-drop" alt="New world leading approach to AI in the UK">
+      </div>
+      <div class="col-md-7">
+        <h3 class="text-2xl font-semibold">Government Departments</h3>
+        <p class="mt-3 text-[18px] text-slate-800 font-light">
+          The Department for Science, Innovation and Technology (DSIT) is the lead department for AI policy and is responsible for helping to encourage,
+          develop and manage the UK's scientific, research, and technological outputs, as well as overseeing implementation of the National AI Strategy which puts innovation at the heart of our approach and the UK's wider regulatory approach to AI.
+        </p>
+        <ul class="mt-3 text-slate-700 font-light">
+          <li>
+            <i class="bi bi-check"></i>
+            <a class="link" 
+              href="https://www.gov.uk/government/organisations/department-for-science-innovation-and-technology">Department for
+              Science, Innovation and Technology</a>
+          </li>
+        </ul>
+        <p class="mt-3 text-[18px] text-slate-800 font-light">The Cabinet Office is responsible for implementation and adoption of AI for the public good across Government and the public sector, including through the work of i.AI.</p>
+        <p class="mt-3 text-[18px] text-slate-800 font-light">
+          The Central Digital and Data Office (CDDO) leads the digital, data and technology function for government. CDDO works with DSIT in setting AI policy and strategy including standards for government use.          </p>
+        <ul class="mt-3 text-slate-700 font-light">
+          <li>
+            <i class="bi bi-check"></i>
+            <a class="link" 
+              href="https://www.gov.uk/government/organisations/central-digital-and-data-office">Cabinet Office:
+              Central Digital and Data Office (CDDO) </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>

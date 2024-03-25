@@ -1,0 +1,24 @@
+---
+title: Partners
+layout: base.njk
+templateEngineOverride: njk
+---
+{% include "header.njk" %}
+
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Partners", "We are looking to work with partners who work in public services, for example those who have access to data or systems that might help us to build new things to help citizens and end users.") }}
+
+
+<div class="container flex flex-col w-[70%] pt-[3rem] pb-[4rem] gap-[4rem]">
+    {% for partner in partners %}
+        <div class="flex flex-col gap-[0.7rem] border-b border-grey-300">
+            <p class="text-[23px] font-semibold pb-0">{{ partner.title }}</p>
+            <p class="text-[18px] text-slate-800 font-light mb-2">{{ partner.headline }}</p>
+            <button class="rounded-full border-1 border-pink-600 hover:border-pink-400 w-fit px-4 mb-4">
+                <a href="{{ partner.link.url }}" class='mb-4 text-pink-600 hover:text-pink-400 font-normal text-[14px]'>{{ partner.link.text }}
+                    <span>&#8594;</span></a>
+            </button>
+        </div>
+    {% endfor %}
+</div>

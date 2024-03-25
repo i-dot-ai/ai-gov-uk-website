@@ -1,0 +1,18 @@
+{% macro banner (title, synopsis) %}
+
+  <section class="w-100 flex flex-col justify-center bg-slate-50 pb-[2.5rem] pt-[4rem]">
+    <div class="features">
+        <div class="container">
+            <div class="w-100 flex justify-center">
+                <div class="flex flex-col section-title lg:w-3/4">
+                    <h1 class="text-[33px] font-semibold">{{title}}</h1>
+                    {% if synopsis %}
+                      <p class="text-[18px] text-slate-800 font-light self-center">{{synopsis}}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+{% endmacro %}
