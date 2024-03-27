@@ -1,9 +1,9 @@
 {% macro textImageBlock (data) %}
 
     <div class="gap-8 grid-cols-2 items-center mt-4 lg:grid">
-        
+
         {% if data.side == "right" %}
-          
+
             {# desktop image #}
             <div class="hidden lg:block">
 
@@ -21,7 +21,7 @@
                         </figcaption>
                     </figure>
                 {% endif %}
-                
+
                 {% if data.image2.src %}
                     {% if data.image2.caption %}
                         <figure>
@@ -44,7 +44,7 @@
 
             {# mobile image - because it appears below the text #}
             <div class="lg:hidden">
-                
+
                 {% if data.image.caption %}
                     <figure>
                 {% endif %}
@@ -59,7 +59,7 @@
                         </figcaption>
                     </figure>
                 {% endif %}
-                
+
                 {% if data.image2.src %}
                     {% if data.image2.caption %}
                         <figure>
@@ -78,12 +78,12 @@
                 {% endif %}
 
             </div>
-          
+
         {% else %}
-        
+
             <div>{{ data.text | safe }}</div>
             <img class="block mt-4 w-full lg:!mt-0 {% if not data.image.noShadow %} drop-shadow{% endif %}" src="{{ data.image.src }}" alt="{{ data.image.altText }}"/>
-        
+
         {% endif %}
 
     </div>
