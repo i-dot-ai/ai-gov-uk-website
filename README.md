@@ -1,6 +1,12 @@
-# AI.gov.uk core site
+# AI.gov.uk site
+
+This is our repository for our public website that can be found [here](https://ai.gov.uk/). The intent of this site is to give us a public space for showcasing our work, news about the team, upcoming jobs and interesting commercial partnerships.
 
 ## Getting Started
+
+To get started with the site, use the below commands to build and run the site. This assumes that you already have `node` installed.
+
+To deploy the site, only the `_site` folder is needed.
 
 1. `npm install`
 2. `npx @11ty/eleventy --serve`
@@ -9,9 +15,11 @@
 
 ## Cached stylesheets and JavaScript
 
-To prevent browser caching issues (which can otherwise occur even after invalidating the S3 cache), the Eleventy build renames CSS and JS files that change regularly. Additional files can be added to this within `.eleventy.js`.
+To prevent browser caching issues (which can otherwise occur even after invalidating the cache), the Eleventy build renames CSS and JS files that change regularly. Additional files can be added to this within `.eleventy.js`.
 
 ## Tests
+
+To run the tests, use the below commands from the root of this project.
 
 1. `cd tests`
 2. `npx playwright test`
