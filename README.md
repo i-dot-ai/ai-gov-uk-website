@@ -2,6 +2,8 @@
 
 This is our repository for our public website that can be found [here](https://ai.gov.uk/). The intent of this site is to give us a public space for showcasing our work, news about the team, upcoming jobs and interesting commercial partnerships.
 
+> Please note that this is a continuous work-in-progress and we will continue to improve the website.
+
 ## Getting Started
 
 To get started with the site, use the below commands to build and run the site. This assumes that you already have `node` installed.
