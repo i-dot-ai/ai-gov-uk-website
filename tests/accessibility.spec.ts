@@ -6,7 +6,9 @@ const pagesToTest = [
   '',
   'about',
   'join',
-  'consultations'
+  'projects',
+  'projects/consultations',
+  'projects/rapid'
 ];
 
 for (let i = 0; i < pagesToTest.length; i++) {

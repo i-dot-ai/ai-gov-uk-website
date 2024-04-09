@@ -9,9 +9,9 @@ templateEngineOverride: njk
 
 <div class="container w-100 md:w-75">
 
-  <div class="projects flex flex-wrap justify-center pt-5">
+  <div class="projects pt-5">
     {% for project in projects %}
-      <div class="card bg-slate-50 drop-shadow" style="width: 18rem;">
+      <div class="projects__card card bg-slate-50 drop-shadow">
         <img src="{{project.img}}" class="card-img-top aspect-video object-cover" alt="">
         <div class="border-top card-body flex flex-col justify-between">
           <div>
