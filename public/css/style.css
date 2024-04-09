@@ -57,13 +57,18 @@ figcaption svg {margin-right: 0.25rem;}
 # Projects page cards
 --------------------------------------------------------------*/
 .projects {
+  display: grid;
   gap: 3rem;
 }
 @media (min-width: 768px) {
   .projects {
-    /*display: grid;*/
-    /*grid-template-columns: 1fr 1fr;*/
-  } 
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .projects {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 
