@@ -1,6 +1,6 @@
 # AI.gov.uk site
 
-This is our repository for our public website that can be found [here](https://ai.gov.uk/). The intent of this site is to give us a public space for showcasing our work, news about the team, upcoming jobs and interesting commercial partnerships.
+This is our repository for our [public website](https://ai.gov.uk/). The intent of this site is to give us a public space for showcasing our work, news about the team, upcoming jobs and interesting commercial partnerships.
 
 > Please note that this is a continuous work-in-progress and we will continue to improve the website.
 
@@ -25,3 +25,5 @@ To run the tests, use the below commands from the root of this project.
 
 1. `cd tests`
 2. `npx playwright test`
+
+When building new pages, please add to `tests/accessibility.spec.ts`.

@@ -8,7 +8,11 @@ const pagesToTest = [
   'join',
   'projects',
   'projects/consultations',
-  'projects/rapid'
+  'projects/redbox-copilot',
+  'projects/caddy',
+  'projects/rapid',
+  'accessibility',
+  'site-map'
 ];
 
 for (let i = 0; i < pagesToTest.length; i++) {
