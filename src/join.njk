@@ -36,11 +36,13 @@ templateEngineOverride: njk
   <div class="container flex flex-col w-[70%] pt-[4rem] gap-[4rem]">
       {% for job in jobs %}
           <div class="flex flex-col gap-[0.7rem] border-b border-grey-300" data-aos="fade-up" data-aos-delay="200">
-              <h2 class="text-[23px] font-semibold pb-0">{{ job.title | safe }}</h2>
+              <h2 class="text-[23px] font-semibold pb-0">{{ job.title | safe }} ({{ job.grade }})</h2>
               <p class="text-[13px] font-semibold text-slate-600">{{ job.location }} &#8226; {{ job.salary }}</p>
-              <p class="text-[18px] text-slate-800 font-light mb-2">{{ job.headline }}</p>
+              {% if job.headline %}
+                <p class="text-[18px] text-slate-800 font-light mb-2">{{ job.headline }}</p>
+              {% endif %}
               <div>
-                <a href="/jobs/{{ job.title | slugify }}/" class="rounded-full border-1 border-pink-600 inline-block hover:border-pink-400 mb-4 text-pink-600 hover:text-pink-600 font-normal px-3 text-[14px]">{{job.link.name}}<span> &#8594;</span></a>
+                <a href="/jobs/{{ job.title | slugify }}/" class="rounded-full border-1 border-pink-600 inline-block hover:border-pink-400 mb-4 text-pink-600 hover:text-pink-600 font-normal px-3 text-[14px]">{{job.title}}<span> &#8594;</span></a>
               </div>
           </div>
       {% endfor %}
