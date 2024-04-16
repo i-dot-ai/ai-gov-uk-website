@@ -6,6 +6,8 @@ const pagesToTest = [
   '',
   'about',
   'join',
+  'jobs/ai-head-of-impact-and-evaluation/',
+  'jobs/ai-impact-and-evaluation-lead',
   'projects',
   'projects/consultations',
   'projects/redbox-copilot',
