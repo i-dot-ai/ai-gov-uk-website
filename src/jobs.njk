@@ -12,17 +12,17 @@ permalink: "jobs/{{ job.title | slugify }}/"
 <div class="container flex flex-col sm:w-[80%] lg:w-[60%] pt-5 gap-[4rem]">
     <a href="/join">
         <span>&#8592;</span>All Jobs</a>
-    <h2 class="text-[33px] font-semibold">{{ job.title | safe }} ({{ job.grade}})</h2>
+    <h1 class="text-[33px] font-semibold">{{ job.title | safe }} ({{ job.grade}})</h1>
 
     <div class="flex flex-col gap-[1.5rem]">
-        <p class="text-[23px] font-semibold">About The Role</p>
+        <h2 class="text-[23px] font-semibold">About The Role</h2>
         {% for items in job.description.about %}
             <p class="text-[18px] text-slate-800 font-light pb-2">{{ items | safe }}</p>
         {% endfor %}
     </div>
 
     <div class="flex flex-col gap-[1.5rem]">
-        <p class="text-[23px] font-semibold">Role Responsibilities</p>
+        <h2 class="text-[23px] font-semibold">Role Responsibilities</h2>
         <ul class='list-disc list-inside'>
             {% for items in job.description.responsibilities %}
                 <li class="text-[18px] text-slate-800 font-light pb-2">{{ items }}</li>
@@ -31,7 +31,7 @@ permalink: "jobs/{{ job.title | slugify }}/"
     </div>
 
     <div class="flex flex-col gap-[1.5rem]">
-        <p class="text-[23px] font-semibold">We are looking for someone who has</p>
+        <h2 class="text-[23px] font-semibold">We are looking for someone who has</h2>
         <ul class='list-disc list-inside'>
             {% for items in job.description.skills %}
                 <li class="text-[18px] text-slate-800 font-light pb-2">{{ items }}</li>
