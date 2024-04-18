@@ -98,6 +98,13 @@ figcaption svg {margin-right: 0.25rem;}
   margin-top: 1rem;
   padding: 0.5rem 1rem;
 }
+.iai-button--pink {
+  background-color: var(--iai-pink);
+}
+.iai-button--pink:hover {
+  color: white;
+  opacity: 0.9;
+}
 .iai-button--green {
   background-color: #0B8478;
 }
@@ -187,7 +194,7 @@ figcaption svg {margin-right: 0.25rem;}
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 .iai-notification-buttons__button {
   align-items: center;
@@ -211,6 +218,17 @@ figcaption svg {margin-right: 0.25rem;}
   .iai-notification-buttons__button {
       width: auto;
   }
+}
+
+.iai-open-jobs {
+  background-color: var(--iai-grey);
+  padding-bottom: 3rem;
+}
+.iai-open-jobs__job-container {
+  margin-top: 2.5rem;
+}
+.iai-open-jobs__job-container:first-of-type {
+  margin-top: 1rem;
 }
 
 .iai-roles {

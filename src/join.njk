@@ -8,6 +8,7 @@ templateEngineOverride: njk
 {% from "./_includes/banner.njk" import banner %}
 {{ banner("Join the team", "We are a team of experts working to build AI solutions for the public good. We will solve priority problems and share our solutions.") }}
 
+
 <section class="container">
     <h2 class="iai-heading">Get notified about jobs</h2>
     <div class="iai-notification-buttons">
@@ -38,37 +39,35 @@ templateEngineOverride: njk
         </a>
         #}
     </div>
-</section
+</section>
+
 
 {% if jobs.length %}
-    <div class="container flex flex-col w-[70%] mt-5 gap-[4rem]">
-        <h2 class="text-[23px] font-semibold">Jobs open for applications</h2>
-        {% for job in jobs %}
-            <div class="flex flex-col gap-[0.7rem] border-b border-grey-300" data-aos="fade-up" data-aos-delay="200">
-                <h2 class="text-[18px] font-semibold pb-0">{{ job.title | safe }} ({{ job.grade }})</h2>
-                <p class="text-[13px] font-semibold text-slate-600">{{ job.location }} &#8226; {{ job.salary }}</p>
-                {% if job.headline %}
-                    <p class="text-[18px] text-slate-800 font-light mb-2">{{ job.headline }}</p>
-                {% endif %}
-                <div>
-                    <a href="/jobs/{{ job.title | slugify }}/" class="rounded-full border-1 border-pink-600 inline-block hover:border-pink-400 mb-4 text-pink-600 hover:text-pink-600 font-normal px-3 py-1 text-[14px]">{{job.title}}<span> &#8594;</span></a>
+    <section class="iai-open-jobs">
+        <div class="container">
+            <h2 class="iai-heading">Current jobs open for application</h2>
+            {% for job in jobs %}
+                <div class="iai-open-jobs__job-container border-b border-grey-300">
+                    <h2 class="text-[18px] font-semibold pb-0">{{ job.title | safe }} ({{ job.grade }})</h2>
+                    <p class="mt-2 text-[13px] font-semibold text-slate-600">{{ job.location }} &#8226; {{ job.salary }}</p>
+                    {% if job.headline %}
+                        <p class="text-[18px] text-slate-800 font-light mb-2">{{ job.headline }}</p>
+                    {% endif %}
+                    <div class="-mt-2">
+                        <a href="/jobs/{{ job.title | slugify }}/" class="iai-button iai-button--pink">{{job.title}}<span> &#8594;</span></a>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endif %}
 
-<style>
-
-    
-
-</style>
 
 <section class="container iai-roles">
     <h2 class="iai-heading iai-roles__heading">Roles in the team</h2>
     <div class="iai-grid iai-grid--1-3">
         
-        <nav>
+        <nav aria-label="In-page links">
             <ul class="iai-side-nav">
                 {% for group in roles %}
                     <li class="iai-side-nav__item">
