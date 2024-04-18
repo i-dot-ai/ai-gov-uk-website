@@ -6,10 +6,111 @@ templateEngineOverride: njk
 
 
 {% from "./_includes/banner.njk" import banner %}
-{{ banner("Join Our Team", "Our next round of recruitment will start soon. If you think you fit what we are looking for please reach out.") }}
+{{ banner("Join the team", "We are a team of experts working to build AI solutions for the public good. We will solve priority problems and share our solutions.") }}
+
+{% if jobs.length %}
+    <div class="container flex flex-col w-[70%] mt-5 gap-[4rem]">
+        <h2 class="text-[23px] font-semibold">Jobs open for applications</h2>
+        {% for job in jobs %}
+            <div class="flex flex-col gap-[0.7rem] border-b border-grey-300" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="text-[18px] font-semibold pb-0">{{ job.title | safe }} ({{ job.grade }})</h2>
+                <p class="text-[13px] font-semibold text-slate-600">{{ job.location }} &#8226; {{ job.salary }}</p>
+                {% if job.headline %}
+                    <p class="text-[18px] text-slate-800 font-light mb-2">{{ job.headline }}</p>
+                {% endif %}
+                <div>
+                    <a href="/jobs/{{ job.title | slugify }}/" class="rounded-full border-1 border-pink-600 inline-block hover:border-pink-400 mb-4 text-pink-600 hover:text-pink-600 font-normal px-3 py-1 text-[14px]">{{job.title}}<span> &#8594;</span></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<style>
+
+    
+
+</style>
+
+<section class="container iai-roles">
+    <h2 class="iai-heading iai-roles__heading">Roles in the team</h2>
+    <div class="iai-grid iai-grid--1-3">
+        
+        <nav>
+            <ul class="iai-side-nav">
+                {% for group in roles %}
+                    <li class="iai-side-nav__item">
+                        <inpage-link>
+                            <a class="iai-side-nav__link" href="#{{group.group | slugify}}">{{group.group}}</a>
+                        </inpage-link>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <div>
+            {% for group in roles %}
+                <h3 class="iai-roles__group-heading" id="{{group.group | slugify}}">{{group.group}}</h3>
+                {% for role in group.roles %}
+                    <h4 class="iai-roles__role-heading">{{role.title}}</h4>
+                    <details class="iai-roles__detail">
+                        <summary class="iai-roles__summary">
+                            Show {% if role.roleSpec %}role responsibilities and {% endif %}person specification
+                            <span class="sr-only"> ({{role.title}})</span>
+                        </summary>
+                        <div class="iai-roles__role-detail-container">
+                            {% if role.roleSpec %}
+                                <div>
+                                    <h4>Role responsibilities:</h4>
+                                    <ul class="iai-list">
+                                        {% for item in role.roleSpec %}
+                                            <li class="iai-list__item">{{item}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            <div>
+                                <h4 class="iai-roles__list-heading--person">Person specification:</h4>
+                                <ul class="iai-list">
+                                    {% for item in role.personSpec %}
+                                        <li class="iai-list__item">{{item}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="iai-locations">
+    <div class="container">
+        <h2 class="iai-heading">Locations</h2>
+        <p>Our team is based out of 5 digital hubs across the UK in:</p>
+        <ul class="iai-list">
+            <li class="iai-list__item">Bristol</li>
+            <li class="iai-list__item">London</li>
+            <li class="iai-list__item">Glasgow</li>
+            <li class="iai-list__item">Manchester</li>
+            <li class="iai-list__item">York</li>
+        </ul>
+        <h2 class="iai-heading">Selection process</h2>
+        <p>Our selection process varies for each role. For technical roles it includes a technical assessment as well as an interview.</p>
+    </div>
+</section>
 
 
-<section class="w-100 flex flex-col bg-black py-[2rem] m-0">
+<section class="container">
+    <h2 class="iai-heading">Register your interest{% if jobs.length %} in other roles{% endif %}</h2>
+      <p>Please take the time to complete our short form.</p>
+      <a href="https://www.smartsurvey.co.uk/s/H4EHGB/" class="iai-button iai-button--green">Register your interest</a>
+    </div>
+</section>
+
+{#
+<section class="w-100 flex flex-col bg-black py-[2rem] mt-5">
     <div class="container flex flex-col w-75 pb-[3rem] text-white">
         <div class="text-left mb-[3rem] mt-4">
             <h2 class="text-[23px] font-semibold">We're looking for people to:</h2>
@@ -30,25 +131,9 @@ templateEngineOverride: njk
         </div>
     </div>
 </section>
+#}
 
-{% if jobs.length %}
-  <h2 class="sr-only">Jobs</h2>
-  <div class="container flex flex-col w-[70%] pt-[4rem] gap-[4rem]">
-      {% for job in jobs %}
-          <div class="flex flex-col gap-[0.7rem] border-b border-grey-300" data-aos="fade-up" data-aos-delay="200">
-              <h2 class="text-[23px] font-semibold pb-0">{{ job.title | safe }} ({{ job.grade }})</h2>
-              <p class="text-[13px] font-semibold text-slate-600">{{ job.location }} &#8226; {{ job.salary }}</p>
-              {% if job.headline %}
-                <p class="text-[18px] text-slate-800 font-light mb-2">{{ job.headline }}</p>
-              {% endif %}
-              <div>
-                <a href="/jobs/{{ job.title | slugify }}/" class="rounded-full border-1 border-pink-600 inline-block hover:border-pink-400 mb-4 text-pink-600 hover:text-pink-600 font-normal px-3 text-[14px]">{{job.title}}<span> &#8594;</span></a>
-              </div>
-          </div>
-      {% endfor %}
-  </div>
-{% endif %}
-
+{#
 <section class="w-100 flex flex-col pb-3 pt-[4rem] m-0">
     <div class="container flex flex-col text-center w-75" data-aos="fade-up">
       <h2 class="text-[23px] font-semibold">Register your interest{% if jobs.length %} in other roles{% endif %}</h2>
@@ -56,3 +141,4 @@ templateEngineOverride: njk
       <a href="https://www.smartsurvey.co.uk/s/H4EHGB/" class="text-white bg-[#000] align-items-center mx-auto mt-4 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-semibold h-12 px-6 rounded-lg flex items-center justify-center align-items-center">Register your interest</a>
     </div>
 </section>
+#}
