@@ -184,12 +184,10 @@ figcaption svg {margin-right: 0.25rem;}
 # Join page
 --------------------------------------------------------------*/
 .iai-notification-buttons {
-  padding-bottom: 2rem;
-}
-.iai-notification-buttons__container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
+  margin-bottom: 1rem;
 }
 .iai-notification-buttons__button {
   align-items: center;
@@ -197,7 +195,9 @@ figcaption svg {margin-right: 0.25rem;}
   display: flex;
   font-size: 0.875rem;
   font-weight: 300;
-  padding: 0.875rem 1.5rem;
+  margin-top: 0;
+  min-width: 288px;
+  padding: 0.875rem 1.25rem;
   width: 100%;
 }
 .iai-notification-buttons__button-icon {
