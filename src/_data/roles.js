@@ -57,7 +57,7 @@ module.exports = [
                 personSpec: [
                     "Experience in creating and managing HPC clusters across GPU/TPU and with job schedulers like Slurm and Fsx volumes.",
                     "Knowledge of cloud computing platforms, specifically AWS and experience with infrastructure as code tools like Terraform.",
-                    "Experience in machine learning for production using Python and related tools (PyTorch, webdataset, torchdata),",
+                    "Experience in machine learning for production using Python and related tools (PyTorch, webdataset, torchdata).",
                     "Understanding of large scale model inference, quantization and distributed computing.",
                     "Mindset to build reusable, modular infrastructure and systems focused on scaling."
                 ]
@@ -97,9 +97,9 @@ module.exports = [
                     "Operate at scale and provide the connection between multidisciplinary business areas and stakeholders.",
                     "Ensure the necessary business processes are followed.",
                     "Participate in the governance of the service, including acting as a point of escalation for the delivery teams.",
-                    "Own the budget and allocate funding to areas of the service based on your decisions about priorities",
-                    "Communicate the benefits and performance of your service",
-                    "Be responsible for the successful operation and continuous improvement of the service"
+                    "Own the budget and allocate funding to areas of the service based on your decisions about priorities.",
+                    "Communicate the benefits and performance of your service.",
+                    "Be responsible for the successful operation and continuous improvement of the service."
                 ],
                 personSpec: [
                     "Coaching the team on agile practices with a clear focus on MVP.",
