@@ -107,3 +107,22 @@
   
 
 })();
+
+
+class inpageLink extends HTMLElement {
+  connectedCallback() {
+    const offset = (document.querySelector('header')?.offsetHeight || 0) + 24;
+    const link = this.querySelector('a');
+    link?.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      /** @type {HTMLElement | null} */
+      const target = document.querySelector(link.getAttribute('href') || '');
+      if (!target) {
+        return;
+      }
+      const yLocation = target.offsetTop - offset;
+      window.scrollTo(0, yLocation);
+    });
+  }
+}
+customElements.define('inpage-link', inpageLink);
