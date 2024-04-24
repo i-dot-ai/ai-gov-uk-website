@@ -177,7 +177,7 @@ module.exports = [
                     "Work with service managers and programme directors to develop design concepts.",
                     "Set direction and embed good practice within the team.",
                     "Create patterns for how users interaction with Artificial Intelligence.",
-                    "Contribute to design communities .",
+                    "Contribute to design communities.",
                     "Make important decisions based on research and understand how this research impacts others."
                 ],
                 personSpec: [
