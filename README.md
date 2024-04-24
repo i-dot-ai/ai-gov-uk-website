@@ -8,6 +8,8 @@ This is our repository for our [public website](https://ai.gov.uk/). The intent 
 
 To get started with the site, use the below commands to build and run the site. This assumes that you already have `node` installed.
 
+Create a `.env` file based on the `.env_example`.
+
 To deploy the site, only the `_site` folder is needed.
 
 1. `npm install`
