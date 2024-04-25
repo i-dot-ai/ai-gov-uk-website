@@ -80,7 +80,7 @@ templateEngineOverride: njk
         </nav>
 
         <div>
-            {% for group in roles_contentful %}
+            {% for group in roles %}
                 <h3 class="iai-roles__group-heading" id="{{group.group | slugify}}">{{group.group}}</h3>
                 {% for role in group.roles %}
                     <div class="iai-roles__role-container">
