@@ -13,6 +13,7 @@ const pagesToTest = [
   'projects/redbox-copilot',
   'projects/caddy',
   'projects/rapid',
+  'projects/nhs-collaboration',
   'accessibility',
   'site-map'
 ];
