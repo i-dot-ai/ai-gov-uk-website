@@ -6,7 +6,7 @@ const pagesToTest = [
   '',
   'about',
   'join',
-  'jobs/ai-head-of-impact-and-evaluation/',
+  'jobs/deputy-director-i-ai-strategy-and-business-engagement/',
   'jobs/ai-impact-and-evaluation-lead',
   'projects',
   'projects/consultations',
