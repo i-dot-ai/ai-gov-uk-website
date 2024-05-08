@@ -1,0 +1,11 @@
+---
+title: Blogs
+layout: base.njk
+templateEngineOverride: njk
+---
+
+<h1>Blogs</h1>
+
+{% for blog in blogs %}
+    <a class="link" href="/blogs/{{ blog.title | slugify  }}">{{ blog.title }}
+{% endfor %}

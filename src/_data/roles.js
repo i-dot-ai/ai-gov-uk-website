@@ -49,6 +49,3 @@ module.exports = () => {
     });
 
 };
-
-return [];
-  
