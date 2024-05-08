@@ -1,0 +1,112 @@
+---
+layout: base.njk
+templateEngineOverride: njk
+pagination:
+    data: blogs
+    size: 1
+    alias: blog
+permalink: "blogs/{{ blog.title | slugify }}/"
+---
+
+<style>
+    .iai-blog-header {
+        padding-top: 3rem;
+        position: relative;
+    }
+    .iai-blog-header__title {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    .iai-blog-header__subtitle {
+        margin-top: 3rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    .iai-blog-header__separator {
+        border-bottom: 1px solid var(--iai-pink);
+        padding-top: 3rem;
+    }
+    @media (min-width: 68rem) {
+        .iai-blog-header::before {
+        background-color: var(--iai-pink);
+        border-radius: 100%;
+        content: '';
+        display: block;
+        height: 5rem;
+        left: -2.5rem;
+        position: absolute;
+        top: 2.5rem;
+        width: 5rem;
+    }
+    }
+    
+    .iai-blog-title {
+        padding-bottom: 2rem;
+        padding-top: 3rem;
+    }
+    .iai-blog-title__title {
+        font-size: 2.25rem;
+        font-weight: 700;
+    }
+    .iai-blog-title__summary {
+        font-size: 1.25rem;
+        font-weight: 400;
+        margin-top: 1.5rem;
+    }
+    .iai-blog-title__author {
+        color: var(--iai-pink);
+        font-size: 0.875rem;
+        font-weight: 300;
+        margin-top: 2rem;
+    }
+    .iai-blog-title__date {
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 400;
+    }
+    .iai-blog-title__cover-image {
+        aspect-ratio: 16/9;
+        margin-top: 2rem;
+        object-fit: cover;
+    }
+
+    .iai-blog-content {
+        font-size: 1rem;
+        line-height: 1.75rem;
+    }
+    .iai-blog-content__inner-container {
+        max-width: 48rem;
+    }
+    .iai-blog-content p {
+        margin-top: 1rem;
+    }
+    .iai-blog-content h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
+ </style>
+
+<section class="iai-blog-header">
+    <div class="container">
+        <h1 class="iai-blog-header__title">Latest blogs</h1>
+        <p class="iai-blog-header__subtitle">Thoughts and insight about AI in Government</p>
+        <div class="iai-blog-header__separator"></div>
+    </div>
+</section>
+
+<div class="iai-blog-title container">
+    <h2 class="iai-blog-title__title">{{ blog.title }}</h2>
+    <p class="iai-blog-title__summary">{{ blog.summary }}</p>
+    <p class="iai-blog-title__author">{{ blog.author }}</p>
+    <p class="iai-blog-title__date">{{ blog.date | dateFormat }}</p>
+    <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt="{{ blog.coverImage.description }}"/>
+</div>
+
+<div class="iai-blog-content container">
+    <div class="iai-blog-content__inner-container">
+        {{ blog.content | richTextToHTML | safe }}
+    </div>
+</div>
+

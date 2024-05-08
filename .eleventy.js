@@ -2,6 +2,7 @@ const htmlmin = require("html-minifier");
 const CleanCSS = require("clean-css");
 const fs = require('fs');
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
+const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
@@ -21,13 +22,25 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
+  eleventyConfig.addFilter("dateFormat", (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  });
+
   eleventyConfig.addFilter("richTextToHTML", (value) => {
-    return documentToHtmlString(value);
+      return documentToHtmlString(value);
   });
 
 
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***
   (() => {
+
+    return;
     
     const assets = [
       {directory: "/css", name: "style", extension: "css"}, 
