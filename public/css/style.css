@@ -1210,6 +1210,124 @@ figcaption svg {margin-right: 0.25rem;}
   margin-bottom: 0;
 }
 
+
+
+/*--------------------------------------------------------------
+# Blogs
+--------------------------------------------------------------*/
+.iai-blog-header {
+  padding-top: 3rem;
+  position: relative;
+}
+.iai-blog-header__title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.iai-blog-header__subtitle {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.iai-blog-header__separator {
+  border-bottom: 1px solid var(--iai-pink);
+  padding-top: 3rem;
+}
+@media (min-width: 68rem) {
+  .iai-blog-header::before {
+    background-color: var(--iai-pink);
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: 5rem;
+    left: -2.5rem;
+    position: absolute;
+    top: 2.5rem;
+    width: 5rem;
+  }
+}
+
+.iai-blogs-list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+}
+.iai-blogs-list__cover-image {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.iai-blogs-list__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+}
+.iai-blog-list__summary {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 1.5rem;
+}
+.iai-blog-list__author {
+  color: var(--iai-pink);
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-top: 1.25rem;
+}
+.iai-blog-list__date {
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: 0.125rem;
+}
+
+.iai-blog-title {
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+}
+.iai-blog-title__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+.iai-blog-title__summary {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 1.5rem;
+}
+.iai-blog-title__author {
+  color: var(--iai-pink);
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-top: 2rem;
+}
+.iai-blog-title__date {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.iai-blog-title__cover-image {
+  aspect-ratio: 16/9;
+  margin-top: 2rem;
+  object-fit: cover;
+}
+
+.iai-blog-content {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+.iai-blog-content__inner-container {
+  max-width: 48rem;
+}
+.iai-blog-content p {
+  margin-top: 1rem;
+}
+.iai-blog-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+
+
 /*--------------------------------------------------------------
 # Facts
 --------------------------------------------------------------*/

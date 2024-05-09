@@ -4,8 +4,19 @@ layout: base.njk
 templateEngineOverride: njk
 ---
 
-<h1>Blogs</h1>
+{% from "./_includes/blog-header.njk" import blogHeader %}
 
-{% for blog in blogs %}
-    <a class="link" href="/blogs/{{ blog.title | slugify  }}">{{ blog.title }}
-{% endfor %}
+
+{{ blogHeader() }}
+
+<div class="iai-blogs-list container">
+    {% for blog in blogs %}
+        <a href="/blogs/{{ blog.title | slugify  }}">
+            <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt=""/>
+            <h2 class="iai-blogs-list__title" >{{ blog.title }}</h2>
+            <p class="iai-blog-list__summary">{{ blog.summary }}</p>
+            <p class="iai-blog-list__author">{{ blog.author }}</p>
+            <p class="iai-blog-list__date">{{ blog.date | dateFormat }}</p>
+        </a>
+    {% endfor %}
+</div>
