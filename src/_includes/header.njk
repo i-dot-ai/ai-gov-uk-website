@@ -1,29 +1,66 @@
-<header id="header" class="fixed-top d-flex align-items-center bg-blue-600">
-  <div class="container flex flex-col md:flex-row justify-center md:justify-between items-center">
-    <div>
-      <a href="/">
-        <div class="logo">
-          <div class="logo_sub text-white">
-            AI.gov.uk
-          </div>
-        </div>
-      </a>
+{% set menuItems = [
+  {text: 'Home', url: '/'},
+  {text: 'About', url: '/about'},
+  {text: 'Join', url: '/join'},
+  {text: 'Projects', url: '/projects'},
+  {text: 'Blog', url: '/blog'}
+] %}
+
+<header class="iai-header">
+  <div class="iai-header__outer-container container">
+    <div class="iai-header__container">
+      <a class="iai-header__logo" href="/">ai.gov.uk</a>
+      <hamburger-button class="iai-header__mobile-button"></hamburger-button>
     </div>
-    <nav>
-      <ul id="actions" class="flex flex-row gap-9 mt-1 text-sm lg:text-base">
-        <li>
-          <a href="/" class="text-white font-light">Home</a>
-        </li>
-        <li>
-          <a href="/about" class="text-white font-light">About</a>
-        </li>
-        <li>
-          <a href="/join" class="text-white font-light">Join</a>
-        </li>
-        <li>
-          <a href="/projects" class="text-white font-light">Projects</a>
-        </li>
+    <nav class="iai-header__nav">
+      <ul class="iai-header__nav-item-container">
+        {% for menuItem in menuItems %}
+          <li class="iai-header__nav-item">
+            <a class="iai-header__nav-link" href="{{ menuItem.url }}">{{ menuItem.text }}</a>
+          </li>
+        {% endfor %}
       </ul>
     </nav>
   </div>
 </header>
+
+<script>
+
+   class HamburgerButton extends HTMLElement {
+
+       constructor() {
+          super();
+          this.expanded = false;
+          this.role = 'button';
+          this.tabIndex = '0';
+          this.classList.add('js-init');
+          this.setAttribute('aria-expanded', 'false');
+       }
+
+       toggle() {
+          this.classList.add('mobile-menu__button--initiated');
+          this.expanded = !this.expanded;
+          this.setAttribute('aria-expanded', this.expanded.toString());
+       }
+
+       connectedCallback() {
+          this.innerHTML = `
+            <span class="sr-only">Menu</span>
+            <span class="iai-header__mobile-button-bar iai-header__mobile-button-bar--1"></span>
+            <span class="iai-header__mobile-button-bar iai-header__mobile-button-bar--2"></span>
+            <span class="iai-header__mobile-button-bar iai-header__mobile-button-bar--3"></span>
+          `;
+          this.addEventListener('click', this.toggle);
+          this.addEventListener('keydown', () => {
+              if (event.key !== 'Enter' && event.key !== ' ') {
+                  return;
+              }
+              this.toggle();
+           });
+       }
+
+   }
+
+   customElements.define('hamburger-button', HamburgerButton);
+
+</script>
