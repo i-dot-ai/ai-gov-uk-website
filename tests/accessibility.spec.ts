@@ -7,7 +7,6 @@ const pagesToTest = [
   'about',
   'join',
   'jobs/deputy-director-i-ai-strategy-and-business-engagement/',
-  'jobs/ai-impact-and-evaluation-lead',
   'projects',
   'projects/consultations',
   'projects/redbox-copilot',

@@ -1,41 +1,5 @@
 module.exports = [
   {
-    title: "AI Impact and Evaluation Lead",
-    grade: "Grade 7",
-    salary: "£53,400 - £66,875",
-    location: "Bristol, Glasgow, London, Manchester, York",
-    headline: "i.AI’s Impact and Evaluation team will support i.AI in their mission to identify and deploy AI for the public good, by building their work into each stage of product development, from scoping, to incubation, and onwards to scaling. Team members will embed into product development teams, designing and delivering of randomised control trials, impact evaluations, and qualitative studies primarily into the efficiency and quality impacts of our AI products.",
-    description: {
-      about: [
-        `The Incubator for Artificial Intelligence (i.AI) leads the Cabinet Office AI for Public Good programme to harness the opportunities presented by AI to improve the lives of citizens. It focuses on a number of priority projects in home affairs, health, education and government efficiency projects. The i.AI team uses ethical and secure methods at all times to help deliver better public services.`,
-        `Building on the work of No10 Data Science Team (10DS) and other leading technology teams across the civil service, i.AI will experiment and prove what is possible in improving the use of AI across the government. It was recently announced that i.AI will expand a further 40 roles to build a scale up function, which will take successful incubated projects into production.`,
-        `i.AI’s <strong>Impact and Evaluation</strong> team will build their work into each stage of product development, from scoping, to incubation, and onwards to scaling. Team members will embed into product development teams, designing and delivering of randomised control trials, impact evaluations, and qualitative studies primarily into the efficiency and quality impacts of our AI products.`
-      ],
-      responsibilities: [
-        `Embedding impact and evaluation into products from the very start and throughout the development cycle.`,
-        `We will teach you to apply your skills to deliver wider AI evaluation throughout the development cycle. These are new and emerging methods that you would be key in forging practical delivery of: safety assessment, algorithmic transparency reporting, red teaming to assess AI bias and safety.`,
-        `Building evidence-led and data-driven cases for i.AI funding bids in processes such as Budgets or Spending Reviews.`,
-        `Conducting data analysis, drawing insights and recommendations and presenting them stakeholders.`
-      ],
-      skills: [
-        `Experience of designing, leading and delivering research, from a relevant discipline such as an economist, behavioural scientist, or a social scientist.`,
-        `Excellent analytical and critical thinking skills, with the ability to synthesise complex information and draw insights from data.`,
-        `Ability to engage and influence others at various levels of seniority to maximise the impact of research studies.`,
-        `Knowledge of either quantitative and/or qualitative research design, methods and analysis.`,
-        `Ability to work collaboratively and across disciplines, and maintain strong working relationships with a broad range of individuals.`,
-        `Ability to communicate research for varied audiences, using different media/formats e.g. technical reports; presentations; web-based tools.`,
-        `Non-essential but beneficial: experience of leading on cost-benefit analysis and policy appraisal in line with the Green Book.`,
-        `Needs to be/become DDAT/badged Economist/Social Researcher/Statistician/Operational Researcher.`,
-        `In-depth expertise of a number of commonly used evaluation methods.`,
-        `Experimental and quasi-experimental methods are particularly desirable.`,
-        `Excellent communication skills, both verbal and written, with the ability to communicate technical information on evaluations to non-specialists in ways that are easily understood.`,
-        `Strong ability to articulate the value of evaluating products to a broad range of stakeholders.`,
-        `Coding ability in python or similar languages are not essential but would be beneficial.`
-      ]
-    },
-    link: "https://www.civilservicejobs.service.gov.uk/csr/index.cgi?SID=c2VhcmNocGFnZT0xJm93bmVydHlwZT1mYWlyJnBhZ2VjbGFzcz1Kb2JzJmpvYmxpc3Rfdmlld192YWM9MTkwNjQzOCZvd25lcj01MDcwMDAwJnBhZ2VhY3Rpb249dmlld3ZhY2J5am9ibGlzdCZzZWFyY2hzb3J0PXNjb3JlJnVzZXJzZWFyY2hjb250ZXh0PTc3MzYyMDk5JnJlcXNpZz0xNzEzNDQ4NDk3LWYwZjdmMjI3N2JiNjc0YThjOTE0Y2RkNzJmMzZlZWI4NzIwOTQ5ZDU="
-  },
-  {
     title: "Deputy Director, i.AI Strategy and Business Engagement",
     grade: "SCS 1",
     salary: "£75,000 - £117,800",
