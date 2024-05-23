@@ -26,6 +26,7 @@
   const carousel = document.querySelector("#heroCarousel");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const previousNextButtons = carouselContainer?.querySelectorAll("a[data-slide]");
+  const pauseButton = /** @type HTMLButtonElement | null */ (carouselContainer?.querySelector('.js-carousel-pause'));
   let animationStopped = false; 
 
   if (!carouselContainer || !carousel) {
@@ -49,7 +50,19 @@
       $("#heroCarousel").carousel("pause");
       animationStopped = true;
     }
-    
+  });
+
+  // stop carousel when pause button clicked
+  pauseButton?.addEventListener('click', () => {
+    if (pauseButton.dataset.paused === 'false') {
+      pauseButton.dataset.paused = 'true';
+      $("#heroCarousel").carousel("pause");
+      animationStopped = true;
+    } else {
+      pauseButton.dataset.paused = 'false';
+      $("#heroCarousel").carousel('cycle');
+      animationStopped = false;
+    }
   });
 
   // pause carousel when it has focus
