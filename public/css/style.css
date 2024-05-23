@@ -114,6 +114,30 @@ figcaption svg {margin-right: 0.25rem;}
 }
 
 /*--------------------------------------------------------------
+# Carousel
+--------------------------------------------------------------*/
+.iai-carousel__pause {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px white solid;
+  border-radius: 0.25rem;
+  bottom: 0;
+  color: white;
+  display: flex;
+  font-size: 0.875rem;
+  outline-offset: 1px;
+  padding: 0.125rem 0.25rem 0.125rem 0;
+  position: absolute;
+  right: 0.5rem;
+}
+.iai-carousel__pause:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.iai-carousel__play-icon, .iai-carousel__play-text {display: none;}
+.iai-carousel__pause[data-paused="true"] .iai-carousel__pause-icon, .iai-carousel__pause[data-paused="true"] .iai-carousel__pause-text {display: none;}
+.iai-carousel__pause[data-paused="true"] .iai-carousel__play-icon, .iai-carousel__pause[data-paused="true"] .iai-carousel__play-text {display: block;}
+
+/*--------------------------------------------------------------
 # Projects page cards
 --------------------------------------------------------------*/
 .projects {
