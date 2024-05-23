@@ -51,8 +51,7 @@ module.exports = function (eleventyConfig) {
   (() => {
     
     const assets = [
-      {directory: "/css", name: "style", extension: "css"}, 
-      {directory: "/css", name: "tailwind", extension: "css"}, 
+      {directory: "/css", name: "style", extension: "css"},
       {directory: "/js", name: "main", extension: "js"}
     ];
     let timestamp = "";

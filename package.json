@@ -4,12 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:css & npm run build:11ty",
-    "dev": "npm run dev:css & npm run dev:11ty",
-    "dev:11ty": "eleventy --serve",
-    "dev:css": "tailwindcss -i src/css/tailwind.css -o _site/css/tailwind.css --watch --postcss",
-    "build:11ty": "eleventy",
-    "build:css": "tailwindcss -i src/css/tailwind.css -o _site/css/tailwind.css --postcss"
+    "build": "eleventy",
+    "dev": "eleventy --serve"
   },
   "repository": {
     "type": "git",
@@ -30,12 +26,10 @@
     "@types/node": "^20.11.18",
     "autoprefixer": "^10.4.16",
     "html-minifier": "^4.0.0",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.4.1"
+    "postcss": "^8.4.31"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.5.2",
-    "@tailwindcss/typography": "^0.5.10",
     "clean-css": "^5.3.2",
     "contentful": "^10.8.9",
     "cross-env": "^7.0.3",
