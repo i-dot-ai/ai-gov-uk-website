@@ -10,12 +10,12 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-a {
+main a {
   color: #1e293b;
   text-decoration: none;
 }
 
-a:hover {
+main a:hover {
   color: #0f172a;
   text-decoration: none;
 }
@@ -112,6 +112,179 @@ figcaption svg {margin-right: 0.25rem;}
   color: white;
   opacity: 0.9;
 }
+
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.iai-header {
+  background-color: black;
+  color: white;
+  padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
+  width: 100%;
+  z-index: 10;
+}
+.iai-header:has(.js-init) {
+  position: fixed;
+}
+.iai-header__container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.iai-header__logo {
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.iai-header__mobile-button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: none;
+  height: 64px;
+  position: relative;
+  transform: scale(0.75);
+  width: 64px;
+  z-index: 10;
+}
+.iai-header__mobile-button.js-init {
+  display: block;
+}
+.iai-header__mobile-button-bar {
+  animation-duration: 0s;
+  animation-fill-mode: forwards;
+  background-color: white;
+  border-radius: 3px;
+  left: 13px;
+  height: 3px;
+  transform-origin: 30% 50%;
+  position: absolute;
+  width: 32px;
+}
+@media (prefers-reduced-motion:no-preference) {
+  .mobile-menu__button--initiated .iai-header__mobile-button-bar {
+      animation-duration: .4s;
+  }
+}
+
+.iai-header__mobile-button-bar--1 {
+  top: 19px;
+}
+[aria-expanded="true"] .iai-header__mobile-button-bar--1 {
+  animation-name: bar1-open;
+}
+[aria-expanded="false"] .iai-header__mobile-button-bar--1 {
+  animation-name: bar1-close;
+}
+.iai-header__mobile-button-bar--2 {
+  top: 27px;
+}
+[aria-expanded="true"] .iai-header__mobile-button-bar--2 {
+  animation-name: bar2-open;
+}
+[aria-expanded="false"] .iai-header__mobile-button-bar--2 {
+  animation-name: bar2-close;
+}
+.iai-header__mobile-button-bar--3 {
+  top:35px;
+}
+[aria-expanded="true"] .iai-header__mobile-button-bar--3 {
+  animation-name: bar3-open;
+}
+[aria-expanded="false"] .iai-header__mobile-button-bar--3 {
+  animation-name: bar3-close;
+}
+@keyframes bar1-open {
+  0% {left:13px; top:19px;}
+  50% {left:13px; top:27px; transform:rotate(0);}
+  100% {left:15px; top:23px; transform:rotate(45deg);}
+}
+@keyframes bar2-open {
+  0% {opacity: 1;}
+  49% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 0;}
+}
+@keyframes bar3-open {
+  0% {left:13px; top:35px;}
+  50% {left:13px; top:27px; transform: rotate(0);}
+  100% {left:15px; top:32px; transform: rotate(-45deg);}
+}
+@keyframes bar1-close {
+  0% {left:15px; top:23px; transform:rotate(45deg);}
+  50% {left:13px; top:27px; transform:rotate(0);}
+  100% {left:13px; top:19px;}
+}
+@keyframes bar2-close{
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  51% {opacity: 1;}
+  100% {opacity:1;}
+}
+@keyframes bar3-close {
+  0% {left:15px; top:32px; transform:rotate(-45deg);}
+  50% {left:13px; top:27px; transform:rotate(0);}
+  100% {left:13px; top:35px}
+}
+
+.iai-header__container:has(.js-init) + .iai-header__nav {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  visibility: hidden;
+}
+.iai-header__container:has(.iai-header__mobile-button[aria-expanded="true"]) + .iai-header__nav {
+  max-height: 200px;
+  visibility: visible;
+}
+.iai-header__nav-item {
+  border-bottom: 1px solid rgba(255,255,255, 0.5);
+  display: block;
+  font-size: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+.iai-header__nav-item:last-child {
+  border-bottom: 0;
+}
+.iai-header__nav-link:hover, .iai-header__logo:hover {
+  color: rgb(226,232,240);
+}
+
+.main {padding-top: 4.25rem;}
+
+@media (min-width: 768px) {
+  .main {padding-top: 4.875rem;}
+  .iai-header__outer-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .iai-header__container {
+    padding: 1rem 0;
+  }
+  .iai-header__mobile-button {
+    display: none !important;
+  }
+  .iai-header__nav {
+    max-height: initial !important;
+    visibility: visible !important;
+  }
+  .iai-header__nav-item-container {
+    align-items: center;
+    display: flex;
+    gap: 1.25rem;
+  }
+  .iai-header__nav-item {
+    border-bottom: 0;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Projects page cards
@@ -332,6 +505,7 @@ figcaption svg {margin-right: 0.25rem;}
   visibility: visible;
   opacity: 1;
 }
+
 
 /*--------------------------------------------------------------
 # Header
@@ -1160,6 +1334,42 @@ figcaption svg {margin-right: 0.25rem;}
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.iai-teams {
+  padding: 3rem 0;
+}
+.iai-teams__heading {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+.iai-teams__card-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .iai-teams__card-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .iai-teams__card-container {
+    font-size: 0.875rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+.iai-teams__logo {
+  padding: 2rem;
+}
+.iai-teams__logo--fellowship {
+  aspect-ratio: auto;
+}
+.iai-teams .card-text {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+
 .about h3 {
   font-weight: 400;
   font-size: 26px;
@@ -1183,6 +1393,124 @@ figcaption svg {margin-right: 0.25rem;}
 .about p:last-child {
   margin-bottom: 0;
 }
+
+
+
+/*--------------------------------------------------------------
+# Blogs
+--------------------------------------------------------------*/
+.iai-blog-header {
+  padding-top: 3rem;
+  position: relative;
+}
+.iai-blog-header__title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.iai-blog-header__subtitle {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.iai-blog-header__separator {
+  border-bottom: 1px solid var(--iai-pink);
+  padding-top: 3rem;
+}
+@media (min-width: 68rem) {
+  .iai-blog-header::before {
+    background-color: var(--iai-pink);
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: 5rem;
+    left: -2.5rem;
+    position: absolute;
+    top: 2.5rem;
+    width: 5rem;
+  }
+}
+
+.iai-blogs-list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+}
+.iai-blogs-list__cover-image {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.iai-blogs-list__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+}
+.iai-blog-list__summary {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 1.5rem;
+}
+.iai-blog-list__author {
+  color: var(--iai-pink);
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-top: 1.25rem;
+}
+.iai-blog-list__date {
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: 0.125rem;
+}
+
+.iai-blog-title {
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+}
+.iai-blog-title__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+.iai-blog-title__summary {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 1.5rem;
+}
+.iai-blog-title__author {
+  color: var(--iai-pink);
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin-top: 2rem;
+}
+.iai-blog-title__date {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.iai-blog-title__cover-image {
+  aspect-ratio: 16/9;
+  margin-top: 2rem;
+  object-fit: cover;
+}
+
+.iai-blog-content {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+.iai-blog-content__inner-container {
+  max-width: 48rem;
+}
+.iai-blog-content p {
+  margin-top: 1rem;
+}
+.iai-blog-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+
 
 /*--------------------------------------------------------------
 # Facts

@@ -1,0 +1,20 @@
+{% macro card (card) %}
+
+    <div class="projects__card card bg-slate-50 drop-shadow">
+        <img src="{{card.img}}" class="card-img-top aspect-video {% if card.imgClasses %}{{card.imgClasses}}{% else %}object-cover{% endif %}" alt="">
+        <div class="border-top card-body flex flex-col justify-between">
+        <div>
+            <h2 class="card-title font-semibold text-xl">{{card.title}}</h2>
+            <p class="card-text text-[16px]">{{card.synopsis}}</p>
+        </div>
+        {% if card.url %}
+            <a href="{{card.url}}" class="btn btn-dark mt-3 text-s focus:ring-2 focus:ring-offset-2 focus:ring-slate-700">
+                Visit page
+                <span aria-hidden="true">&#8594;</span>
+                <span class="sr-only">{{card.title}}</span>
+            </a>
+        {% endif %}
+        </div>
+    </div>
+
+{% endmacro %}
