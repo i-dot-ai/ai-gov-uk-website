@@ -3,11 +3,54 @@ title: About
 layout: base.njk
 templateEngineOverride: njk
 ---
-
 {% from "./_includes/banner.njk" import banner %}
-{{ banner("About i.AI", "The Deputy Prime Minister has established i.AI as asked by the UK Prime Minister to drive AI capabilities of central government forwards. We have four key capabilities.") }}
+{% from "./_includes/card.njk" import card %}
 
-<div class="container flex flex-col w-100 md:w-75 pt-[4rem] gap-[4rem]">
+{{ banner("About AI for public good", "The Deputy Prime Minister has established i.AI as asked by the UK Prime Minister to drive AI capabilities of central government forwards.") }}
+
+<div class="iai-teams container">
+    <h2 class="iai-teams__heading">We are made up of the following teams</h2>
+
+    {% set teams = [
+        {img: "/img/i-dot-ai-Official-Logo.svg", imgClasses: "iai-teams__logo object-fit", title: "i.AI", synopsis: "An elite team of highly empowered technical experts at the heart of government. Our mission is to harness the opportunity of AI to improve lives, generate efficiency savings and deliver better public services."},
+        {img: "/img/no10fellowship_logo.png", imgClasses: "iai-teams__logo iai-teams__logo--fellowship object-fit", title: "No 10 Innovation Fellowship", url: "https://no10innovationfellows.campaign.gov.uk/previous-fellows/", synopsis: "Brings a small number of world class technical experts from industry into the heart of government for high impact 6-to-12-month tours of duty. Our Fellows, joining from startups, big tech and academia are helping to disrupt and improve government. This year we are specifically seeking AI experts and applications are open."},
+        {img: "/img/10DS-Logo.svg", imgClasses: "iai-teams__logo object-fit ", title: "10DS", synopsis: "Ensures the Prime Minister has the best possible evidence available to them to inform decision making and help tackle some of the most important issues the country faces."},
+        {img: "/img/Evidence-House-Logo.svg", imgClasses: "iai-teams__logo object-fit", title: "Evidence House", synopsis: "Led by the Number 10 Data Science team, Evidence House upskills Civil Servants in programming, data science, engineering and AI then brings them together to tackle real government problems through regular hackathons and delivery sprints."}
+    ] %}
+
+    {#{img: "/img/10x-logo.svg", imgClasses: "object-fit p-4", title: "10x"},#}
+
+    <div class="iai-teams__card-container pt-5">
+        {% for team in teams %}
+            {{ card(team) }}
+        {% endfor %}
+    </div>
+
+    {#
+    <div class="iai-teams__card-container">
+        <div class="iai-teams__card card bg-slate-50 drop-shadow">
+            <img class="iai-teams__logo" src="/img/i-dot-ai-Official-Logo.svg" alt="Incubator for Artificial Intelligence"/>
+        </div>
+        <div class="iai-teams__card">
+            <img class="iai-teams__logo" src="/img/i-dot-ai-Official-Logo.svg" alt="Incubator for Artificial Intelligence"/>
+        </div>
+        <div class="iai-teams__card">
+            <img class="iai-teams__logo" src="/img/10DS-Logo.svg" alt="10 D S"/>
+        </div>
+        <div class="iai-teams__card">
+            <img class="iai-teams__logo" src="/img/10x-logo.svg" alt="10 X"/>
+        </div>
+        <div class="iai-teams__card">
+            <img class="iai-teams__logo" src="/img/Evidence-House-Logo.svg" alt="Evidence House"/>
+        </div>
+    </div>
+    #}
+
+    <h2 class="iai-teams__heading mt-5 pt-3">We have four key capabilities</h2>
+
+</div>
+
+<div class="container flex flex-col w-100 md:w-75 pt-2 gap-[4rem]">
 
     <div class="flex flex-col md:flex-col lg:flex-row w-[100%] md:w-[80%] self-center border-b border-grey-300 pb-4" id="improve" data-aos="fade-up">
         <div class="flex flex-col items-end pr-12 lg:w-[20%] md:w-[100%]">

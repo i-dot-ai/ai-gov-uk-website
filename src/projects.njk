@@ -5,28 +5,16 @@ templateEngineOverride: njk
 ---
 
 {% from "./_includes/banner.njk" import banner %}
+{% from "./_includes/card.njk" import card %}
+
 {{ banner("Projects", "A selection of projects we have been working on") }}
 
 <div class="container w-100 md:w-75">
 
-  <div class="projects pt-5">
-    {% for project in projects %}
-      <div class="projects__card card bg-slate-50 drop-shadow">
-        <img src="{{project.img}}" class="card-img-top aspect-video object-cover" alt="">
-        <div class="border-top card-body flex flex-col justify-between">
-          <div>
-            <h2 class="card-title font-semibold text-xl">{{project.title}}</h2>
-            <p class="card-text text-[16px]">{{project.synopsis}}</p>
-          </div>
-          {#<a href="{{project.url}}" class="btn btn-primary bg-[#c50978] border-[#c50978] mt-3 text-s">More details</a>#}
-          <a href="{{project.url}}" class="btn btn-dark mt-3 text-s focus:ring-2 focus:ring-offset-2 focus:ring-slate-700">
-            Visit page
-            <span aria-hidden="true">&#8594;</span>
-            <span class="sr-only">{{project.title}}</span>
-          </a>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+    <div class="projects pt-5">
+        {% for project in projects %}
+            {{ card(project) }}
+        {% endfor %}
+    </div>
 
 </div>
