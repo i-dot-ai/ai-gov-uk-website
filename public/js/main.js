@@ -22,6 +22,9 @@
 // Carousel
 (() => {
 
+  // Carousel not required for now
+  return;
+
   const carouselContainer = document.querySelector(".js-carousel-container");
   const carousel = document.querySelector("#heroCarousel");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");

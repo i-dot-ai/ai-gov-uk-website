@@ -11,20 +11,23 @@ templateEngineOverride: njk
 
 <section id="heroBanner" class="bg-[#000] w-100 bg-[url('/img/code_stock_image.png')] bg-cover">
 
-  <div class="row h-100 max-w-[100vw] xs:py-[3rem] md:py-[5rem] py-[4rem]">
+  <div class="row h-100 w-full xs:py-[3rem] md:py-[5rem] py-[4rem]">
     {# Blank left wrapper #}
     <div class="col-xs-0 col-md-0 col-lg-6"></div>
 
     <div class="col-xs-12 col-md-12 col-lg-6 h-100 flex js-carousel-container" role="region" aria-label="carousel">
       <div id="backgroundBlur" class="flex flex-row z-1000 items-center self-center !mb-[2rem] !p-3 z-10000 rounded-lg items-center backdrop-blur-sm">
 
+        {#
         <a class="left-[-60px]" href="#heroCarousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
           <span class="sr-only">previous</span>
         </a>
+        #}
 
         <div id="heroCarousel" class="items-center carousel slide carousel-fade m-2 p-[2rem]" data-interval="4000" data-pause="hover">
 
+          {#
           <div class="carousel-item active" tabindex="-1">
             <div class="flex flex-column gap-2">
               <p class="text-white font-normal md:text-[30px] text-[20px] animate__animated animate__fadeInDown">
@@ -44,11 +47,12 @@ templateEngineOverride: njk
               </p>
             </div>
           </div>
+          #}
 
-          <div class="carousel-item" tabindex="-1">
+          <div class="carousel-item active" tabindex="-1">
             <div class="flex flex-column gap-2">
               <p class="text-white font-normal md:text-[30px] text-[20px] animate__animated animate__fadeInDown">
-                <span class="sr-only">Slide 3 of 3</span>
+                {#<span class="sr-only">Slide 3 of 3</span>#}
                 We are on the cusp of a tech revolution that we haven't seen since the birth of the internet.
                 <span class="carousel__secondary-text block text-slate-300 min-w-[100%] text-[15px] md:text-[20px] uppercase animate__animated animate__fadeInUp">Technology Secretary <span aria-hidden="true">|</span> CogX <span aria-hidden="true">|</span> 12 September 2023</span>
               </p>
@@ -57,17 +61,12 @@ templateEngineOverride: njk
 
         </div>
 
+        {#
         <a class="right-[-60px]" href="#heroCarousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
           <span class="sr-only">next</span>
         </a>
-
-        <button class="iai-carousel__pause js-carousel-pause" data-paused="false">
-          <svg class="iai-carousel__pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" color="#FFF" stroke-width="1" focusable="false" aria-hidden="true"><path d="M6 18.4V5.6C6 5.26863 6.26863 5 6.6 5H9.4C9.73137 5 10 5.26863 10 5.6V18.4C10 18.7314 9.73137 19 9.4 19H6.6C6.26863 19 6 18.7314 6 18.4Z" fill="#FFF" stroke="#FFF" stroke-width="1"></path><path d="M14 18.4V5.6C14 5.26863 14.2686 5 14.6 5H17.4C17.7314 5 18 5.26863 18 5.6V18.4C18 18.7314 17.7314 19 17.4 19H14.6C14.2686 19 14 18.7314 14 18.4Z" fill="#FFF" stroke="#FFF" stroke-width="1"></path></svg>
-          <svg class="iai-carousel__play-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#FFF" stroke-width="1.5" ocusable="false" aria-hidden="true"><path d="M6.90588 4.53682C6.50592 4.2998 6 4.58808 6 5.05299V18.947C6 19.4119 6.50592 19.7002 6.90588 19.4632L18.629 12.5162C19.0211 12.2838 19.0211 11.7162 18.629 11.4838L6.90588 4.53682Z" fill="#FFF" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <span class="iai-carousel__pause-text">Pause</span>
-          <span class="iai-carousel__play-text">Play</span>
-        </button>
+        #}
 
       </div>
     </div>
