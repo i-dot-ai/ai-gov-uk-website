@@ -1,4 +1,5 @@
 module.exports = [
+  /*
   {
     title: "Deputy Director, i.AI Strategy and Business Engagement",
     grade: "SCS 1",
@@ -30,4 +31,5 @@ module.exports = [
     },
     link: "https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?jcode=1908736"
   },
+  */
 ];
