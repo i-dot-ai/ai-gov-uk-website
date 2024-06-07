@@ -46,6 +46,10 @@ h6,
   border-width: 0;
 }
 
+.inline {
+  display: inline;
+}
+
 /* ensure footer sits at the bottom of the screen for large pages */
 body {
   display: flex;
