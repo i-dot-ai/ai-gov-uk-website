@@ -54,7 +54,7 @@ templateEngineOverride: njk
                         <p class="mt-2 text-[16px] text-slate-800 font-light mb-2">{{ job.headline }}</p>
                     {% endif %}
                     <div class="-mt-2">
-                        <a href="/jobs/{{ job.title | slugify }}/" class="iai-button iai-button--pink">{{job.title}}<span> &#8594;</span></a>
+                        <a href="{{ job.link }}" class="iai-button iai-button--pink">{{ job.title }}<span> &#8594;</span></a>
                     </div>
                 </div>
             {% endfor %}
