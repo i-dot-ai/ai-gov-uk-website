@@ -4,6 +4,7 @@ This is our repository for our [public website](https://ai.gov.uk/). The intent 
 
 > Please note that this is a continuous work-in-progress and we will continue to improve the website.
 
+
 ## Getting Started
 
 To get started with the site, use the below commands to build and run the site. This assumes that you already have `node` installed.
@@ -17,9 +18,11 @@ To deploy the site, only the `_site` folder is needed.
 3. Or to build css and run the app locally use `npm run dev`
 4. You can also use `npm run build` to build the `_site` folder
 
+
 ## Cached stylesheets and JavaScript
 
 To prevent browser caching issues (which can otherwise occur even after invalidating the cache), the Eleventy build renames CSS and JS files that change regularly. Additional files can be added to this within `.eleventy.js`.
+
 
 ## Tests
 
@@ -29,3 +32,14 @@ To run the tests, use the below commands from the root of this project.
 2. `npx playwright test`
 
 When building new pages, please add to `tests/accessibility.spec.ts`.
+
+
+## Content Management System (CMS)
+
+Contentful is used as the CMS. Content is gradually being moved over to this. You will need to add the required values to your `.env`.
+
+### Backing up CMS data
+
+1. Install Contentful using `npm install -g contentful-cli`
+2. Login using `npx contentful-cli login` 
+3. Run `cd contentful-backups` followed by `npx contentful-cli space export --space-id [space-id]`

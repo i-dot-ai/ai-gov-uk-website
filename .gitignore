@@ -4,3 +4,4 @@ _site
 /test-results/
 .DS_Store
 /playwright-report
+/contentful-backups/*.json
