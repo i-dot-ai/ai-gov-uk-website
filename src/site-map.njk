@@ -20,13 +20,6 @@ templateEngineOverride: njk
       </li>
       <li class="mt-2">
         <a class="link" href="/join">Join our team</a>
-        <ul class="list-disc pl-4">
-          {% for job in jobs %}
-            <li class="mt-2">
-              <a class="link" href="/jobs/{{ job.title | slugify }}/">{{job.title | safe}}</a>
-            </li>
-          {% endfor %}
-        </ul>
       </li>
       <li class="mt-2">
         <a class="link" href="/projects">Projects</a>
