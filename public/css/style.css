@@ -192,6 +192,28 @@ figcaption svg {margin-right: 0.25rem;}
 
 
 /*--------------------------------------------------------------
+# About page
+--------------------------------------------------------------*/
+.iai-faqs__answer p {
+  margin-top: 1rem;
+}
+.iai-faqs__answer ul {
+  list-style-type: disc;
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+.iai-faqs__answer ul {
+  margin-top: 1rem;
+}
+.iai-faqs__answer a {
+  text-decoration: underline;
+}
+.iai-faqs__answer b {
+  font-weight: 500;
+}
+
+
+/*--------------------------------------------------------------
 # Join page
 --------------------------------------------------------------*/
 .iai-notification-buttons {
