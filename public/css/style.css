@@ -2449,67 +2449,28 @@ figcaption svg {margin-right: 0.25rem;}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-#footer {
-  background: #000;
-  padding: 0 0 0px 0;
-  color: #fff;
-  font-size: 14px;
+.footer {
+  background-color: black;
+  color: white;
+  font-size: 0.75rem;
   margin-top: 3rem;
+  padding: 1rem 0;
+}
+.footer__social-media-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+.footer__social-media-link {
+  cursor: pointer;
 }
 
-#footer .footer-newsletter {
-  padding: 50px 0;
-  background: #000;
-}
-
-#footer .footer-newsletter h4 {
-  font-size: 24px;
-  margin: 0 0 20px 0;
-  padding: 0;
-  line-height: 1;
-  font-weight: 600;
-  color: #a2cce3;
-}
-
-#footer .footer-newsletter form {
-  margin-top: 30px;
-  background: #fff;
-  padding: 6px 10px;
-  position: relative;
-  border-radius: 50px;
-}
-
-#footer .footer-newsletter form input[type=email] {
-  border: 0;
-  padding: 4px;
-  width: calc(100% - 100px);
-}
-
-#footer .footer-newsletter form input[type=submit] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border: 0;
-  background: none;
-  font-size: 16px;
-  padding: 0 20px;
-  margin: 3px;
-  background: #000;
-  color: #fff;
-  transition: 0.3s;
-  border-radius: 50px;
-}
-
-#footer .footer-newsletter form input[type=submit]:hover {
-  background: #468db3;
-}
 
 #footer .footer-top {
   background: #000;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
-  padding: 30px 0 10px 0;
+  padding: 0;
 }
 
 #footer .footer-top .social-links a {
@@ -2525,12 +2486,6 @@ figcaption svg {margin-right: 0.25rem;}
   width: 36px;
   height: 36px;
   transition: 0.3s;
-}
-
-#footer .footer-top .social-links a:hover {
-  background: #000;
-  color: #fff;
-  text-decoration: none;
 }
 
 #footer .footer-top h4 {
