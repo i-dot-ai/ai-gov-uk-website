@@ -51,10 +51,10 @@ templateEngineOverride: njk
 
           <div class="carousel-item active" tabindex="-1">
             <div class="flex flex-column gap-2">
-              <p class="text-white font-normal md:text-[30px] text-[20px] animate__animated animate__fadeInDown">
+              <p class="text-white font-normal animate__animated animate__fadeInDown">
                 {#<span class="sr-only">Slide 3 of 3</span>#}
-                We are on the cusp of a tech revolution that we haven't seen since the birth of the internet.
-                <span class="carousel__secondary-text block mt-3 text-slate-300 min-w-[100%] text-[15px] md:text-[20px] uppercase animate__animated animate__fadeInUp">Technology Secretary <span aria-hidden="true">|</span> CogX <span aria-hidden="true">|</span> <span class="inline-block">12 September 2023</span></span>
+                <h1 class="text-white text-[24px] md:text-[30px]">Introducing the Incubator for Artificial Intelligence</h1>
+                <span class="carousel__secondary-text block mt-3 text-slate-300 min-w-[100%] text-[15px] md:text-[20px] animate__animated animate__fadeInUp">The Government has established an elite team of highly empowered technical experts at the heart of government. Their mission is to help departments harness the potential of AI to improve lives and the delivery of public services.</span>
               </p>
             </div>
           </div>
@@ -75,15 +75,86 @@ templateEngineOverride: njk
 
 </section>
 
-<div class="container flex w-90 md:w-75 gap-5" id="introduction">
-  <div class="flex gap-3 flex-col align-center justify-center text-center">
-    <h1 class="text-[33px] font-semibold">Introducing the Incubator for Artificial Intelligence</h1>
-    <p class="description text-[20px] w-[75%] place-self-center text-slate-800 font-light">
-    The Government is establishing an elite team of highly empowered technical experts at the heart of
-    government. Their mission is to help departments harness the potential of AI to improve lives and the delivery
-    of public services.
-  </p>
 
+
+<style>
+  .iai-homepage-quote {
+    padding: 0 5rem;
+  }
+  .iai-homepage-quote p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .iai-homepage-quote footer {
+    font-size: 12px;
+  }
+  .iai-quote-carousel__btn {
+    background-color: black;
+    border-radius: 100%;
+    height: 2.75rem;
+    opacity: 0.6;
+    padding: 0.75rem;
+    top: calc(50% - 1.25rem);
+    width: 2.75rem;
+  }
+  .iai-quote-carousel__btn:focus-visible {
+    outline: 2px solid blue;
+  }
+  @media (min-width: 768px) {
+    .iai-homepage-quote p {
+      font-size: 30px;
+    }
+    .iai-homepage-quote footer {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<div class="container flex w-90 my-5 md:w-75 gap-5">
+  <div class="flex gap-3 align-center justify-center text-center w-full">
+
+    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <blockquote class="iai-homepage-quote">
+            <p>“We are on the cusp of a tech revolution that we haven't seen since the birth of the internet.”</p>
+            <footer class="mt-3">Technology Secretary <span aria-hidden="true">|</span> CogX <span aria-hidden="true">|</span> <span class="inline-block">12 September 2023</span></footer>
+          </blockquote>
+        </div>
+        <div class="carousel-item">
+          <blockquote class="iai-homepage-quote">
+            <p class="text-xl">“We are on the cusp of a tech revolution that we haven't seen since the birth of the internet.”</p>
+            <footer class="mt-3">Technology Secretary <span aria-hidden="true">|</span> CogX <span aria-hidden="true">|</span> <span class="inline-block">12 September 2023</span></footer>
+          </blockquote>
+        </div>
+        <div class="carousel-item">
+          <blockquote class="iai-homepage-quote">
+            <p class="text-xl">“We are on the cusp of a tech revolution that we haven't seen since the birth of the internet.”</p>
+            <footer class="mt-3">Technology Secretary <span aria-hidden="true">|</span> CogX <span aria-hidden="true">|</span> <span class="inline-block">12 September 2023</span></footer>
+          </blockquote>
+        </div>
+      </div>
+      <a class="iai-quote-carousel__btn carousel-control-prev" href="#quote-carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="iai-quote-carousel__btn carousel-control-next" href="#quote-carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container flex w-90 my-5 md:w-75 gap-5">
+  <div class="flex gap-3 align-center justify-center text-center w-full">
     <div class="flex flex-col mt-3 gap-4 text-center items-center">
       <img src="/img/i-dot-ai-Official-Logo.svg" class="w-[150px] place-self-center text-center" alt="I dot A I"/>
       <a href="/join" class="text-white bg-[#000] align-items-center hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-semibold h-12 px-6 rounded-lg flex items-center justify-center align-items-center w-[150px]">
@@ -94,7 +165,7 @@ templateEngineOverride: njk
 </div>
 
 
-<section class="services pt-5">
+<section class="services pt-4">
   <div class="container">
     <div class="row">
 
@@ -151,6 +222,7 @@ templateEngineOverride: njk
 </section>
 
 
+{#
 <section class="features pb-2">
   <div class="container">
     <div class="w-100 flex justify-center">
@@ -278,3 +350,4 @@ templateEngineOverride: njk
     </div>
   </div>
 </section>
+#}

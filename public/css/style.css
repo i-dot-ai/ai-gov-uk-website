@@ -912,7 +912,6 @@ figcaption svg {margin-right: 0.25rem;}
   padding: 30px;
   position: relative;
   overflow: hidden;
-  margin: 0 0 40px 0;
   background: #fff;
   box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
   transition: all 0.3s ease-in-out;
