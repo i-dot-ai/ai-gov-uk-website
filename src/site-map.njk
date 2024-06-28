@@ -26,7 +26,17 @@ templateEngineOverride: njk
         <ul class="list-disc pl-4">
           {% for project in projects %}
             <li class="mt-2">
-              <a class="link" href="{{project.url}}">{{project.title}}</a>
+              <a class="link" href="{{ project.url }}">{{ project.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/blogs">Blogs</a>
+        <ul class="list-disc pl-4">
+          {% for blog in blogs %}
+            <li class="mt-2">
+              <a class="link" href="/blogs/{{ blog.title | slugify  }}">{{ blog.title }}</a>
             </li>
           {% endfor %}
         </ul>
