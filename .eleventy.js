@@ -2,7 +2,6 @@ const htmlmin = require("html-minifier");
 const CleanCSS = require("clean-css");
 const fs = require('fs');
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
-const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
