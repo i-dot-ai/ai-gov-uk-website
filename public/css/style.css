@@ -1487,6 +1487,24 @@ figcaption svg {margin-right: 0.25rem;}
   margin-bottom: 1rem;
   margin-top: 2rem;
 }
+.iai-blog-content ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+.iai-blog-content a, .iai-blog-content a:hover {
+  text-decoration: underline;
+}
+.iai-blog-content img {
+  display: block;
+  margin-top: 1.5rem;
+  max-width: 100%;
+}
+.iai-blog-content figcaption {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  max-width: 65%;
+}
 
 
 
