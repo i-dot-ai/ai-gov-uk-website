@@ -25,6 +25,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@axe-core/playwright": "^4.8.5",
+    "@contentful/rich-text-types": "^16.6.1",
     "@playwright/test": "^1.41.2",
     "@types/node": "^20.11.18",
     "autoprefixer": "^10.4.16",

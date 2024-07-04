@@ -1,7 +1,8 @@
 const htmlmin = require("html-minifier");
 const CleanCSS = require("clean-css");
 const fs = require('fs');
-const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
+const { BLOCKS, MARKS } = require('@contentful/rich-text-types');
+const { documentToHtmlString, NodeTypes } = require('@contentful/rich-text-html-renderer');
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
@@ -32,7 +33,17 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("richTextToHTML", (value) => {
-      return documentToHtmlString(value);
+      return documentToHtmlString(value, {
+        renderNode: {
+          [BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields }}}) =>
+          `
+            <figure>
+              <img src="${fields.file.url}" alt="${fields.description}" loading="lazy"/>
+              <figcaption>${fields.title}</figcaption>
+            </figure>
+          `,
+        }
+      });
   });
 
 
