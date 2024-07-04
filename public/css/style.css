@@ -1383,12 +1383,12 @@ figcaption svg {margin-right: 0.25rem;}
   position: relative;
 }
 .iai-blog-header__title {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 .iai-blog-header__subtitle {
-  margin-top: 3rem;
-  font-size: 1.5rem;
+  margin-top: 1rem;
+  font-size: 1.25rem;
   font-weight: 400;
 }
 .iai-blog-header__separator {
@@ -1407,12 +1407,18 @@ figcaption svg {margin-right: 0.25rem;}
     top: 2.5rem;
     width: 5rem;
   }
+  .iai-blog-header__title {
+    font-size: 3rem;
+  }
+  .iai-blog-header__subtitle {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+  }
 }
 
 .iai-blogs-list {
   display: grid;
   gap: 2rem;
-  grid-template-columns: 1fr 1fr 1fr;
   padding-bottom: 2rem;
   padding-top: 3rem;
 }
@@ -1447,11 +1453,11 @@ figcaption svg {margin-right: 0.25rem;}
   padding-top: 3rem;
 }
 .iai-blog-title__title {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   font-weight: 700;
 }
 .iai-blog-title__summary {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 400;
   margin-top: 1.5rem;
 }
@@ -1468,8 +1474,17 @@ figcaption svg {margin-right: 0.25rem;}
 }
 .iai-blog-title__cover-image {
   aspect-ratio: 16/9;
+  border: 1px solid #757575;
   margin-top: 2rem;
   object-fit: cover;
+}
+@media (min-width: 68rem) {
+  .iai-blog-title__title {
+    font-size: 2.25rem;
+  }
+  .iai-blog-title__summary {
+    font-size: 1.25rem;
+  }
 }
 
 .iai-blog-content {
@@ -1505,6 +1520,11 @@ figcaption svg {margin-right: 0.25rem;}
   line-height: 1.5;
   margin-top: 0.5rem;
   max-width: 65%;
+}
+@media (min-width: 68rem) {
+  .iai-blogs-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 
