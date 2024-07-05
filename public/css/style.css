@@ -308,6 +308,18 @@ figcaption svg {margin-right: 0.25rem;}
   }
 }
 
+.iai-promo-video {
+  border: 1px solid;
+  margin: 0 auto 0 auto;
+  max-width: 800px;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .iai-promo-video {
+    margin: 1rem auto 2rem auto;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Banner
