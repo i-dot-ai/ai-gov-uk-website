@@ -60,6 +60,8 @@ jobs:
       
       - name: Install NPM
         uses: actions/setup-node@v4
+        with:
+          node-version: latest
       
       - name: NPM install and build
         run: |
