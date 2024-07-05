@@ -1,0 +1,20 @@
+---
+title: Site Map
+templateEngineOverride: njk
+permalink: "site-map.js"
+---
+
+module.exports = [
+  '/',
+  '/about',
+  '/join',
+  '/projects',
+  {% for project in projects %}
+    '{{ project.url }}',
+  {% endfor %}
+  '/blogs',
+  {% for blog in blogs %}
+    '/blogs/{{ blog.title | slugify  }}',
+  {% endfor %}
+  '/accessibility'
+];

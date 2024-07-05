@@ -1,0 +1,59 @@
+---
+title: Redbox
+layout: base.njk
+templateEngineOverride: njk
+ogTitle: Redbox
+ogImage: https://ai.gov.uk/img/redbox4.png
+ogUrl: https://ai.gov.uk/projects/redbox
+pagination:
+    data: pages
+    alias: url
+    size: 1
+pages:
+    - redbox
+    - redbox-copilot
+permalink: /projects/{{ url }}.html
+---
+
+{% from "../_includes/banner.njk" import banner %}
+{{ banner("Redbox", "Bringing Generative AI to the way the Civil Service works") }}
+
+<div class="container w-100 md:w-75 pt-[3rem]">
+
+    <video class="iai-promo-video" controls preload="auto" poster="/videos/video-poster.png">
+        <source src="/videos/redbox-promo-v5.mp4" type="video/mp4" />
+        Download the <a href="/videos/redbox-promo-v5.mp4">video</a>
+    </video>
+
+    <div class="gap-8 grid-cols-2 items-center mt-10 lg:grid">
+        <div>
+            <p>The Ministerial red box has been the primary destination for state papers since they came into government in the mid 19th century. Redbox was initially envisioned as a way to leverage AI to search through thousands of documents, chat with them and summarise them into tailored briefings. After a hackathon in July 2023, we spun up a small prototyping team with members from the No 10 Innovation Fellowship and Evidence House. Within two months the prototype was being actively trialled within three different Private Offices with Cabinet Office. The trial gave us many future avenues of development and also helped test our rigorous AI safety mechanisms. With this alpha trial complete, we’re now broadening the scope of Redbox to address the entire Civil Service.</p>
+            <p class="mt-4">Just like ministers, civil servants deal with a wealth of information on a day to day basis. We’re now in the process of building the next generation of Redbox with the becoming a powerful tool for all departments; built by government, for government.</p>
+        </div>
+        <img class="block drop-shadow mt-4 w-full lg:!mt-0" src="/img/redbox4.png" alt=""/>
+    </div>
+
+    <div class="gap-8 grid-cols-2 items-center mt-4 lg:grid lg:!mt-10">
+        {# desktop image #}
+        <img class="hidden my-2 w-full lg:block" src="/img/redbox2.png" alt="Chat with Government Documents. Generate Summaries. Security and Safety."/>
+        <div>
+            <h2 class="mt-5 text-[24px] font-semibold lg:!mt-0">Features</h2>
+            <ul class="list-disc mt-4 pl-4">
+              <li class="mt-2"><strong>Robust Retrieval Augment Generation</strong> (RAG) based chat for data driven conversations with granular citations.</li>
+              <li class="mt-2"><strong>Guided summarisation</strong> where the human in the loop can review and guide summaries of multiple documents.</li>
+              <li class="mt-2"><strong>Advanced prompting techniques</strong> to ensure safety and balance in AI responses and outputs.</li>
+              <li class="mt-2">Proactive <strong>data privacy and retention</strong> features to maintain compliance and manage data.</li>
+              <li class="mt-2"><strong>Securely designed</strong> for on premises deployment and across clouds.</li>
+            </ul>
+        </div>
+        {# mobile image - because it appears below the text #}
+        <img class="block mt-4 lg:hidden" src="/img/redbox2.png" alt="Screenshot showing cluster chart of responses"/>
+    </div>
+
+    <h2 class="mt-5 text-[24px] font-semibold">Future</h2>
+    <p class="mt-4">As the Incubator for AI scales its initial team, we will be developing atop the features above with User oriented design and AI safety at the core.</p>
+    
+    <h2 class="mt-5 text-[24px] font-semibold">Our code</h2>
+    <p class="mt-4">You can find our code on Github at <a class="link" href="https://github.com/i-dot-ai/redbox">https://github.com/i-dot-ai/redbox</a>.</p>
+
+</div>
