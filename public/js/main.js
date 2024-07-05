@@ -22,11 +22,8 @@
 // Carousel
 (() => {
 
-  // Carousel not required for now
-  return;
-
   const carouselContainer = document.querySelector(".js-carousel-container");
-  const carousel = document.querySelector("#heroCarousel");
+  const carousel = document.querySelector("#quote-carousel");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const previousNextButtons = carouselContainer?.querySelectorAll("a[data-slide]");
   let animationStopped = false; 
@@ -36,9 +33,9 @@
   }
 
   // start carousel (if user doesn't prefer-reduced-motion)
-  $("#heroCarousel").carousel();
+  $("#quote-carousel").carousel();
   if (prefersReducedMotion.matches) {
-    $("#heroCarousel").carousel("pause");
+    $("#quote-carousel").carousel("pause");
     animationStopped = true;
   }
 
@@ -49,18 +46,18 @@
     }
     const rect = carousel.getBoundingClientRect();
     if (rect.bottom > 0 && rect.top < window.innerHeight) {
-      $("#heroCarousel").carousel("pause");
+      $("#quote-carousel").carousel("pause");
       animationStopped = true;
     }
   });
 
   // pause carousel when it has focus
   carouselContainer.addEventListener("focusin", () => {
-    $("#heroCarousel").carousel("pause");
+    $("#quote-carousel").carousel("pause");
   });
   carouselContainer.addEventListener("focusout", () => {
     if (!animationStopped) {
-      $("#heroCarousel").carousel("cycle");
+      $("#quote-carousel").carousel("cycle");
     }
   });
 
@@ -82,7 +79,7 @@
     /** @type {NodeListOf<HTMLElement> | undefined} */
     const carouselItems = carouselContainer?.querySelectorAll(".carousel-item");
     /** @type {HTMLElement | null} */
-    const carouselItemsContainer = carouselContainer?.querySelector("#heroCarousel");
+    const carouselItemsContainer = carouselContainer?.querySelector("#quote-carousel");
     let maxHeight = 0;
 
     if (!carouselItemsContainer) {
