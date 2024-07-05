@@ -88,7 +88,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.24.0
         if: ${{ failure() }}
         with:
-          channel-id: 'C05D67P6M34'
+          channel-id: 'C063JD08S6T'
           payload: |
             {
               "text": "Failed to deploy",
@@ -111,7 +111,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.24.0
         if: ${{ success() }}
         with:
-          channel-id: 'C05D67P6M34'
+          channel-id: 'C063JD08S6T'
           payload: |
             {
               "text": "Deployment succeeded :airplane:",
