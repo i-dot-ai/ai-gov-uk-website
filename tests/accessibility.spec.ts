@@ -1,28 +1,16 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-const urlPrefix = 'http://localhost:8080/';
+const urlPrefix = 'http://localhost:8080';
+const pagesToTest = require('../_site/site-map.js');
 
-
-test(`Accessibility`, async ({ page }) => {
-
-  // Collect all pages from sitemap
-  let pagesToTest = [''];
-  await page.goto(`${urlPrefix}site-map`);
-  const links = await page.$$('a');
-  for (let link of links) {
-    const url = (await link.getAttribute('href'))?.replace('/', '');
-    if (url && !url.includes('mailto') && !url.startsWith('#') && !pagesToTest.includes(url)) {
-      pagesToTest.push(url);
-    }
-  }
+for (let pageToTest of pagesToTest) {
 
   // Run accessibility tests
-  for (let pageToTest of pagesToTest) {
+  test(`Accessibility - ${pageToTest}`, async ({ page }) => {
 
     await page.goto(`${urlPrefix}${pageToTest}`);
     await page.waitForTimeout(1000); // allow animation to run (otherwise may get a false positive for colour contrast)
-    console.log(`Testing accessibility for ${pageToTest}`);
     
     // Axe tests
     const accessibilityScanResults = await new AxeBuilder({page}).analyze();
@@ -38,6 +26,6 @@ test(`Accessibility`, async ({ page }) => {
       }
     }
 
-  }
+  });
 
-});
+}
