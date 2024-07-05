@@ -64,8 +64,13 @@ jobs:
           node-version: latest
       
       - name: NPM install and build
+        continue-on-error: true
         run: |
           npm install
+          npm run build
+
+      - name: NPM install and build (2)
+        run: |
           npm run build
 
       - name: NPM run tests
