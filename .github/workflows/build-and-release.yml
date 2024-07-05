@@ -73,7 +73,8 @@ jobs:
         
       - name: Copy terraform logs to s3
         run: |
-          aws s3 cp _site ${{ secrets.S3_BUCKET_LOCATION }}
+          cd _site
+          aws s3 cp . ${{ secrets.S3_BUCKET_LOCATION }} --recursive
 
   notify-slack:
     needs:
