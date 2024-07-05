@@ -63,15 +63,11 @@ jobs:
         with:
           node-version: latest
       
-      - name: NPM install and build
-        continue-on-error: true
-        run: |
-          npm install
-          npm run build
+      - name: NPM clean install
+        run: npm ci
 
-      - name: NPM install and build (2)
-        run: |
-          npm run build
+      - name: NPM build
+        run: npm run build --if-present
 
       - name: NPM run tests
         run: |
