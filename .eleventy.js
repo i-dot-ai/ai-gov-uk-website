@@ -49,8 +49,6 @@ module.exports = function (eleventyConfig) {
 
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***
   (() => {
-
-    return;
     
     const assets = [
       {directory: "/css", name: "style", extension: "css"}, 
