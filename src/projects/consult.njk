@@ -4,7 +4,15 @@ layout: base.njk
 templateEngineOverride: njk
 ogTitle: Consult
 ogImage: https://ai.gov.uk/img/consultation4.png
-ogUrl: https://ai.gov.uk/projects/consultations
+ogUrl: https://ai.gov.uk/projects/consult
+pagination:
+    data: pages
+    alias: url
+    size: 1
+pages:
+    - consult
+    - consultations
+permalink: /projects/{{ url }}.html
 ---
 
 
