@@ -1,8 +1,10 @@
 const htmlmin = require("html-minifier");
-const CleanCSS = require("clean-css");
-const fs = require('fs');
-const { BLOCKS, MARKS } = require('@contentful/rich-text-types');
-const { documentToHtmlString, NodeTypes } = require('@contentful/rich-text-html-renderer');
+const fs = require("fs").promises;
+const { BLOCKS } = require("@contentful/rich-text-types");
+const {
+  documentToHtmlString,
+  NodeTypes,
+} = require("@contentful/rich-text-html-renderer");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
@@ -25,7 +27,20 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("dateFormat", (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate();
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
     const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
 
@@ -33,69 +48,96 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("richTextToHTML", (value) => {
-      return documentToHtmlString(value, {
-        renderNode: {
-          [BLOCKS.EMBEDDED_ASSET]: ({ data: { target: { fields }}}) =>
+    return documentToHtmlString(value, {
+      renderNode: {
+        [BLOCKS.EMBEDDED_ASSET]: ({
+          data: {
+            target: { fields },
+          },
+        }) =>
           `
             <figure>
               <img src="${fields.file.url}" alt="${fields.description}" loading="lazy"/>
               <figcaption>${fields.title}</figcaption>
             </figure>
           `,
-        }
-      });
+      },
+    });
   });
-
 
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***
   (() => {
-    
     const assets = [
-      {directory: "/css", name: "style", extension: "css"},
-      {directory: "/js", name: "main", extension: "js"}
+      { directory: "/css", name: "style", extension: "css" },
+      { directory: "/js", name: "main", extension: "js" },
     ];
     let timestamp = "";
-    
-    eleventyConfig.on("eleventy.before", async ({ dir, runMode, outputMode }) => {
-      
-      timestamp = Date.now().toString().substring(2, 10);
 
-      assets.forEach((asset) => {
+    const waitForFile = async (filePath, interval = 500) => {
+      while (true) {
+        try {
+          await fs.access(filePath);
+          console.log(`File ${filePath} exists.`);
+          return;
+        } catch (err) {
+          // File does not exist yet, wait for the next interval
+          await new Promise((resolve) => setTimeout(resolve, interval));
+        }
+      }
+    };
 
-        // remove any previous versions of these files
-        fs.readdir(`./_site${asset.directory}`, (err, files) => {
-          files.forEach((file) => {
-            if (file.startsWith(`${asset.name}_`)) {
-              fs.unlink(`./_site${asset.directory}/${file}`, (err) => {
-                if (err) {
+    eleventyConfig.on(
+      "eleventy.before",
+      async ({ dir, runMode, outputMode }) => {
+        timestamp = Date.now().toString().substring(2, 10);
+
+        for (let asset of assets) {
+          // remove any previous versions of these files
+          try {
+            let files = await fs.readdir(`./_site${asset.directory}`);
+            for (let file of files) {
+              //console.log(`Removing file: ${asset.name}`);
+              if (file.startsWith(`${asset.name}`)) {
+                try {
+                  await fs.unlink(`./_site${asset.directory}/${file}`);
+                } catch (err) {
                   console.error(`Error deleting file ${file}:`, err);
                 }
-              });
+              }
+            }
+          } catch (err) {
+            console.log("Directory doesn't exist yet");
+          }
+
+          // create new versions of these files
+          waitForFile(
+            `./_site${asset.directory}/${asset.name}.${asset.extension}`
+          ).then(async () => {
+            //console.log(`Found file ${asset.name}`);
+            try {
+              await fs.copyFile(
+                `./_site${asset.directory}/${asset.name}.${asset.extension}`,
+                `./_site${asset.directory}/${asset.name}_${timestamp}.${asset.extension}`
+              );
+            } catch (err) {
+              console.error("Error copying file:", err);
             }
           });
-        });
+        }
+      }
+    );
 
-        // create new versions of these files
-        fs.copyFile(`./_site${asset.directory}/${asset.name}.${asset.extension}`, `./_site${asset.directory}/${asset.name}_${timestamp}.${asset.extension}`, (err) => {
-          if (err) {
-             console.error('Error copying file:', err);
-          }
-        });
-
-      });
-
-    });
-  
     // update each HTML file with new asset paths
     eleventyConfig.addTransform("asset-versions", (content) => {
       assets.forEach((asset) => {
-        content = content.replace(`${asset.directory}/${asset.name}`, `${asset.directory}/${asset.name}_${timestamp}`);
+        content = content.replace(
+          `${asset.directory}/${asset.name}`,
+          `${asset.directory}/${asset.name}_${timestamp}`
+        );
       });
       return content;
     });
-
   })();
-
 
   return {
     pathPrefix: "/",
