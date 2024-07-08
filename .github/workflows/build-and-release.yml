@@ -62,6 +62,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: latest
+
+      - name: Create .env
+        run: |
+          echo CONTENTFUL_SPACE="${{ secrets.CONTENTFUL_SPACE }}" >> .env
+          echo CONTENTFUL_ACCESS_TOKEN="${{ secrets.CONTENTFUL_ACCESS_TOKEN }}" >> .env
       
       - name: NPM clean install
         run: npm ci
