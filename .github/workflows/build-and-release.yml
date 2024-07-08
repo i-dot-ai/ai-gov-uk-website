@@ -74,6 +74,9 @@ jobs:
       - name: NPM build
         run: npm run build --if-present
 
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - name: NPM run tests
         run: |
           cd tests
