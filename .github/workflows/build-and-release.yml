@@ -138,7 +138,7 @@ jobs:
   #         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
   notify-slack:
-    uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/notify-slack.yml@3bd8b19970db8d6c6c919831aaa9fa74033fb8a7
+    uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/slack-notify.yml@dd24d06adbbe01a2ae112404efa1547cf9f63029
     needs:
       - set-vars
       - start-runner
