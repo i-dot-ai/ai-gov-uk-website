@@ -2530,13 +2530,24 @@ figcaption svg {
   margin-top: 3rem;
   padding: 1rem 0;
 }
+.footer__inner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
 .footer__social-media-container {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.75rem;
+  gap: 1.25rem;
+  padding: 1rem 0 0.25rem 0;
 }
 .footer__social-media-link {
   cursor: pointer;
+}
+@media (min-width: 768px) {
+  .footer__inner-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 #footer .footer-top {
