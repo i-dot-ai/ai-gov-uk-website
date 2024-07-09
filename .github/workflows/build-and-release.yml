@@ -145,32 +145,8 @@ jobs:
       - publish-website
     with:
       RUNNER_LABEL: ${{ needs.start-runner.outputs.label }}
-      SUCCESS_PAYLOAD: | 
-            {
-              "text": "Deployment succeeded :airplane:",
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "Deployed main to ai gov uk website :hype-elmo:"
-                  }
-                }
-              ]
-            }
-      FAILURE_PAYLOAD: |
-            {
-              "text": "Failed to deploy",
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "Failed to deploy main to the ai gov uk website :aaaaaaaaaa:"
-                  }
-                }
-              ]
-            }
+      SUCCESS_PAYLOAD: '{"text": "Deployment succeeded :airplane:", "blocks": [{"type": "header","text": {"type": "plain_text","text": "Deployed main to ai gov uk website :hype-elmo:"}}]}'
+      FAILURE_PAYLOAD: '{"text": "Failed to deploy","blocks": [{"type": "header","text": {"type": "plain_text","text": "Failed to deploy main to the ai gov uk website :aaaaaaaaaa:"}}]}'
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
