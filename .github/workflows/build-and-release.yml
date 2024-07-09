@@ -79,7 +79,6 @@ jobs:
 
       - name: NPM run tests
         run: |
-          cd tests
           npx playwright test
         
       - name: Copy terraform logs to s3
