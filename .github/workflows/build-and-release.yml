@@ -138,15 +138,15 @@ jobs:
   #         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
   notify-slack:
-    uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/slack-notify.yml@dd24d06adbbe01a2ae112404efa1547cf9f63029
+    uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/slack-notify.yml@3bd71cbcbc2ca395120664416eb4901c96c53ddb
     needs:
       - set-vars
       - start-runner
       - publish-website
     with:
       RUNNER_LABEL: ${{ needs.start-runner.outputs.label }}
-      SUCCESS_PAYLOAD: '{"text": "Deployment succeeded :airplane:", "blocks": [{"type": "header","text": {"type": "plain_text","text": "Deployed main to ai gov uk website :hype-elmo:"}}]}'
-      FAILURE_PAYLOAD: '{"text": "Failed to deploy","blocks": [{"type": "header","text": {"type": "plain_text","text": "Failed to deploy main to the ai gov uk website :aaaaaaaaaa:"}}]}'
+      SUCCESS_PAYLOAD: "{\"text\": \"Deployment succeeded :airplane:\", \"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"Deployed main to ai gov uk website :hype-elmo:\"}}]}"
+      FAILURE_PAYLOAD: "{\"text\": \"Failed to deploy\",\"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"Failed to deploy main to the ai gov uk website :aaaaaaaaaa:\"}}]}"
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
