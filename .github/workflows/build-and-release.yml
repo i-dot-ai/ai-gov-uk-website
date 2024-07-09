@@ -81,7 +81,7 @@ jobs:
         run: |
           npx playwright test
         
-      - name: Copy terraform logs to s3
+      - name: Copy built _site folder to s3
         run: |
           cd _site
           aws s3 cp . ${{ secrets.S3_BUCKET_LOCATION }} --recursive
