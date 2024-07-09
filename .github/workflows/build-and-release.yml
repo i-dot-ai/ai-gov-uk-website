@@ -86,41 +86,66 @@ jobs:
           cd _site
           aws s3 cp . ${{ secrets.S3_BUCKET_LOCATION }} --recursive
 
+  # notify-slack:
+  #   needs:
+  #     - set-vars
+  #     - start-runner
+  #     - publish-website
+  #   runs-on: ${{ needs.start-runner.outputs.label }}
+  #   steps:
+  #     - name: notify slack failure
+  #       id: slack-failure
+  #       uses: slackapi/slack-github-action@v1.24.0
+  #       if: ${{ failure() }}
+  #       with:
+  #         payload: |
+  #           {
+  #             "text": "Failed to deploy",
+  #             "blocks": [
+  #               {
+  #                 "type": "header",
+  #                 "text": {
+  #                   "type": "plain_text",
+  #                   "text": "Failed to deploy main to the ai gov uk website :aaaaaaaaaa:"
+  #                 }
+  #               }
+  #             ]
+  #           }
+  #       env:
+  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  #         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+  #     - name: notify slack pass
+  #       id: slack-pass
+  #       uses: slackapi/slack-github-action@v1.24.0
+  #       if: ${{ success() }}
+  #       with:
+  #         payload: |
+  #           {
+  #             "text": "Deployment succeeded :airplane:",
+  #             "blocks": [
+  #               {
+  #                 "type": "header",
+  #                 "text": {
+  #                   "type": "plain_text",
+  #                   "text": "Deployed main to ai gov uk website :hype-elmo:"
+  #                 }
+  #               }
+  #             ]
+  #           }
+  #       env:
+  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  #         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
   notify-slack:
+    uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/notify-slack.yml@3bd8b19970db8d6c6c919831aaa9fa74033fb8a7
     needs:
       - set-vars
       - start-runner
       - publish-website
-    runs-on: ${{ needs.start-runner.outputs.label }}
-    steps:
-      - name: notify slack failure
-        id: slack-failure
-        uses: slackapi/slack-github-action@v1.24.0
-        if: ${{ failure() }}
-        with:
-          payload: |
-            {
-              "text": "Failed to deploy",
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "Failed to deploy main to the ai gov uk website :aaaaaaaaaa:"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-
-      - name: notify slack pass
-        id: slack-pass
-        uses: slackapi/slack-github-action@v1.24.0
-        if: ${{ success() }}
-        with:
-          payload: |
+    with:
+      RUNNER_LABEL: ${{ needs.start-runner.outputs.label }}
+      SUCCESS_PAYLOAD: | 
             {
               "text": "Deployment succeeded :airplane:",
               "blocks": [
@@ -133,9 +158,21 @@ jobs:
                 }
               ]
             }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+      FAILURE_PAYLOAD: |
+            {
+              "text": "Failed to deploy",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "Failed to deploy main to the ai gov uk website :aaaaaaaaaa:"
+                  }
+                }
+              ]
+            }
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   stop-runner:
     uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/stop-runner.yml@main
