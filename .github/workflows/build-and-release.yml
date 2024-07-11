@@ -7,9 +7,9 @@ on:
       commit_hash:
         required: true
         type: string
-    secrets:
       destination_bucket:
         required: true
+        type: string
 
 
 jobs:

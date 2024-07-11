@@ -16,8 +16,8 @@ jobs:
     with:
       environment: dev
       commit_hash: ${{ github.sha }}
-    secrets: 
-      destination_bucket: ${{ secrets.DEV_DESTINATION_BUCKET }}
+      destination_bucket: 'test-ai-gov-uk-website-upload'
+    secrets: inherit
       
 
   release-prod:
@@ -26,5 +26,5 @@ jobs:
     with:
       environment: prod
       commit_hash: ${{ github.sha }}
-    secrets: 
-      destination_bucket: ${{ secrets.PROD_DESTINATION_BUCKET }}
+      destination_bucket: 'test-ai-gov-uk-website-upload'
+    secrets: inherit
