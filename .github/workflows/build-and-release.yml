@@ -85,8 +85,8 @@ jobs:
         
       - name: Copy built _site folder to s3
         run: |
-          cd _site
-          aws s3 cp . ${{ secrets.S3_BUCKET_LOCATION }} --recursive
+          cd _site 
+          aws s3 cp . ${{ secrets[inputs.destination_bucket] }} --recursive
 
   notify-slack:
     uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/slack-notify.yml@3bd71cbcbc2ca395120664416eb4901c96c53ddb
