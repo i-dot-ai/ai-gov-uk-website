@@ -12,7 +12,7 @@ permissions:
 jobs:
   release-dev:
     if: github.event_name == 'workflow_dispatch'
-    uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@a82cf34de3901f57e730f9fb929ad740fbc1cb8b
+    uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@19d02eb5182badf4ee8539e6b6833ba81b2a5daf
     with:
       environment: dev
       commit_hash: ${{ github.sha }}
@@ -22,7 +22,7 @@ jobs:
 
   release-prod:
     if: github.event_name == 'push' && github.ref_name == 'main'
-    uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@a82cf34de3901f57e730f9fb929ad740fbc1cb8b
+    uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@19d02eb5182badf4ee8539e6b6833ba81b2a5daf
     with:
       environment: prod
       commit_hash: ${{ github.sha }}
