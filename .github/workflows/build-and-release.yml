@@ -1,13 +1,16 @@
-name: Deploy website
-
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      commit_hash:
+        required: true
+        type: string
+    secrets:
+      destination_bucket:
+        required: true
 
-permissions:
-  contents: read
 
 jobs:
   set-vars:
@@ -17,7 +20,6 @@ jobs:
       ec2-instance-type: ${{ steps.export.outputs.ec2-instance-type }}
       version: ${{ steps.export.outputs.version }}
       runner-size: ${{ steps.export.outputs.runner-size }}
-      infra-config-repo: ${{ steps.export.outputs.infra-config-repo }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -32,7 +34,6 @@ jobs:
         echo "app-name=${APP_NAME}" >> $GITHUB_OUTPUT
         echo "version=${VERSION}" >> $GITHUB_OUTPUT
         echo "runner-size=${RUNNER_SIZE}" >> $GITHUB_OUTPUT
-        echo "infra-config-repo=${INFRA_CONFIG_REPO}" >> $GITHUB_OUTPUT
 
   start-runner:
     uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/start-runner.yml@main
@@ -40,7 +41,7 @@ jobs:
     with:
       EC2_INSTANCE_TYPE: ${{ needs.set-vars.outputs.ec2-instance-type }}
       RUNNER_SIZE: ${{ needs.set-vars.outputs.runner-size }}
-      ENVIRONMENT: dev
+      ENVIRONMENT: ${{ inputs.environment }}
     secrets:
       AWS_GITHUBRUNNER_USER_ACCESS_KEY: ${{ secrets.AWS_GITHUBRUNNER_USER_ACCESS_KEY }}
       AWS_GITHUBRUNNER_USER_SECRET_ID: ${{ secrets.AWS_GITHUBRUNNER_USER_SECRET_ID }}
@@ -57,6 +58,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ inputs.commit_hash }}
       
       - name: Install NPM
         uses: actions/setup-node@v4
@@ -85,57 +87,6 @@ jobs:
         run: |
           cd _site
           aws s3 cp . ${{ secrets.S3_BUCKET_LOCATION }} --recursive
-
-  # notify-slack:
-  #   needs:
-  #     - set-vars
-  #     - start-runner
-  #     - publish-website
-  #   runs-on: ${{ needs.start-runner.outputs.label }}
-  #   steps:
-  #     - name: notify slack failure
-  #       id: slack-failure
-  #       uses: slackapi/slack-github-action@v1.24.0
-  #       if: ${{ failure() }}
-  #       with:
-  #         payload: |
-  #           {
-  #             "text": "Failed to deploy",
-  #             "blocks": [
-  #               {
-  #                 "type": "header",
-  #                 "text": {
-  #                   "type": "plain_text",
-  #                   "text": "Failed to deploy main to the ai gov uk website :aaaaaaaaaa:"
-  #                 }
-  #               }
-  #             ]
-  #           }
-  #       env:
-  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-  #         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-
-  #     - name: notify slack pass
-  #       id: slack-pass
-  #       uses: slackapi/slack-github-action@v1.24.0
-  #       if: ${{ success() }}
-  #       with:
-  #         payload: |
-  #           {
-  #             "text": "Deployment succeeded :airplane:",
-  #             "blocks": [
-  #               {
-  #                 "type": "header",
-  #                 "text": {
-  #                   "type": "plain_text",
-  #                   "text": "Deployed main to ai gov uk website :hype-elmo:"
-  #                 }
-  #               }
-  #             ]
-  #           }
-  #       env:
-  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-  #         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
   notify-slack:
     uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/slack-notify.yml@3bd71cbcbc2ca395120664416eb4901c96c53ddb
