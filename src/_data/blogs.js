@@ -1,10 +1,16 @@
 require('dotenv').config();
 const contentful = require('contentful');
 
-const client = contentful.createClient({
+const USE_PREVIEW = false;
+
+let contentfulOptions = {
     space: process.env.CONTENTFUL_SPACE,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-});
+    accessToken: USE_PREVIEW ? process.env.PREVIEW_ACCESS_TOKEN : process.env.CONTENTFUL_ACCESS_TOKEN
+};
+if (USE_PREVIEW) {
+    contentfulOptions.host = 'preview.contentful.com';
+}
+const client = contentful.createClient(contentfulOptions);
   
 module.exports = () => {
 
@@ -15,7 +21,8 @@ module.exports = () => {
         let blogs = response.items.map((blog) => {
             return {
                 title: blog.fields.title,
-                summary: blog.fields.summary,
+                summaryShort: blog.fields.summary,
+                summaryLong: blog.fields.summaryBlogPage,
                 author: blog.fields.authorName,
                 date: blog.fields.date,
                 coverImage: blog.fields.coverImage.fields,
