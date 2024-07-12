@@ -57,10 +57,11 @@ module.exports = function (eleventyConfig) {
         }) => {
           if (fields.file.url.includes(".mp4")) {
             return `
-            <video class="iai-promo-video" controls preload="auto">
-              <source src="${fields.file.url}" type="video/mp4" />
-              Download the <a href="${fields.file.url}">video</a>
-          </video>
+              <video class="iai-promo-video" controls preload="auto" aria-describedby="video-desc">
+                <source src="${fields.file.url}" type="video/mp4" />
+                Download the <a href="${fields.file.url}">video</a>
+              </video>
+              <div class="sr-only" id="video-desc">${fields.description}</div>
             `;
           } else {
             if (fields.title) {
