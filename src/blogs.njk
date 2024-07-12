@@ -14,7 +14,7 @@ templateEngineOverride: njk
         <a href="/blogs/{{ blog.title | slugify  }}">
             <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt=""/>
             <h2 class="iai-blogs-list__title" >{{ blog.title }}</h2>
-            <p class="iai-blog-list__summary">{{ blog.summary }}</p>
+            <p class="iai-blog-list__summary">{{ blog.summaryShort }}</p>
             <p class="iai-blog-list__author">{{ blog.author }}</p>
             <p class="iai-blog-list__date">{{ blog.date | dateFormat }}</p>
         </a>

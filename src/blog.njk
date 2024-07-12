@@ -15,7 +15,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 
 <div class="iai-blog-title container">
     <h2 class="iai-blog-title__title">{{ blog.title }}</h2>
-    <p class="iai-blog-title__summary">{{ blog.summary }}</p>
+    <p class="iai-blog-title__summary">{{ blog.summaryLong }}</p>
     <p class="iai-blog-title__author">{{ blog.author }}</p>
     <p class="iai-blog-title__date">{{ blog.date | dateFormat }}</p>
     <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt="{{ blog.coverImage.description }}"/>

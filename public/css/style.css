@@ -1636,6 +1636,12 @@ figcaption svg {
   margin-top: 0.5rem;
   max-width: 65%;
 }
+.iai-blog-content video {
+  margin-top: 2rem;
+}
+.iai-blog-content hr {
+  margin: 2rem 0;
+}
 @media (min-width: 68rem) {
   .iai-blogs-list {
     grid-template-columns: 1fr 1fr 1fr;
