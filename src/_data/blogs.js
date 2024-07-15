@@ -32,7 +32,7 @@ module.exports = () => {
 
         // sort by date (latest first)
         blogs.sort((a, b) => {
-            return a.date < b.date ? -1 : 1;
+            return a.date < b.date ? 1 : -1;
         });
 
         return blogs;
