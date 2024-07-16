@@ -1533,8 +1533,15 @@ figcaption svg {
 .iai-blogs-list {
   display: grid;
   gap: 2rem;
-  padding-bottom: 2rem;
   padding-top: 3rem;
+}
+.iai-blogs-list-item {
+  border-top: 1px solid var(--iai-pink);
+  padding-top: 2.5rem;
+}
+.iai-blogs-list-item:first-child {
+  border: none;
+  padding-top: 0;
 }
 .iai-blogs-list__cover-image {
   aspect-ratio: 16/9;
@@ -1560,6 +1567,12 @@ figcaption svg {
   font-size: 0.875rem;
   font-weight: 400;
   margin-top: 0.125rem;
+}
+@media (min-width: 68rem) {
+  .iai-blogs-list-item {
+    border: none;
+    padding-top: 0;
+  }
 }
 
 .iai-blog-title {

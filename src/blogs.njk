@@ -11,7 +11,7 @@ templateEngineOverride: njk
 
 <div class="iai-blogs-list container">
     {% for blog in blogs %}
-        <a href="/blogs/{{ blog.title | slugify  }}">
+        <a class="iai-blogs-list-item" href="/blogs/{{ blog.title | slugify  }}">
             <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt=""/>
             <h2 class="iai-blogs-list__title" >{{ blog.title }}</h2>
             <p class="iai-blog-list__summary">{{ blog.summaryShort }}</p>
