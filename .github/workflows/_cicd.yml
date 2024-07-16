@@ -10,21 +10,21 @@ permissions:
   contents: read
 
 jobs:
-  release-dev:
-    if: github.event_name == 'workflow_dispatch'
-    uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@a82cf34de3901f57e730f9fb929ad740fbc1cb8b
-    with:
-      environment: dev
-      commit_hash: ${{ github.sha }}
-    secrets: 
-      destination_bucket: ${{ secrets.DEV_DESTINATION_BUCKET }}
-      
-
   release-prod:
-    if: github.event_name == 'push' && github.ref_name == 'main'
-    uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@a82cf34de3901f57e730f9fb929ad740fbc1cb8b
+    if: github.event_name == 'workflow_dispatch'
+    uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@main
     with:
       environment: prod
       commit_hash: ${{ github.sha }}
-    secrets: 
-      destination_bucket: ${{ secrets.PROD_DESTINATION_BUCKET }}
+      destination_bucket: "PROD_DESTINATION_BUCKET"
+    secrets: inherit
+      
+
+  release-dev:
+    if: github.event_name == 'push' && github.ref_name == 'main'
+    uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@main
+    with:
+      environment: dev
+      commit_hash: ${{ github.sha }}
+      destination_bucket: "DEV_DESTINATION_BUCKET"
+    secrets: inherit

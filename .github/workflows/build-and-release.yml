@@ -7,9 +7,9 @@ on:
       commit_hash:
         required: true
         type: string
-    secrets:
       destination_bucket:
         required: true
+        type: string
 
 
 jobs:
@@ -59,7 +59,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ inputs.commit_hash }}
-      
+
       - name: Install NPM
         uses: actions/setup-node@v4
         with:
@@ -69,6 +69,9 @@ jobs:
         run: |
           echo CONTENTFUL_SPACE="${{ secrets.CONTENTFUL_SPACE }}" >> .env
           echo CONTENTFUL_ACCESS_TOKEN="${{ secrets.CONTENTFUL_ACCESS_TOKEN }}" >> .env
+          if [[ ${{ inputs.environment }} != "prod" ]]; then
+            echo PREVIEW_ACCESS_TOKEN="${{ secrets.PREVIEW_ACCESS_TOKEN }}" >> .env
+          fi
       
       - name: NPM clean install
         run: npm ci
@@ -85,11 +88,11 @@ jobs:
         
       - name: Copy built _site folder to s3
         run: |
-          cd _site
-          aws s3 cp . ${{ secrets.S3_BUCKET_LOCATION }} --recursive
+          cd _site 
+          aws s3 cp . s3://${{ secrets[inputs.destination_bucket] }}/ --recursive
 
   notify-slack:
-    uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/slack-notify.yml@3bd71cbcbc2ca395120664416eb4901c96c53ddb
+    uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/slack-notify.yml@main
     needs:
       - set-vars
       - start-runner
