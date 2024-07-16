@@ -6,6 +6,7 @@ pagination:
     size: 1
     alias: blog
 permalink: "blogs/{{ blog.title | slugify }}/"
+# Note: If permalink changes - also update in base.njk
 ---
 
 {% from "./_includes/blog-header.njk" import blogHeader %}
