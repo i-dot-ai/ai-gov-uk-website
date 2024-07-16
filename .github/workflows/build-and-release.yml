@@ -60,12 +60,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ inputs.commit_hash }}
 
-      - name: Copy built _site folder to s3
-        run: |
-          cd _site
-          echo ree >> test.txt 
-          aws s3 cp ./test.txt s3://${{ secrets[inputs.destination_bucket] }}/ --recursive
-      
       - name: Install NPM
         uses: actions/setup-node@v4
         with:
@@ -75,6 +69,9 @@ jobs:
         run: |
           echo CONTENTFUL_SPACE="${{ secrets.CONTENTFUL_SPACE }}" >> .env
           echo CONTENTFUL_ACCESS_TOKEN="${{ secrets.CONTENTFUL_ACCESS_TOKEN }}" >> .env
+          if [[ ${{ inputs.environment }} != "prod" ]]; then
+            echo PREVIEW_ACCESS_TOKEN="${{ secrets.PREVIEW_ACCESS_TOKEN }}" >> .env
+          fi
       
       - name: NPM clean install
         run: npm ci
