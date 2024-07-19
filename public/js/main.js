@@ -125,3 +125,35 @@ class inpageLink extends HTMLElement {
   }
 }
 customElements.define('inpage-link', inpageLink);
+
+
+/**
+ * Remembers if the details were previous opened - useful if navigating back from a page linked to within
+ */
+class DetailsEnhanced extends HTMLElement {
+
+  connectedCallback() {
+    
+    const id = `details-${this.querySelector("summary")?.textContent?.toLowerCase().replace(/[^a-z0-9_-]/g, '')}`;
+    let detailsEl = this.querySelector("details");
+
+    if (!id || !detailsEl) {
+      return;
+    }
+
+    if (window.sessionStorage.getItem(id)) {
+      detailsEl.setAttribute("open", "");
+    }
+
+    detailsEl.addEventListener("toggle", () => {
+      if (detailsEl?.open) {
+        window.sessionStorage.setItem(id, "open");
+      } else {
+        window.sessionStorage.removeItem(id);
+      }
+    });
+
+  }
+
+}
+customElements.define('details-enhanced', DetailsEnhanced);

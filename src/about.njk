@@ -71,10 +71,12 @@ templateEngineOverride: njk
         <h2 class="text-[24px] font-semibold">Frequently Asked Questions</h2>
 
         {% for faq in faqs %}
-            <details class="mt-5">
-                <summary><h3 class="inline text-[18px] font-semibold">{{ faq.question }}</h3></summary>
-                <div class="iai-faqs__answer text-[15px]">{{ faq.answer | richTextToHTML | safe }}
-            </details>
+            <details-enhanced>
+                <details class="mt-5">
+                    <summary><h3 class="inline text-[18px] font-semibold">{{ faq.question }}</h3></summary>
+                    <div class="iai-faqs__answer text-[15px]">{{ faq.answer | richTextToHTML | safe }}
+                </details>
+            </details-enhanced>
         {% endfor %}
 
     </div>
