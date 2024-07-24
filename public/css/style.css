@@ -1664,11 +1664,11 @@ figcaption svg {
 # Custom components for blogs
 --------------------------------------------------------------*/
 .iai-project-types {
+  margin-bottom: 3rem;
   margin-top: 2rem;
 }
 .iai-project-types__container-left {
   flex-shrink: 0;
-  padding: 0 1rem;
 }
 .iai-project-types__type-container {
   align-items: center;
@@ -1677,17 +1677,21 @@ figcaption svg {
   width: 100%;
 }
 .iai-project-types__icon-container {
+  align-items: center;
   background-color: white;
   border: 0.25rem solid var(--iai-pink);
   border-radius: 100%;
+  display: flex;
   flex-shrink: 0;
-  padding: 0.75rem;
+  justify-content: center;
+  padding: 1rem;
   position: relative;
-  z-index: 10;
+  z-index: 2;
 }
-.iai-project-types__icon {
+img.iai-project-types__icon {
   display: block;
   height: 3rem;
+  margin-top: 0;
   width: 3rem;
 }
 .iai-project-types__btn {
@@ -1734,6 +1738,12 @@ figcaption svg {
 .iai-project-types__content p {
   margin-top: 1rem;
 }
+.iai-project-types__content a {
+  text-underline-offset: 4px;
+}
+.iai-project-types__content a:hover {
+  color: var(--iai-pink);
+}
 .iai-project-types__no-content {
   display: none;
   margin-top: 2rem;
@@ -1748,7 +1758,7 @@ figcaption svg {
 @media (min-width: 1020px) {
   .iai-project-types.js-initialised {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
   }
   .iai-project-types__btn {
     font-size: 1.125rem;

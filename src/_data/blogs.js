@@ -25,8 +25,9 @@ module.exports = () => {
                 summaryLong: blog.fields.summaryBlogPage,
                 author: blog.fields.authorName,
                 date: blog.fields.date,
-                coverImage: blog.fields.coverImage.fields,
-                content: blog.fields.content
+                coverImage: blog.fields.coverImage?.fields,
+                content: blog.fields.content,
+                contentPart2: blog.fields.contentPart2
             };
         });
 
