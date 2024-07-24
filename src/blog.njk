@@ -16,15 +16,31 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 
 <div class="iai-blog-title container">
     <h2 class="iai-blog-title__title">{{ blog.title }}</h2>
-    <p class="iai-blog-title__summary">{{ blog.summaryLong }}</p>
+    {% if blog.summaryLong %}
+        <p class="iai-blog-title__summary">{{ blog.summaryLong }}</p>
+    {% endif %}
     <p class="iai-blog-title__author">{{ blog.author }}</p>
     <p class="iai-blog-title__date">{{ blog.date | dateFormat }}</p>
     <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt="{{ blog.coverImage.description }}"/>
 </div>
 
 <div class="iai-blog-content container">
+    
     <div class="iai-blog-content__inner-container">
-        {{ blog.content | richTextToHTML | safe }}
+        {{ blog.content | richTextToHTML | safe }} 
     </div>
+
+    {# Custom blog components #}
+    {% if blog.title == "The i.AI Taxonomy" %}
+        {% from "./_includes/project-types.njk" import projectTypes %}
+        {{ projectTypes() }}
+    {% endif %}
+
+    {% if blog.contentPart2 %}
+        <div class="iai-blog-content__inner-container">
+            {{ blog.contentPart2 | richTextToHTML | safe }} 
+        </div>
+    {% endif %}
+
 </div>
 
