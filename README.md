@@ -42,4 +42,4 @@ Contentful is used as the CMS. Content is gradually being moved over to this. Yo
 
 1. Install Contentful using `npm install -g contentful-cli`
 2. Login using `npx contentful-cli login` 
-3. Run `cd contentful-backups` followed by `npx contentful-cli space export --space-id [space-id]`
+3. Run `cd contentful-backups` followed by `npx contentful-cli space export --space-id [space-id]` (the space ID should be in your .env file)

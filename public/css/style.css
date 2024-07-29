@@ -1643,7 +1643,7 @@ figcaption svg {
   margin-top: 1.5rem;
   max-width: 100%;
 }
-.iai-blog-content figcaption {
+.iai-blog-content figcaption, .iai-blog-title__figcaption {
   font-size: 0.7rem;
   line-height: 1.5;
   margin-top: 0.5rem;
