@@ -21,7 +21,14 @@ permalink: "blogs/{{ blog.title | slugify }}/"
     {% endif %}
     <p class="iai-blog-title__author">{{ blog.author }}</p>
     <p class="iai-blog-title__date">{{ blog.date | dateFormat }}</p>
-    <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt="{{ blog.coverImage.description }}"/>
+    {% if blog.coverImage.title %}
+        <figure>
+            <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt="{{ blog.coverImage.description }}"/>
+            <figcaption class="iai-blog-title__figcaption">{{ blog.coverImage.title }}</figcaption>
+        </figure>
+    {% else %}
+        <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt="{{ blog.coverImage.description }}"/>
+    {% endif %}
 </div>
 
 <div class="iai-blog-content container">
