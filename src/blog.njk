@@ -24,20 +24,25 @@ permalink: "blogs/{{ blog.title | slugify }}/"
     {% if blog.summaryLong %}
         <p class="iai-blog-title__summary">{{ blog.summaryLong }}</p>
     {% endif %}
-    {% if blog.coverImage.title %}
-        <figure>
-            <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt="{{ blog.coverImage.description }}"/>
-            <figcaption class="iai-blog-title__figcaption">{{ blog.coverImage.title }}</figcaption>
-        </figure>
-    {% else %}
-        <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=2200" alt="{{ blog.coverImage.description }}"/>
-    {% endif %}
 </div>
 
 <div class="iai-blog-content container">
     
     <div class="iai-blog-content__inner-container">
-        {{ blog.content | richTextToHTML | safe }} 
+
+        <div class="iai-blog-title__cover-image-container">
+            {% if blog.coverImage.title %}
+                <figure>
+                    <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt="{{ blog.coverImage.description }}"/>
+                    <figcaption class="iai-blog-title__figcaption">{{ blog.coverImage.title }}</figcaption>
+                </figure>
+            {% else %}
+                <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt="{{ blog.coverImage.description }}"/>
+            {% endif %}
+        </div>
+
+        {{ blog.content | richTextToHTML | safe }}
+
     </div>
 
     {# Custom blog components #}
