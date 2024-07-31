@@ -23,7 +23,11 @@ module.exports = () => {
                 title: blog.fields.title,
                 summaryShort: blog.fields.summary,
                 summaryLong: blog.fields.summaryBlogPage,
-                author: blog.fields.authorName,
+                author: {
+                    name: blog.fields.author.fields.name,
+                    jobTitle: blog.fields.author.fields.jobTitle,
+                    image: blog.fields.author.fields.picture?.fields
+                },
                 date: blog.fields.date,
                 coverImage: blog.fields.coverImage?.fields,
                 content: blog.fields.content,
