@@ -1557,16 +1557,10 @@ figcaption svg {
   font-weight: 400;
   margin-top: 1.5rem;
 }
-.iai-blog-list__author {
-  color: var(--iai-pink);
-  font-size: 0.875rem;
-  font-weight: 300;
-  margin-top: 1.25rem;
-}
 .iai-blog-list__date {
   font-size: 0.875rem;
   font-weight: 400;
-  margin-top: 0.125rem;
+  margin-top: 0.75rem;
 }
 @media (min-width: 68rem) {
   .iai-blogs-list-item {
@@ -1588,16 +1582,10 @@ figcaption svg {
   font-weight: 400;
   margin-top: 1.5rem;
 }
-.iai-blog-title__author {
-  color: var(--iai-pink);
-  font-size: 0.875rem;
-  font-weight: 300;
-  margin-top: 2rem;
-}
 .iai-blog-title__date {
-  margin-top: 0.5rem;
   font-size: 0.875rem;
   font-weight: 400;
+  margin-top: 0.5rem;
 }
 .iai-blog-title__cover-image {
   aspect-ratio: 16/9;
@@ -1612,6 +1600,26 @@ figcaption svg {
   .iai-blog-title__summary {
     font-size: 1.25rem;
   }
+}
+
+.iai-blog-author {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.iai-blog-author__image {
+  border-radius: 100%;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.iai-blog-author__name, .iai-blog-author__job {
+  color: var(--iai-pink);
+  display: block;
+  font-size: 0.75rem;
+}
+.iai-blog-author__name {
+  font-weight: 700;
 }
 
 .iai-blog-content {
