@@ -1468,6 +1468,10 @@ figcaption svg {
   height: 2.5rem;
   width: 2.5rem;
 }
+.iai-blog-author__image--large {
+  height: 3rem;
+  width: 3rem;
+}
 .iai-blog-author__name, .iai-blog-author__job {
   color: var(--iai-pink);
   display: block;

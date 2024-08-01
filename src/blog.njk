@@ -18,7 +18,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 <div class="iai-blog-title container">
     <h2 class="iai-blog-title__title">{{ blog.title }}</h2>
     {% if blog.author %}
-        {{ blogAuthor (blog.author) }}
+        {{ blogAuthor (blog.author, "large") }}
     {% endif %}
     <p class="iai-blog-title__date">{{ blog.date | dateFormat }}</p>
     {% if blog.summaryLong %}
