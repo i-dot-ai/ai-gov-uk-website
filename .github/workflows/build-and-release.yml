@@ -91,16 +91,36 @@ jobs:
           cd _site 
           aws s3 cp . s3://${{ secrets[inputs.destination_bucket] }}/ --recursive
 
+  determine-success:
+    needs:
+      - set-vars
+      - start-runner
+      - publish-website
+    runs-on: ${{ needs.start-runner.outputs.label }}
+    if: always()
+    outputs:
+      success: ${{ steps.success.outputs.success }}
+    steps:
+      - id: success
+        run: | 
+          if [[ "${{ needs.publish-website.result }}" == "success" ]]; then
+              echo "success=true" >> $GITHUB_OUTPUT
+          else
+              echo "success=false" >> $GITHUB_OUTPUT
+          fi
+
   notify-slack:
     uses: i-dot-ai/i-dot-ai-core-github-actions/.github/workflows/slack-notify.yml@main
     needs:
       - set-vars
       - start-runner
       - publish-website
+      - determine-success
     with:
       RUNNER_LABEL: ${{ needs.start-runner.outputs.label }}
-      SUCCESS_PAYLOAD: "{\"text\": \"Deployment succeeded :airplane:\", \"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"Deployed main to ai gov uk website :hype-elmo:\"}}]}"
-      FAILURE_PAYLOAD: "{\"text\": \"Failed to deploy\",\"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"Failed to deploy main to the ai gov uk website :aaaaaaaaaa:\"}}]}"
+      WORKFLOW_PASSED: ${{ needs.determine-success.outputs.success == 'true' }}
+      SUCCESS_PAYLOAD: "{\"text\": \"Deployment succeeded to ${{ inputs.environment }} :airplane:\", \"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"Deployed main to ai gov uk website :hype-elmo:\"}}]}"
+      FAILURE_PAYLOAD: "{\"text\": \"Failed to deploy to ${{ inputs.environment }}\",\"blocks\": [{\"type\": \"header\",\"text\": {\"type\": \"plain_text\",\"text\": \"Failed to deploy main to the ai gov uk website :aaaaaaaaaa:\"}}]}"
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
@@ -111,6 +131,7 @@ jobs:
       - set-vars
       - start-runner
       - publish-website
+      - determine-success
       - notify-slack
     with:
       RUNNER_LABEL: ${{ needs.start-runner.outputs.label }}
