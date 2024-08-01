@@ -10,7 +10,7 @@ ogDescription: "i.AI and NHS England sign Collaboration Charter to support the u
 
 {% from "../_includes/banner.njk" import banner %}
 {% from "../_includes/text-image-block.njk" import textImageBlock %}
-{{ banner("i.AI and NHS England Collaboration Charter", "i.AI and NHS England sign Collaboration Charter to support the use of AI in the&nbsp;NHS") }}
+{{ banner("i.AI and NHS England Collaboration Charter", ogDescription | preventOrphans) }}
 
 <div class="container w-100 md:w-75 pt-[2rem]">
 
