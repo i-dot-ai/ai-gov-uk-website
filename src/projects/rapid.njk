@@ -5,11 +5,12 @@ templateEngineOverride: njk
 ogTitle: rAPId
 ogImage: https://ai.gov.uk/img/rapid2.webp
 ogUrl: https://ai.gov.uk/projects/rapid
+ogDescription: "An end-to-end solution to sharing data across government"
 ---
 
 {% from "../_includes/banner.njk" import banner %}
 {% from "../_includes/text-image-block.njk" import textImageBlock %}
-{{ banner("rAPId", "An end-to-end solution to sharing data across government") }}
+{{ banner("rAPId", ogDescription) }}
 
 <div class="container w-100 md:w-75 pt-[2rem]">
 

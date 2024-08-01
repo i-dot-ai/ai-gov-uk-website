@@ -5,11 +5,12 @@ templateEngineOverride: njk
 ogTitle: Caddy
 ogImage: https://ai.gov.uk/img/caddy1.png
 ogUrl: https://ai.gov.uk/projects/caddy
+ogDescription: "Caddy is our AI powered co-pilot for customer service functions everywhere. Built in collaboration with Citizens Advice, it seamlessly integrates into existing systems and provides expert advice to advisors and call handlers. Thanks to \"human in the loop\" oversight, Caddy ensures a safe and continuously improving advice service."
 ---
 
 {% from "../_includes/banner.njk" import banner %}
 {% from "../_includes/text-image-block.njk" import textImageBlock %}
-{{ banner("Caddy", "Caddy is our AI powered co-pilot for customer service functions everywhere. Built in collaboration with Citizens Advice, it seamlessly integrates into existing systems and provides expert advice to advisors and call handlers. Thanks to \"human in the loop\" oversight, Caddy ensures a safe and continuously improving advice service.") }}
+{{ banner("Caddy", ogDescription) }}
 
 <div class="container w-100 md:w-75 pt-[2rem]">
 
