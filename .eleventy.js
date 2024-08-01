@@ -47,6 +47,16 @@ module.exports = function (eleventyConfig) {
     return `${day} ${month} ${year}`;
   });
 
+  eleventyConfig.addFilter("preventOrphans", (text) => {
+    const lastSpaceIndex = text.lastIndexOf(" ");
+    if (lastSpaceIndex === -1) {
+      return text;
+    }
+    const beforeSpace = text.substring(0, lastSpaceIndex);
+    const afterSpace = text.substring(lastSpaceIndex + 1);
+    return `${beforeSpace}&nbsp;${afterSpace}`;
+  });
+
   eleventyConfig.addFilter("richTextToHTML", (value) => {
     return documentToHtmlString(value, {
       renderNode: {
