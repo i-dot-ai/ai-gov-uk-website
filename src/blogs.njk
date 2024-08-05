@@ -16,7 +16,6 @@ templateEngineOverride: njk
             <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt=""/>
             <h2 class="iai-blogs-list__title" >{{ blog.title }}</h2>
             <p class="iai-blog-list__summary">{{ blog.summaryShort }}</p>
-            {{ blogAuthor (blog.author) }}
             <p class="iai-blog-list__date">{{ blog.date | dateFormat }}</p>
         </a>
     {% endfor %}
