@@ -47,8 +47,14 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 
     {# Custom blog components #}
     {% if blog.title == "The i.AI Taxonomy" %}
-        {% from "./_includes/project-types.njk" import projectTypes %}
+        {% from "./_includes/blog-components/project-types.njk" import projectTypes %}
         {{ projectTypes() }}
+    {% endif %}
+    {% if blog.title == "Project Lex" %}
+        <div class="iai-blog-content__inner-container">
+            {% from "./_includes/blog-components/lex-slide.njk" import lexSlide %}
+            {{ lexSlide() }}
+        </div>
     {% endif %}
 
     {% if blog.contentPart2 %}
