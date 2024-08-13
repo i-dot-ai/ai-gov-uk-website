@@ -38,6 +38,11 @@ When building new pages, please add to `tests/accessibility.spec.ts`.
 
 Contentful is used as the CMS. Content is gradually being moved over to this. You will need to add the required values to your `.env`.
 
+### Blogs preview
+
+To preview unpublished blogs, set `const USE_PREVIEW = true;` in `src/_data/blogs.js`. Please do not commit this change. The longer-term plan is to set this automatically based on the environment.
+
+
 ### Backing up CMS data
 
 1. Install Contentful using `npm install -g contentful-cli`
