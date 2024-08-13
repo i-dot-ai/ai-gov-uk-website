@@ -50,7 +50,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
         {% from "./_includes/blog-components/project-types.njk" import projectTypes %}
         {{ projectTypes() }}
     {% endif %}
-    {% if blog.title == "Project Lex" %}
+    {% if blog.title == "Improving Legislative Drafting with Lex" %}
         <div class="iai-blog-content__inner-container">
             {% from "./_includes/blog-components/lex-slide.njk" import lexSlide %}
             {{ lexSlide() }}
