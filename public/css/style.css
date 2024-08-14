@@ -1494,8 +1494,24 @@ figcaption svg {
 .iai-blog-content p {
   margin-top: 1rem;
 }
+.iai-blog-content ol {
+  list-style: decimal;
+  padding-left: 1rem;
+}
+.iai-blog-content ol > li {
+  margin-top: 1rem;
+}
+.iai-blog-content li > p {
+  margin-top: 0;
+}
 .iai-blog-content h2 {
   font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+.iai-blog-content h3 {
+  font-size: 1rem;
   font-weight: 700;
   margin-bottom: 1rem;
   margin-top: 2rem;
