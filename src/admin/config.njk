@@ -1,0 +1,38 @@
+---
+  permalink: "/admin/config.yml"
+---
+backend:
+  name: github
+  repo: KevinEtchells/Test-DecapCMS
+  use_graphql: true
+  squash_merges: true
+publish_mode: editorial_workflow
+media_folder: "static/images/uploads" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+collections:
+  - name: "authors"
+    label: "Authors"
+    folder: "content/authors"
+    create: true
+    slug: "{{name}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Job Title", name: "job-title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+  - name: "blogs"
+    label: "Blogs"
+    folder: "content/blogs"
+    create: true
+    slug: "{{title}}"
+    fields: 
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Summary (hub page)", name: "summary-hub-page", widget: "string", pattern: ['^.{0,25}$', "256 characters max"], hint: "A one sentence summary of the blog post (to be shown on the main hub page) - 256 characters max" }
+      - { label: "Summary (blog page)", name: "summary-blog-page", widget: "text", required: false, hint: "Opening paragraph of blog (can be same as above summary) or slightly longer" }
+      - label: "Author"
+        name: "author"
+        widget: "relation"
+        collection: "authors"
+        value_field: "name"
+        search_fields: ["name", "job-title"]
+        display_fields: ["name"]
+      - { label: "Content", name: "content", widget: "markdown", buttons: ["bold", "italic", "code", "link", "heading-two", "heading-three", "heading-four", "quote", "bulleted-list", "numbered-list"] }
