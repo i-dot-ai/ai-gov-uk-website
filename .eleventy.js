@@ -65,7 +65,7 @@ module.exports = function (eleventyConfig) {
             target: { fields },
           },
         }) => {
-          if (fields.file.url.includes(".mp4")) {
+          if (fields.file?.url.includes(".mp4")) {
             return `
               <video class="iai-promo-video" controls preload="auto" aria-describedby="video-desc">
                 <source src="${fields.file.url}" type="video/mp4" />
@@ -77,13 +77,13 @@ module.exports = function (eleventyConfig) {
             if (fields.title) {
               return `
                 <figure>
-                  <img src="${fields.file.url}" alt="${fields.description}" loading="lazy"/>
+                  <img src="${fields.file?.url}" alt="${fields.description}" loading="lazy"/>
                   <figcaption>${fields.title}</figcaption>
                 </figure>
               `;
             } else {
               return `
-                <img src="${fields.file.url}" alt="${fields.description}" loading="lazy"/>
+                <img src="${fields.file?.url}" alt="${fields.description}" loading="lazy"/>
               `;
             }
           }
