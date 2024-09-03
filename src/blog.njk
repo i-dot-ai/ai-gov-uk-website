@@ -43,7 +43,11 @@ permalink: "blogs/{{ blog.title | slugify }}/"
             {% endif %}
         </div>
 
-        {{ blog.content | richTextToHTML | safe }}
+        {% if blog.source === "Contentful" %}
+            {{ blog.content | richTextToHTML | safe }}
+        {% else %}
+            {{ blog.content | markdownToHtml | safe }}
+        {% endif %}
 
     </div>
 
