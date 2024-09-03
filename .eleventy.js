@@ -6,6 +6,9 @@ const {
   NodeTypes,
 } = require("@contentful/rich-text-html-renderer");
 
+const showdown = require("showdown");
+const mdToHtmlConverter = new showdown.Converter();
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
@@ -94,6 +97,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("UUID", () => {
     return crypto.randomUUID();
+  });
+
+  eleventyConfig.addFilter("markdownToHtml", (value) => {
+    return mdToHtmlConverter.makeHtml(value);
   });
 
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***

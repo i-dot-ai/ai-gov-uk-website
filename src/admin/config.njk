@@ -16,18 +16,44 @@ collections:
     create: true
     slug: "{{name}}"
     fields:
-      - { label: "Name", name: "name", widget: "string" }
-      - { label: "Job Title", name: "job-title", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false }
+      - label: "Name"
+        name: "name"
+        widget: "string"
+      - label: "Job Title"
+        name: "job-title"
+        widget: "string"
+      - label: "Image"
+        name: "image"
+        widget: "image"
+        required: false
   - name: "blogs"
     label: "Blogs"
     folder: "content/blogs"
     create: true
     slug: "{{title}}"
     fields: 
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Summary (hub page)", name: "summary-hub-page", widget: "string", pattern: ['^.{0,25}$', "256 characters max"], hint: "A one sentence summary of the blog post (to be shown on the main hub page) - 256 characters max" }
-      - { label: "Summary (blog page)", name: "summary-blog-page", widget: "text", required: false, hint: "Opening paragraph of blog (can be same as above summary) or slightly longer" }
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        default: "{{now}}"
+      - label: "Summary (hub page)"
+        name: "summaryHubPage"
+        widget: "string"
+        pattern: ['^.{0,25}$', "256 characters max"]
+        hint: "A one sentence summary of the blog post (to be shown on the main hub page) - 256 characters max"
+      - label: "Summary (blog page)"
+        name: "summaryBlogPage"
+        widget: "text"
+        required: false
+        hint: "Opening paragraph of blog (can be same as above summary) or slightly longer"
+      - label: "Lead Image"
+        name: "leadImage"
+        widget: "image"
+        allow_multiple: false
       - label: "Author"
         name: "author"
         widget: "relation"
@@ -35,4 +61,19 @@ collections:
         value_field: "name"
         search_fields: ["name", "job-title"]
         display_fields: ["name"]
-      - { label: "Content", name: "content", widget: "markdown", buttons: ["bold", "italic", "code", "link", "heading-two", "heading-three", "heading-four", "quote", "bulleted-list", "numbered-list"] }
+      - label: "Content"
+        name: "content"
+        widget: "markdown"
+        buttons: ["bold", "italic", "code", "link", "heading-two", "heading-three", "heading-four", "quote", "bulleted-list", "numbered-list"]
+      - label: "Components"
+        name: "components"
+        widget: "list"
+        types:
+        - label: "Body Text Component"
+          name: "bodyText"
+          widget: "object"
+          fields:
+            - label: "Content"
+              name: "content"
+              widget: "markdown"
+              buttons: ["bold", "italic", "code", "link", "heading-two", "heading-three", "heading-four", "quote", "bulleted-list", "numbered-list"]
