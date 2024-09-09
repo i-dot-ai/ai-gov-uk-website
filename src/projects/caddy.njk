@@ -10,24 +10,16 @@ ogDescription: "Caddy is our AI powered co-pilot for customer service functions 
 
 {% from "../_includes/banner.njk" import banner %}
 {% from "../_includes/text-image-block.njk" import textImageBlock %}
+{% from "../_includes/video.njk" import video %}
 {{ banner("Caddy", ogDescription) }}
 
 <div class="container w-100 md:w-75 pt-[2rem]">
 
-    <video class="iai-promo-video" controls preload="auto" poster="/videos/video-poster.png" aria-describedby="video-desc">
-        <source src="/videos/caddy-promo.mp4" type="video/mp4" />
-        Download the <a href="/videos/caddy-promo.mp4">video</a>
-    </video>
-    <div class="sr-only" id="video-desc">
-        <p>An AI copilot for support staff, call centres, the front line.</p>
-        <p>Built in collaboration with Citizens Advice.</p>
-        <p>Screen recording of a user is asking a question in the chat interface.</p>
-        <p>Providing expert advice based on your guidance and training.</p>
-        <p>Screen recording of a response being provided along with reference links.</p>
-        <p>With supervisor evaluation build in and a human always in the loop.</p>
-        <p>Screen recording of a superviser adding notes to a response.</p>
-        <p>Caddy - coming soon to Teams, Google, Slack.</p>
-    </div>
+    {{ video({
+        source: "/videos/caddy-promo.mp4",
+        classes: "iai-promo-video",
+        audioDescription: "/videos/caddy-promo-mixed_ad.mp4"
+    }) }}
 
     {% set content %}
         <p>Since its creation in 1939, the independent charity Citizens Advice has been a cornerstone of civic society: combined, the national organisation and network of 250 independent local <a class="link" href="https://assets.ctfassets.net/mfz4nbgura3g/1CvI8xMxxf8Qzm8uI2NKbF/ad0eec22a4379960bac66ca4ed5a84a4/Citizens_Advice_Annual_Report_2022-2023.pdf">Citizens Advice helped over 2.5 million people with one-to-one advice</a> last year.</p>
