@@ -421,6 +421,26 @@ figcaption svg {
   }
 }
 
+.iai-video__audio-description {
+  align-items: center;
+  display: flex;
+  font-size: 0.75rem;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin: 0 auto;
+}
+.iai-promo-video + .iai-video__audio-description {
+  max-width: 800px;
+}
+.iai-video__audio-description img {
+  height: 2rem;
+}
+@media (min-width: 1024px) {
+  .iai-video__audio-description {
+    margin-top: -2rem;
+  }
+}
+
 /*--------------------------------------------------------------
 # Banner
 --------------------------------------------------------------*/

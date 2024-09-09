@@ -92,6 +92,10 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  eleventyConfig.addFilter("UUID", () => {
+    return crypto.randomUUID();
+  });
+
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***
   (() => {
     const assets = [

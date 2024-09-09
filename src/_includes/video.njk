@@ -1,0 +1,16 @@
+{% macro video (data) %}
+
+    {% set uuid = "" | UUID %}
+
+    <video class="{{ data.classes }}" controls preload="auto" poster="{{ data.poster | default('/videos/video-poster.png') }}" aria-describedby="ad-{{ uuid }}">
+        <source src="{{ data.source }}" type="video/mp4" />
+        Download the <a href="{{ data.source }}">video</a>
+    </video>
+    {% if data.audioDescription %}
+        <p class="iai-video__audio-description" id="ad-{{ uuid }}">
+            <img src="/icons/audio-description.svg" loading="lazy" alt=""/>
+            <a class="link" href="{{ data.audioDescription }}">Audio described video</a>
+        </p>
+    {% endif %}
+
+{% endmacro %}
