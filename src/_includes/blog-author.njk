@@ -1,7 +1,7 @@
 {% macro blogAuthor (author, size="small") %}
     <div class="iai-blog-author">
-        {% if author.image %}
-            <img class="iai-blog-author__image iai-blog-author__image--{{size}}" src="{{ author.image.file.url }}?w=96" alt=""/>
+        {% if author.picture %}
+            <img class="iai-blog-author__image iai-blog-author__image--{{size}}" src="{{ author.picture.fields.file.url }}?w=96" alt="" loading="lazy"/>
         {% endif %}
         <div>
             <span class="iai-blog-author__name">{{ author.name }}</span>
