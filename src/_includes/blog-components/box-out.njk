@@ -1,0 +1,22 @@
+{% macro boxOut (content, borderColour) %}
+
+  <style>
+    .box-out {
+      border: 3px solid var(--iai-pink);
+      border-radius: 8px;
+      margin: 3rem 0;
+      padding: 2rem;
+    }
+    .box-out h2, .box-out h2 img {
+      margin-top: 0;
+    }
+    .box-out img {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+
+  <div class="box-out" {% if borderColour %}style="border-color: {{ borderColour }}"{% endif %}>
+    {{ content | safe }}
+  </div>
+
+{% endmacro %}

@@ -19,15 +19,12 @@ module.exports = () => {
     }).then((response) => {
 
         let blogs = response.items.map((blog) => {
+
             return {
                 title: blog.fields.title,
                 summaryShort: blog.fields.summary,
                 summaryLong: blog.fields.summaryBlogPage,
-                author: {
-                    name: blog.fields.author.fields.name,
-                    jobTitle: blog.fields.author.fields.jobTitle,
-                    image: blog.fields.author.fields.picture?.fields
-                },
+                authors: blog.fields.authors.map((author) => author.fields),
                 date: blog.fields.date,
                 coverImage: blog.fields.coverImage?.fields,
                 content: blog.fields.content,
