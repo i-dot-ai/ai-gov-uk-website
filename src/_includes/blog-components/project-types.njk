@@ -70,7 +70,7 @@
             <img class="iai-project-types__icon" src="/icons/{{ type.icon }}" alt="" loading="lazy"/>
           </div>
           <button class="iai-project-types__btn" aria-expanded="{% if loop.index == 1 %}true{% else %}false{% endif %}" aria-controls="iai-project-types__panel-mobile-{{ loop.index }} iai-project-types__panel-desktop-{{ loop.index }}">
-            <h3>
+            <h3 class="iai-project-types__heading">
               {{ type.heading }}
               <span class="iai-project-types__sub-head">{{ type.subHeading }}</span>
             </h3>

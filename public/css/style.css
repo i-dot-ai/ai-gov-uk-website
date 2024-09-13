@@ -1530,7 +1530,7 @@ figcaption svg {
   margin-bottom: 1rem;
   margin-top: 2rem;
 }
-.iai-blog-content h3 {
+.iai-blog-content h3:not(.iai-project-types__heading) {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -1620,6 +1620,9 @@ img.iai-project-types__icon {
 .iai-project-types__btn[aria-expanded="true"] {
   background-color: var(--iai-pink);
   color: white;
+}
+.iai-project-types__heading {
+  margin: 0;
 }
 .iai-project-types__sub-head {
   display: block;
