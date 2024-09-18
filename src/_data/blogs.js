@@ -34,6 +34,7 @@ async function getData(url) {
         return (response.data);
     } catch (error) {
         console.error(`Error fetching for URL: ${url}`, error.message);
+        return [];
     }
 }
 
