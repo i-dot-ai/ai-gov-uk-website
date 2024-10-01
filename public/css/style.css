@@ -409,37 +409,6 @@ figcaption svg {
   }
 }
 
-.iai-promo-video {
-  border: 1px solid;
-  margin: 0 auto 0 auto;
-  max-width: 800px;
-  width: 100%;
-}
-@media (min-width: 1024px) {
-  .iai-promo-video {
-    margin: 1rem auto 2rem auto;
-  }
-}
-
-.iai-video__audio-description {
-  align-items: center;
-  display: flex;
-  font-size: 0.75rem;
-  gap: 0.5rem;
-  justify-content: flex-end;
-  margin: 0 auto;
-}
-.iai-promo-video + .iai-video__audio-description {
-  max-width: 800px;
-}
-.iai-video__audio-description img {
-  height: 2rem;
-}
-@media (min-width: 1024px) {
-  .iai-video__audio-description {
-    margin-top: -2rem;
-  }
-}
 
 /*--------------------------------------------------------------
 # Banner
@@ -1563,6 +1532,40 @@ figcaption svg {
 @media (min-width: 68rem) {
   .iai-blogs-list {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+.iai-promo-video {
+  border: 1px solid;
+  margin: 0 auto 0 auto;
+  max-width: 800px;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .iai-promo-video {
+    margin: 1rem auto 2rem auto;
+  }
+}
+
+.iai-video__audio-description {
+  align-items: center;
+  display: flex;
+  font-size: 0.75rem;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin: 0 auto !important;
+}
+.iai-promo-video + .iai-video__audio-description {
+  max-width: 800px;
+}
+.iai-video__audio-description img {
+  height: 2rem;
+  margin-top: 0;
+}
+@media (min-width: 1024px) {
+  .iai-video__audio-description {
+    margin-top: -2rem;
   }
 }
 

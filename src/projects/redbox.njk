@@ -9,14 +9,18 @@ ogDescription: "Bringing Generative AI to the way the Civil Service works"
 ---
 
 {% from "../_includes/banner.njk" import banner %}
+{% from "../_includes/video.njk" import video %}
+
 {{ banner("Redbox", ogDescription) }}
 
 <div class="container w-100 md:w-75 pt-[3rem]">
 
-    <video class="iai-promo-video" controls preload="auto" poster="/videos/video-poster.png" aria-describedby="video-desc">
-        <source src="/videos/redbox-promo-v5a.mp4" type="video/mp4" />
-        Download the <a href="/videos/redbox-promo-v5.mp4">video</a>
-    </video>
+    {{ video({
+        source: "/videos/redbox-promo-v5a.mp4",
+        classes: "iai-promo-video",
+        audioDescription: "https://videos.ctfassets.net/6kma07ky7db0/7611L3pGJKyHjC1NV6HxgX/c13f8b41bfc7439f775811403972e236/redbox-promo-v5a-mixed_ad.mp4"
+    }) }}
+
     <div class="sr-only" id="video-desc">
         <p>Our mission is to harness the opportunity of AI to improve lives, generate efficiency savings and deliver better public services: Introducing Redbox.</p>
         <p>The Cabinet Office is estimated to create 30000 to 80000 documents per year. Navigating these manually is complex and inefficient.</p>
