@@ -5,3 +5,4 @@ _site
 .DS_Store
 /playwright-report
 /contentful-backups/*.json
+/public/img/from-cms/*.avif
