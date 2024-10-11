@@ -44,8 +44,7 @@ async function getData(url) {
  * @param {string} fileName
  */
 async function downloadImage(fileName) {
-    
-    const localFilePath = path.resolve(__dirname, `../../public/img/${fileName}`);
+    const localFilePath = path.resolve(__dirname, `../../public/img/from-cms/${fileName}`);
     if (fs.existsSync(localFilePath)) {
         return;
     }
@@ -92,6 +91,17 @@ module.exports = async () => {
     });
 
 
+    // Get new authors
+    const newAuthors = await getData(`https://api.github.com/repos${CMS_REPO}/contents/content/authors`);
+    let allAuthors = [];
+    for (const author of newAuthors.map(item => item.url)) {
+        const authorRawData = await getData(author);
+        const authorContent = Buffer.from(authorRawData.content, "base64").toString("utf8");
+        const authorData = matter(authorContent).data;
+        allAuthors.push(authorData);
+    }
+
+
     // Get new blogs
     const newBlogs = await getData(`https://api.github.com/repos${CMS_REPO}/contents/content/blogs`);
     for (const blog of newBlogs.map(item => item.url)) {
@@ -99,13 +109,16 @@ module.exports = async () => {
         const blogContent = Buffer.from(blogRawData.content, "base64").toString("utf8");
         const blogData = matter(blogContent).data;
 
+        // TO DO: This only works with uploaded images, not "Insert from URL" images
         const image = blogData.leadImage.replace("/images/uploads/", "");
         await downloadImage(image);
 
         // get all images within the content
         const imagePaths = blogData.content.match(/\/images\/uploads\/[a-z0-9\.]*/g);
-        for (const imagePath of imagePaths) {
-            await downloadImage(imagePath.replace("/images/uploads/", ""));
+        if (imagePaths) {
+            for (const imagePath of imagePaths) {
+                await downloadImage(imagePath.replace("/images/uploads/", ""));
+            }
         }
         blogData.content = blogData.content.replace(/images\/uploads/g, "img");
 
@@ -113,15 +126,23 @@ module.exports = async () => {
             title: blogData.title,
             summaryShort: blogData.summaryHubPage,
             summaryLong: blogData.summaryBlogPage,
-            author: {
-                name: blogData.author
-                // TO DO: need to fetch the author to get the other fields
-            },
+            authors: (() => {
+                let blogAuthors = blogData.authors.map((author) => {
+                    return author.author;
+                });
+                let foundAuthors = [];
+                allAuthors.forEach((author) => {
+                    if (blogAuthors.includes(author.name)) {
+                        foundAuthors.push(author);
+                    }
+                });
+                return foundAuthors;
+            })(),
             date: blogData.date,
             coverImage: {
                 file: {
                     // TO DO: add caption and alt-text
-                    url: `/img/${image}`
+                    url: `/img/from-cms/${image}`
                 }
             },
             content: blogData.content,

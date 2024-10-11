@@ -20,7 +20,7 @@ collections:
         name: "name"
         widget: "string"
       - label: "Job Title"
-        name: "job-title"
+        name: "jobTitle"
         widget: "string"
       - label: "Image"
         name: "image"
@@ -54,13 +54,17 @@ collections:
         name: "leadImage"
         widget: "image"
         allow_multiple: false
-      - label: "Author"
-        name: "author"
-        widget: "relation"
-        collection: "authors"
-        value_field: "name"
-        search_fields: ["name", "job-title"]
-        display_fields: ["name"]
+      - label: "Authors"
+        name: "authors"
+        widget: "list"
+        fields:
+        - label: "Author"
+          name: "author"
+          widget: "relation"
+          collection: "authors"
+          value_field: "name"
+          search_fields: ["name", "job-title"]
+          display_fields: ["name", "job-title"]
       - label: "Content"
         name: "content"
         widget: "markdown"
