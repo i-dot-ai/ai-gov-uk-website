@@ -12,8 +12,13 @@
 
       var Preview = createClass({
         render: function() {
+          //let entry = this.props.entry;
           return h('div', {},
-            h('iframe', {src: "/blogs/welcome-to-the-i-ai-blog/?preview=true"}),
+            //h('div', { style: { display: 'none' } },
+            //  h('input', { type: 'hidden', id: 'title' }, entry.getIn(['data', 'title'])),
+            //  h('input', { type: 'hidden', id: 'summary-blog-page' }, entry.getIn(['data', 'summaryBlogPage']))
+            //),
+            h('iframe', {src: "/blogs/welcome-to-the-i-ai-blog/?preview=true"})
           );
         }
       });

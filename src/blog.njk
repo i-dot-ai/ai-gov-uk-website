@@ -79,9 +79,39 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 
     {# Preview demo #}
     <script>
+
+        const convertDate = (dateStr) => {
+            const months = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            const suffixes = ["th", "st", "nd", "rd"];
+            function getDaySuffix(day) {
+                if (day > 3 && day < 21) return "th"; // Covers 11th, 12th, 13th
+                switch (day % 10) {
+                    case 1: return suffixes[1];
+                    case 2: return suffixes[2];
+                    case 3: return suffixes[3];
+                    default: return suffixes[0];
+                }
+            }
+            const [year, month, day] = dateStr.split('-');
+            if (!year || !month || !day) {
+                return "";
+            }
+            const dayNumber = parseInt(day, 10);
+            const monthName = months[parseInt(month, 10) - 1];
+            const daySuffix = getDaySuffix(dayNumber);
+            return `${dayNumber}${daySuffix} ${monthName} ${year}`;
+        }
+
         const updateContent = () => {
             document.querySelector(".iai-blog-title__title").textContent = parent.parent.document.querySelector("input")?.value || "[Blog title]";
-            document.querySelector(".iai-blog-title__summary").textContent = parent.parent.document.querySelector("#summaryBlogPage-field-13")?.value || "";
+            
+            const date = parent.parent.document.querySelector('input[type="date"]')?.value;
+            document.querySelector(".iai-blog-title__date").textContent = convertDate(date) || "[Date goes here]";
+            
+            document.querySelector(".iai-blog-title__summary").textContent = parent.parent.document.querySelector("textarea")?.value || "";
             document.querySelector("#content").innerHTML = parent.parent.document.querySelector('[role="textbox"]')?.innerHTML || "[Content to go here]";
             let unwantedElements = document.querySelectorAll("#content button, #content label");
             unwantedElements.forEach((unwantedElement) => {
