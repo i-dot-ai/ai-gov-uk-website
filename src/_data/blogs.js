@@ -6,7 +6,7 @@ const axios = require('axios');
 const matter = require('gray-matter');
 
 const USE_PREVIEW = false;
-const CMS_REPO = "/KevinEtchells/Test-DecapCMS";
+const CMS_REPO = "/i-dot-ai/ai-gov-uk-cms-content";
 
 let contentfulOptions = {
     space: process.env.CONTENTFUL_SPACE,
@@ -98,7 +98,19 @@ module.exports = async () => {
         const authorRawData = await getData(author);
         const authorContent = Buffer.from(authorRawData.content, "base64").toString("utf8");
         const authorData = matter(authorContent).data;
-        allAuthors.push(authorData);
+        const picture = authorData.picture.replace("/images/uploads/", "");
+        await downloadImage(picture);
+        allAuthors.push({
+            name: authorData.name,
+            jobTitle: authorData.jobTitle,
+            picture: {
+                fields: {
+                    file: {
+                        url: `/img/from-cms/${picture}`
+                    }
+                }
+            }
+        });
     }
 
 
@@ -113,14 +125,21 @@ module.exports = async () => {
         const image = blogData.leadImage.replace("/images/uploads/", "");
         await downloadImage(image);
 
+        let content = "";
+        blogData.components.forEach((component) => {
+            if (component.type === "bodyText") {
+                content += component.content;
+            }
+        });
+
         // get all images within the content
-        const imagePaths = blogData.content.match(/\/images\/uploads\/[a-z0-9\.]*/g);
+        const imagePaths = content.match(/\/images\/uploads\/[a-z0-9\.]*/g);
         if (imagePaths) {
             for (const imagePath of imagePaths) {
                 await downloadImage(imagePath.replace("/images/uploads/", ""));
             }
         }
-        blogData.content = blogData.content.replace(/images\/uploads/g, "img");
+        content = content.replace(/images\/uploads/g, "img");
 
         blogs.push({
             title: blogData.title,
@@ -140,12 +159,13 @@ module.exports = async () => {
             })(),
             date: blogData.date,
             coverImage: {
+                title: blogData.leadImageCaption,
+                description: blogData.leadImageAlt,
                 file: {
-                    // TO DO: add caption and alt-text
                     url: `/img/from-cms/${image}`
                 }
             },
-            content: blogData.content,
+            content: content,
             source: "DecapCMS"
         });
     }
