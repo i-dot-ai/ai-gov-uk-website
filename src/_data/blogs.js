@@ -125,21 +125,20 @@ module.exports = async () => {
         const image = blogData.leadImage.replace("/images/uploads/", "");
         await downloadImage(image);
 
-        let content = "";
-        blogData.components.forEach((component) => {
-            if (component.type === "bodyText") {
-                content += component.content;
-            }
-        });
 
         // get all images within the content
-        const imagePaths = content.match(/\/images\/uploads\/[a-z0-9\.]*/g);
-        if (imagePaths) {
-            for (const imagePath of imagePaths) {
-                await downloadImage(imagePath.replace("/images/uploads/", ""));
+        for (let component of blogData.components) {
+            if (component.type === "bodyText") {
+                const imagePaths = component.content.match(/\/images\/uploads\/[a-z0-9\.]*/g);
+                if (imagePaths) {
+                    for (const imagePath of imagePaths) {
+                        await downloadImage(imagePath.replace("/images/uploads/", ""));
+                    }
+                }
+                component.content = component.content.replace(/images\/uploads/g, "img");
             }
         }
-        content = content.replace(/images\/uploads/g, "img");
+  
 
         blogs.push({
             title: blogData.title,
@@ -165,7 +164,7 @@ module.exports = async () => {
                     url: `/img/from-cms/${image}`
                 }
             },
-            content: content,
+            components: blogData.components,
             source: "DecapCMS"
         });
     }

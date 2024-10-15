@@ -11,6 +11,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 
 {% from "./_includes/blog-author.njk" import blogAuthor %}
 {% from "./_includes/blog-header.njk" import blogHeader %}
+{% from "./_includes/video.njk" import video %}
 
 
 {{ blogHeader() }}
@@ -47,7 +48,17 @@ permalink: "blogs/{{ blog.title | slugify }}/"
             {% if blog.source === "Contentful" %}
                 {{ blog.content | richTextToHTML | safe }}
             {% else %}
-                {{ blog.content | markdownToHtml | safe }}
+                {% for component in blog.components %}
+                    {% if component.type == "bodyText" %}
+                        {{ component.content | markdownToHtml | safe }}
+                    {% elif component.type == "video" %}
+                        {{ video({
+                            classes: "iai-promo-video",
+                            source: component.source,
+                            audioDescription: component.audioDescription
+                        }) }}
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         </div>
 
