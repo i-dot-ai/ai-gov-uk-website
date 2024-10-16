@@ -1385,9 +1385,14 @@ figcaption svg {
   border: none;
   padding-top: 0;
 }
-.iai-blogs-list__cover-image {
+.iai-blogs-list__image-container {
   aspect-ratio: 16/9;
+}
+.iai-blogs-list__cover-image {
+  border: 1px solid #ddd;
+  height: 100%;
   object-fit: cover;
+  width: 100%;
 }
 .iai-blogs-list__title {
   font-size: 1.5rem;
@@ -1545,6 +1550,9 @@ figcaption svg {
 @media (min-width: 1024px) {
   .iai-promo-video {
     margin: 1rem auto 2rem auto;
+  }
+  *:has(.iai-video__audio-description) > .iai-promo-video {
+    margin-bottom: 0;
   }
 }
 
