@@ -6,7 +6,7 @@ const axios = require('axios');
 const matter = require('gray-matter');
 
 const USE_PREVIEW = false;
-const CMS_REPO = "/i-dot-ai/ai-gov-uk-cms-content";
+const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
 
 let contentfulOptions = {
     space: process.env.CONTENTFUL_SPACE,
@@ -92,7 +92,7 @@ module.exports = async () => {
 
 
     // Get new authors
-    const newAuthors = await getData(`https://api.github.com/repos${CMS_REPO}/contents/content/authors`);
+    const newAuthors = await getData(`https://api.github.com/repos/${CMS_REPO}/contents/content/authors`);
     let allAuthors = [];
     for (const author of newAuthors.map(item => item.url)) {
         const authorRawData = await getData(author);
@@ -115,7 +115,7 @@ module.exports = async () => {
 
 
     // Get new blogs
-    const newBlogs = await getData(`https://api.github.com/repos${CMS_REPO}/contents/content/blogs`);
+    const newBlogs = await getData(`https://api.github.com/repos/${CMS_REPO}/contents/content/blogs`);
     for (const blog of newBlogs.map(item => item.url)) {
         const blogRawData = await getData(blog);
         const blogContent = Buffer.from(blogRawData.content, "base64").toString("utf8");
