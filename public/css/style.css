@@ -1272,6 +1272,33 @@ figcaption svg {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.iai-faqs__section {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 3rem;
+}
+.iai-faqs__section:last-child {
+  border-bottom: 0;
+}
+.iai-faqs ol {
+  list-style: auto;
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+}
+.iai-faqs ol li {
+  padding: 0.5rem 0;
+}
+.iai-faqs a {
+  text-underline-offset: 4px;
+}
+.iai-faqs a:hover {
+  color: var(--iai-pink);
+  text-decoration: underline;
+}
+.iai-faqs strong {
+  font-weight: 700;
+}
+
+
 .iai-teams {
   padding: 3rem 0;
 }

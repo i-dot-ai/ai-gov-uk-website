@@ -9,9 +9,7 @@ templateEngineOverride: njk
 
 <div class="container flex flex-col w-100 md:w-75 pt-[4rem]">
 
-    <div class="flex flex-col md:flex-col lg:flex-row w-[100%] md:w-[80%] self-center" id="improve" data-aos="fade-up">
-        <h2 class="text-[24px] font-semibold">We have four key functions</h2>
-    </div>
+    <h2 class="text-[24px] font-semibold text-center">We have four key functions</h2>
 
     <div class="flex flex-col md:flex-col lg:flex-row w-[100%] md:w-[80%] self-center border-b border-grey-300 pb-5 pt-5" id="improve" data-aos="fade-up">
         <div class="flex flex-col items-end pr-12 lg:w-[20%] md:w-[100%]">
@@ -66,17 +64,22 @@ templateEngineOverride: njk
     </div>
 
 
-    <div class="mt-5 md:w-[80%] font-light self-center" id="improve" data-aos="fade-up">
+    <div class="iai-faqs mt-5 md:w-[80%] font-light self-center" id="improve" data-aos="fade-up">
         
-        <h2 class="text-[24px] font-semibold">Frequently Asked Questions</h2>
+        <h2 class="text-[24px] font-semibold text-center">{{ faqs.title }}</h2>
 
-        {% for faq in faqs %}
-            <details-enhanced>
-                <details class="mt-5">
-                    <summary><h3 class="inline text-[18px] font-semibold">{{ faq.question }}</h3></summary>
-                    <div class="iai-faqs__answer text-[15px]">{{ faq.answer | richTextToHTML | safe }}
-                </details>
-            </details-enhanced>
+        {% for section in faqs.headings %}
+            <div class="iai-faqs__section">
+                <h3 class="text-[20px] font-semibold mt-5">{{ section.heading }}</h3>
+                {% for question in section.questions %}
+                    <details-enhanced>
+                        <details class="mt-5">
+                            <summary><h3 class="inline text-[16px] font-semibold">{{ question.question.questionText }}</h3></summary>
+                            <div class="iai-faqs__answer text-[15px]">{{ question.question.response | markdownToHtml | safe }}
+                        </details>
+                    </details-enhanced>
+                {% endfor %}
+            </div>
         {% endfor %}
 
     </div>
