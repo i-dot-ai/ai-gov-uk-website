@@ -4,6 +4,7 @@ const path = require('path');
 const contentful = require('contentful');
 const axios = require('axios');
 const matter = require('gray-matter');
+const getData = require("./_shared.js").getData;
 
 const USE_PREVIEW = false;
 const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
@@ -16,27 +17,6 @@ if (USE_PREVIEW) {
     contentfulOptions.host = 'preview.contentful.com';
 }
 const client = contentful.createClient(contentfulOptions);
-
-
-/**
- * Gets file data from Github
- * @param {string} url 
- * @returns {object}
- */
-async function getData(url) {
-    try {
-        const response = await axios.get(url, {
-            headers: {
-                'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-                "X-GitHub-Api-Version": "2022-11-28",
-            }
-        });
-        return (response.data);
-    } catch (error) {
-        console.error(`Error fetching for URL: ${url}`, error.message);
-        return [];
-    }
-}
 
 
 /**

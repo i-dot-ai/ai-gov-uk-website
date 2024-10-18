@@ -1,30 +1,17 @@
-require('dotenv').config();
-const contentful = require('contentful');
+const matter = require("gray-matter");
+const getData = require("./_shared.js").getData;
 
-const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-});
+const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
+
   
-module.exports = () => {
+module.exports = async () => {
 
-    return client.getEntries({
-        content_type: 'faQs'
-    }).then((response) => {
+    const faqsFetch = await getData(`https://api.github.com/repos/${CMS_REPO}/contents/content/faqs`);
+    const faqsRawData = await getData(faqsFetch[0].url);
+    const faqsData = Buffer.from(faqsRawData.content, "base64").toString("utf8");
+    const faqs = matter(faqsData).data;
 
-        let faqs = response.items.map((role) => {
-            return role.fields;
-        });
-
-        faqs.sort((a, b) => {
-            return a.order - b.order;
-        });
-
-        return faqs;
-
-    }).catch((err) => {
-        console.error(err);
-    });
+    return faqs;
 
 };
   
