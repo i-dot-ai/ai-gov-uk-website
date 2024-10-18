@@ -8,3 +8,5 @@ _site
 /public/img/from-cms/*.avif
 /public/img/from-cms/*.png
 /public/img/from-cms/*.jpg
+.terraform
+terraform.tfstate.d
