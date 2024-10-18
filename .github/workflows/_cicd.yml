@@ -20,11 +20,11 @@ jobs:
     secrets: inherit
       
 
-  release-dev:
+  release-preprod:
     if: github.event_name == 'push' && github.ref_name == 'main'
     uses: i-dot-ai/ai-gov-uk-website/.github/workflows/build-and-release.yml@main
     with:
-      environment: dev
+      environment: preprod
       commit_hash: ${{ github.sha }}
-      destination_bucket: "DEV_DESTINATION_BUCKET"
+      destination_bucket: "PREPROD_DESTINATION_BUCKET"
     secrets: inherit
