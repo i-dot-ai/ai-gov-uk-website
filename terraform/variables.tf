@@ -27,3 +27,14 @@ variable "website_bucket_deployment_roles" {
   type        = list(string)
   description = "ARNs with permitted access to the bucket to deploy bucket contents"
 }
+
+variable s3_redirection_rules {
+  type = map(object({
+    key_prefix_equals        = string
+    host_name                = string
+    http_redirect_code       = string
+    protocol                 = string
+    replace_key_prefix_with  = string
+  }))
+  description = "A set of rules to provide to S3 for request redirects"
+}
