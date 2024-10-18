@@ -10,7 +10,7 @@ module.exports.getData = async (url) => {
     try {
         const response = await axios.get(url, {
             headers: {
-                "Authorization": `token ${process.env.GITHUB_TOKEN}`,
+                "Authorization": `token ${process.env.CMS_REPO_TOKEN}`,
                 "X-GitHub-Api-Version": "2022-11-28",
             }
         });
