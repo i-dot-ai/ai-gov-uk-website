@@ -7,6 +7,10 @@ data "aws_iam_policy_document" "website" {
     resources = [
       "${aws_s3_bucket.website.arn}/*",
     ]
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
   }
 
   dynamic "statement" {
@@ -22,6 +26,10 @@ data "aws_iam_policy_document" "website" {
         aws_s3_bucket.website.arn,
         "${aws_s3_bucket.website.arn}/*",
       ]
+      principals {
+        type        = "*"
+        identifiers = ["*"]
+      }
       condition {
         test     = "StringLike"
         variable = "aws:Referer"

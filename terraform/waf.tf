@@ -1,17 +1,17 @@
 locals {
-  waf_name = "ai-gov-uk"
+  waf_name = var.environment == "prod" ? "ai-gov-uk" : "ai-gov-uk-${var.environment}"
 
   rules = {
     aws_bad_inputs_rule = {
-      name     = "AWS-AWSManagedRulesKnownBadInputsRuleSet"
+      name     = "AWSManagedRulesKnownBadInputsRuleSet"
       priority = 0
     }
     aws_anonymous_ip_list_rule = {
-      name     = "AWS-AWSManagedRulesAnonymousIpList"
+      name     = "AWSManagedRulesAnonymousIpList"
       priority = 1
     }
     aws_bot_control_rule = {
-      name     = "AWS-AWSManagedRulesBotControlRuleSet"
+      name     = "AWSManagedRulesBotControlRuleSet"
       priority = 2
     }
     rate_limit = {
