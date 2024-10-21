@@ -74,8 +74,8 @@ templateEngineOverride: njk
                 {% for question in section.questions %}
                     <details-enhanced>
                         <details class="mt-5">
-                            <summary><h3 class="inline text-[16px] font-semibold">{{ question.question.questionText }}</h3></summary>
-                            <div class="iai-faqs__answer text-[15px]">{{ question.question.response | markdownToHtml | safe }}
+                            <summary><h3 class="inline text-[16px] font-semibold">{{ question.questionText }}</h3></summary>
+                            <div class="iai-faqs__answer text-[15px]">{{ question.response | markdownToHtml | safe }}
                         </details>
                     </details-enhanced>
                 {% endfor %}
