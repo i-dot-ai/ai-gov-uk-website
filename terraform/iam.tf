@@ -11,36 +11,11 @@ data "aws_iam_policy_document" "website" {
       type        = "*"
       identifiers = ["*"]
     }
-  }
+    condition {
+      test     = "StringLike"
+      variable = "aws:Referer"
 
-  dynamic "statement" {
-    for_each = toset(var.web_domain_hostnames)
-
-    content {
-      effect = "Allow"
-      actions = [
-        "s3:GetObject",
-        "s3:GetObjectVersion",
-      ]
-      resources = [
-        aws_s3_bucket.website.arn,
-        "${aws_s3_bucket.website.arn}/*",
-      ]
-      principals {
-        type        = "*"
-        identifiers = ["*"]
-      }
-      condition {
-        test     = "StringLike"
-        variable = "aws:Referer"
-
-        values = flatten([
-          for host in var.web_domain_hostnames : [
-            "http://${host}/*",
-            "https://${host}/*"
-          ]
-        ])
-      }
+      values = [random_password.cloudfront_identifier.result]
     }
   }
 

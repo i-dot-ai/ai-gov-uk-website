@@ -19,6 +19,11 @@ resource "aws_cloudfront_distribution" "website" {
         "TLSv1.2"
       ]
     }
+
+    custom_header {
+      name  = "Referer"
+      value = random_password.cloudfront_identifier.result
+    }
   }
 
   enabled     = true
