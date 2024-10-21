@@ -38,3 +38,13 @@ variable "s3_redirection_rules" {
   }))
   description = "A set of rules to provide to S3 for request redirects"
 }
+
+variable "permitted_ips" {
+  type        = list(string)
+  description = "A set of IP addresses to provide privileged access to on the WAF"
+}
+
+variable "protected_path_prefixes" {
+  type        = list(string)
+  description = "A list of protected URI stem prefixes"
+}
