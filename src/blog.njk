@@ -88,26 +88,27 @@ permalink: "blogs/{{ blog.title | slugify }}/"
         </div>
     {% endif %}
 
-    {# Preview demo #}
-    <script>
 
-        // CMS Preview
-        if (window.location.search.includes("preview=true")) {
+    {# CMS Preview #}
+    {% if blog.title === "Preview" %}
+        <script>
+
+            let contentContainer = document.querySelector("#content");
+            let componentTemplates = {};
 
             // Defaults
             window.addEventListener("DOMContentLoaded", () => {
                 document.querySelector("header").remove();
-                document.querySelector(".iai-blog-author__image").src = "https://t4.ftcdn.net/jpg/00/93/85/69/360_F_93856984_YszdhleLIiJzQG9L9pSGDCIvNu5GEWCc.jpg";
-                document.querySelector(".iai-blog-author__job").textContent = "Job title (not available in preview)";
                 document.querySelector("main").style.paddingTop = "0";
                 document.querySelector("main").style.paddingBottom = "2rem";
                 document.querySelector("footer").remove();
+                componentTemplates.video = contentContainer.removeChild(contentContainer.querySelector("video")).outerHTML;
             });
 
             // Data from CMS
             window.addEventListener('message', function(evt) {
 
-                console.log(evt.data);
+                //console.log(evt.data);
                 
                 document.querySelector(".iai-blog-title__title").textContent = evt.data.title || "[Title goes here]";
 
@@ -124,15 +125,16 @@ permalink: "blogs/{{ blog.title | slugify }}/"
                 evt.data.components.forEach((component) => {
                     if (component.type === "bodyText") {
                         mainContent += component.content;
+                    } else if (component.type === "video") {
+                        mainContent += componentTemplates.video.replace(`src=""`, `src="${component.source}"`);
                     }
                 });
-                document.querySelector("#content").innerHTML = mainContent;
+                contentContainer.innerHTML = mainContent;
 
             });
-        }
 
-
-    </script>
+        </script>
+    {% endif %}
 
 </div>
 

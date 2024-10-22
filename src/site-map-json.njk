@@ -14,7 +14,9 @@ module.exports = [
   {% endfor %}
   '/blogs',
   {% for blog in blogs %}
-    '/blogs/{{ blog.title | slugify  }}',
+    {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
+      '/blogs/{{ blog.title | slugify  }}',
+    {% endif %}
   {% endfor %}
   '/accessibility'
 ];
