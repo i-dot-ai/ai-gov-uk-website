@@ -108,7 +108,27 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("markdownToHtml", (value) => {
-    return mdToHtmlConverter.makeHtml(value);
+    let html = mdToHtmlConverter.makeHtml(value);
+    
+    let images = html.match(/<img\s+src="[^"]*"\s*[^>]*>/g);
+    images?.forEach((image) => {
+      // show a caption if required
+      const caption = (() => {
+        let match = image.match(/title="([^"]*)"/);
+        if (match) {
+          return match[1];
+        }
+      })();
+      if (caption) {
+        html = html.replace(image, `<figure>${image}<figcaption>${caption}</figcaption></figure>`);
+      }
+      // set correct image path
+      if (!image.includes("http:")) {
+        html = html.replace(image, image.replace("/img", "/img/from-cms"));
+      }
+    });
+    
+    return html;
   });
 
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***
