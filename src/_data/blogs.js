@@ -101,12 +101,17 @@ module.exports = async () => {
         const blogContent = Buffer.from(blogRawData.content, "base64").toString("utf8");
         const blogData = matter(blogContent).data;
 
-        // TO DO: This only works with uploaded images, not "Insert from URL" images
-        const image = blogData.leadImage.replace("/images/uploads/", "");
-        await downloadImage(image);
+        const image = (() => {
+            if (blogData.leadImage.includes("http:")) {
+                return blogData.leadImage.replace("http:", "https:");
+            }
+            const returnUrl = blogData.leadImage.replace("/images/uploads/", "");
+            downloadImage(returnUrl);
+            return returnUrl;
+        })();
 
         // get all images within the content
-        for (let component of blogData.components) {
+        for (let component of blogData.components || []) {
             if (component.type === "bodyText") {
                 const imagePaths = component.content.match(/\/images\/uploads\/[a-z0-9\.]*/g);
                 if (imagePaths) {
@@ -123,12 +128,12 @@ module.exports = async () => {
             summaryShort: blogData.summaryHubPage,
             summaryLong: blogData.summaryBlogPage,
             authors: (() => {
-                let blogAuthors = blogData.authors.map((author) => {
+                let blogAuthors = blogData.authors?.map((author) => {
                     return author.author;
                 });
                 let foundAuthors = [];
                 allAuthors.forEach((author) => {
-                    if (blogAuthors.includes(author.name)) {
+                    if (blogAuthors?.includes(author.name)) {
                         foundAuthors.push(author);
                     }
                 });
@@ -139,7 +144,12 @@ module.exports = async () => {
                 title: blogData.leadImageCaption,
                 description: blogData.leadImageAlt,
                 file: {
-                    url: `/img/from-cms/${image}`
+                    url: (() => {
+                        if (image.includes("https:")) {
+                            return image;
+                        }
+                        return `/img/from-cms/${image}`;
+                    })()
                 }
             },
             components: blogData.components,
