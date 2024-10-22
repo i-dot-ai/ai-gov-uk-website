@@ -35,9 +35,11 @@ templateEngineOverride: njk
         <a class="link" href="/blogs">Blogs</a>
         <ul class="list-disc pl-4">
           {% for blog in blogs %}
-            <li class="mt-2">
-              <a class="link" href="/blogs/{{ blog.title | slugify  }}">{{ blog.title }}</a>
-            </li>
+            {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
+              <li class="mt-2">
+                <a class="link" href="/blogs/{{ blog.title | slugify  }}">{{ blog.title }}</a>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </li>
