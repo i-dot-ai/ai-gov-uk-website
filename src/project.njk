@@ -1,0 +1,48 @@
+---
+layout: base.njk
+templateEngineOverride: njk
+pagination:
+    data: projects-new
+    size: 1
+    alias: project
+permalink: "projects/{{ project.title | slugify }}/"
+# Note: If permalink changes - also update in base.njk
+---
+
+{% from "./_includes/banner.njk" import banner %}
+{% from "./_includes/text-image-block.njk" import textImageBlock %}
+{% from "./_includes/video.njk" import video %}
+
+{{ banner(project.title, project.synopsisHeader) }}
+
+<div class="container w-100 md:w-75 pt-[2rem]">
+
+    <div class="project-content">
+        {% for component in project.components %}
+            {% if component.type == "bodyText" %}
+                {{ component.content | markdownToHtml | safe }}
+            {% elif component.type == "video" %}
+                {{ video({
+                    classes: "iai-promo-video",
+                    source: component.source,
+                    audioDescription: component.audioDescription
+                }) }}
+            {% elif component.type == "doubleColumn" %}
+                {% if component.order == "Text (left) - Image (right)" %}
+                    {% set side = "left" %}
+                {% else %}
+                    {% set side = "right" %}
+                {% endif %}
+                {{ textImageBlock ({
+                    text: component.content | markdownToHtml,
+                    image: {
+                        src: component.image | replace("/images/uploads", "/img/from-cms"),
+                        alt: component.imageAlt
+                    },
+                    side: side
+                }) }}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+</div>

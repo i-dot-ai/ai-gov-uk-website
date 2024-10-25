@@ -1,7 +1,54 @@
-module.exports = [
-  {title: "Consult", url: "/projects/consult", img: "/img/consultation4.png", synopsis: "An AI-powered tool to automate the processing of public consultations"},
-  {title: "Redbox", url: "/projects/redbox", img: "/img/redbox4.png", synopsis: "Redbox is a service that harnesses AI to help you summarise, and ask questions of, documents up to OFFICIAL-SENSITIVE"},
-  {title: "Caddy", url: "/projects/caddy", img: "/img/caddy1.png", synopsis: "Our AI powered copilot for customer service agents across government and beyond"},
-  {title: "rAPId", url: "/projects/rapid", img: "/img/rapid2.webp", synopsis: "An end-to-end solution to sharing data across government"},
-  {title: "i.AI and NHS England Collaboration Charter", url: "/projects/nhs-collaboration", img: "/img/nhs2.png", synopsis: "i.AI and NHS England sign Collaboration Charter to support the use of AI in the NHS"}
-].reverse();
+const matter = require("gray-matter");
+const getData = require("./_shared.js").getData;
+const downloadImage = require("./_shared.js").downloadImage;
+
+const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
+
+  
+module.exports = async () => {
+
+  let projects = [
+    {title: "Consult", url: "/projects/consult", img: "/img/consultation4.png", synopsis: "An AI-powered tool to automate the processing of public consultations"},
+    {title: "Redbox", url: "/projects/redbox", img: "/img/redbox4.png", synopsis: "Redbox is a service that harnesses AI to help you summarise, and ask questions of, documents up to OFFICIAL-SENSITIVE"},
+    {title: "Caddy", url: "/projects/caddy", img: "/img/caddy1.png", synopsis: "Our AI powered copilot for customer service agents across government and beyond"},
+    {title: "rAPId", url: "/projects/rapid", img: "/img/rapid2.webp", synopsis: "An end-to-end solution to sharing data across government"},
+    {title: "i.AI and NHS England Collaboration Charter", url: "/projects/nhs-collaboration", img: "/img/nhs2.png", synopsis: "i.AI and NHS England sign Collaboration Charter to support the use of AI in the NHS"}
+  ];
+
+  const newProjects = await getData(`https://api.github.com/repos/${CMS_REPO}/contents/content/projects`);
+  for (const project of newProjects.map(item => item.url)) {
+    
+    const projectRawData = await getData(project);
+    const projectContent = Buffer.from(projectRawData.content, "base64").toString("utf8");
+    const projectData = matter(projectContent).data;
+    
+    const picture = projectData.leadImage.replace("/images/uploads/", "");
+    await downloadImage(picture);
+    
+    // get all images within the content
+    for (let component of projectData.components || []) {
+      if (component.type === "bodyText") {
+          const imagePaths = component.content.match(/\/images\/uploads\/[a-z0-9\.]*/g);
+          if (imagePaths) {
+              for (const imagePath of imagePaths) {
+                  await downloadImage(imagePath.replace("/images/uploads/", ""));
+              }
+          }
+          component.content = component.content.replace(/images\/uploads/g, "img");
+      } else if (component.type === "doubleColumn") {
+        await downloadImage(component.image.replace("/images/uploads/", ""));
+      }
+    }
+
+    projects.push({
+      title: projectData.title,
+      img: `/img/from-cms/${picture}`,
+      synopsis: projectData.summaryHubPage,
+      synopsisHeader: projectData.summaryProjectPage,
+      components: projectData.components
+    });
+  }
+
+  return projects.reverse();
+
+};

@@ -1,10 +1,8 @@
 require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
 const contentful = require('contentful');
-const axios = require('axios');
 const matter = require('gray-matter');
 const getData = require("./_shared.js").getData;
+const downloadImage = require("./_shared.js").downloadImage;
 
 const USE_PREVIEW = false;
 const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
@@ -17,38 +15,6 @@ if (USE_PREVIEW) {
     contentfulOptions.host = 'preview.contentful.com';
 }
 const client = contentful.createClient(contentfulOptions);
-
-
-/**
- * Fetches an image from the repo and copies to the public/img folder
- * @param {string} fileName
- */
-async function downloadImage(fileName) {
-    const localFilePath = path.resolve(__dirname, `../../public/img/from-cms/${fileName}`);
-    if (fs.existsSync(localFilePath)) {
-        return;
-    }
-
-    try {
-        const writer = fs.createWriteStream(localFilePath);
-        const response = await axios({
-            url: `https://raw.githubusercontent.com/${CMS_REPO}/main/static/images/uploads/${fileName}`,
-            method: "GET", 
-            responseType: "stream",
-            headers: {
-                'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-                "X-GitHub-Api-Version": "2022-11-28",
-            }
-        });
-        response.data.pipe(writer);
-        return new Promise((resolve, reject) => {
-            writer.on('finish', resolve);
-            writer.on('error', reject);
-        });
-    } catch (error) {
-        console.error(`Error downloading image: ${fileName}`, error.message);
-    }
-}
 
 
 module.exports = async () => {
