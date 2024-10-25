@@ -7,6 +7,8 @@
         <title>
             {% if blog.title %}
                 {{ blog.title }} - Blogs - 
+            {% elif project.title %}
+                {{ project.title }} - Projects -
             {% elif title %}
                 {{ title }} - 
             {% endif %}
@@ -18,8 +20,14 @@
         {% if blog.title and blog.coverImage.file.url %}
             {% set ogTitle = blog.title %}
             {% set ogImage = "https:" + blog.coverImage.file.url %}
-            {% set ogUrl = "blogs/" + blog.title | slugify %}
+            {% set ogUrl = "https://ai.gov.uk/blogs/" + blog.title | slugify %}
             {% set ogDescription = blog.summaryShort %}
+        {% endif %}
+        {% if project.title and not ogUrl %}
+            {% set ogTitle = project.title %}
+            {% set ogImage = "https://ai.gov.uk" + project.img %}
+            {% set ogUrl = "https://ai.gov.uk/projects/" + project.title | slugify %}
+            {% set ogDescription = project.synopsis %}
         {% endif %}
         {% if ogTitle and ogImage and ogUrl and ogDescription %}
             <meta property="og:title" content="{{ ogTitle }}">

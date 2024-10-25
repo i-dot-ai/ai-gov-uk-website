@@ -8,7 +8,7 @@
         <source src="{{ data.source }}" type="video/mp4" />
         Download the <a href="{{ data.source }}">video</a>
     </video>
-    {% if data.audioDescription %}
+    {% if data.audioDescription and data.audioDescription != data.source %}
         <p class="iai-video__audio-description" id="ad-{{ uuid }}">
             <img src="/icons/audio-description.svg" loading="lazy" alt=""/>
             <a class="link" href="{{ data.audioDescription }}">Audio described video</a>
