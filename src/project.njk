@@ -46,3 +46,58 @@ permalink: "projects/{{ project.title | slugify }}/"
     </div>
 
 </div>
+
+{# CMS Preview #}
+{% if project.title === "Preview" %}
+    <script>
+
+        let contentContainer = document.querySelector(".project-content");
+        let componentTemplates = {};
+
+        // Defaults
+        window.addEventListener("DOMContentLoaded", () => {
+            document.querySelector("header").remove();
+            document.querySelector("main").style.paddingTop = "0";
+            document.querySelector("main").style.paddingBottom = "2rem";
+            document.querySelector("footer").remove();
+            componentTemplates.video = contentContainer.removeChild(contentContainer.querySelector("video")).outerHTML;
+            componentTemplates.doubleColumn1 = contentContainer.removeChild(contentContainer.querySelector(".text-image-block")).outerHTML;
+            componentTemplates.doubleColumn2 = contentContainer.removeChild(contentContainer.querySelector(".text-image-block")).outerHTML;
+        });
+
+        console.log(componentTemplates);
+
+        // Data from CMS
+        window.addEventListener('message', function(evt) {
+
+            console.log(evt.data);
+            
+            document.querySelector("h1").textContent = evt.data.title || "[Title goes here]";
+
+            document.querySelector("h1 + p").textContent = evt.data.summaryProjectPage || "[Summary to go here]";
+
+            //document.querySelector(".iai-blog-title__cover-image").src = evt.data.leadImage || "http://images.ctfassets.net/6kma07ky7db0/1XcpSnasKxYkoGcikH35Sx/23eea9f19c2cc885bc5c5040fcd7df4d/Frame_3__1_.png?w=1536";
+
+            let mainContent = "";
+            evt.data.components?.forEach((component) => {
+                if (component.type === "bodyText") {
+                    mainContent += component.content || "";
+                } else if (component.type === "video") {
+                    mainContent += componentTemplates.video.replace(`src=""`, `src="${component.source}"`);
+                } else if (component.type === "doubleColumn" && component.order === "Text (left) - Image (right)") {
+                    console.log(component.content);
+                    mainContent += componentTemplates.doubleColumn1
+                        .replace("<p>[Content to go here]</p>", component.content)
+                        .replace(`src=""`, `src="${component.image}"`);
+                } else if (component.type === "doubleColumn" && component.order === "Image (left) - Text (right)") {
+                    mainContent += componentTemplates.doubleColumn2
+                        .replace("<p>[Content to go here]</p>", component.content)
+                        .replace(`src=""`, `src="${component.image}"`);
+                }
+            });
+            contentContainer.innerHTML = mainContent;
+
+        });
+
+    </script>
+{% endif %}
