@@ -35,6 +35,10 @@ h6,
   text-decoration: underline;
 }
 
+.iai-link:hover {
+  color: var(--iai-pink);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
