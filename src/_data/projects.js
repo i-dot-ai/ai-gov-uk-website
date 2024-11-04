@@ -8,9 +8,9 @@ const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
 module.exports = async () => {
 
   let projects = [
-    {title: "Consult", url: "/projects/consult", img: "/img/consultation4.png", synopsis: "An AI-powered tool to automate the processing of public consultations"},
-    {title: "Redbox", url: "/projects/redbox", img: "/img/redbox4.png", synopsis: "Redbox is a service that harnesses AI to help you summarise, and ask questions of, documents up to OFFICIAL-SENSITIVE"},
-    {title: "Caddy", url: "/projects/caddy", img: "/img/caddy1.png", synopsis: "Our AI powered copilot for customer service agents across government and beyond"},
+    {title: "Consult", phase: "Alpha", url: "/projects/consult", img: "/img/consultation4.png", synopsis: "An AI-powered tool to automate the processing of public consultations"},
+    {title: "Redbox", phase: "Beta", url: "/projects/redbox", img: "/img/redbox4.png", synopsis: "Redbox is a service that harnesses AI to help you summarise, and ask questions of, documents up to OFFICIAL-SENSITIVE"},
+    {title: "Caddy", phase: "Scaling", url: "/projects/caddy", img: "/img/caddy1.png", synopsis: "Our AI powered copilot for customer service agents across government and beyond"},
     {title: "rAPId", url: "/projects/rapid", img: "/img/rapid2.webp", synopsis: "An end-to-end solution to sharing data across government"},
     {title: "i.AI and NHS England Collaboration Charter", url: "/projects/nhs-collaboration", img: "/img/nhs2.png", synopsis: "i.AI and NHS England sign Collaboration Charter to support the use of AI in the NHS"}
   ];
@@ -42,6 +42,7 @@ module.exports = async () => {
 
     projects.push({
       title: projectData.title,
+      phase: projectData.phase,
       img: `/img/from-cms/${picture}`,
       synopsis: projectData.summaryHubPage,
       synopsisHeader: projectData.summaryProjectPage,
@@ -49,6 +50,9 @@ module.exports = async () => {
     });
   }
 
-  return projects.reverse();
+  return projects.sort((projectA, projectB) => {
+    const phaseMap = ["N/A", "Paused", "Incubation", "Alpha", "Beta", "Scaling"];
+    return phaseMap.indexOf(projectB.phase || "N/A") - phaseMap.indexOf(projectA.phase || "N/A");
+  });
 
 };
