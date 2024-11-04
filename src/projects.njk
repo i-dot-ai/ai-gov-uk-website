@@ -15,7 +15,12 @@ templateEngineOverride: njk
         <img src="{{project.img}}" class="card-img-top aspect-video object-cover" alt="">
         <div class="border-top card-body flex flex-col justify-between">
           <div>
-            <h2 class="card-title font-semibold text-xl">{{project.title}}</h2>
+            <div class="flex items-center justify-between">
+              <h2 class="card-title font-semibold text-xl">{{project.title}}</h2>
+              {% if project.phase and project.phase != "N/A" %}
+                <span class="projects__card-phase">{{ project.phase }}</span>
+              {% endif %}
+            </div>
             <p class="card-text text-[16px]">{{project.synopsis}}</p>
           </div>
           {#<a href="{% if project.url %}{{ project.url }}{% else %}{{ project.title | slugify }}{% endif %}" class="btn btn-primary bg-[#c50978] border-[#c50978] mt-3 text-s">More details</a>#}
