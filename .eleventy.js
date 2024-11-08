@@ -123,7 +123,7 @@ module.exports = function (eleventyConfig) {
         html = html.replace(image, `<figure>${image}<figcaption>${caption}</figcaption></figure>`);
       }
       // set correct image path
-      if (!image.includes('"https:')) {
+      if (!image.includes('"https:')) { // check it's not an external image (careful to allow for links in the caption)
         html = html.replace(image, image.replace("/img", "/img/from-cms"));
       }
     });
