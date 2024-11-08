@@ -36,7 +36,8 @@ When building new pages, please add to `tests/accessibility.spec.ts`.
 
 ## Content Management System (CMS)
 
-Contentful is used as the CMS. Content is gradually being moved over to this. You will need to add the required values to your `.env`.
+DecapCMS is our main CMS. Contentful still has some older content which isgradually being moved over. You will need to add the required values to your `.env` for both of these.
+
 
 ### Blogs preview
 
