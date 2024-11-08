@@ -31,8 +31,6 @@ To run the tests, use the below commands from the root of this project.
 1. `cd tests`
 2. `npx playwright test`
 
-When building new pages, please add to `tests/accessibility.spec.ts`.
-
 
 ## Content Management System (CMS)
 
