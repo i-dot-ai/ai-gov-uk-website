@@ -51,7 +51,7 @@ module.exports = async () => {
   }
 
   return projects.sort((projectA, projectB) => {
-    const phaseMap = ["N/A", "Paused", "Incubation", "Alpha", "Beta", "Scaling", "Production"];
+    const phaseMap = ["N/A", "Paused", "Scoping", "Incubation", "Alpha", "Beta", "Scaling"];
     return phaseMap.indexOf(projectB.phase || "N/A") - phaseMap.indexOf(projectA.phase || "N/A");
   });
 
