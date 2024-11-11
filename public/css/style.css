@@ -2447,6 +2447,14 @@ img.iai-project-types__icon {
 .project-content video {
     margin-top: 1.75rem;
 }
+.project-content ol {
+  list-style-type: decimal;
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+.project-content li {
+  padding: 0.375rem 0;
+}
 
 
 /*--------------------------------------------------------------
