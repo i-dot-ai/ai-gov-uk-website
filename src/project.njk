@@ -36,7 +36,7 @@ permalink: "projects/{{ project.title | slugify }}/"
                 {{ textImageBlock ({
                     text: component.content | markdownToHtml,
                     image: {
-                        src: component.image | replace("/images/uploads", "/img/from-cms"),
+                        src: component.image | replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/"),
                         alt: component.imageAlt
                     },
                     side: side
