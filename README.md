@@ -19,6 +19,43 @@ To deploy the site, only the `_site` folder is needed.
 4. You can also use `npm run build` to build the `_site` folder
 
 
+## Environment Variables
+
+### CMS Credentials
+For local development without CMS access, you can use test credentials in your `.env` file:
+
+```
+CONTENTFUL_SPACE=test
+CONTENTFUL_ACCESS_TOKEN=test
+PREVIEW_ACCESS_TOKEN=test
+CMS_REPO_TOKEN=test
+```
+
+When using these test credentials:
+- The site will run with static placeholder data
+- Blogs will show as an empty array
+- Projects will display default examples
+- FAQs and Jobs will show as empty arrays
+- All CMS-related functionality will be disabled
+
+This is useful for:
+- Local development without CMS access
+- Testing site functionality
+- Development of new features that don't require CMS data
+- Quick setup for new developers
+
+For full functionality with real data, replace these test values with actual CMS credentials.
+
+### Redirect Configuration
+The `/hack` redirect URL can be configured using the `HACK_REDIRECT_URL` environment variable:
+
+```
+HACK_REDIRECT_URL=https://your-redirect-url.com
+```
+
+If not specified, it defaults to 'https://andreasthinks.github.io/evidence-house/'.
+
+
 ## Cached stylesheets and JavaScript
 
 To prevent browser caching issues (which can otherwise occur even after invalidating the cache), the Eleventy build renames CSS and JS files that change regularly. Additional files can be added to this within `.eleventy.js`.
