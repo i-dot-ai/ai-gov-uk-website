@@ -6,6 +6,12 @@ const getData = require("./_shared.js").getData;
 const USE_PREVIEW = false;
 const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
 
+// Return empty array if using test credentials
+if (process.env.CONTENTFUL_ACCESS_TOKEN === 'test') {
+  module.exports = async () => [];
+  return;
+}
+
 let contentfulOptions = {
   space: process.env.CONTENTFUL_SPACE,
   accessToken: USE_PREVIEW

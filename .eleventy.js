@@ -9,6 +9,8 @@ const {
 const showdown = require("showdown");
 const mdToHtmlConverter = new showdown.Converter();
 
+require('dotenv').config();
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
@@ -203,6 +205,27 @@ module.exports = function (eleventyConfig) {
       return content;
     });
   })();
+
+  // Add redirect configuration
+  eleventyConfig.addPlugin(function(eleventyConfig) {
+    eleventyConfig.setBrowserSyncConfig({
+      callbacks: {
+        ready: function(err, bs) {
+          bs.addMiddleware("*", (req, res) => {
+            if (req.url === '/hack/') {
+              res.writeHead(302, {
+                location: process.env.HACK_REDIRECT_URL || 'https://andreasthinks.github.io/evidence-house/'
+              });
+              res.end();
+            }
+          });
+        }
+      }
+    });
+  });
+
+  // Make redirect URL available to templates
+  eleventyConfig.addGlobalData("hackRedirectUrl", process.env.HACK_REDIRECT_URL || 'https://andreasthinks.github.io/evidence-house/');
 
   return {
     pathPrefix: "/",
