@@ -5,9 +5,17 @@ permalink: /hack/index.html
 <html>
 <head>
     <meta http-equiv="refresh" content="0;url={{ hackRedirectUrl }}">
-    <title>Redirecting...</title>
+    <meta http-equiv="Link" content="<{{ hackRedirectUrl }}>; rel=permanent">
+    <title>Permanent Redirect</title>
+    <script>
+        // Add canonical link to indicate permanent redirect
+        var link = document.createElement('link');
+        link.rel = 'canonical';
+        link.href = '{{ hackRedirectUrl }}';
+        document.head.appendChild(link);
+    </script>
 </head>
 <body>
-    <p>Redirecting to <a href="{{ hackRedirectUrl }}">{{ hackRedirectUrl }}</a>...</p>
+    <p>This page has been permanently moved to <a href="{{ hackRedirectUrl }}">{{ hackRedirectUrl }}</a></p>
 </body>
 </html>

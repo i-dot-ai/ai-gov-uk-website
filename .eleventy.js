@@ -213,7 +213,7 @@ module.exports = function (eleventyConfig) {
         ready: function(err, bs) {
           bs.addMiddleware("*", (req, res) => {
             if (req.url === '/hack/') {
-              res.writeHead(302, {
+              res.writeHead(301, {  // Changed from 302 to 301 for permanent redirect
                 location: process.env.HACK_REDIRECT_URL || 'https://andreasthinks.github.io/evidence-house/'
               });
               res.end();
