@@ -28,7 +28,6 @@ For local development without CMS access, you can use test credentials in your `
 CONTENTFUL_SPACE=test
 CONTENTFUL_ACCESS_TOKEN=test
 PREVIEW_ACCESS_TOKEN=test
-CMS_REPO_TOKEN=test
 ```
 
 When using these test credentials:
@@ -45,15 +44,6 @@ This is useful for:
 - Quick setup for new developers
 
 For full functionality with real data, replace these test values with actual CMS credentials.
-
-### Redirect Configuration
-The `/hack` redirect URL can be configured using the `HACK_REDIRECT_URL` environment variable:
-
-```
-HACK_REDIRECT_URL=https://your-redirect-url.com
-```
-
-If not specified, it defaults to 'https://andreasthinks.github.io/evidence-house/'.
 
 
 ## Cached stylesheets and JavaScript
