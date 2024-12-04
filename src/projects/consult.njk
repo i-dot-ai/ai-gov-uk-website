@@ -10,10 +10,17 @@ ogDescription: "An AI-powered tool to automate the processing of public consulta
 
 
 {% from "../_includes/banner.njk" import banner %}
+{% from "../_includes/video.njk" import video %}
+
 {{ banner("Consult", ogDescription) }}
 
-
 <div class="container w-100 md:w-75 pt-[3rem]">
+
+    {{ video({
+        source: "/videos/consult-v3.mp4",
+        classes: "iai-promo-video",
+        audioDescription: "/videos/consult-v3-ad.mp4"
+    }) }}
 
     <blockquote class="border-l-4 pl-4 lg:border-l-8 lg:pl-8 lg:py-4">
         <p class="text-xl">“Consultation is one of the most important activities government can undertake. By consulting effectively we improve both the making of policy and its implementation.”</p>
