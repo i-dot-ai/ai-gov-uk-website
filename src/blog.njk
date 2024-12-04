@@ -44,6 +44,124 @@ permalink: "blogs/{{ blog.title | slugify }}/"
             {% endif %}
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+        <style>
+            .iai-blog-carousel {
+                background: var(--Linear, linear-gradient(157deg, #F6EEF0 -3.69%, #F8F8F8 139.85%));
+                margin: 2rem 0;
+                padding-bottom: 1.5rem;
+            }
+            .iai-blog-carousel h3 {
+                font-size: 1.5rem !important;
+                padding: 0.5rem;
+                padding-top: 1.5rem;
+                text-align: center;
+            }
+            .splide__slide {
+                margin-bottom: 1.25rem;
+            }
+            .splide__slide-inner {
+                background-color: white;
+                border-radius: 0.5rem;
+                box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+                color: black;
+                font-size: 0.875rem;
+                height: 100%;
+                opacity: 0.6;
+                padding: 1.5rem;
+                transform: scale(0.9);
+                transition: all 0.2s;
+                width: 100%;
+            }
+            .splide__slide.is-active .splide__slide-inner {
+                opacity: 1;
+                transform: scale(1);
+            }
+            .iai-blog-carousel__author {
+                font-weight: bold;
+            }
+            .iai-blog-carousel__author span:nth-child(2) {
+                font-weight: 400;
+            }
+            .iai-blog-carousel__text {
+                display: block;
+                font-style: italic;
+                font-weight: 400;
+                line-height: 1.5;
+                margin-top: 1rem;
+            }
+            .splide__arrow {
+                background-color: var(--iai-pink);
+                opacity: 0.9;
+            }
+            .splide__arrow svg {
+                fill: white;
+            }
+            .splide__pagination__page, .splide__pagination__page.is-active {
+                background-color: var(--iai-pink);
+                opacity: 1;
+            }
+        </style>
+
+        {% set question1 = [
+            {
+                author: "Ben Rowell",
+                text: "I was drawn to i.AI because I wanted to make a real difference in people's lives, and I found a team of brilliant minds who share that passion. It's exciting that I get to work with cutting-edge technology while innovating services that have the potential to positively impact people up and down the country; that combination is pretty special."
+            },
+            {
+                author: "Jude Webb",
+                text: "To experiment and test with how we build digital products. AI products are not as predictable as more traditional products, so what do we do the same and what do we need to learn to do differently?"
+            },
+            {
+                author: "Liam Wilkinson",
+                text: "To have impact outside of a quarterly earnings report!"
+            },
+            {
+                author: "James Lowe",
+                text: "I wanted to build AI products that made a positive impact, and believed the best way to do this was inside government working in an empowered and highly skilled team."
+            },
+            {
+                author: "Charlotte Ryall",
+                text: "To be part of an exciting, innovative team that I could bring a user centred design perspective to.  There are incredible minds and expertise in the technical AI space. I hope to bring how we make products useful, useable and delightful for the people who are using the tools we create."
+            },
+            {
+                author: "Nina Menezes",
+                text: "It was an exciting opportunity to work in a technical team, working on projects for the public good."
+            },
+            {
+                author: "Victoria Bew",
+                text: "To take what I know about social innovation and government strategy, and apply it to one of the biggest opportunity areas of modern life - Artificial Intelligence."
+            }
+        ] %}
+
+        <section class="iai-blog-carousel splide" aria-labelledby="carousel-heading1">
+            <h3 id="carousel-heading1">Why did you join i.AI?</h3>
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for item in question1 %}
+                        <li class="splide__slide">
+                            <div class="splide__slide-inner">
+                                <h4 class="iai-blog-carousel__author">
+                                    <span>{{ item.author }}</span>
+                                    <span> - Job title</span>
+                                </h4>
+                                <span class="iai-blog-carousel__text">{{ item.text }}</span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        <script>
+            new Splide( '.splide', {
+                focus: 'center',
+                gap: '0.125rem',
+                padding: '6rem',
+                type: 'loop',
+            } ).mount();
+        </script>
+
         <div id="content">
             {% if blog.source === "Contentful" %}
                 {{ blog.content | richTextToHTML | safe }}
