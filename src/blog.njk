@@ -43,144 +43,347 @@ permalink: "blogs/{{ blog.title | slugify }}/"
                 <img class="iai-blog-title__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt="{{ blog.coverImage.description }}"/>
             {% endif %}
         </div>
+    
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
         <style>
-            .iai-blog-carousel {
+            .iai-infographic {
                 background: var(--Linear, linear-gradient(157deg, #F6EEF0 -3.69%, #F8F8F8 139.85%));
-                margin: 2rem 0;
-                padding-bottom: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                font-size: 1rem;
+                gap: 1rem;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(3, auto);
+                line-height: 1.1;
+                max-width: 68rem;
+                padding: 1rem;
             }
-            .iai-blog-carousel h3 {
-                font-size: 1.5rem !important;
-                padding: 0.5rem;
-                padding-top: 1.5rem;
-                text-align: center;
-            }
-            .splide__slide {
-                margin-bottom: 1.25rem;
-            }
-            .splide__slide-inner {
+            .iai-infographic__card {
                 background-color: white;
-                border-radius: 0.5rem;
-                box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.15);
-                color: black;
-                font-size: 0.875rem;
-                height: 100%;
-                opacity: 0.6;
-                padding: 1.5rem;
-                transform: scale(0.9);
-                transition: all 0.2s;
+                border-radius: 0.25rem;
+                box-shadow: -4px -4px 10px 0px rgba(0, 0, 0, 0.15);
+                overflow: hidden;
+                padding: 1rem;
+            }
+            .iai-infographic__card--delivery-partners {
+                align-items: center;
+                display: grid;
+                font-size: 1.25rem;
+                gap: 1rem;
+                grid-column-start: 2;
+                grid-column-end: 5;
+                grid-row: 1;
+                grid-template-columns: 1fr;
+            }
+            .iai-infographic__card--website {
+                font-size: 1.25rem;
+                grid-row-start: 2;
+                grid-row-end: 4;
+                line-height: 1.3;
+            }
+            .iai-infographic img {
+                margin-top: 0;
+            }
+            .iai-infographic__card--delivery-partners img {
+                margin-left: 0.5rem;
                 width: 100%;
             }
-            .splide__slide.is-active .splide__slide-inner {
-                opacity: 1;
-                transform: scale(1);
+            .iai-infographic__inner-box {
+                background-color: white;
+                border: 1px solid #aaa;
+                border-radius: 0.25rem;
+                margin-top: 0.5rem;
+                padding: 0.25rem 0.5rem;
+                position: relative;
             }
-            .iai-blog-carousel__author {
+            .iai-infographic__card--products {
+                grid-row-start: 2;
+                grid-row-end: 4;
+            }
+            .iai-infographic__card--tech-partners {
+                font-size: 1.25rem;
+                grid-column-start: 3;
+                grid-column-end: 5;
+            }
+            .iai-infographic__card--tech-partners img {
+                display: block;
+                margin-bottom: -1rem;
+                position: relative; top: -0.75rem;
+            }
+            .iai-infographic__bold {
                 font-weight: bold;
             }
-            .iai-blog-carousel__author span:nth-child(2) {
-                font-weight: 400;
+            .iai-infographic__flex--mobile {
+                align-items: center;
+                display: flex;
+                gap: 0.5rem;
             }
-            .iai-blog-carousel__text {
-                display: block;
-                font-style: italic;
-                font-weight: 400;
-                line-height: 1.5;
-                margin-top: 1rem;
+            .iai-infographic__pink {
+                color: var(--iai-pink);
+                font-weight: bold;
             }
-            .splide__arrow {
-                background-color: var(--iai-pink);
-                opacity: 0.9;
+            .iai-infographic__teal {
+                color: var(--iai-teal);
+                font-weight: bold;
             }
-            .splide__arrow svg {
-                fill: white;
-            }
-            .splide__pagination__page, .splide__pagination__page.is-active {
-                background-color: var(--iai-pink);
-                opacity: 1;
+            @media (min-width: 1024px) {
+                .iai-infographic {
+                    display: grid;
+                }
+                .iai-infographic__card--delivery-partners {
+                    gap: 0.125rem;
+                    grid-template-columns: 1fr 3fr;
+                }
+                .iai-infographic__card--tech-partners img {
+                    margin-bottom: -1.75rem;
+                    position: relative; top: -1.5rem;
+                }
+                .iai-infographic__flex {
+                    align-items: center;
+                    display: flex;
+                    gap: 0.5rem;
+                }
             }
         </style>
-
-        {% set question1 = [
-            {
-                author: "Ben Rowell",
-                text: "I was drawn to i.AI because I wanted to make a real difference in people's lives, and I found a team of brilliant minds who share that passion. It's exciting that I get to work with cutting-edge technology while innovating services that have the potential to positively impact people up and down the country; that combination is pretty special."
-            },
-            {
-                author: "Jude Webb",
-                text: "To experiment and test with how we build digital products. AI products are not as predictable as more traditional products, so what do we do the same and what do we need to learn to do differently?"
-            },
-            {
-                author: "Liam Wilkinson",
-                text: "To have impact outside of a quarterly earnings report!"
-            },
-            {
-                author: "James Lowe",
-                text: "I wanted to build AI products that made a positive impact, and believed the best way to do this was inside government working in an empowered and highly skilled team."
-            },
-            {
-                author: "Charlotte Ryall",
-                text: "To be part of an exciting, innovative team that I could bring a user centred design perspective to.  There are incredible minds and expertise in the technical AI space. I hope to bring how we make products useful, useable and delightful for the people who are using the tools we create."
-            },
-            {
-                author: "Nina Menezes",
-                text: "It was an exciting opportunity to work in a technical team, working on projects for the public good."
-            },
-            {
-                author: "Victoria Bew",
-                text: "To take what I know about social innovation and government strategy, and apply it to one of the biggest opportunity areas of modern life - Artificial Intelligence."
-            }
-        ] %}
-
-        <section class="iai-blog-carousel splide" aria-labelledby="carousel-heading1">
-            <h3 id="carousel-heading1">Why did you join i.AI?</h3>
-            <div class="splide__track">
-                <ul class="splide__list">
-                    {% for item in question1 %}
-                        <li class="splide__slide">
-                            <div class="splide__slide-inner">
-                                <h4 class="iai-blog-carousel__author">
-                                    <span>{{ item.author }}</span>
-                                    <span> - Job title</span>
-                                </h4>
-                                <span class="iai-blog-carousel__text">{{ item.text }}</span>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
+        <section class="iai-infographic">
+            <div style="max-width: 16rem;">
+                <span style="font-size: 1.25rem;">In the first</span>
+                <span class="iai-infographic__flex--mobile">
+                    <span class="iai-infographic__bold" style="font-size: 4.25rem;">12</span>
+                    <span>
+                        <span class="iai-infographic__bold" style="font-size: 2rem;"> months</span>
+                        <span style="display: block; font-size: 1.25rem;">as a team</span>
+                    </span>
+                </span>
+                <span class="iai-infographic__flex--mobile" style="justify-content: flex-end;">
+                    <img width="48" src="/img/i-dot-ai-Official-Logo.svg" alt=""/>
+                    <span style="font-size: 0.75rem; text-align: center; width: 5rem;">Incubator for Artificial Intelligence</span>
+                    <span style="font-size: 1rem;">have:</span>
+                </span>
+            </div>
+            <div class="iai-infographic__card iai-infographic__card--delivery-partners">
+                <div>
+                    <span>Worked with</span>
+                    <span class="iai-infographic__pink" style="display: block; margin: 0.25rem 0;">delivery partners</span>
+                    <span>across</span>
+                    <span class="iai-infographic__bold">public sector agencies &amp; departments</span>
+                </div>
+                <img src="/img/delivery-partners.svg" alt="10 Downing Street. Ministry of Justice. Cabinet Office. Department of Health and Social Care. Department for Science, Innovation, and Technology. Home Office. Department for Education. National Cyber Security Centre. Department for Energy Security and Net Zero. Infrastructure and Projects Authority. Oak National Academy. Citizens Advice. National Energy System Operator. OFGEM. NHS England."/>
+            </div>
+            <div class="iai-infographic__card iai-infographic__card--website">
+                <div style="max-width: 20rem; position: relative; z-index: 10;">
+                    <span class="iai-infographic__bold">Over</span>
+                    <span class="iai-infographic__pink" style="font-size: 2.5rem; line-height: 0.8;">115k</span>
+                    <span class="iai-infographic__bold">website views</span>
+                    <span>from over</span>
+                    <span class="iai-infographic__bold">150</span>
+                    <span>countries globally</span>
+                </div>
+                <img style="transform: scale(1.4);" src="/img/infographic-map.png" alt=""/>
+                <div class="iai-infographic__inner-box">
+                    <span style="display: block; font-size: 0.75rem;">Total Visits</span>
+                    <span class="iai-infographic__teal" style="font-size: 1.25rem;">54.8k</span>
+                </div>
+                <div class="iai-infographic__inner-box">
+                    <span style="display: block; font-size: 0.75rem;">Total page views</span>
+                    <span class="iai-infographic__pink" style="font-size: 1.25rem;">117k</span>
+                </div>
+            </div>
+            <div class="iai-infographic__card iai-infographic__card--products">
+                <div class="iai-infographic__flex">
+                    <span class="iai-infographic__pink" style="font-size: 2.5rem;">11</span>
+                    <span class="iai-infographic__bold">products in Alpha or Beta</span>
+                </div>
+                <span class="iai-infographic__teal">22 prototypes</span>
+                <span>from a pipeline of <span class="iai-infographic__bold">57</span> projects</span>
+                <p class="iai-infographic__flex--mobile" style="gap: 0.375rem; margin: 0.75rem 0 0.5rem 0;">
+                    <img width="48" src="/img/project-icon-redbox.svg" alt="Redbox"/>
+                    <span style="font-size: 0.625rem; line-height: 1.3; margin-top: 0;">1000+ users</span>
+                </p>
+                <p class="iai-infographic__flex--mobile" style="gap: 0.375rem; margin: 0.5rem 0;">
+                    <img width="48" src="/img/project-icon-lex.svg" alt="Lex"/>
+                    <span style="font-size: 0.625rem; line-height: 1.3; margin-top: 0;">Trialled in Ministerial private offices</span>
+                </p>
+                <p class="iai-infographic__flex--mobile" style="gap: 0.375rem; margin: 0.5rem 0;">
+                    <img width="48" src="/img/project-icon-consult.svg" alt="Consult"/>
+                    <span style="font-size: 0.625rem; line-height: 1.3; margin-top: 0;">400x cheaper and 1000x times faster than human analysts</span>
+                </p>
+                <p class="iai-infographic__flex--mobile" style="gap: 0.375rem; margin: 0.5rem 0;">
+                    <img width="48" src="/img/project-icon-minute.svg" alt="Minute"/>
+                    <span style="font-size: 0.625rem; line-height: 1.3; margin-top: 0;">Transcribing Ministerial meetings</span>
+                </p>
+                <p class="iai-infographic__flex--mobile" style="gap: 0.375rem; margin: 0.5rem 0;">
+                    <img width="48" src="/img/project-icon-caddy.svg" alt="Caddy"/>
+                    <span style="font-size: 0.625rem; line-height: 1.3; margin-top: 0;">9000+ interactions per month in 5 Citizens Advice offices</span>
+                </p>
+            </div>
+            <div class="iai-infographic__card">
+                <div class="iai-infographic__flex--mobile">
+                    <img width="80" src="/img/infographic-hires.svg" alt=""/>
+                    <div style="margin-left: 1rem;">
+                        <span class="iai-infographic__pink" style="font-size: 3.5rem;">51</span>
+                        <span class="iai-infographic__bold" style="font-size: 1.5rem;">hires</span>
+                        <span>so far...</span>
+                    </div>
+                </div>
+                <p class="iai-infographic__teal" style="border-top: 1px solid var(--iai-teal); padding: 1rem 0 0.5rem 0;">17 external companies</p>
+            </div>
+            <div class="iai-infographic__card iai-infographic__card--code">
+                <span class="iai-infographic__bold">Deployed new code</span>
+                <span class="iai-infographic__pink"><span style="display: inline-block; font-size: 2.5rem; margin-top: 0.25rem;">1836</span> times <span class="iai-infographic__teal" style="font-weight: 400;" aria-hidden="true">&lt;/&gt;</span></span>
+                <p class="iai-infographic__flex" style="border-top: 1px solid var(--iai-teal); padding-top: 1rem;">
+                    <span class="iai-infographic__teal" style="font-size: 2rem;">17</span>
+                    <span style="font-size: 0.875rem; line-height: 1.4;">Open source <br/>Github repositories</span>
+                </p>
+            </div>
+            <div class="iai-infographic__card iai-infographic__card--tech-partners">
+                <p class="iai-infographic__pink" style="margin: 0 0 0.25rem 0;">Working with partners</p>
+                <span style="font-size: 1.125rem;">across tech and research sectors</span>
+                <img src="/img/infographic-tech-partners.svg" alt="AWS. The Alan Turing Institute. Microsoft. Cohere. Open AI. Anthropic. Google. Elastic. Imperial. Nesta. Vector Institute."/>
             </div>
         </section>
-        <script>
-            new Splide( '.splide', {
-                focus: 'center',
-                gap: '0.125rem',
-                padding: '6rem',
-                type: 'loop',
-            } ).mount();
-        </script>
 
-        <div id="content">
-            {% if blog.source === "Contentful" %}
-                {{ blog.content | richTextToHTML | safe }}
-            {% else %}
-                {% for component in blog.components %}
-                    {% if component.type == "bodyText" %}
-                        {{ component.content | markdownToHtml | safe }}
-                    {% elif component.type == "video" %}
-                        {{ video({
-                            classes: "iai-promo-video",
-                            source: component.source,
-                            audioDescription: component.audioDescription
-                        }) }}
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
+
+        <div class="iai-blog-content__inner-container">
+
+            <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+            <style>
+                .iai-blog-carousel {
+                    background: var(--Linear, linear-gradient(157deg, #F6EEF0 -3.69%, #F8F8F8 139.85%));
+                    margin: 2rem 0;
+                    padding-bottom: 1.5rem;
+                }
+                .iai-blog-carousel h3 {
+                    font-size: 1.5rem !important;
+                    padding: 0.5rem;
+                    padding-top: 1.5rem;
+                    text-align: center;
+                }
+                .splide__slide {
+                    margin-bottom: 1.25rem;
+                }
+                .splide__slide-inner {
+                    background-color: white;
+                    border-radius: 0.5rem;
+                    box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+                    color: black;
+                    font-size: 0.875rem;
+                    height: 100%;
+                    opacity: 0.6;
+                    padding: 1.5rem;
+                    transform: scale(0.9);
+                    transition: all 0.2s;
+                    width: 100%;
+                }
+                .splide__slide.is-active .splide__slide-inner {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                .iai-blog-carousel__author {
+                    font-weight: bold;
+                }
+                .iai-blog-carousel__author span:nth-child(2) {
+                    font-weight: 400;
+                }
+                .iai-blog-carousel__text {
+                    display: block;
+                    font-style: italic;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    margin-top: 1rem;
+                }
+                .splide__arrow {
+                    background-color: var(--iai-pink);
+                    opacity: 0.9;
+                }
+                .splide__arrow svg {
+                    fill: white;
+                }
+                .splide__pagination__page, .splide__pagination__page.is-active {
+                    background-color: var(--iai-pink);
+                    opacity: 1;
+                }
+            </style>
+
+            {% set question1 = [
+                {
+                    author: "Ben Rowell",
+                    text: "I was drawn to i.AI because I wanted to make a real difference in people's lives, and I found a team of brilliant minds who share that passion. It's exciting that I get to work with cutting-edge technology while innovating services that have the potential to positively impact people up and down the country; that combination is pretty special."
+                },
+                {
+                    author: "Jude Webb",
+                    text: "To experiment and test with how we build digital products. AI products are not as predictable as more traditional products, so what do we do the same and what do we need to learn to do differently?"
+                },
+                {
+                    author: "Liam Wilkinson",
+                    text: "To have impact outside of a quarterly earnings report!"
+                },
+                {
+                    author: "James Lowe",
+                    text: "I wanted to build AI products that made a positive impact, and believed the best way to do this was inside government working in an empowered and highly skilled team."
+                },
+                {
+                    author: "Charlotte Ryall",
+                    text: "To be part of an exciting, innovative team that I could bring a user centred design perspective to.  There are incredible minds and expertise in the technical AI space. I hope to bring how we make products useful, useable and delightful for the people who are using the tools we create."
+                },
+                {
+                    author: "Nina Menezes",
+                    text: "It was an exciting opportunity to work in a technical team, working on projects for the public good."
+                },
+                {
+                    author: "Victoria Bew",
+                    text: "To take what I know about social innovation and government strategy, and apply it to one of the biggest opportunity areas of modern life - Artificial Intelligence."
+                }
+            ] %}
+
+            <section class="iai-blog-carousel splide" aria-labelledby="carousel-heading1">
+                <h3 id="carousel-heading1">Why did you join i.AI?</h3>
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for item in question1 %}
+                            <li class="splide__slide">
+                                <div class="splide__slide-inner">
+                                    <h4 class="iai-blog-carousel__author">
+                                        <span>{{ item.author }}</span>
+                                        <span> - Job title</span>
+                                    </h4>
+                                    <span class="iai-blog-carousel__text">{{ item.text }}</span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+            <script>
+                new Splide( '.splide', {
+                    focus: 'center',
+                    gap: '0.125rem',
+                    padding: '6rem',
+                    type: 'loop',
+                } ).mount();
+            </script>
+
+            <div id="content">
+                {% if blog.source === "Contentful" %}
+                    {{ blog.content | richTextToHTML | safe }}
+                {% else %}
+                    {% for component in blog.components %}
+                        {% if component.type == "bodyText" %}
+                            {{ component.content | markdownToHtml | safe }}
+                        {% elif component.type == "video" %}
+                            {{ video({
+                                classes: "iai-promo-video",
+                                source: component.source,
+                                audioDescription: component.audioDescription
+                            }) }}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
         </div>
-
-    </div>
 
     {# Custom blog components #}
     {% if blog.title == "The i.AI Taxonomy" %}
