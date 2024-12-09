@@ -152,6 +152,9 @@ module.exports = async () => {
       {
         type: "video",
       },
+      {
+        type: "infographic"
+      }
     ],
     source: "DecapCMS",
   });
