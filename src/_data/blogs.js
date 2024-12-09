@@ -153,7 +153,14 @@ module.exports = async () => {
         type: "video",
       },
       {
-        type: "infographic"
+        type: "infographic",
+      },
+      {
+        type: "carousel",
+        carouselTitle: "TITLE",
+        carouselItems: [
+          {carouselContent: "CONTENT"},
+        ]
       }
     ],
     source: "DecapCMS",
