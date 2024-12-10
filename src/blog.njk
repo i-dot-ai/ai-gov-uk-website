@@ -12,7 +12,6 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 {% from "./_includes/blog-author.njk" import blogAuthor %}
 {% from "./_includes/blog-header.njk" import blogHeader %}
 {% from "./_includes/video.njk" import video %}
-{% from "./_includes/blog-components/carousel.njk" import carousel %}
 {% from "./_includes/blog-components/infographic.njk" import infographic %}
 
 
@@ -74,7 +73,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
                 </div>
             {% elif component.type == "carousel" %}
                 <div class="iai-blog-content__inner-container">
-                    {{ carousel(component.carouselTitle, component.carouselItems) }}
+                    <blog-carousel title="{{ component.carouselTitle }}" items="{{ component.carouselItems }}"></blog-carousel>
                 </div>
             {% elif component.type == "infographic" %}
                 {{ infographic() }}
@@ -102,6 +101,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
     {% endif %}
 
 
+    {# This can be removed once added to the CMS #}
     {% set carouselItems = [
         {
             carouselContent: '<h4 class="iai-blog-carousel__author"><span>Ben Rowell</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "I was drawn to i.AI because I wanted to make a real difference in people's lives, and I found a team of brilliant minds who share that passion. It's exciting that I get to work with cutting-edge technology while innovating services that have the potential to positively impact people up and down the country; that combination is pretty special.</span>"
@@ -125,12 +125,8 @@ permalink: "blogs/{{ blog.title | slugify }}/"
             carouselContent: '<h4 class="iai-blog-carousel__author"><span>Victoria Bew</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "To take what I know about social innovation and government strategy, and apply it to one of the biggest opportunity areas of modern life - Artificial Intelligence.</span>"
         }
     ] %}
-    {#
-    <div class="iai-blog-content__inner-container">
-        {{ carousel("Why did you join i.AI?", carouselItems) }}
-    </div>
-    #}
-
+    {#<blog-carousel title="Testing" items="{{ '[\"<b>Testing</b><p>dsgsagsa</p>\", \"<b>Testing</b><p>dsgsagsa</p>\"]' }}"></blog-carousel>#}
+    <script type="module" src="/js/lit-components/blog-carousel.mjs"></script>
 
 
     {% if blog.contentPart2 %}
@@ -154,7 +150,6 @@ permalink: "blogs/{{ blog.title | slugify }}/"
                 document.querySelector("main").style.paddingBottom = "2rem";
                 document.querySelector("footer").remove();
                 componentTemplates.video = contentContainer.removeChild(contentContainer.querySelector("video")).outerHTML;
-                componentTemplates.carousel = document.querySelector(".iai-blog-carousel").parentElement.removeChild(document.querySelector(".iai-blog-carousel")).outerHTML;
                 componentTemplates.infographic = document.querySelector(".iai-infographic").parentElement.removeChild(document.querySelector(".iai-infographic")).outerHTML;
             });
 
@@ -183,10 +178,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
                     } else if (component.type === "infographic") {
                         mainContent += componentTemplates.infographic;
                     } else if (component.type === "carousel") {
-                        mainContent += componentTemplates.carousel
-                            .replace("TITLE", component.carouselTitle || "")
-                            .replace(/CONTENT/g, component.carouselItems?.length ? component.carouselItems[component.carouselItems.length - 1].carouselContent : "");
-                        // TO DO: This only shows the first carousel item for now
+                        mainContent += `<blog-carousel title="${component.carouselTitle}" items="${component.carouselItems}"></blog-carousel>`;
                     }
                 });
                 contentContainer.innerHTML = mainContent;

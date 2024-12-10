@@ -155,13 +155,6 @@ module.exports = async () => {
       {
         type: "infographic",
       },
-      {
-        type: "carousel",
-        carouselTitle: "TITLE",
-        carouselItems: [
-          {carouselContent: "CONTENT"},
-        ]
-      }
     ],
     source: "DecapCMS",
   });

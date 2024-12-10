@@ -51,6 +51,9 @@
         <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
+        {% if blog.title %}
+            <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+        {% endif %}
         <link href="/css/tailwind.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">        
 
@@ -62,6 +65,7 @@
 
         <script defer src="/js/main.js"></script>
         <script defer data-domain="ai.gov.uk" src="https://plausible.io/js/script.pageview-props.tagged-events.outbound-links.file-downloads.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js"></script>
     </head>
 
     <body class="relative min-h-screen overfow-x-hidden">

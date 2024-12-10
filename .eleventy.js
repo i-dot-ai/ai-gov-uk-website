@@ -1,10 +1,13 @@
 const htmlmin = require("html-minifier");
 const fs = require("fs").promises;
+const _fs = require("fs");
+const path = require("path");
 const { BLOCKS } = require("@contentful/rich-text-types");
 const {
   documentToHtmlString,
   NodeTypes,
 } = require("@contentful/rich-text-html-renderer");
+const litPlugin = require("@lit-labs/eleventy-plugin-lit");
 
 const showdown = require("showdown");
 const mdToHtmlConverter = new showdown.Converter();
@@ -12,6 +15,31 @@ const mdToHtmlConverter = new showdown.Converter();
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
+  });
+
+  eleventyConfig.addPlugin(litPlugin, {
+    mode: "worker",
+    componentModules: ["public/js/lit-components/blog-carousel.mjs"],
+  });
+
+  // Remove Shadow DOM from Lit components
+  eleventyConfig.on("afterBuild", () => {
+    const processHTMLFiles = (dir) => {
+      const entries = _fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          processHTMLFiles(fullPath);
+        } else if (entry.isFile() && entry.name.endsWith(".html")) {
+          const content = _fs.readFileSync(fullPath, "utf8");
+          const updatedContent = content
+            .replace(/<template shadowroot="open" shadowrootmode="open">/g, "")
+            .replace(/<\/template>/g, "");
+          _fs.writeFileSync(fullPath, updatedContent, "utf8");
+        }
+      }
+    }
+    processHTMLFiles("_site");
   });
 
   eleventyConfig.addTransform("htmlmin", function (content) {
@@ -98,7 +126,7 @@ module.exports = function (eleventyConfig) {
               `;
             }
           }
-        }
+        },
       },
     });
   });
@@ -109,7 +137,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("markdownToHtml", (value) => {
     let html = mdToHtmlConverter.makeHtml(value);
-    
+
     let images = html.match(/<img\s+src="[^"]*"\s*[^>]*>/g);
     images?.forEach((image) => {
       // show a caption if required
@@ -120,11 +148,21 @@ module.exports = function (eleventyConfig) {
         }
       })();
       if (caption) {
-        html = html.replace(image, `<figure>${image}<figcaption>${caption}</figcaption></figure>`);
+        html = html.replace(
+          image,
+          `<figure>${image}<figcaption>${caption}</figcaption></figure>`
+        );
       }
       // set correct image path
-      if (!image.includes('"https:')) { // check it's not an external image (careful to allow for links in the caption)
-        html = html.replace(image, image.replace("/images/uploads", "https://i-dot-ai-cms.netlify.app/assets"));
+      if (!image.includes('"https:')) {
+        // check it's not an external image (careful to allow for links in the caption)
+        html = html.replace(
+          image,
+          image.replace(
+            "/images/uploads",
+            "https://i-dot-ai-cms.netlify.app/assets"
+          )
+        );
       }
     });
     return html;
