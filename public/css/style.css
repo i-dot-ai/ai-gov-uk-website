@@ -1732,6 +1732,64 @@ img.iai-project-types__icon {
   }
 }
 
+
+.iai-blog-carousel {
+  background: var(--Linear, linear-gradient(157deg, #F6EEF0 -3.69%, #F8F8F8 139.85%));
+  margin: 2rem 0;
+  padding-bottom: 1.5rem;
+}
+.iai-blog-carousel h3 {
+  font-size: 1.5rem !important;
+  padding: 0.5rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+.splide__slide {
+  margin-bottom: 1.25rem;
+}
+.splide__slide-inner {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.15);
+  color: black;
+  font-size: 0.875rem;
+  height: 100%;
+  opacity: 0.6;
+  padding: 1.5rem;
+  transform: scale(0.9);
+  transition: all 0.2s;
+  width: 100%;
+}
+.splide__slide.is-active .splide__slide-inner {
+  opacity: 1;
+  transform: scale(1);
+}
+.iai-blog-carousel__author {
+  font-weight: bold;
+}
+.iai-blog-carousel__author span:nth-child(2) {
+  font-weight: 400;
+}
+.iai-blog-carousel__text {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+.splide__arrow {
+  background-color: var(--iai-pink);
+  opacity: 0.9;
+}
+.splide__arrow svg {
+  fill: white;
+}
+.splide__pagination__page, .splide__pagination__page.is-active {
+  background-color: var(--iai-pink);
+  opacity: 1;
+}
+
+
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
