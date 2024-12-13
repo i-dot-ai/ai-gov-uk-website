@@ -37,16 +37,21 @@
         gap: '0.125rem',
         padding: '6rem',
         type: 'loop',
+        breakpoints: {
+          640: {
+            padding: '2.5rem',
+          }
+        }
       } ).mount();
     }
 
     render() {
       return html`
-        <section class="iai-blog-carousel splide" aria-labelledby="carousel-heading1" id="carousel-${this.id}">
-          <h3 id="carousel-heading1">${this.title}</h3>
+        <section class="iai-blog-carousel splide" aria-labelledby="carousel-heading-${this.id}" id="carousel-${this.id}">
+          <h3 id="carousel-heading-${this.id}">${this.title}</h3>
           <div class="splide__track">
             <ul class="splide__list">
-              ${this.items.map(
+              ${this.items?.map(
                 (item) => html`
                   <li class="splide__slide">
                     <div class="splide__slide-inner">${unsafeHTML(item)}</div>

@@ -85,12 +85,20 @@ module.exports = async () => {
       return returnUrl;
     })();
 
-    // get all images within the content
     for (let component of blogData.components || []) {
+      // get all images within the content
       if (component.type === "bodyText") {
         const imagePaths = component.content.match(
           /\/images\/uploads\/[a-z0-9\.]*/g
         );
+      }
+      // convert carousel items
+      if (component.type === "carousel" && Array.isArray(component.carouselItems)) {
+        component.carouselItems.forEach((item) => {
+          item.carouselContent = item.carouselContent;
+        });
+        const items = Array.isArray(component.carouselItems) ? component.carouselItems.map((item) => item.carouselContent) : [];
+        component.carouselItems = JSON.stringify(items);
       }
     }
 

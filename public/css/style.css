@@ -1739,7 +1739,8 @@ img.iai-project-types__icon {
   padding-bottom: 1.5rem;
 }
 .iai-blog-carousel h3 {
-  font-size: 1.5rem !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
   padding: 0.5rem;
   padding-top: 1.5rem;
   text-align: center;
