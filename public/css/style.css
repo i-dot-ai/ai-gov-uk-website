@@ -1766,10 +1766,22 @@ img.iai-project-types__icon {
   transform: scale(1);
 }
 .iai-blog-carousel__author {
+  align-items: center;
+  display: flex;
   font-weight: bold;
+  gap: 0.5rem;
 }
-.iai-blog-carousel__author span:nth-child(2) {
+.iai-blog-carousel__author img {
+  border-radius: 100%;
+  object-fit: contain;
+  height: 2.5rem;
+  margin-top: 0 !important;
+  width: 2.5rem;
+}
+.iai-blog-carousel__author span span:nth-child(2) {
+  display: block;
   font-weight: 400;
+  margin-top: 0.125rem;
 }
 .iai-blog-carousel__text {
   display: block;
