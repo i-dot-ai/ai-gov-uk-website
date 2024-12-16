@@ -43,6 +43,9 @@
           }
         }
       } ).mount();
+      this.querySelectorAll('[role="tabpanel"]').forEach((item) => {
+        item.removeAttribute("role");
+      });
     }
 
     render() {
