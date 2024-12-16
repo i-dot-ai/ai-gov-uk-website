@@ -83,6 +83,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 
 
     {# Custom blog components #}
+    <script type="module" src="/js/lit-components/blog-carousel.mjs"></script>
     {% if blog.title == "The i.AI Taxonomy" %}
         {% from "./_includes/blog-components/project-types.njk" import projectTypes %}
         {{ projectTypes() }}
@@ -99,34 +100,6 @@ permalink: "blogs/{{ blog.title | slugify }}/"
             '<h2><img src="/img/launchpad_logo.png" alt="Launchpad" loading="lazy" width="220"/></h2><p>The Launchpad operates within GovTech, fostering innovation through ideathons and engaging with various government agencies. Over 500 ideas have been collected, with four agencies currently engaged and more in the pipeline.Target audience includes transformation teams and public officers, with a six-month timeline comprising a launch, sprints, and a final release. A web page facilitates idea submissions, leveraging LLMs for detail expansion, community upvoting, and direct links to prototypes.</p>'
         ) }}
     {% endif %}
-
-
-    {# This can be removed once added to the CMS #}
-    {% set carouselItems = [
-        {
-            carouselContent: '<h4 class="iai-blog-carousel__author"><span>Ben Rowell</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "I was drawn to i.AI because I wanted to make a real difference in people's lives, and I found a team of brilliant minds who share that passion. It's exciting that I get to work with cutting-edge technology while innovating services that have the potential to positively impact people up and down the country; that combination is pretty special.</span>"
-        },
-        {
-            carouselContent: '<h4 class="iai-blog-carousel__author"><span>Jude Webb</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "To experiment and test with how we build digital products. AI products are not as predictable as more traditional products, so what do we do the same and what do we need to learn to do differently?</span>"
-        },
-        {
-            carouselContent: '<h4 class="iai-blog-carousel__author"><span>Liam Wilkinson</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "To have impact outside of a quarterly earnings report!</span>"
-        },
-        {
-            carouselContent: '<h4 class="iai-blog-carousel__author"><span>James Lowe</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "I wanted to build AI products that made a positive impact, and believed the best way to do this was inside government working in an empowered and highly skilled team.</span>"
-        },
-        {
-            carouselContent: '<h4 class="iai-blog-carousel__author"><span>Charlotte Ryall</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "To be part of an exciting, innovative team that I could bring a user centred design perspective to.  There are incredible minds and expertise in the technical AI space. I hope to bring how we make products useful, useable and delightful for the people who are using the tools we create.</span>"
-        },
-        {
-            carouselContent: '<h4 class="iai-blog-carousel__author"><span>Nina Menezes</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "It was an exciting opportunity to work in a technical team, working on projects for the public good.</span>"
-        },
-        {
-            carouselContent: '<h4 class="iai-blog-carousel__author"><span>Victoria Bew</span><span> - Job title</span></h4><span class="iai-blog-carousel__text">' + "To take what I know about social innovation and government strategy, and apply it to one of the biggest opportunity areas of modern life - Artificial Intelligence.</span>"
-        }
-    ] %}
-    {#<blog-carousel title="Testing" items="{{ '[\"<b>Testing</b><p>dsgsagsa</p>\", \"<b>Testing</b><p>dsgsagsa</p>\"]' }}"></blog-carousel>#}
-    <script type="module" src="/js/lit-components/blog-carousel.mjs"></script>
 
 
     {% if blog.contentPart2 %}

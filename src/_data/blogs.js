@@ -94,9 +94,6 @@ module.exports = async () => {
       }
       // convert carousel items
       if (component.type === "carousel" && Array.isArray(component.carouselItems)) {
-        component.carouselItems.forEach((item) => {
-          item.carouselContent = item.carouselContent;
-        });
         const items = Array.isArray(component.carouselItems) ? component.carouselItems.map((item) => item.carouselContent) : [];
         component.carouselItems = JSON.stringify(items);
       }
