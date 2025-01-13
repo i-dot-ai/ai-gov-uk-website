@@ -114,6 +114,29 @@ templateEngineOverride: njk
 </div>
 
 
+<section class="iai-homepage-blogs">
+  <div class="container">
+    <h2 class="block mt-5 font-semibold text-center">Latest Blogs</h2>
+  </div>
+  <div class="iai-blogs-list container">
+    {% set count = 0 %}
+    {% for blog in blogs %}
+        {% if blog.summaryShort and count < 3 %} {# This ensures the CMS preview blog isn't displayed here #}
+          {% set count = count + 1 %}
+          <a class="iai-blogs-list-item" href="/blogs/{{ blog.title | slugify  }}" data-aos="fade-up">
+            <div class="iai-blogs-list__image-container">
+              <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt=""/>
+            </div>
+            <h3 class="iai-blogs-list__title" >{{ blog.title }}</h3>
+            <p class="iai-blog-list__summary">{{ blog.summaryShort }}</p>
+            <p class="iai-blog-list__date">{{ blog.date | dateFormat }}</p>
+          </a>
+        {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+
 <div class="container flex w-90 my-5 md:w-75 gap-5">
   <div class="flex gap-3 align-center justify-center text-center w-full">
     <div class="flex flex-col mt-3 gap-4 text-center items-center">
