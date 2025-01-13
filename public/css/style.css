@@ -396,6 +396,17 @@ figcaption svg {
   }
 }
 
+.iai-homepage-blogs {
+  background-color: var(--iai-grey);
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+  padding-top: 0.125rem;
+}
+.iai-homepage-blogs h2 {
+  font-size: 2rem;
+  margin-bottom: -1rem;
+}
+
 /*--------------------------------------------------------------
 # Projects page cards
 --------------------------------------------------------------*/
@@ -1430,6 +1441,9 @@ figcaption svg {
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 1.5rem;
+}
+.iai-blogs-list-item:hover .iai-blogs-list__title {
+  color: var(--iai-pink);
 }
 .iai-blog-list__summary {
   font-size: 1rem;
