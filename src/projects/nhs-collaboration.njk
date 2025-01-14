@@ -9,10 +9,9 @@ ogDescription: "i.AI and NHS England sign Collaboration Charter to support the u
 ---
 
 {% from "../_includes/banner.njk" import banner %}
-{% from "../_includes/text-image-block.njk" import textImageBlock %}
 {{ banner("i.AI and NHS England Collaboration Charter", ogDescription | preventOrphans) }}
 
-<div class="container w-100 md:w-75 pt-[2rem]">
+<div class="container w-100 md:w-75 pt-[2rem] project-content">
 
     {% set content %}
         <p>The Incubator for Artificial Intelligence (i.AI), an innovative team of technical experts at the heart of government, and NHS England (NHSE) have signed a first-of-a-kind Collaboration Charter to support the use of AI in the NHS.</p>
@@ -21,14 +20,7 @@ ogDescription: "i.AI and NHS England sign Collaboration Charter to support the u
         <p class="mt-4">Under the new agreement, specialists from i.AI will work to identify opportunities where technology could be used to support the NHS, and deploy responsible AI-driven solutions.</p>
         <p class="mt-4">The signing of the Charter was completed in a meeting in Westminster between Minister Burghart, Parliamentary Secretary for the Cabinet Office and Lord Markham, Parliamentary Under Secretary of State at the Department of Health and Social Care.</p>
     {% endset %}
-    {{ textImageBlock ({
-        text: content,
-        image: {
-            src: "/img/nhs2.png",
-            alt: ""
-        },
-        side: "left"
-    }) }}
+    <text-image-block side="left" content="{{ content }}" image="/img/nhs2.png"></text-image-block>
 
     <blockquote class="border-l-4 mt-5 spl-4 lg:border-l-8 lg:pl-8 lg:py-4">
         <p class="text-xl">“The Charter marks the beginning of an exciting new partnership between our rapidly growing team of AI experts within central government and NHS England.”</p>

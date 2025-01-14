@@ -9,24 +9,16 @@ ogDescription: "An end-to-end solution to sharing data across government"
 ---
 
 {% from "../_includes/banner.njk" import banner %}
-{% from "../_includes/text-image-block.njk" import textImageBlock %}
 {{ banner("rAPId", ogDescription) }}
 
-<div class="container w-100 md:w-75 pt-[2rem]">
+<div class="container w-100 md:w-75 pt-[2rem] project-content">
 
     {% set content %}
         <p>Sharing quality data across government while delivering high impact priorities at pace is a significant challenge. Often data in these scenarios is shared through spreadsheets, documents and emails, posing substantial difficulties when collaborating with others, or when trying to leverage the latest data tools and technologies.</p>
         <p class="mt-4">Created and pioneered by Number 10's Data Science team, <a class="link" href="https://rapid.readthedocs.io/en/latest/">rAPId</a> is a standardised lightweight data sharing solution to these challenges, provided free of charge. Its aim is to enable government departments and others to securely share data in an automated way at scale, replacing the use of spreadsheets and emails to share data.</p>
         <p class="mt-4">rAPId helps match the rising demand for good-quality evidence in the design, delivery, and evaluation of public policy by providing decision and policy makers with high quality data on demand. The solution makes data more accessible for policy and decision makers and enables data professionals to work with big data shared in rAPId.</p>
     {% endset %}
-    {{ textImageBlock ({
-        text: content,
-        image: {
-            src: "/img/rapid2.webp",
-            alt: ""
-        },
-        side: "left"
-    }) }}
+    <text-image-block side="left" content="{{ content }}" image="/img/rapid2.webp"></text-image-block>
 
     <h2 class="mt-5 text-[24px] font-semibold">How does rAPId work?</h2>
     <p class="mt-4">rAPId is an open-source end-to-end solution, with API and infrastructure code included. The solution is built to be scalable, allowing users to work with big data; and secure, with the ability to control fine grained permissions.</p>

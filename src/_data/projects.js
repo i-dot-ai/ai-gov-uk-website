@@ -28,14 +28,6 @@ module.exports = async () => {
         "Redbox is a service that harnesses AI to help you summarise, and ask questions of, documents up to OFFICIAL-SENSITIVE",
     },
     {
-      title: "Caddy",
-      phase: "Scaling",
-      url: "/projects/caddy",
-      img: "/img/caddy1.png",
-      synopsis:
-        "Our AI powered copilot for customer service agents across government and beyond",
-    },
-    {
       title: "rAPId",
       url: "/projects/rapid",
       img: "/img/rapid2.webp",

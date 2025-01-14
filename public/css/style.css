@@ -425,6 +425,13 @@ figcaption svg {
   }
 }
 
+.project-content a,
+.project-content a:hover {
+  text-decoration: underline;
+}
+.project-content a:hover {
+  color: var(--iai-pink);
+}
 
 /*--------------------------------------------------------------
 # Banner
@@ -1563,6 +1570,9 @@ figcaption svg {
 .iai-blog-content a,
 .iai-blog-content a:hover {
   text-decoration: underline;
+}
+.iai-blog-content a:hover {
+  color: var(--iai-pink);
 }
 .iai-blog-content img {
   display: block;

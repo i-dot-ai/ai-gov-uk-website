@@ -13,18 +13,6 @@ module.exports = async () => {
         synopsisHeader: ["Summary to go here"],
         components: [
             {
-                type: "doubleColumn",
-                order: "Text (left) - Image (right)",
-                content: "[Content to go here]",
-                image: ""
-            },
-            {
-                type: "doubleColumn",
-                order: "Image (left) - Text (right)",
-                content: "[Content to go here]",
-                image: ""
-            },
-            {
                 type: "video",
                 source: "",
                 audioDescription: ""
