@@ -20,14 +20,6 @@ module.exports = async () => {
         "An AI-powered tool to automate the processing of public consultations",
     },
     {
-      title: "Redbox",
-      phase: "Beta",
-      url: "/projects/redbox",
-      img: "/img/redbox4.png",
-      synopsis:
-        "Redbox is a service that harnesses AI to help you summarise, and ask questions of, documents up to OFFICIAL-SENSITIVE",
-    },
-    {
       title: "rAPId",
       url: "/projects/rapid",
       img: "/img/rapid2.webp",

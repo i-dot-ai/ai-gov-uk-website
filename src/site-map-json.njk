@@ -10,12 +10,19 @@ module.exports = [
   '/join',
   '/projects',
   {% for project in projects %}
-    '{{ project.url }}',
+    {% if project.title != "Preview" %}
+      {% if project.url %}
+        {% set url = project.url %}
+      {% else %}
+        {% set url = '/projects/' + project.title | slugify %}
+      {% endif %}
+      '{{ url }}',
+    {% endif %}
   {% endfor %}
   '/blogs',
   {% for blog in blogs %}
     {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
-      '/blogs/{{ blog.title | slugify  }}',
+      '/blogs/{{ blog.title | slugify }}',
     {% endif %}
   {% endfor %}
   '/accessibility'
