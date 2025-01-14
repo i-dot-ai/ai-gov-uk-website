@@ -19,7 +19,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(litPlugin, {
     mode: "worker",
-    componentModules: ["public/js/lit-components/blog-carousel.mjs"],
+    componentModules: [
+      "public/js/lit-components/blog-carousel.mjs",
+      "public/js/lit-components/text-image-block.mjs"
+    ],
   });
 
   // Remove Shadow DOM from Lit components

@@ -10,10 +10,11 @@ permalink: "projects/{{ project.title | slugify }}/"
 ---
 
 {% from "./_includes/banner.njk" import banner %}
-{% from "./_includes/text-image-block.njk" import textImageBlock %}
 {% from "./_includes/video.njk" import video %}
 
 {{ banner(project.title, project.synopsisHeader) }}
+
+<script type="module" src="/js/lit-components/text-image-block.mjs"></script>
 
 <div class="container w-100 md:w-75 pt-[2rem]">
 
@@ -33,14 +34,7 @@ permalink: "projects/{{ project.title | slugify }}/"
                 {% else %}
                     {% set side = "right" %}
                 {% endif %}
-                {{ textImageBlock ({
-                    text: component.content | markdownToHtml,
-                    image: {
-                        src: component.image | replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/"),
-                        alt: component.imageAlt
-                    },
-                    side: side
-                }) }}
+                <text-image-block side="{{ side }}" content="{{ component.content | markdownToHtml }}" image="{{ component.image | replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/") }}" imageAlt="{{ component.imageAlt }}" imageCaption="{{ component.imageCaption }}"></text-image-block>
             {% endif %}
         {% endfor %}
     </div>
@@ -61,8 +55,6 @@ permalink: "projects/{{ project.title | slugify }}/"
             document.querySelector("main").style.paddingBottom = "2rem";
             document.querySelector("footer").remove();
             componentTemplates.video = contentContainer.removeChild(contentContainer.querySelector("video")).outerHTML;
-            componentTemplates.doubleColumn1 = contentContainer.removeChild(contentContainer.querySelector(".text-image-block")).outerHTML;
-            componentTemplates.doubleColumn2 = contentContainer.removeChild(contentContainer.querySelector(".text-image-block")).outerHTML;
         });
 
         console.log(componentTemplates);
@@ -84,15 +76,9 @@ permalink: "projects/{{ project.title | slugify }}/"
                     mainContent += component.content || "";
                 } else if (component.type === "video") {
                     mainContent += componentTemplates.video.replace(`src=""`, `src="${component.source}"`);
-                } else if (component.type === "doubleColumn" && component.order === "Text (left) - Image (right)") {
-                    console.log(component.content);
-                    mainContent += componentTemplates.doubleColumn1
-                        .replace("<p>[Content to go here]</p>", component.content)
-                        .replace(`src=""`, `src="${component.image}"`);
-                } else if (component.type === "doubleColumn" && component.order === "Image (left) - Text (right)") {
-                    mainContent += componentTemplates.doubleColumn2
-                        .replace("<p>[Content to go here]</p>", component.content)
-                        .replace(`src=""`, `src="${component.image}"`);
+                } else if (component.type === "doubleColumn") {
+                    let side = component.order === "Text (left) - Image (right)" ? "left" : "right";
+                    mainContent += `<text-image-block side="${side}" content="${component.content}" image="${component.image}" imageAlt="${component.imageAlt || ''}" imageCaption="${component.imageCaption || ''}"></text-image-block>`;
                 }
             });
             contentContainer.innerHTML = mainContent;
