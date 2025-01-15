@@ -14,8 +14,6 @@ permalink: "projects/{{ project.title | slugify }}/"
 
 {{ banner(project.title, project.synopsisHeader) }}
 
-<script type="module" src="/js/lit-components/text-image-block.mjs"></script>
-
 <div class="container w-100 md:w-75 pt-[2rem]">
 
     <div class="project-content">
@@ -43,6 +41,10 @@ permalink: "projects/{{ project.title | slugify }}/"
 
 {# CMS Preview #}
 {% if project.title === "Preview" %}
+
+    <script type="module" src="/js/lit-components/text-image-block.mjs"></script>
+    <script type="module" src="/js/lit-components/project-quote.mjs"></script>
+
     <script>
 
         let contentContainer = document.querySelector(".project-content");
@@ -61,8 +63,6 @@ permalink: "projects/{{ project.title | slugify }}/"
 
         // Data from CMS
         window.addEventListener('message', function(evt) {
-
-            console.log(evt.data);
             
             document.querySelector("h1").textContent = evt.data.title || "[Title goes here]";
 
@@ -79,6 +79,8 @@ permalink: "projects/{{ project.title | slugify }}/"
                 } else if (component.type === "doubleColumn") {
                     let side = component.order === "Text (left) - Image (right)" ? "left" : "right";
                     mainContent += `<text-image-block side="${side}" content="${component.content}" image="${component.image}" imageAlt="${component.imageAlt || ''}" imageCaption="${component.imageCaption || ''}"></text-image-block>`;
+                } else if (component.type === "quote") {
+                    mainContent += `<project-quote quote="${component.quote}" by="${component.author}" link="${component.link}"></project-quote>`;
                 }
             });
             contentContainer.innerHTML = mainContent;
