@@ -21,7 +21,8 @@ module.exports = function (eleventyConfig) {
     mode: "worker",
     componentModules: [
       "public/js/lit-components/blog-carousel.mjs",
-      "public/js/lit-components/text-image-block.mjs"
+      "public/js/lit-components/text-image-block.mjs",
+      "public/js/lit-components/project-quote.mjs",
     ],
   });
 

@@ -12,14 +12,6 @@ if (process.env.CONTENTFUL_ACCESS_TOKEN === 'test') {
 module.exports = async () => {
   let projects = [
     {
-      title: "Consult",
-      phase: "Alpha",
-      url: "/projects/consult",
-      img: "/img/consultation4.png",
-      synopsis:
-        "An AI-powered tool to automate the processing of public consultations",
-    },
-    {
       title: "rAPId",
       url: "/projects/rapid",
       img: "/img/rapid2.webp",
