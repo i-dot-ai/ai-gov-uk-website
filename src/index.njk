@@ -3,72 +3,8 @@ layout: base.njk
 templateEngineOverride: njk
 ---
 
-
-<section id="heroBanner" class="bg-[#000] w-100 bg-[url('/img/code_stock_image.png')] bg-cover">
-
-  <div class="row h-100 w-full xs:py-[3rem] md:py-[5rem] py-[4rem]">
-    {# Blank left wrapper #}
-    <div class="col-xs-0 col-md-0 col-lg-6"></div>
-
-    <div class="col-xs-12 col-md-12 col-lg-6 h-100 flex">
-      <div id="backgroundBlur" class="flex flex-row z-1000 items-center self-center !mb-[2rem] !p-3 z-10000 rounded-lg items-center backdrop-blur-sm">
-
-        {#
-        <a class="left-[-60px]" href="#heroCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">previous</span>
-        </a>
-        #}
-
-        <div id="heroCarousel" class="items-center carousel slide carousel-fade m-2 p-[2rem]" data-interval="4000" data-pause="hover">
-
-          {#
-          <div class="carousel-item active" tabindex="-1">
-            <div class="flex flex-column gap-2">
-              <p class="text-white font-normal md:text-[30px] text-[20px] animate__animated animate__fadeInDown">
-                <span class="sr-only">Slide 1 of 3</span>
-                I am unashamedly optimistic about the power of technology to make life better for everyone.
-                <span class="carousel__secondary-text block text-slate-300 min-w-[100%] text-[15px] md:text-[20px] uppercase animate__animated animate__fadeInUp">Rishi Sunak <span aria-hidden="true">|</span> Prime Minister's speech on AI <span aria-hidden="true">|</span> 26 October 2023</span>
-              </p>
-            </div>
-          </div>
-
-          <div class="carousel-item" tabindex="-1">
-            <div class="flex flex-column gap-2">
-              <p class="text-white font-normal md:text-[30px] text-[20px] animate__animated animate__fadeInDown">
-                <span class="sr-only">Slide 2 of 3</span>
-                AI has the potential to empower millions of people across our planet, it can be a tool for all.
-                <span class="carousel__secondary-text block text-slate-300 uppercase text-[15px] md:text-[20px] animate__animated animate__fadeInUp">Deputy Prime Minister <span aria-hidden="true">|</span> UN General Assembly Speech <span aria-hidden="true">|</span> 22 September 2023</span>
-              </p>
-            </div>
-          </div>
-          #}
-
-          <div class="carousel-item active" tabindex="-1">
-            <div class="flex flex-column gap-2" style="max-width: 48rem;">
-              <p class="text-white font-normal animate__animated animate__fadeInDown">
-                {#<span class="sr-only">Slide 3 of 3</span>#}
-                <h1 class="text-white text-[24px] md:text-[30px]">Introducing the Incubator for Artificial Intelligence</h1>
-                <span class="carousel__secondary-text block mt-3 text-slate-300 min-w-[100%] text-[15px] md:text-[20px] animate__animated animate__fadeInUp">The Government has established an innovative team of highly empowered technical experts at the heart of government. Their mission is to harness the opportunity of AI to improve lives, drive growth, and deliver better public services.</span>
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        {#
-        <a class="right-[-60px]" href="#heroCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">next</span>
-        </a>
-        #}
-
-      </div>
-    </div>
-
-  </div>
-
-</section>
+{% from "./_includes/homepage-banner.njk" import homepageBanner %}
+{{ homepageBanner() }}
 
 
 <div class="container flex w-90 my-5 md:w-75 gap-5">
