@@ -1,0 +1,22 @@
+{# Option H #}
+
+{% macro homepageBanner () %}
+
+<section class="iai-homepage-banner">
+
+  <img class="iai-homepage-banner__image" src="/img/homepage-banner-bg-extended.webp" {# srcset="/img/homepage-banner-bg-cropped.jpg 1920w, /img/homepage-banner-bg-extended.jpg 3830w" sizes="1920px, (min-width: 1600px) 3830px" #} alt=""/>
+  <div class="iai-homepage-banner__gradient"></div>
+
+  <div class="container">
+    <div class="iai-homepage-banner__box">
+      <div class="iai-homepage-banner__logo-container">
+        <img class="iai-homepage-banner__logo" src="/img/i-dot-ai-Official-Logo.svg" alt="I dot A I">
+        <h1>The Incubator for <span class="inline-block">Artificial Intelligence</span></h1>
+      </div>
+      <p>Our mission is to harness the opportunity of AI to improve lives, drive growth, and deliver better public services.</p>
+    </div>
+  </div>
+
+</section>
+
+{% endmacro %}

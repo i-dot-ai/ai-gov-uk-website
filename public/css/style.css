@@ -363,7 +363,112 @@ figcaption svg {
 }
 
 /*--------------------------------------------------------------
-# Homepage
+# Homepage - hero/banner
+--------------------------------------------------------------*/
+.iai-homepage-banner {
+  background-color: black;
+  clip-path: ellipse(100% 55% at 48% 44%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.iai-homepage-banner__gradient {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0) 70%);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.iai-homepage-banner__image {
+  bottom: 0;
+  left: 0;
+  min-height: 12rem;
+  object-fit: cover;
+  object-position: left top;
+  position: absolute;
+  right: 0;
+}
+.iai-homepage-banner .container {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 7rem;
+  padding-top: 2rem;
+  position: relative;
+}
+.iai-homepage-banner__box {
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+.iai-homepage-banner__logo-container {
+  container-type: inline-size;
+  display: flex;
+  gap: 1rem;
+}
+.iai-homepage-banner__logo {
+  width: 23cqw;
+}
+.iai-homepage-banner h1 {
+  font-weight: 600;
+  line-height: 1.25;
+  font-size: 7cqw;
+}
+.iai-homepage-banner p {
+  color: #757575;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 576px) {
+  .iai-homepage-banner__image {
+    min-height: 15rem;
+  }
+  .iai-homepage-banner__logo-container {
+    gap: 1.5rem;
+  }
+  .iai-homepage-banner p {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .iai-homepage-banner {
+    flex-direction: row;
+  }
+  .iai-homepage-banner__gradient {
+    background: linear-gradient(270deg, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 65%);
+  }
+  .iai-homepage-banner__image {
+    height: 100%;
+    top: 0;
+  }
+  .iai-homepage-banner .container {
+    min-height: 50vh;
+    padding-top: 6rem;
+  }
+  .iai-homepage-banner__box {
+    padding: 2rem;
+    width: 33rem;
+  }
+  .iai-homepage-banner__logo-container {
+    gap: 2rem;
+  }
+  .iai-homepage-banner__logo {
+    width: 6.375rem;
+  }
+  .iai-homepage-banner h1 {
+    font-size: 2rem;
+  }
+  .iai-homepage-banner p {
+    margin-top: 1.5rem;
+  }
+}
+
+/*--------------------------------------------------------------
+# Homepage - other
 --------------------------------------------------------------*/
 .iai-homepage-quote {
   padding: 0 5rem;
@@ -398,7 +503,7 @@ figcaption svg {
 
 .iai-homepage-blogs {
   background-color: var(--iai-grey);
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding-bottom: 3rem;
   padding-top: 0.125rem;
 }
