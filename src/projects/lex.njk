@@ -1,0 +1,14 @@
+{% set redirectUrl = "/projects/parlex-and-lex" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0;url={{ redirectUrl }}">
+    <meta http-equiv="Link" content="<{{ redirectUrl }}>; rel=permanent">
+    <link rel="canonical" href="{{ redirectUrl }}">
+    <title>Permanent Redirect</title>
+</head>
+<body>
+    <p>This page has been permanently moved to <a href="{{ redirectUrl }}">{{ redirectUrl }}</a></p>
+</body>
+</html>
