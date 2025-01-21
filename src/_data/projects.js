@@ -14,12 +14,14 @@ module.exports = async () => {
     {
       title: "rAPId",
       url: "/projects/rapid",
+      type: "Other",
       img: "/img/rapid2.webp",
       synopsis: "An end-to-end solution to sharing data across government",
     },
     {
       title: "i.AI and NHS England Collaboration Charter",
       url: "/projects/nhs-collaboration",
+      type: "Other",
       img: "/img/nhs2.png",
       synopsis:
         "i.AI and NHS England sign Collaboration Charter to support the use of AI in the NHS",
@@ -51,6 +53,7 @@ module.exports = async () => {
     projects.push({
       title: projectData.title,
       phase: projectData.phase,
+      type: projectData.type,
       img: picture.replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/"),
       synopsis: projectData.summaryHubPage,
       synopsisHeader: projectData.summaryProjectPage,
