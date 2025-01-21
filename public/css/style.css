@@ -2656,6 +2656,11 @@ img.iai-project-types__icon {
 .project-content li {
   padding: 0.375rem 0;
 }
+.project-content ul {
+  list-style-type: disc;
+  margin-top: 1rem;
+  padding-left: 2rem;
+}
 
 
 /*--------------------------------------------------------------
