@@ -2,12 +2,13 @@ locals {
   waf_name = var.environment == "prod" ? "ai-gov-uk" : "ai-gov-uk-${var.environment}"
 
   rules = {
-    aws_bad_inputs_rule = {
-      name     = "AWSManagedRulesKnownBadInputsRuleSet"
+
+    aws_reputation_ip_list_rule = {
+      name     = "AWSManagedRulesAmazonIpReputationList"
       priority = 0
     }
-    aws_anonymous_ip_list_rule = {
-      name     = "AWSManagedRulesAnonymousIpList"
+    aws_bad_inputs_rule = {
+      name     = "AWSManagedRulesKnownBadInputsRuleSet"
       priority = 1
     }
     aws_bot_control_rule = {
@@ -46,6 +47,27 @@ resource "aws_wafv2_web_acl" "website" {
   }
 
   rule {
+    name     = local.rules.aws_reputation_ip_list_rule.name
+    priority = local.rules.aws_reputation_ip_list_rule.priority
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = local.rules.aws_reputation_ip_list_rule.name
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "${local.waf_name}-${local.rules.aws_reputation_ip_list_rule.name}"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
     name     = local.rules.aws_bad_inputs_rule.name
     priority = local.rules.aws_bad_inputs_rule.priority
     override_action {
@@ -62,27 +84,6 @@ resource "aws_wafv2_web_acl" "website" {
     visibility_config {
       cloudwatch_metrics_enabled = true
       metric_name                = "${local.waf_name}-${local.rules.aws_bad_inputs_rule.name}"
-      sampled_requests_enabled   = true
-    }
-  }
-
-  rule {
-    name     = local.rules.aws_anonymous_ip_list_rule.name
-    priority = local.rules.aws_anonymous_ip_list_rule.priority
-    override_action {
-      none {}
-    }
-
-    statement {
-      managed_rule_group_statement {
-        name        = local.rules.aws_anonymous_ip_list_rule.name
-        vendor_name = "AWS"
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "${local.waf_name}-${local.rules.aws_anonymous_ip_list_rule.name}"
       sampled_requests_enabled   = true
     }
   }
@@ -158,7 +159,7 @@ resource "aws_wafv2_web_acl" "website" {
           or_statement {
             dynamic "statement" {
               for_each = toset(var.protected_path_prefixes)
-              
+
               content {
                 byte_match_statement {
                   field_to_match {
