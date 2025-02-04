@@ -2,21 +2,26 @@ locals {
   waf_name = var.environment == "prod" ? "ai-gov-uk" : "ai-gov-uk-${var.environment}"
 
   rules = {
+
+    aws_reputation_ip_list_rule = {
+      name     = "AWSManagedRulesAmazonIpReputationList"
+      priority = 0
+    }
     aws_bad_inputs_rule = {
       name     = "AWSManagedRulesKnownBadInputsRuleSet"
-      priority = 0
+      priority = 1
     }
     aws_anonymous_ip_list_rule = {
       name     = "AWSManagedRulesAnonymousIpList"
-      priority = 1
+      priority = 2
     }
     aws_bot_control_rule = {
       name     = "AWSManagedRulesBotControlRuleSet"
-      priority = 2
+      priority = 3
     }
     rate_limit = {
       name     = "rate-limit"
-      priority = 3
+      priority = 4
     }
     block_privileged_routes = {
       name     = "block-privileged-routes"
@@ -43,6 +48,27 @@ resource "aws_wafv2_web_acl" "website" {
     cloudwatch_metrics_enabled = true
     metric_name                = local.waf_name
     sampled_requests_enabled   = true
+  }
+
+  rule {
+    name     = local.rules.aws_reputation_ip_list_rule.name
+    priority = local.rules.aws_reputation_ip_list_rule.priority
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = local.rules.aws_reputation_ip_list_rule.name
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "${local.waf_name}-${local.rules.aws_reputation_ip_list_rule.name}"
+      sampled_requests_enabled   = true
+    }
   }
 
   rule {
@@ -158,7 +184,7 @@ resource "aws_wafv2_web_acl" "website" {
           or_statement {
             dynamic "statement" {
               for_each = toset(var.protected_path_prefixes)
-              
+
               content {
                 byte_match_statement {
                   field_to_match {
