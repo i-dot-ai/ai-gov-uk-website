@@ -11,17 +11,13 @@ locals {
       name     = "AWSManagedRulesKnownBadInputsRuleSet"
       priority = 1
     }
-    aws_anonymous_ip_list_rule = {
-      name     = "AWSManagedRulesAnonymousIpList"
-      priority = 2
-    }
     aws_bot_control_rule = {
       name     = "AWSManagedRulesBotControlRuleSet"
-      priority = 3
+      priority = 2
     }
     rate_limit = {
       name     = "rate-limit"
-      priority = 4
+      priority = 3
     }
     block_privileged_routes = {
       name     = "block-privileged-routes"
@@ -88,27 +84,6 @@ resource "aws_wafv2_web_acl" "website" {
     visibility_config {
       cloudwatch_metrics_enabled = true
       metric_name                = "${local.waf_name}-${local.rules.aws_bad_inputs_rule.name}"
-      sampled_requests_enabled   = true
-    }
-  }
-
-  rule {
-    name     = local.rules.aws_anonymous_ip_list_rule.name
-    priority = local.rules.aws_anonymous_ip_list_rule.priority
-    override_action {
-      none {}
-    }
-
-    statement {
-      managed_rule_group_statement {
-        name        = local.rules.aws_anonymous_ip_list_rule.name
-        vendor_name = "AWS"
-      }
-    }
-
-    visibility_config {
-      cloudwatch_metrics_enabled = true
-      metric_name                = "${local.waf_name}-${local.rules.aws_anonymous_ip_list_rule.name}"
       sampled_requests_enabled   = true
     }
   }
