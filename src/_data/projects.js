@@ -39,7 +39,12 @@ module.exports = async () => {
     ).toString("utf8");
     const projectData = matter(projectContent).data;
 
-    const picture = projectData.leadImage; //.replace("/images/uploads/", "");
+    const picture = projectData.leadImage;
+    projectData.img = picture.replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/");
+
+    // Just to map to existing data structure, but this can be updated at the HTML level in future
+    projectData.synopsis = projectData.summaryHubPage;
+    projectData.synopsisHeader = projectData.summaryProjectPage;
 
     // get all images within the content
     for (let component of projectData.components || []) {
@@ -50,15 +55,7 @@ module.exports = async () => {
       }
     }
 
-    projects.push({
-      title: projectData.title,
-      phase: projectData.phase,
-      type: projectData.type,
-      img: picture.replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/"),
-      synopsis: projectData.summaryHubPage,
-      synopsisHeader: projectData.summaryProjectPage,
-      components: projectData.components,
-    });
+    projects.push(projectData);
   }
 
   return projects.sort((projectA, projectB) => {

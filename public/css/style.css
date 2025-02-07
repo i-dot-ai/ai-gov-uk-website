@@ -512,6 +512,18 @@ figcaption svg {
   margin-bottom: -1rem;
 }
 
+.homepage-buttons__container {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 576px) {
+  .homepage-buttons__container {
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1rem;
+  }
+}
+
 /*--------------------------------------------------------------
 # Projects page cards
 --------------------------------------------------------------*/
@@ -768,6 +780,74 @@ figcaption svg {
     justify-content: space-evenly;
   }
 }
+
+
+/*--------------------------------------------------------------
+# Register your interest page
+---------------------------------------------------------------*/
+
+.ryi__project {
+  border-top: 1px solid #ccc;
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  padding-top: 3rem;
+}
+.ryi__project:first-child {
+  border-top: none;
+  margin-top: 0;
+}
+.ryi__project img {
+  display: none;
+  height: 12rem;
+  width: 12rem;
+}
+.ryi__project > div {
+  flex-grow: 1;
+}
+.ryi__project--header > div {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.25rem;
+}
+.ryi__project h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.ryi__project h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+.ryi__project a {
+  color: var(--iai-pink);
+  display: inline-block;
+  font-size: 0.875rem;
+  text-decoration: underline;
+}
+.ryi__project p {
+  font-size: 0.875rem;
+  margin: 0.25rem 0;
+}
+@media (min-width: 640px) {
+  .ryi__project {
+    display: flex;
+  }
+  .ryi__project img {
+    display: block;
+  }
+}
+@media (min-width: 1024px) {
+  .ryi__project--header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .ryi__project--header > div {
+    margin-top: 0;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -2102,18 +2182,6 @@ img.iai-project-types__icon {
   }
 }
 
-/*--------------------------------------------------------------
-# Map
---------------------------------------------------------------*/
-.map {
-  padding: 0;
-  margin-bottom: -6px;
-}
-
-.map iframe {
-  width: 100%;
-  height: 380px;
-}
 
 /*--------------------------------------------------------------
 # Blog

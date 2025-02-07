@@ -1,0 +1,42 @@
+---
+title: Projects
+layout: base.njk
+templateEngineOverride: njk
+---
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Register your interest", "Find out how to register your interest for each product") }}
+
+
+<div class="container w-100 md:w-75">
+
+  <p class="mt-5">None of i.AI’s products are open-access yet. This is because they are either being tested to ensure they are working as intended, or because they are very specific use cases, which have a small intended user base. But if you work in the public sector and would like to use them, we’d love to hear from you. This page tells you how to register your interest for each product.</p>
+
+  <ul>
+    {% for project in projects %}
+      {% if project.registerInterest.currentAvailability %}
+        <li class="ryi__project">
+          <img src="{{project.img}}" class="object-cover" alt="">
+          <div>
+            <div class="ryi__project--header">
+              <h2>{{ project.title }}</h2>
+              <div>
+                {% if project.registerInterest.githubLink %}
+                  <a class="link" href="{{ project.registerInterest.githubLink }}">{{ project.title }} on Github</a>
+                {% endif %}
+                <a class="link" href="/projects/{{ project.title | slugify }}">{{ project.title }} project page</a>
+              </div>
+            </div>
+            <h3>Current availability:</h3>
+            <div>{{ project.registerInterest.currentAvailability | markdownToHtml | safe }}</div>
+            {% if project.registerInterest.whereToApply %}
+              <h3>Where to apply:</h3>
+              <div>{{ project.registerInterest.whereToApply | markdownToHtml | safe }}</div>
+            {% endif %}
+          </div>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+</div>
