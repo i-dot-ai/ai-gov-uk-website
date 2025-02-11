@@ -826,6 +826,9 @@ figcaption svg {
   font-size: 0.875rem;
   text-decoration: underline;
 }
+.ryi__project a:hover {
+  text-decoration: underline;
+}
 .ryi__project p {
   font-size: 0.875rem;
   margin: 0.25rem 0;
@@ -840,6 +843,7 @@ figcaption svg {
 }
 @media (min-width: 1024px) {
   .ryi__project--header {
+    align-items: center;
     display: flex;
     justify-content: space-between;
   }
