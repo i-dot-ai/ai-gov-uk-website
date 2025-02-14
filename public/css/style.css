@@ -512,17 +512,20 @@ figcaption svg {
   margin-bottom: -1rem;
 }
 
-.homepage-buttons__container {
-  display: grid;
-  gap: 1rem;
+.iai-homepage-info-section {
+  padding: 4rem 0;
 }
-@media (min-width: 576px) {
-  .homepage-buttons__container {
-    gap: 2rem;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 1rem;
-  }
+.iai-homepage-info-section--grey {
+  background-color: var(--iai-grey);
 }
+.iai-homepage-info-section h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+.iai-homepage-info-section a {
+  display: inline-flex;
+}
+
 
 /*--------------------------------------------------------------
 # Projects page cards
@@ -631,11 +634,9 @@ figcaption svg {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
-  margin-bottom: 3rem;
 }
 .iai-notification-buttons__button {
   align-items: center;
-  border-radius: 0;
   display: flex;
   font-size: 0.875rem;
   font-weight: 300;
