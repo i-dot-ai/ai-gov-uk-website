@@ -1355,6 +1355,9 @@ figcaption svg {
 .services {
   padding-bottom: 20px;
 }
+.services .row {
+  gap: 2rem 0;
+}
 
 .services .icon-box {
   padding: 30px;
