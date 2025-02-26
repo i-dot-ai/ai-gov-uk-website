@@ -2744,12 +2744,38 @@ img.iai-project-types__icon {
   color: white;
   font-size: 0.75rem;
   margin-top: 3rem;
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 .footer__inner-container {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 2rem;
+}
+.footer__section {
+  min-height: 6rem;
+}
+.footer__section--left p {
+  border-top: 1px solid #555;
+  margin-top: 1rem;
+  max-width: 23rem;
+  padding-top: 1rem;
+  text-wrap: balance;
+}
+.footer__logos {
+  align-items: flex-end;
+  container-type: inline-size;
+  display: flex;
+  gap: 10%;
+  max-width: 23rem;
+}
+.footer__logos img:nth-child(1) {
+  width: 35%;
+}
+.footer__logos img:nth-child(2) {
+  width: 25%;
+}
+.footer__logos img:nth-child(3) {
+  width: 20%;
 }
 .footer__social-media-container {
   display: flex;
@@ -2765,98 +2791,12 @@ img.iai-project-types__icon {
     justify-content: space-between;
   }
 }
-
-#footer .footer-top {
-  background: #000;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-  padding: 0;
+@media (min-width: 1024px) {
+  .footer__inner-container {
+    align-items: flex-end;
+  }
 }
 
-#footer .footer-top .social-links a {
-  font-size: 18px;
-  display: inline-block;
-  background: #1e4356;
-  color: #fff;
-  line-height: 1;
-  padding: 8px 0;
-  margin-right: 4px;
-  border-radius: 50%;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
-}
-
-#footer .footer-top h4 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #a2cce3;
-  position: relative;
-  padding-bottom: 12px;
-}
-
-#footer .footer-top .footer-links {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#footer .footer-top .footer-links ul i {
-  padding-right: 2px;
-  color: #a2cce3;
-  font-size: 18px;
-  line-height: 1;
-}
-
-#footer .footer-top .footer-links ul li {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-}
-
-#footer .footer-top .footer-links ul li:first-child {
-  padding-top: 0;
-}
-
-#footer .footer-top .footer-links ul a {
-  color: #fff;
-  transition: 0.3s;
-  display: inline-block;
-  line-height: 1;
-}
-
-#footer .footer-top .footer-links ul a:hover {
-  color: #a2cce3;
-}
-
-#footer .footer-top .footer-contact {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-contact p {
-  line-height: 26px;
-}
-
-#footer .copyright {
-  text-align: center;
-  padding-top: 30px;
-}
-
-#footer .credits {
-  padding-top: 10px;
-  text-align: center;
-  font-size: 13px;
-  color: #fff;
-}
-
-#footer .credits a {
-  color: #a2cce3;
-}
 
 .container div {
   scroll-margin-top: 220px !important;
