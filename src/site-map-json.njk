@@ -8,7 +8,6 @@ module.exports = [
   '/',
   '/about',
   '/projects',
-  '/register-your-interest',
   {% for project in projects %}
     {% if project.title != "Preview" %}
       {% if project.url %}
@@ -25,5 +24,7 @@ module.exports = [
       '/blogs/{{ blog.title | slugify }}',
     {% endif %}
   {% endfor %}
+  '/press-mentions',
+  '/register-your-interest',
   '/accessibility'
 ];
