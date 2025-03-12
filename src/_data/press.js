@@ -37,7 +37,6 @@ module.exports = async () => {
     const outletAIndex = mediaOutletSortPreferences[outletA] || 0;
     const outletB = entryB.media?.split(" ").pop().toLowerCase();
     const outletBIndex = mediaOutletSortPreferences[outletB] || 0;
-    console.log(outletA, outletAIndex, outletB, outletBIndex);
     return outletBIndex - outletAIndex;
   });
 
