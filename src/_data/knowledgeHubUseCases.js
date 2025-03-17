@@ -18,7 +18,7 @@ module.exports = async () => {
     useCases.push(entryData);
   }
   
-  console.log(useCases);
+  //console.log(useCases);
   return useCases;
 
 };
