@@ -68,28 +68,29 @@
     #applyFilters() {
       /** @type {NodeListOf<HTMLElement>} */
       const cards = document.querySelectorAll('[data-category="use-case"]');
+      const filteredCountElement = document.querySelector("#filtered-count");
       const organisation = this.querySelector("#organisation").value;
       const phase = this.querySelector("#phase").value;
+      let filteredCount = 0;
 
       cards.forEach((card) => {
-        card.style.display = "block";
+        if (organisation && card.querySelector('[data-category="organisation"]')?.textContent !== organisation) {
+          card.style.display = "none";
+        } else if (phase && card.querySelector('[data-category="phase"]')?.textContent !== phase) {
+          card.style.display = "none";
+        } else {
+          card.style.display = "block";
+          filteredCount++;
+        }
       });
 
-      if (organisation) {
-        cards.forEach((card) => {
-          console.log(card.querySelector('[data-category="organisation"]')?.textContent);
-          if (card.querySelector('[data-category="organisation"]')?.textContent !== organisation) {
-            card.style.display = "none";
-          }
-        });
+      if (!filteredCountElement) {
+        return;
       }
-
-      if (phase) {
-        cards.forEach((card) => {
-          if (card.querySelector('[data-category="phase"]')?.textContent !== phase) {
-            card.style.display = "none";
-          }
-        });
+      if (filteredCount === cards.length) {
+        filteredCountElement.textContent = "All";
+      } else {
+        filteredCountElement.textContent = filteredCount.toString();
       }
 
     }

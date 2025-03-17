@@ -15,11 +15,14 @@ title: Use cases
   </div>
 
   <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-body-l">Showing <strong id="filtered-count">All</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> use cases</h2>
+
     {% for useCase in knowledgeHubUseCases %}
 
       <div class="govuk-summary-card govuk-!-margin-bottom-9" data-category="use-case">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">{{ useCase.title }}</h2>
+          <h3 class="govuk-summary-card__title">{{ useCase.title }}</h3>
           <ul class="govuk-summary-card__actions">
           <li class="govuk-summary-card__action">
             <strong class="govuk-tag govuk-tag--pink">Tag 1</strong>
