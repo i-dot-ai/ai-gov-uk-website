@@ -1,0 +1,56 @@
+---
+layout: knowledge-hub/base.njk
+templateEngineOverride: njk
+pagination:
+    data: knowledgeHubUseCases
+    size: 1
+    alias: useCase
+permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
+---
+
+{% set properties = [
+    {name: "Organisation name", value: useCase.organisation},
+    {name: "Organisation type", value: useCase.organisationType},
+    {name: "User group", value: useCase.userGroup},
+    {name: "Impact", value: useCase.impact},
+    {name: "Use case type", value: useCase.useCaseType},
+    {name: "Application area", value: useCase.applicationArea},
+    {name: "Application focus", value: useCase.applicationFocus},
+    {name: "Type of technology", value: useCase.typeOfTechnology},
+    {name: "Capability", value: useCase.capability},
+    {name: "Phase", value: useCase.phase},
+    {name: "Challenge", value: useCase.challenge},
+    {name: "Solution", value: useCase.solution},
+    {name: "Results", value: useCase.results}
+] %}
+
+<h1 class="govuk-heading-l">{{ useCase.title }}</h1>
+
+<dl class="govuk-summary-list">
+    {% for property in properties %}
+        {% if property.value %}
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">{{ property.name }}</dt>
+                <dd class="govuk-summary-list__value">{{ property.value }}</dd>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Links</dt>
+        <dd class="govuk-summary-list__value">
+            <ul class="govuk-list">
+                {% for link in useCase.links %}
+                    <li>
+                        <a class="govuk-link" href="{{ link.url }}">
+                            {{ link.text }}
+                            <span class="govuk-visually-hidden"> ({{ useCase.title }})</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </dd>
+    </div>
+</dl>
+
+
+<a href="/knowledge-hub/use-cases" class="govuk-button govuk-!-margin-bottom-0 govuk-!-margin-top-7">Back to use cases</a>

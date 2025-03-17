@@ -14,8 +14,8 @@
   const UsecaseFilters = class extends LitElement {
     
     static properties = {
-      organisations: { type: Array, state: true },
-      phases: { type: Array, state: true },
+      organisation: { type: Array, state: true },
+      phase: { type: Array, state: true },
     };
 
     createRenderRoot() {
@@ -25,43 +25,34 @@
 
     constructor() {
       super();
-      this.organisations = [];
-      this.phases = [];
+      this.organisation = [];
+      this.phase = [];
     }
 
     connectedCallback() {
       super.connectedCallback();
       // get options to filter from each use case
-      const organisations = document.querySelectorAll('[data-category="organisation"]');
-      organisations.forEach((organisation) => {
-        this.organisations.push(organisation.textContent);
-      });
-      const phases = document.querySelectorAll('[data-category="phase"]');
-      phases.forEach((phase) => {
-        this.phases.push(phase.textContent);
+      Object.keys(UsecaseFilters.properties).forEach((property) => {
+        const elements = document.querySelectorAll(`[data-category="${property}"]`);
+        elements.forEach((element) => {
+          this[property].push(element.textContent);
+        });
       });
     }
 
     render() {
       return html`
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="organisation">Organisation</label>            
-          <select @change=${this.#applyFilters} class="govuk-select" id="organisation">
-            <option value="">All</option>
-            ${this.organisations.map((organisation) => html`
-              <option value="${organisation}">${organisation}</option>
-            `)}
-          </select>
-        </div>
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="phase">Phase</label>            
-          <select @change=${this.#applyFilters} class="govuk-select" id="phase">
-            <option value="">All</option>
-            ${this.phases.map((phase) => html`
-              <option value="${phase}">${phase}</option>
-            `)}
-          </select>
-        </div>
+        ${Object.keys(UsecaseFilters.properties).map((property) => html`
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${property}</label>            
+            <select @change=${this.#applyFilters} class="govuk-select" id="${property}">
+              <option value="">All</option>
+              ${this[property].map((value) => html`
+                <option value="${value}">${value}</option>
+              `)}
+            </select>
+          </div>
+        `)}
       `;
     }
 
@@ -69,26 +60,34 @@
       /** @type {NodeListOf<HTMLElement>} */
       const cards = document.querySelectorAll('[data-category="use-case"]');
       const filteredCountElement = document.querySelector("#filtered-count");
-      const organisation = this.querySelector("#organisation").value;
-      const phase = this.querySelector("#phase").value;
       let filteredCount = 0;
 
+      // show/hide cards based on selected filters
       cards.forEach((card) => {
-        if (organisation && card.querySelector('[data-category="organisation"]')?.textContent !== organisation) {
-          card.style.display = "none";
-        } else if (phase && card.querySelector('[data-category="phase"]')?.textContent !== phase) {
-          card.style.display = "none";
-        } else {
+
+        let cardIsVisible = true;
+        Object.keys(UsecaseFilters.properties).map((property) => {
+          let value = this.querySelector(`#${property}`).value;
+          if (value && card.querySelector(`[data-category="${property}"]`)?.textContent !== value) {
+            cardIsVisible = false;
+          }
+        });
+
+        if (cardIsVisible) {
           card.style.display = "block";
           filteredCount++;
+        } else {
+          card.style.display = "none";
         }
+
       });
 
+      // show how many cards are visible
       if (!filteredCountElement) {
         return;
       }
       if (filteredCount === cards.length) {
-        filteredCountElement.textContent = "All";
+        filteredCountElement.textContent = "all";
       } else {
         filteredCountElement.textContent = filteredCount.toString();
       }
