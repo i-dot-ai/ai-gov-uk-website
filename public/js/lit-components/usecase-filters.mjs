@@ -15,6 +15,10 @@
     
     static properties = {
       organisation: { type: Array, state: true },
+      organisationType: {type: Array, state: true },
+      userGroup: { type: Array, state: true },
+      applicationArea: { type: Array, state: true },
+      typeOfTechnology: { type: Array, state: true },
       phase: { type: Array, state: true },
     };
 
@@ -25,8 +29,10 @@
 
     constructor() {
       super();
-      this.organisation = [];
-      this.phase = [];
+      // initialise properties
+      Object.keys(UsecaseFilters.properties).forEach((property) => {
+        this[property] = [];
+      });
     }
 
     connectedCallback() {
@@ -35,7 +41,9 @@
       Object.keys(UsecaseFilters.properties).forEach((property) => {
         const elements = document.querySelectorAll(`[data-category="${property}"]`);
         elements.forEach((element) => {
-          this[property].push(element.textContent);
+          if (!this[property].includes(element.textContent)) {
+            this[property].push(element.textContent);
+          }
         });
       });
     }
@@ -44,7 +52,7 @@
       return html`
         ${Object.keys(UsecaseFilters.properties).map((property) => html`
           <div class="govuk-form-group">
-            <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${property}</label>            
+            <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${property.replace(/([A-Z])/g, ' $1').trim()}</label>            
             <select @change=${this.#applyFilters} class="govuk-select" id="${property}">
               <option value="">All</option>
               ${this[property].map((value) => html`
