@@ -23,6 +23,7 @@ module.exports = function (eleventyConfig) {
       "public/js/lit-components/blog-carousel.mjs",
       "public/js/lit-components/text-image-block.mjs",
       "public/js/lit-components/project-quote.mjs",
+      "public/js/lit-components/usecase-filters.mjs",
     ],
   });
 
