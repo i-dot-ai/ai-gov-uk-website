@@ -30,7 +30,9 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
       <a class="govuk-breadcrumbs__link" href="/knowledge-hub">Home</a>
     </li>
     <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
+      <back-link>
+        <a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
+    	</back-link>
     </li>
   </ol>
 </nav>
@@ -62,3 +64,5 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
         </dd>
     </div>
 </dl>
+
+<script type="module" src="/js/lit-components/back-link.mjs"></script>

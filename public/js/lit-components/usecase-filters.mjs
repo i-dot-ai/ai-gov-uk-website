@@ -48,6 +48,21 @@
       });
     }
 
+    firstUpdated() {
+      // listen for URL changes
+      const getQueryParams = () => {
+        Object.keys(UsecaseFilters.properties).forEach((property) => {
+          const value = new URL(window.location.href).searchParams.get(property);
+          if (value) {
+            this.querySelector(`#${property}`).value = value || "";
+          }
+        });
+        this.#applyFilters();
+      };
+      window.addEventListener('popstate', getQueryParams);
+      getQueryParams();
+    }
+
     render() {
       return html`
         ${Object.keys(UsecaseFilters.properties).map((property) => html`
@@ -65,6 +80,14 @@
     }
 
     #applyFilters() {
+
+      const url = new URL(window.location.href);
+      Object.keys(UsecaseFilters.properties).map((property) => {
+        let value = this.querySelector(`#${property}`).value;
+        url.searchParams.set(property, value);
+      });
+      window.history.pushState({}, '', url);
+
       /** @type {NodeListOf<HTMLElement>} */
       const cards = document.querySelectorAll('[data-category="use-case"]');
       const filteredCountElement = document.querySelector("#filtered-count");
