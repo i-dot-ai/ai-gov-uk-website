@@ -33,6 +33,8 @@ permalink: "projects/{{ project.title | slugify }}/"
                     {% set side = "right" %}
                 {% endif %}
                 <text-image-block side="{{ side }}" content="{{ component.content | markdownToHtml }}" image="{{ component.image | replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/") }}" imageAlt="{{ component.imageAlt }}" imageCaption="{{ component.imageCaption }}"></text-image-block>
+            {% elif component.type == "quote" %}
+                <project-quote quote="{{ component.quote }}" by="{{ component.author }}" link="{{ component.link | trim }}"></project-quote>
             {% endif %}
         {% endfor %}
     </div>

@@ -28,7 +28,13 @@
       return html`
         <blockquote class="border-l-4 mt-4 pl-4 lg:border-l-8 lg:pl-8 lg:py-4">
           <p class="text-xl">“${this.quote}”</p>
-          <footer class="mt-2 text-sm"><a class="link" href="${this.link}">${this.by}</a></footer>
+          <footer class="mt-2 text-sm">
+          ${this.link ? html`
+            <a class="link" href="${this.link}">${this.by}</a>
+          ` : html`
+            <p>${this.by}</p>
+          `}
+          </footer>
         </blockquote>
       `;
     }
