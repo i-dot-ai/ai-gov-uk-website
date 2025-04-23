@@ -172,6 +172,13 @@ module.exports = function (eleventyConfig) {
     return html;
   });
 
+  eleventyConfig.addFilter("rssDate", (dateStr) => {
+    const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let date = new Date(dateStr);
+    return `${DAYS[date.getDay()]}, ${date.getDate()} ${MONTHS[date.getMonth()]} ${date.getFullYear()} 00:00:00 GMT`;
+  });
+
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***
   (() => {
     const assets = [
