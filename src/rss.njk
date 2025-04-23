@@ -1,0 +1,29 @@
+---
+  layout: false
+  permalink: /rss.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>i.AI Latest Blogs</title>
+    <atom:link href="https://ai.gov.uk/rss.xml" rel="self" type="application/rss+xml"/>
+    <link>https://ai.gov.uk</link>
+    <description>Thoughts and insight about AI in Government</description>
+    <language>en-uk</language>
+    <lastBuildDate>
+      {{ blogs[0].date | rssDate }} {# this is the CMS preview page date, or use [1] for the latest blog date #}
+    </lastBuildDate>
+
+    {% for blog in blogs %}
+    {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
+      <item>
+        <title>{{ blog.title }}</title>
+        <link>https://ai.gov.uk/blogs/{{ blog.title | slugify  }}</link>
+        <guid isPermaLink="false">{{ blog.title | slugify  }}</guid>
+        <description>{{ blog.summaryShort }}</description>
+        <pubDate>{{ blog.date | rssDate }}</pubDate>
+      </item>
+    {% endif %}
+    {% endfor %}
+  </channel>
+</rss>
