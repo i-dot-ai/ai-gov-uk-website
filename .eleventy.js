@@ -15,6 +15,8 @@ const mdToHtmlConverter = new showdown.Converter();
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
+    "./node_modules/i.ai-design-system/dist/iai-design-system.css": "/",
+    "./node_modules/i.ai-design-system/dist/fonts/": "/fonts/"
   });
 
   eleventyConfig.addPlugin(litPlugin, {
@@ -24,6 +26,7 @@ module.exports = function (eleventyConfig) {
       "public/js/lit-components/text-image-block.mjs",
       "public/js/lit-components/project-quote.mjs",
       "public/js/lit-components/usecase-filters.mjs",
+      "node_modules/i.ai-design-system/dist/components/iai-header.mjs"
     ],
   });
 

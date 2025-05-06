@@ -7,6 +7,9 @@
         {# Temporary, until this goes live #}
         <meta name="robots" content="noindex">
 
+        <link rel="preload" href="/fonts/static/Inter-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+        <link rel="preload" href="/fonts/static/Inter-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
         <title>
             {% if title %}
                 {{ title }} - 
@@ -33,7 +36,7 @@
 
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-        <link href="/css/govuk-frontend-5.9.0.min.css" rel="stylesheet">
+        <link href="/iai-design-system.css" rel="stylesheet">
         <link href="/css/knowledge-hub.css" rel="stylesheet">     
 
         <script defer data-domain="ai.gov.uk" src="https://plausible.io/js/script.pageview-props.tagged-events.outbound-links.file-downloads.js"></script>
@@ -42,16 +45,7 @@
 
     <body class="govuk-template__body">
 
-        <header class="govuk-header govuk-header--full-width-border" data-module="govuk-header" data-govuk-header-init="">
-            <div class="govuk-header__container govuk-width-container">
-                <div class="govuk-header__logo">
-                    <a href="/knowledge-hub" class="govuk-header__link govuk-header__link--homepage">
-                        <span style="font-weight: bold;">AI.GOV.UK</span>
-                        <span class="govuk-header__product-name">Knowledge Hub</span>
-                    </a>
-                </div>
-            </div>
-        </header>
+        <iai-header product-name="Knowledge Hub"></iai-header>
 
         <div class="govuk-width-container">
             <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-9">
