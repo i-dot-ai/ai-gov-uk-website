@@ -8,6 +8,7 @@ const IaiHeader = class extends LitElement {
   static properties = {
     productName: {type: String, attribute: "product-name"},
     navItems: {type: Array, attribute: "nav-items"},
+    homeUrl: {type: String, attribute: "home-url"},
   };
 
   createRenderRoot() {
@@ -20,7 +21,7 @@ const IaiHeader = class extends LitElement {
       <header class="govuk-header govuk-header--full-width-border" data-module="govuk-header">
         <div class="govuk-header__container govuk-width-container">
           <div class="govuk-header__logo">
-            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+            <a href=${this.homeUrl || '/'} class="govuk-header__link govuk-header__link--homepage">
               <span style="font-weight: bold;">AI.GOV.UK</span>
               <span class="govuk-header__product-name">${this.productName}</span>
             </a>

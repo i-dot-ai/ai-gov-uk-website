@@ -17,52 +17,73 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
     {name: "Application area", value: useCase.applicationArea},
     {name: "Application focus", value: useCase.applicationFocus},
     {name: "Type of technology", value: useCase.typeOfTechnology},
-    {name: "Phase", value: useCase.phase},
-    {name: "Challenge", value: useCase.challenge},
-    {name: "Solution", value: useCase.solution},
-    {name: "Results", value: useCase.results},
-    {name: "Learnings / Insights", value: useCase.learnings}
+    {name: "Phase", value: useCase.phase}
 ] %}
 
-<nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-7" aria-label="Breadcrumb">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="/knowledge-hub">Home</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <back-link>
-        <a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
-    	</back-link>
-    </li>
-  </ol>
-</nav>
+<div class="govuk-width-container">
+  <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
 
-<h1 class="govuk-heading-l">{{ useCase.title }}</h1>
+    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/knowledge-hub">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+        <back-link>
+            <a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
+            </back-link>
+        </li>
+    </ol>
+    </nav>
 
-<dl class="govuk-summary-list">
-    {% for property in properties %}
-        {% if property.value %}
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">{{ property.name }}</dt>
-                <dd class="govuk-summary-list__value">{{ property.value }}</dd>
-            </div>
-        {% endif %}
-    {% endfor %}
-    <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">Links</dt>
-        <dd class="govuk-summary-list__value">
-            <ul class="govuk-list">
-                {% for link in useCase.links %}
-                    <li>
-                        <a class="govuk-link" href="{{ link.url }}">
-                            {{ link.text }}
-                            <span class="govuk-visually-hidden"> ({{ useCase.title }})</span>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </dd>
-    </div>
-</dl>
+    <h1 class="govuk-heading-l">{{ useCase.title }}</h1>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+        {% for property in properties %}
+            {% if property.value %}
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">{{ property.name }}</dt>
+                    <dd class="govuk-summary-list__value">{{ property.value }}</dd>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </dl>
+
+    {% if useCase.challenge %}
+    <h2 class="govuk-heading-m">The challenge</h2>
+    <p class="govuk-body">{{ useCase.challenge }}</p>
+    {% endif %}
+
+    {% if useCase.solution %}
+    <h2 class="govuk-heading-m">The solution</h2>
+    <p class="govuk-body">{{ useCase.solution }}</p>
+    {% endif %}
+
+    {% if useCase.results %}
+    <h2 class="govuk-heading-m">The results</h2>
+    <p class="govuk-body">{{ useCase.results }}</p>
+    {% endif %}
+
+    {% if useCase.learnings %}
+    <h2 class="govuk-heading-m">Learnings / insights</h2>
+    <p class="govuk-body">{{ useCase.learnings }}</p>
+    {% endif %}
+
+    {% if useCase.links %}
+    <h2 class="govuk-heading-m">Links</h2>
+    <ul class="govuk-list">
+        {% for link in useCase.links %}
+            <li>
+                <a class="govuk-link" href="{{ link.url }}">
+                    {{ link.text }}
+                    <span class="govuk-visually-hidden"> ({{ useCase.title }})</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+	</main>
+</div>
 
 <script type="module" src="/js/lit-components/back-link.mjs"></script>

@@ -41,17 +41,14 @@
 
         <script defer data-domain="ai.gov.uk" src="https://plausible.io/js/script.pageview-props.tagged-events.outbound-links.file-downloads.js"></script>
         <script type="module" src="https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js"></script>
+        <script type="module" src="/js/iai-design-system.js"></script>
     </head>
 
-    <body class="govuk-template__body">
+    <body class="govuk-template__body govuk-frontend-supported">
 
-        <iai-header product-name="Knowledge Hub"></iai-header>
+        <iai-header product-name="Knowledge Hub" home-url="/knowledge-hub" nav-items='[{"text": "Use cases", "href": "/knowledge-hub/use-cases"}, {"text": "Guidance", "href": "/knowledge-hub/guidance"}]'></iai-header>
 
-        <div class="govuk-width-container">
-            <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-9">
-                {{ content | safe }}
-            </main>
-        </div>
+        {{ content | safe }}
 
         <footer class="govuk-footer">
             <div class="govuk-width-container">

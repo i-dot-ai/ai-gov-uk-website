@@ -13,61 +13,67 @@ title: Use cases
   {name: "Phase", property: "phase"}
 ] %}
 
-<nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-7" aria-label="Breadcrumb">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link govuk-back-link govuk-!-margin-0" href="/knowledge-hub">Home</a>
-    </li>
-  </ol>
-</nav>
+<div class="govuk-width-container">
+  <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
 
-<h1 class="govuk-heading-l">Use cases</h1>
-<p class="govuk-body">An introductory paragraph can appear here...</p>
+    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link govuk-back-link govuk-!-margin-0" href="/knowledge-hub">Home</a>
+        </li>
+      </ol>
+    </nav>
 
-<div class="govuk-grid-row govuk-!-margin-top-9">
-  
-  <div class="govuk-grid-column-one-third govuk-!-padding-right-9">
-    <h2 class="govuk-heading-m">Filters</h2>
-    <usecase-filters></usecase-filters>
-  </div>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Use cases</h1>
+    <p class="govuk-body">Browse these use cases to better understand how different applications of AI technologies can solve real problems for public sector organisations.</p>
 
-  <div class="govuk-grid-column-two-thirds">
-
-    <h2 class="govuk-body-l">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> use cases</h2>
-
-    {% for useCase in knowledgeHubUseCases %}
-
-      <div class="govuk-summary-card govuk-!-margin-bottom-7" data-category="use-case">
-        <div class="govuk-summary-card__title-wrapper">
-          <h3 class="govuk-summary-card__title"><a class="govuk-link" href="{{ useCase.title | slugify }}">{{ useCase.title }}</a></h3>
-          {#
-          <ul class="govuk-summary-card__actions">
-            <li class="govuk-summary-card__action">
-              <strong class="govuk-tag govuk-tag--pink">Tag 1</strong>
-            </li>
-            <li class="govuk-summary-card__action">
-              <strong class="govuk-tag govuk-tag--pink">Tag 2</strong>
-            </li>
-          </ul>
-          #}
-        </div>
-        <div class="govuk-summary-card__content">
-          <dl class="govuk-summary-list">
-            {% for property in properties %}
-              {% if useCase[property.property] %}
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">{{ property.name }}</dt>
-                  <dd class="govuk-summary-list__value" data-category="{{ property.property}}">{{ useCase[property.property] }}</dd>
-                </div>
-              {% endif %}
-            {% endfor %}
-          </dl>
-        </div>
+    <div class="govuk-grid-row govuk-!-margin-top-9">
+      
+      <div class="govuk-grid-column-one-third govuk-!-padding-right-9">
+        <h2 class="govuk-heading-m">Filters</h2>
+        <usecase-filters></usecase-filters>
       </div>
 
-    {% endfor %}
-  </div>
+      <div class="govuk-grid-column-two-thirds">
 
+        <h2 class="govuk-body-l">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> use cases</h2>
+
+        {% for useCase in knowledgeHubUseCases %}
+
+          <div class="govuk-summary-card govuk-!-margin-bottom-7" data-category="use-case">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title"><a class="govuk-link" href="{{ useCase.title | slugify }}">{{ useCase.title }}</a></h3>
+              {#
+              <ul class="govuk-summary-card__actions">
+                <li class="govuk-summary-card__action">
+                  <strong class="govuk-tag govuk-tag--pink">Tag 1</strong>
+                </li>
+                <li class="govuk-summary-card__action">
+                  <strong class="govuk-tag govuk-tag--pink">Tag 2</strong>
+                </li>
+              </ul>
+              #}
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
+                {% for property in properties %}
+                  {% if useCase[property.property] %}
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">{{ property.name }}</dt>
+                      <dd class="govuk-summary-list__value" data-category="{{ property.property}}">{{ useCase[property.property] }}</dd>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </dl>
+            </div>
+          </div>
+
+        {% endfor %}
+      </div>
+
+    </div>
+
+  </main>\
 </div>
 
 <script type="module" src="/js/lit-components/usecase-filters.mjs"></script>
