@@ -66,7 +66,10 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
-  eleventyConfig.addFilter("dateFormat", (dateString) => {
+  eleventyConfig.addFilter("dateFormat", (dateString, type) => {
+    if (type === 'int') {
+      dateString = parseInt(dateString);
+    }
     const date = new Date(dateString);
     const day = date.getDate();
     const monthNames = [

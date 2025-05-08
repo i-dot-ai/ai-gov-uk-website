@@ -37,7 +37,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "html-minifier": "^4.0.0",
-    "i.ai-design-system": "^0.6.6",
+    "i.ai-design-system": "^0.6.7",
     "lit-html": "^3.2.1",
     "postcss-cli": "^10.1.0",
     "showdown": "^2.1.0"
