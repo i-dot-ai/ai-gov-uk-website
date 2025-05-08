@@ -66,6 +66,13 @@
 
     render() {
       return html`
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper govuk-heading-m govuk-!-margin-bottom-1">
+            <label for="search">Search</label>
+          </h2>
+          <input @keyup=${this.#applyFilters} class="govuk-input" id="search" name="search" type="text">
+        </div>
+        <h2 class="govuk-heading-m">Filters</h2>
         ${Object.keys(UsecaseFilters.properties).map((property) => html`
           <div class="govuk-form-group">
             <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${property.replace(/([A-Z])/g, ' $1').trim()}</label>            
@@ -94,6 +101,8 @@
       const filteredCountElement = document.querySelector("#filtered-count");
       let filteredCount = 0;
 
+      let search = this.querySelector('#search')?.value.trim().toLowerCase();
+
       // show/hide cards based on selected filters
       cards.forEach((card) => {
 
@@ -104,6 +113,10 @@
             cardIsVisible = false;
           }
         });
+
+        if (search && !card.textContent?.toLowerCase().includes(search)) {
+          cardIsVisible = false;
+        }
 
         if (cardIsVisible) {
           card.style.display = "block";
