@@ -12,31 +12,34 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
     {name: "Organisation name", value: useCase.organisation},
     {name: "Organisation type", value: useCase.organisationType},
     {name: "User group", value: useCase.userGroup},
-    {name: "Impact", value: useCase.impact},
     {name: "Use case type", value: useCase.useCaseType},
-    {name: "Application area", value: useCase.applicationArea},
-    {name: "Application focus", value: useCase.applicationFocus},
     {name: "Type of technology", value: useCase.typeOfTechnology},
-    {name: "Phase", value: useCase.phase}
+    {name: "Phase", value: useCase.phase},
+		{name: "Impact", value: useCase.impact}
 ] %}
 
 <div class="govuk-width-container">
   <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
 
     <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="/knowledge-hub">Home</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-        <back-link>
-            <a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
-            </back-link>
-        </li>
-    </ol>
+			<ol class="govuk-breadcrumbs__list">
+				<li class="govuk-breadcrumbs__list-item">
+					<a class="govuk-breadcrumbs__link" href="/knowledge-hub">Home</a>
+				</li>
+				<li class="govuk-breadcrumbs__list-item">
+					<back-link>
+						<a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
+						</back-link>
+				</li>
+			</ol>
     </nav>
 
-    <h1 class="govuk-heading-l">{{ useCase.title }}</h1>
+    <h1 class="govuk-heading-l govuk-!-display-flex govuk-!-display-flex--align-center">
+			{{ useCase.title }}
+			{% if useCase.draft %}
+				<strong class="govuk-tag govuk-tag--pink govuk-!-margin-left-5">DRAFT</strong>
+			{% endif %}
+		</h1>
 
     <dl class="govuk-summary-list govuk-!-margin-bottom-8">
         {% for property in properties %}
@@ -51,22 +54,22 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
 
     {% if useCase.challenge %}
     <h2 class="govuk-heading-m">The challenge</h2>
-    <p class="govuk-body">{{ useCase.challenge }}</p>
+    <div class="govuk-body">{{ useCase.challenge | markdownToHtml | safe }}</div>
     {% endif %}
 
     {% if useCase.solution %}
     <h2 class="govuk-heading-m">The solution</h2>
-    <p class="govuk-body">{{ useCase.solution }}</p>
+    <div class="govuk-body">{{ useCase.solution | markdownToHtml | safe }}</div>
     {% endif %}
 
     {% if useCase.results %}
     <h2 class="govuk-heading-m">The results</h2>
-    <p class="govuk-body">{{ useCase.results }}</p>
+    <div class="govuk-body">{{ useCase.results | markdownToHtml | safe }}</div>
     {% endif %}
 
     {% if useCase.learnings %}
     <h2 class="govuk-heading-m">Learnings / insights</h2>
-    <p class="govuk-body">{{ useCase.learnings }}</p>
+    <div class="govuk-body">{{ useCase.learnings | markdownToHtml | safe }}</div>
     {% endif %}
 
     {% if useCase.links %}

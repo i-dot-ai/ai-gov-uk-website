@@ -8,9 +8,10 @@ title: Use cases
   {name: "Organisation name", property: "organisation"},
   {name: "Organisation type", property: "organisationType"},
   {name: "User group", property: "userGroup"},
-  {name: "Application area", property: "applicationArea"},
+  {name: "Use case type", property: "useCaseType"},
   {name: "Type of technology", property: "typeOfTechnology"},
-  {name: "Phase", property: "phase"}
+  {name: "Phase", property: "phase"},
+  {name: "Impact", property: "impact"}
 ] %}
 
 <div class="govuk-width-container">
@@ -43,16 +44,13 @@ title: Use cases
           <div class="govuk-summary-card govuk-!-margin-bottom-7" data-category="use-case">
             <div class="govuk-summary-card__title-wrapper">
               <h3 class="govuk-summary-card__title"><a class="govuk-link" href="{{ useCase.title | slugify }}">{{ useCase.title }}</a></h3>
-              {#
-              <ul class="govuk-summary-card__actions">
-                <li class="govuk-summary-card__action">
-                  <strong class="govuk-tag govuk-tag--pink">Tag 1</strong>
-                </li>
-                <li class="govuk-summary-card__action">
-                  <strong class="govuk-tag govuk-tag--pink">Tag 2</strong>
-                </li>
-              </ul>
-              #}
+              {% if useCase.draft %}
+                <ul class="govuk-summary-card__actions">
+                  <li class="govuk-summary-card__action">
+                    <strong class="govuk-tag govuk-tag--pink">DRAFT</strong>
+                  </li>
+                </ul>
+              {% endif %}
             </div>
             <div class="govuk-summary-card__content">
               <dl class="govuk-summary-list">

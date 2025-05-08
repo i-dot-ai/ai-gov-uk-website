@@ -1,10 +1,5 @@
 /* Knowledge Hub specific CSS to go here */
 
-.govuk-header {
-  border-bottom-width: 5px;
-  padding: 10px 0;
-}
-
 .app-masthead {
   /* https://css-pattern.com/cube-columns/ */
   --s: 82px; /* control the size*/
@@ -38,4 +33,18 @@
 }
 .fill-dark {
   fill: #0b0c0c;
+}
+
+/* Styles that could go back into i.AI Design System */
+
+.govuk-header {
+  border-bottom-width: 5px;
+  padding: 10px 0;
+}
+
+.govuk-\!-display-flex {
+  display: flex;
+}
+.govuk-\!-display-flex--align-center {
+  align-items: center;
 }

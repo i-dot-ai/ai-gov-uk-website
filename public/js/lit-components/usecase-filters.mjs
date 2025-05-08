@@ -14,12 +14,13 @@
   const UsecaseFilters = class extends LitElement {
     
     static properties = {
-      organisation: { type: Array, state: true },
+      organisationName: { type: Array, state: true },
       organisationType: {type: Array, state: true },
       userGroup: { type: Array, state: true },
-      applicationArea: { type: Array, state: true },
+      useCaseType: { type: Array, state: true },
       typeOfTechnology: { type: Array, state: true },
       phase: { type: Array, state: true },
+      impact: { type: Array, state: true },
     };
 
     createRenderRoot() {
