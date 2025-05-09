@@ -26,7 +26,7 @@
 
 /* SVG colours */
 .fill-brand {
-  fill: #c50878;
+  fill: var(--iai-pink);
 }
 .fill-light {
   fill: #fff;
@@ -37,6 +37,10 @@
 
 
 /* Styles that could go back into i.AI Design System */
+
+:root {
+  --iai-pink: #c50878;
+}
 
 .govuk-header {
   border-bottom-width: 5px;
@@ -66,4 +70,14 @@
     padding: 0 15px;
     width: 33%;
   }
+}
+
+/* only show focus state if needed */
+.govuk-details__summary:focus {
+  background-color: transparent;
+  box-shadow: none;
+}
+.govuk-details__summary:focus-visible {
+  background-color: #fd0;
+  box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
 }
