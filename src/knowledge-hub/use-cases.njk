@@ -5,12 +5,10 @@ title: Use cases
 ---
 
 {% set properties = [
-  {name: "Organisation name", property: "organisation"},
+  {name: "Organisation", property: "organisation"},
   {name: "Organisation type", property: "organisationType"},
   {name: "User group", property: "userGroup"},
-  {name: "Use case type", property: "useCaseType"},
   {name: "Type of technology", property: "typeOfTechnology"},
-  {name: "Phase", property: "phase"},
   {name: "Impact", property: "impact"}
 ] %}
 
@@ -25,22 +23,23 @@ title: Use cases
       </ol>
     </nav>
 
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Use cases</h1>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">Use cases</h1>
     <p class="govuk-body">Browse these use cases to learn how different applications of AI technologies can solve real problems for public <span class="govuk-!-display-inline-block">sector organisations</span>.</p>
 
-    <div class="govuk-grid-row govuk-!-margin-top-9">
-      
-      <div class="govuk-grid-column-one-third govuk-!-padding-right-9">
-        <usecase-filters></usecase-filters>
-      </div>
+    <details class="govuk-!-margin-top-7 govuk-!-padding-left-6 govuk-!-padding-right-6 govuk-!-padding-top-4 govuk-!-padding-bottom-4" style="border: 1px solid #c50878; background-color: #fee7f4;">
+      <summary>
+        <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-left-2 govuk-!-margin-bottom-0" style="vertical-align: sub;">Search &amp; Filters</h2>
+      </summary>
+      <usecase-filters class="govuk-!-display-block govuk-!-margin-top-4"></usecase-filters>
+    </details>
 
-      <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-body-l govuk-!-margin-top-7">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> use cases</h2>
 
-        <h2 class="govuk-body-l">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> use cases</h2>
+    <div class="govuk-grid-row govuk-!-margin-top-7 govuk-!-display-flex">
 
-        {% for useCase in knowledgeHubUseCases %}
-
-          <div class="govuk-summary-card govuk-!-margin-bottom-7" data-category="use-case">
+      {% for useCase in knowledgeHubUseCases %}
+        <div class="govuk-grid-column-full govuk-grid-column-one-half-from-desktop govuk-grid-column-one-third-from-large-desktop" data-category="use-case">
+          <div class="govuk-summary-card govuk-!-margin-bottom-5" style="height: calc(100% - 40px);">
             <div class="govuk-summary-card__title-wrapper">
               <h3 class="govuk-summary-card__title"><a class="govuk-link" href="{{ useCase.title | slugify }}">{{ useCase.title }}</a></h3>
               {% if useCase.draft %}
@@ -56,21 +55,20 @@ title: Use cases
                 {% for property in properties %}
                   {% if useCase[property.property] %}
                     <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">{{ property.name }}</dt>
-                      <dd class="govuk-summary-list__value" data-category="{{ property.property}}">{{ useCase[property.property] }}</dd>
+                      <dt class="govuk-summary-list__key govuk-body-s" style="width: 102px;">{{ property.name }}</dt>
+                      <dd class="govuk-summary-list__value govuk-body-s" data-category="{{ property.property}}">{{ useCase[property.property] }}</dd>
                     </div>
                   {% endif %}
                 {% endfor %}
               </dl>
             </div>
           </div>
-
-        {% endfor %}
-      </div>
+        </div>
+      {% endfor %}
 
     </div>
 
-  </main>\
+  </main>
 </div>
 
 <script type="module" src="/js/lit-components/usecase-filters.mjs"></script>

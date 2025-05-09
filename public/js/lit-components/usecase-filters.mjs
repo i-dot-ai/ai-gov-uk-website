@@ -14,12 +14,10 @@
   const UsecaseFilters = class extends LitElement {
     
     static properties = {
-      organisationName: { type: Array, state: true },
+      organisation: { type: Array, state: true },
       organisationType: {type: Array, state: true },
       userGroup: { type: Array, state: true },
-      useCaseType: { type: Array, state: true },
       typeOfTechnology: { type: Array, state: true },
-      phase: { type: Array, state: true },
       impact: { type: Array, state: true },
     };
 
@@ -66,24 +64,27 @@
 
     render() {
       return html`
-        <div class="govuk-form-group">
-          <h2 class="govuk-label-wrapper govuk-heading-m govuk-!-margin-bottom-1">
-            <label for="search">Search</label>
-          </h2>
-          <input @keyup=${this.#applyFilters} class="govuk-input" id="search" name="search" type="text">
-        </div>
-        <h2 class="govuk-heading-m">Filters</h2>
-        ${Object.keys(UsecaseFilters.properties).map((property) => html`
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${property.replace(/([A-Z])/g, ' $1').trim()}</label>            
-            <select @change=${this.#applyFilters} class="govuk-select" id="${property}">
-              <option value="">All</option>
-              ${this[property].map((value) => html`
-                <option value="${value}">${value}</option>
-              `)}
-            </select>
+        <div class="govuk-grid-row" style="margin-bottom: -20px;">
+          <div class="govuk-grid-column-full govuk-grid-column-one-half-from-large-desktop">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="search">Search</label>
+              <input @keyup=${this.#applyFilters} class="govuk-input" id="search" name="search" type="text">
+            </div>
           </div>
-        `)}
+          ${Object.keys(UsecaseFilters.properties).map((property) => html`
+            <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-large-desktop">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${property.replace(/([A-Z])/g, ' $1').trim()}</label>            
+                <select @change=${this.#applyFilters} class="govuk-select" id="${property}">
+                  <option value="">All</option>
+                  ${this[property].map((value) => html`
+                    <option value="${value}">${value}</option>
+                  `)}
+                </select>
+              </div>
+            </div>
+          `)}
+        </div>
       `;
     }
 
