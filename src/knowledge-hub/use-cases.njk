@@ -56,12 +56,15 @@ title: Use cases
               {% endif %}
             </div>
             <div class="govuk-summary-card__content">
+              {% if useCase.synopsis %}
+                <p>{{ useCase.synopsis }}</p>
+              {% endif %}
               <dl class="govuk-summary-list">
                 {% for property in properties %}
                   {% if useCase[property.property] %}
                     <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key govuk-body-s" style="width: 102px;">{{ property.name }}</dt>
-                      <dd class="govuk-summary-list__value govuk-body-s" data-category="{{ property.property}}">{{ useCase[property.property] }}</dd>
+                      <dt class="govuk-summary-list__key govuk-body-xs" style="width: 102px;">{{ property.name }}</dt>
+                      <dd class="govuk-summary-list__value govuk-body-xs" data-category="{{ property.property}}">{{ useCase[property.property] }}</dd>
                     </div>
                   {% endif %}
                 {% endfor %}
