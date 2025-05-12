@@ -13,6 +13,8 @@
         <title>
             {% if title %}
                 {{ title }} - 
+            {% elseif useCase.title %}
+                {{ useCase.title }} -
             {% endif %}
             AI Knowledge Hub - AI.GOV.UK
         </title>
