@@ -40,9 +40,14 @@
       Object.keys(UsecaseFilters.properties).forEach((property) => {
         const elements = document.querySelectorAll(`[data-category="${property}"]`);
         elements.forEach((element) => {
-          if (!this[property].includes(element.textContent)) {
-            this[property].push(element.textContent);
-          }
+          // allow for multiple entries using /
+          let itemsArray = element.textContent?.split(/[/;]+/);
+          itemsArray?.forEach((item) => {
+            let itemStr = item.trim().trimStart();
+            if ( itemStr && !this[property].includes(itemStr) ) {
+              this[property].push(itemStr);
+            }
+          });
         });
       });
     }
@@ -110,7 +115,7 @@
         let cardIsVisible = true;
         Object.keys(UsecaseFilters.properties).map((property) => {
           let value = this.querySelector(`#${property}`).value;
-          if (value && card.querySelector(`[data-category="${property}"]`)?.textContent !== value) {
+          if (value && !card.querySelector(`[data-category="${property}"]`)?.textContent?.includes(value)) {
             cardIsVisible = false;
           }
         });
