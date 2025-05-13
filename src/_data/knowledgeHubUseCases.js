@@ -19,6 +19,8 @@ module.exports = async () => {
   }
   
   //console.log(useCases);
-  return useCases;
+  return useCases.sort((a, b) => {
+    return (b.updated || b.created) - (a.updated || a.created);
+  });
 
 };
