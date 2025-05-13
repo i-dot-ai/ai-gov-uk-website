@@ -38,54 +38,9 @@
 }
 
 
-/* USE-CASES PAGE */
-.govuk-body-xs {
-  font-size: 14px;
-}
-
-
 /* Styles that could go back into i.AI Design System */
-
-:root {
-  --iai-pink: #c50878;
-}
 
 .govuk-header {
   border-bottom-width: 5px;
   padding: 10px 0;
-}
-
-.govuk-\!-display-flex {
-  flex-wrap: wrap;
-}
-
-@media (min-width: 1021px) {
-  .govuk-grid-column-one-half-from-large-desktop {
-    box-sizing: border-box;
-    float: left;
-    padding: 0 15px;
-    width: 50%;
-  }
-  .govuk-grid-column-one-quarter-from-large-desktop {
-    box-sizing: border-box;
-    float: left;
-    padding: 0 15px;
-    width: 25%;
-  }
-  .govuk-grid-column-one-third-from-large-desktop {
-    box-sizing: border-box;
-    float: left;
-    padding: 0 15px;
-    width: 33%;
-  }
-}
-
-/* only show focus state if needed */
-.govuk-details__summary:focus {
-  background-color: transparent;
-  box-shadow: none;
-}
-.govuk-details__summary:focus-visible {
-  background-color: #fd0;
-  box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
 }
