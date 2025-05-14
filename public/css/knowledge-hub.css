@@ -44,3 +44,15 @@
   border-bottom-width: 5px;
   padding: 10px 0;
 }
+
+.govuk-link--call-to-action {
+  border: 3px solid var(--iai-pink);
+  border-radius: 4px;
+  display: inline-block;
+  padding: 10px !important;
+  text-decoration: none;
+}
+.govuk-link--call-to-action:hover {
+  background-color: white;
+  text-decoration: underline;
+}
