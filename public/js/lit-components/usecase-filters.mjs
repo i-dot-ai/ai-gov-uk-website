@@ -49,6 +49,7 @@
             }
           });
         });
+        this[property].sort();
       });
     }
 
