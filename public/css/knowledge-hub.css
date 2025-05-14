@@ -6,15 +6,15 @@
 .app-masthead {
   /* https://css-pattern.com/cube-columns/ */
   --s: 82px; /* control the size*/
-  --c1: #000;
-  --c2: #17171B;
-  --c3: #242428;
+  --c1: #f7f7f7;
+  --c2: #eeeeee;
+  --c3: #fbfbfb;
   --_g: var(--c3) 0 120deg,#0000 0;
   background: conic-gradient(from -60deg at 50% 33.3333333333%, var(--_g)), conic-gradient(from 120deg at 50% 66.6666666667%, var(--_g)), conic-gradient(from 60deg at 66.6666666667%, var(--c3) 60deg, var(--c2) 0 120deg, rgba(0, 0, 0, 0) 0), conic-gradient(from 180deg at 33.3333333333%, var(--c1) 60deg, var(--_g)), linear-gradient(90deg, var(--c1) 16.6666666667%, var(--c2) 0 50%, var(--c1) 0 83.3333333333%, var(--c2) 0);
   background-size: calc(1.732 * var(--s)) var(--s);
 }
-.app-masthead h1 {
-  color: white;
+.app-masthead__title {
+  font-weight: 500;
 }
 .app-masthead__logo {
   display: none;
