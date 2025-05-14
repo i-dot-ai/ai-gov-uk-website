@@ -17,7 +17,14 @@ module.exports = async () => {
     const entryData = matter(entryContent).data;
     useCases.push(entryData);
   }
-  
+
+  // format data
+  useCases.forEach((useCase) => {
+    if (useCase.impact) {
+      useCase.impact = useCase.impact.toString().replace(/,/g, " / ");
+    }
+  });
+
   //console.log(useCases);
   return useCases.sort((a, b) => {
     if (a.draft && !b.draft) {
