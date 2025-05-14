@@ -59,10 +59,19 @@ templateEngineOverride: njk
         <p>[A link to the feedback form will appear here]</p>
         <h2 class="govuk-heading-m govuk-!-margin-top-5">🧭 Build your wider understanding</h2>
         <p>The following documents set out the UK government’s approach to AI and can help you build a broader understanding of the context. They serve as useful points of reference as you explore this space.</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a href="https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government">AI Playbook for the UK Government</a></li>
-          <li><a href="https://www.gov.uk/government/publications/ai-opportunities-action-plan">AI Opportunities and Risks: Action Plan</a></li>
-          <li><a href="https://www.gov.uk/government/publications/a-blueprint-for-modern-digital-government">A Blueprint for a Modern Digital Government</a></li>
+        <ul class="govuk-list">
+          {% macro pdfLink (title, url, desc, img) %}
+            <li class="govuk-!-display-flex govuk-!-margin-bottom-3" style="align-items: center; flex-wrap: nowrap;">
+              <img style="border: 1px solid #0b0c0c;" width="80" src="{{ img }}" alt="" loading="lazy"/>
+              <div class="govuk-!-margin-left-4">
+                <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-2"><a href="{{ url }}">{{ title }}</a></h3>
+                <p class="govuk-body-s govuk-!-margin-0">{{ desc }}</p>
+              </div>
+            </li>
+          {% endmacro %}
+          {{ pdfLink ("AI Playbook for the UK Government", "https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government", "The playbook offers guidance on using AI safely, effectively and securely for civil servants and people working in government organisations", "/img/AIPlaybook.png") }}
+          {{ pdfLink ("AI Opportunities and Risks: Action Plan", "https://www.gov.uk/government/publications/ai-opportunities-action-plan", "Recommendations for the government to capture the opportunities of AI to enhance growth and productivity and create tangible benefits for UK citizens", "/img/AIOAP.png") }}
+          {{ pdfLink ("A Blueprint for a Modern Digital Government", "https://www.gov.uk/government/publications/a-blueprint-for-modern-digital-government", "A long-term vision for digital public services, a 6-point plan for reform, and the role of the new digital centre of government", "/img/Blueprint.png") }}
         </ul>
       </div>
     </div>
