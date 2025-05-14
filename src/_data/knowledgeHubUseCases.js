@@ -20,6 +20,11 @@ module.exports = async () => {
   
   //console.log(useCases);
   return useCases.sort((a, b) => {
+    if (a.draft && !b.draft) {
+      return 1;
+    } else if (b.draft && !a.draft) {
+      return -1;
+    }
     return (b.updated || b.created) - (a.updated || a.created);
   });
 
