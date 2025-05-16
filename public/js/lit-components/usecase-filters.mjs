@@ -15,7 +15,7 @@
     
     static properties = {
       organisation: { type: Array, state: true },
-      organisationType: {type: Array, state: true },
+      governmentBody: {type: Array, state: true },
       userGroup: { type: Array, state: true },
       typeOfTechnology: { type: Array, state: true },
       impact: { type: Array, state: true },
