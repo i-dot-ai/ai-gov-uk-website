@@ -18,7 +18,7 @@ title: Guidance
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">Guidance</h1>
 
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-two-thirds" id="content">
 
         {% set cmsContent = knowledgeHubGuidance | markdownToHtml(true) | safe %}
 
@@ -38,3 +38,11 @@ title: Guidance
 
   </main>
 </div>
+
+
+<script>
+  // Data from CMS
+  window.addEventListener('message', function(evt) {
+    document.querySelector("#content").innerHTML = `<p>["On this page" links will appear here]</p>${evt.data.content}`;
+  });
+</script>
