@@ -19,18 +19,16 @@
             AI Knowledge Hub - AI.GOV.UK
         </title>
 
-        {% if ogTitle and ogImage and ogUrl and ogDescription %}
-            <meta property="og:title" content="{{ ogTitle }}">
-            <meta property="og:type" content="website">
-            <meta property="og:url" content="{{ ogUrl }}">
-            <meta property="og:description" content="{{ ogDescription }}">
-            <meta property="og:site_name" content="AI Knowledge Hub">
-            <meta name="twitter:card" content="summary_large_image">
-            <meta name="twitter:site" content="@i_dot_ai">
-            <meta name="twitter:title" content="{{ ogTitle }}">
-            <meta name="twitter:description" content="{{ ogDescription }}">
-        {% endif %}
+        <meta property="og:title" content="{% if title %}{{ title }}{% elseif useCase.title %}{{ useCase.title }}{% endif %}">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://ai-knowledge-hub-demo.netlify.app/knowledge-hub/">
+        <meta property="og:description" content="Guidance and case studies for teams adopting AI technologies in the UK government">
+        <meta property="og:site_name" content="AI Knowledge Hub">
         <meta property="og:image" content="https://ai.gov.uk/img/knowledge-hub-banner.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@i_dot_ai">
+        <meta name="twitter:title" content="{% if title %}{{ title }}{% elseif useCase.title %}{{ useCase.title }}{% endif %}">
+        <meta name="twitter:description" content="Guidance and case studies for teams adopting AI technologies in the UK government">
         <meta name="twitter:image" content="https://ai.gov.uk/img/knowledge-hub-banner.png">
 
         <link href="/img/favicon.ico" rel="icon">
