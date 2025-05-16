@@ -40,6 +40,7 @@
     "i.ai-design-system": "^0.6.8",
     "lit-html": "^3.2.1",
     "postcss-cli": "^10.1.0",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "yaml": "^2.8.0"
   }
 }

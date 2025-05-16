@@ -20,70 +20,18 @@ title: Guidance
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
+        {% set cmsContent = knowledgeHubGuidance | markdownToHtml(true) | safe %}
+
         <div class="govuk-!-padding-5 govuk-!-margin-bottom-6" style="border: 1px solid #0b0c0c;">
           <h2 class="govuk-heading-s">On this page:</h2>
           <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-            <li><a href="#h1">Get Oriented: What AI means for the Public Sector</a></li>
-            <li><a href="#h2">Key considerations when building with AI</a></li>
-            <li><a href="#h3">Using off-the-shelf AI assistants powered by Large Language Models (LLMs)</a></li>
-            <li><a href="#h4">Other helpful resources to explore</a></li>
-            <li><a href="#h5">Cross-government AI Networks</a></li>
+            {% for heading in cmsContent | getHeadings %}
+              <li><a href="#{{ heading.id }}">{{ heading.content }}</a></li>
+            {% endfor %}
           </ul>
         </div>
 
-        <p>As part of the pilot launch, this section shares key guidance to help public sector teams begin exploring AI. It’s organised around core questions to consider in the early stages of adoption. The AI Knowledge Hub is a living resource and will grow over time with more tools, examples and guidance.</p>
-        <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" style="background-color: var(--iai-pink); border-color: var(--iai-pink);" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">Please note: This is not a comprehensive guide. It’s a starting point to support your AI journey.</strong>
-        </div>
-
-        <h2 class="govuk-heading-m govuk-!-margin-top-7" id="h1">Get Oriented: What AI means for the Public Sector</h2>
-        <p>The OECD (and by extension the ‘What is AI’ section of the AI Playbook for the UK Government) defines AI as:</p>
-        <div class="govuk-inset-text">
-          “An AI system is a machine-based system that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments. Different AI systems vary in their levels of autonomy and adaptiveness after deployment.”
-        </div>
-        <p>Before you can get started with building tools and services powered by AI, you should take the time to understand what AI is and what it can (or cannot) do. Below are useful resources published by the UK Government:</p>
-        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-          <li><a href="https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government">AI Playbook for the UK Government</a>: is the go-to resource for public sector teams. It covers what is AI, where it might be useful and the principles to have in mind when developing with AI.</li>
-          <li><a href="https://www.local.gov.uk/our-support/cyber-digital-and-technology/ai-unpacked">AI Unpacked</a>: If video format is your preference, the Local Government Association (LGA) has created bite-sized videos covering definitions of various AI concepts.</a>
-        </ul>
-
-        <h2 class="govuk-heading-m govuk-!-margin-top-7" id="h2">Key considerations when building with AI</h2>
-        <p>AI offers new capabilities, but delivering it well still requires the same thoughtful, user-focused approach used in digital services. Many of the best practices for building digital products also apply when developing AI tools (see: <a href="https://www.gov.uk/service-manual/service-standard">Service Standard / Service Manual</a>). At the same time, AI brings new considerations. Take an experimental approach: start with a clear hypothesis, run low-risk pilots, and use what you learn to improve the solution. The AI Playbook also sets out <a href="https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government/artificial-intelligence-playbook-for-the-uk-government-html#principles">10 principles</a> to guide responsible and effective use of AI in the public sector (printable poster available here).</p>
-        <p>This section is designed to help you think through how to adopt AI from identifying the right problems to using data well, acting responsibly, and measuring impact.</p>
-        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-          <li><strong>What problem are you trying to solve:</strong> Whether you are developing an AI-driven service for citizens or an internal tool, it is essential to clearly articulate the problem you are trying to solve. This provides critical context and a clear rationale for your work. It also supports evidence gathering for building a business case for the solution. The Service Manual’s guidance on <a href="https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs">Understanding user needs</a> is a good resource to help with this.</li>
-          <li><strong>Is AI the right solution:</strong> AI is not the correct solution for all business problems. Begin by assessing whether your problem actually requires AI, and if so, which type. Does it call for a Large Language Model (LLM), or would a traditional machine learning (ML) technique suffice? If you're unsure, explore the <a href="/knowledge-hub/use-cases/">use case library</a> or the <a href="https://www.gov.uk/algorithmic-transparency-records">Algorithmic Recording Standards repository</a> for examples of how others are applying AI to similar challenges.</li>
-          <li><strong>Is this a responsible use of AI:</strong> Risk is a natural part of any project, and AI is no exception. While it introduces specific challenges, such as bias, hallucinations, and data privacy concerns, these should not prevent progress. The key is to understand these risks, weigh them against the benefits, and take proportionate, well-informed action. The <a href="https://www.gov.uk/government/publications/introduction-to-ai-assurance">Introduction to AI Assurance</a> provides guidance on practical mechanisms to manage AI-specific risks while the <a href="https://www.gov.uk/government/publications/the-model-for-responsible-innovation/the-model-for-responsible-innovation">Model for Responsible Innovation</a> offers a workshop-style approach to exploring trade-offs. Although these tools are tailored to AI, the broader risk management principles in the <a href="https://www.gov.uk/government/publications/orange-book">Orange Book</a> remain essential and provide a strong foundation for navigating uncertainty and making balanced decisions.</li>
-          <li><strong>Do you have usable data:</strong> Whether you are training a machine learning model or using a pre-trained model like a large language model (LLM) directly, your AI system will depend on data. This could be to learn patterns or to generate useful outputs. In both cases, it is important to use data responsibly. The <a href="https://www.gov.uk/government/publications/data-ethics-framework/data-ethics-framework-2020">Data Ethics Framework</a> can help you put the right processes in place for sourcing, handling, and using data in a way that meets legal and ethical standards.</li>
-          <li><strong>Have you set up an evaluation plan:</strong> Adopting an experimental approach to AI means thinking early about how you will evaluate your experiments. Plan to assess both the technical performance and the overall impact of your solution. This includes checking whether it delivers value, meets user needs, and works responsibly in context. The <a href="https://www.gov.uk/government/news/new-guidance-for-evaluating-the-impact-of-ai-tools">Evaluation Task Force</a> has published <a href="https://assets.publishing.service.gov.uk/media/672c84ebbd79990dfa67cab4/2024-11-05_Guidance_on_the_impact_evaluation_of_AI_interventions_FINAL_PDF_WITH_ACCESSIBILITY_CHANGES.pdf">guidance on evaluating the impact of AI</a>, available as an annex to the <a href="https://www.gov.uk/government/publications/the-magenta-book">Magenta Book</a>.</li>
-          <li><strong>Would you be building the solution in-house or buying it:</strong> Whether you build in-house or buy an existing solution will depend on your access to skills, capacity, and infrastructure. The AI Playbook for the UK Government includes sections on both <a href="https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government/artificial-intelligence-playbook-for-the-uk-government-html#building-ai-solutions">Building AI Solutions</a> and <a href="https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government/artificial-intelligence-playbook-for-the-uk-government-html#buying-ai">Buying AI</a> to guide your decision. Check the <a href="/knowledge-hub/use-cases/">use case library</a> and the <a href="https://www.gov.uk/algorithmic-transparency-records">Algorithmic Recording Standards repository</a> to see if similar solutions already exist and could be adapted to your needs. If you decide to buy, engage early with Crown Commercial Services (CCS) to <a href="https://www.crowncommercial.gov.uk/agreements/rm6200">explore your procurement options</a>. Also, refer to the <a href="https://www.local.gov.uk/publications/responsible-buying-how-build-equality-data-protection-your-ai-commissioning">guidance on the responsible procurement of AI</a>, produced by the Local Government Association (LGA), London Office of Technology and Innovation (LOTI), the Equality and Human Rights Commission (EHRC) and Information Commissioners Office (ICO).</li>
-        </ul>
-        <p>With these questions in mind, you can now start thinking about how to begin adopting AI into your workflows. If you're looking for a starting point, the <a href="https://ai.gov.uk/">Incubator for AI (i.AI)</a> has <a href="https://docs.google.com/document/d/12ZvD79y5uEXUU_CHPc-y6bL37F03g_ZtpYcSkTOTCU0/edit?tab=t.0#heading=h.5c0qes7xaodn">documented their approach to early-stage experimentation</a>, outlining the processes they use to design and test solutions in a low-risk, responsible way.</p>
-        <p>As your project takes shape, make sure you are aware of your legal and regulatory responsibilities. Completing a <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/">Data Protection Impact Assessment (DPIA)</a> helps you identify and manage privacy risks. The <a href="https://www.equalityhumanrights.com/guidance/public-sector-equality-duty/assessing-impact-and-public-sector-equality-duty-scotland-1">Equality Impact Assessment (EQIA / EIA)</a> helps ensure your solution does not unintentionally disadvantage specific groups, thereby meeting your Public Sector Equality Duty (PSED). Finally, completing the <a href="https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub">Algorithmic Transparency Recording Standard</a> promotes openness about how your AI system works and helps build public trust.</p>
-
-        <h2 class="govuk-heading-m govuk-!-margin-top-7" id="h3">Using off-the-shelf AI assistants powered by Large Language Models (LLMs)</h2>
-        <p>Before using tools like Microsoft Copilot, Gemini, Claude, ChatGPT, Perplexity and others, check your departmental policies to understand what tools are permitted and how they should be used. These assistants can be powerful, but well-crafted prompts are key to getting useful results. The AI Adoption Accelerator, run by the <a href="https://www.gov.uk/government/organisations/open-innovation-team">Cabinet Office’s Open Innovation Team</a>, recommends using the PICKSIE framework: Persona, Intent and Context, Knowledge, Structure, Instructions, and Examples. They have also created a prompt-building tool to guide you through the process. If you need support integrating generative AI tools into your workflows, the <a href="https://assets.publishing.service.gov.uk/media/681b800f43d6699b3c1d29ee/Introducing_the_Open_Innovation_Team_2025.pdf">Accelerator team is available to assist.</a></p>
-        
-        <div class="govuk-!-padding-4 govuk-!-margin-top-7" style="background-color: #fee7f4;">
-          <h3 class="govuk-heading-s">A prompt library is coming soon, so watch this space!</h3>
-          <p class="govuk-body-s govuk-!-margin-0">It will be a collection of useful prompts for the public sector, by the public sector. We hope to crowdsource these to ensure that they are tailored to your needs. If you have developed a prompt that works well, we would love to feature it. Send it over to us at: TBD.</p>
-        </div>
-
-        <h2 class="govuk-heading-m govuk-!-margin-top-7" id="h4">Other helpful resources to explore</h2>
-        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-          <li><a href="https://www.gov.uk/data-ethics-guidance">Data Ethics Guidance Hub</a>: brings together all government guidance on the responsible use and development of AI.</li>
-          <li><a href="https://post.parliament.uk/research-briefings/post-pb-0057/">Artificial Intelligence – An Explainer</a>: a POST (Parliamentary Office of Science and Technology) brief summarising what AI is, how it works, and its real-world applications.</li>
-        </ul>
-
-        <h2 class="govuk-heading-m govuk-!-margin-top-7" id="h5">Cross-government AI Networks</h2>
-        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-          <li><a href="https://www.gov.uk/service-manual/communities/artificial-intelligence-community">AI Community</a></li>
-          <li>AI Practitioners Community</li>
-          <li><a href="https://www.local.gov.uk/our-support/cyber-digital-and-technology/cyber-digital-and-technology-network-groups/ai-network">LGA AI Network</a></li>
-          <li>Data Ethics Community of Practice</li>
-          <li>Welsh AI Network?</li>
-        </ul>
+        {{ cmsContent }}
 
       </div>
     </div>

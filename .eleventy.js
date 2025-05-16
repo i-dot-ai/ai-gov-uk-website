@@ -149,7 +149,7 @@ module.exports = function (eleventyConfig) {
     return crypto.randomUUID();
   });
 
-  eleventyConfig.addFilter("markdownToHtml", (value) => {
+  eleventyConfig.addFilter("markdownToHtml", (value, govukStyles) => {
     let html = mdToHtmlConverter.makeHtml(value);
 
     let images = html.match(/<img\s+src="[^"]*"\s*[^>]*>/g);
@@ -179,8 +179,33 @@ module.exports = function (eleventyConfig) {
         );
       }
     });
+
+    if (govukStyles) {
+      html = html
+        .replace(/<h2/g, '<h2 class="govuk-heading-m"')
+        .replace(/<ul>/g, '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">');
+    }
+
     return html;
   });
+
+
+  /**
+   * Creates an array from all <h2>s within html
+   */
+  eleventyConfig.addFilter("getHeadings", (html) => {
+    const regex = /<h2[^>]* id="([^"]*)"[^>]*>(.*?)<\/h2>/g;
+    const h2Array = [];
+    let match;
+    while ((match = regex.exec(html)) !== null) {
+      h2Array.push({
+          id: match[1], // Captured ID from the h2 tag
+          content: match[2] // The content captured between <h2> and </h2>
+      });
+    }
+    return h2Array;
+  });
+
 
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***
   (() => {
