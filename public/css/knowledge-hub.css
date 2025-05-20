@@ -26,6 +26,13 @@
   }
 }
 
+.centre-section {
+  background-color: #f7f7f7;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+
 /* SVG colours */
 .fill-brand {
   fill: var(--iai-pink);
@@ -49,7 +56,7 @@
   border: 3px solid var(--iai-pink);
   border-radius: 4px;
   display: inline-block;
-  padding: 10px !important;
+  padding: 10px 15px !important;
   text-decoration: none;
 }
 .govuk-link--call-to-action:hover {
