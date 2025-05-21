@@ -22,26 +22,28 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
   <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
 
     <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
-			<ol class="govuk-breadcrumbs__list">
-				<li class="govuk-breadcrumbs__list-item">
-					<a class="govuk-breadcrumbs__link" href="/knowledge-hub">Home</a>
-				</li>
-				<li class="govuk-breadcrumbs__list-item">
-					<back-link>
-						<a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
-						</back-link>
-				</li>
-			</ol>
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/knowledge-hub">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+                <back-link>
+                    <a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
+                    </back-link>
+            </li>
+        </ol>
     </nav>
 
     <h1 class="govuk-heading-l govuk-!-display-flex govuk-!-display-flex--align-center">
-			{{ useCase.title }}
-			{% if useCase.draft %}
-				<strong class="govuk-tag govuk-tag--pink govuk-!-margin-left-5">DRAFT</strong>
-			{% endif %}
-		</h1>
+        {{ useCase.title }}
+        {% if useCase.draft %}
+            <strong class="govuk-tag govuk-tag--pink govuk-!-margin-left-5">DRAFT</strong>
+        {% endif %}
+    </h1>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+    <p class="govuk-body-l">{{ useCase.synopsis }}</p>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-8 govuk-!-margin-top-7">
         {% for property in properties %}
             {% if property.value %}
                 <div class="govuk-summary-list__row">
