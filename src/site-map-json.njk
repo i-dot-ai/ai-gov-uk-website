@@ -1,0 +1,31 @@
+---
+title: Site Map
+templateEngineOverride: njk
+permalink: "site-map.js"
+---
+
+module.exports = [
+  '/',
+  '/about',
+  '/projects',
+  {% for project in projects %}
+    {% if project.title != "Preview" %}
+      {% if project.url %}
+        {% set url = project.url %}
+      {% else %}
+        {% set url = '/projects/' + project.title | slugify %}
+      {% endif %}
+      '{{ url }}',
+    {% endif %}
+  {% endfor %}
+  '/blogs',
+  {% for blog in blogs %}
+    {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
+      '/blogs/{{ blog.title | slugify }}',
+    {% endif %}
+  {% endfor %}
+  '/press-mentions',
+  '/opportunities',
+  '/register-your-interest',
+  '/accessibility'
+];

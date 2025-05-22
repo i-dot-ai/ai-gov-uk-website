@@ -1,0 +1,26 @@
+---
+title: Blogs
+layout: base.njk
+templateEngineOverride: njk
+---
+
+{% from "./_includes/blog-author.njk" import blogAuthor %}
+{% from "./_includes/blog-header.njk" import blogHeader %}
+
+
+{{ blogHeader() }}
+
+<div class="iai-blogs-list container">
+    {% for blog in blogs %}
+        {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
+            <a class="iai-blogs-list-item" href="/blogs/{{ blog.title | slugify  }}">
+                <div class="iai-blogs-list__image-container">
+                    <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt=""/>
+                </div>
+                <h2 class="iai-blogs-list__title" >{{ blog.title }}</h2>
+                <p class="iai-blog-list__summary">{{ blog.summaryShort }}</p>
+                <p class="iai-blog-list__date">{{ blog.date | dateFormat }}</p>
+            </a>
+        {% endif %}
+    {% endfor %}
+</div>

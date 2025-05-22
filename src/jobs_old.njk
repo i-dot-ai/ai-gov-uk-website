@@ -1,0 +1,61 @@
+---
+title: Jobs
+layout: base.njk
+templateEngineOverride: njk
+pagination:
+    data: jobs
+    size: 1
+    alias: job
+permalink: "jobs/{{ job.title | slugify }}/"
+---
+
+<div class="container flex flex-col sm:w-[80%] lg:w-[60%] pt-5 gap-[4rem]">
+    <a href="/join">
+        <span>&#8592;</span>All Jobs</a>
+    <h1 class="text-[33px] font-semibold">{{ job.title | safe }} ({{ job.grade}})</h1>
+
+    <div class="flex flex-col gap-[1.5rem]">
+        <h2 class="text-[23px] font-semibold">About The Role</h2>
+        {% for items in job.description.about %}
+            <p class="text-[18px] text-slate-800 font-light pb-2">{{ items | safe }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="flex flex-col gap-[1.5rem]">
+        <h2 class="text-[23px] font-semibold">Role Responsibilities</h2>
+        <ul class='list-disc list-inside'>
+            {% for items in job.description.responsibilities %}
+                <li class="text-[18px] text-slate-800 font-light pb-2">{{ items }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="flex flex-col gap-[1.5rem]">
+        <h2 class="text-[23px] font-semibold">We are looking for someone who has</h2>
+        <ul class='list-disc list-inside'>
+            {% for items in job.description.skills %}
+                <li class="text-[18px] text-slate-800 font-light pb-2">{{ items }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="flex flex-col gap-[1.5rem]">
+        <p class="text-[18px] text-slate-800 font-light pb-2">We welcome a broad range of applicants and encourage you to apply even if you do not fully meet the listed qualifications. Strong candidates come from many different backgrounds and will not necessarily check every single box. Studies show that talented people, especially those from groups underrepresented in their field, are more likely to doubt themselves and feel like an "imposter". But unique perspectives enrich teams, so we urge you to have confidence in your potential contributions. If aspects of this role resonate with you, please apply rather than prematurely excluding yourself. We look forward to your application highlighting your skills and experiences.</p>
+    </div>
+
+    <div class="flex flex-col mt-1 gap-4 text-center items-center">
+
+        {% if job.link %}
+            <a href="{{ job.link }}" target="_blank" class="text-white bg-[#000] align-items-center hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-semibold h-12 px-6 rounded-lg flex items-center justify-center align-items-center">
+                <p>Apply here (opens in new tab)</p>
+            </a>
+        {% else %}
+            <a href="mailto:ai@no10.gov.uk" target="_blank" class="text-white bg-[#000] align-items-center hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-semibold h-12 px-6 rounded-lg flex items-center justify-center align-items-center">
+                <p>Get Notified When Applications Open</p>
+            </a>
+        {% endif %}
+
+        <p>You can <a href="mailto:i-dot-ai-enquiries@cabinetoffice.gov.uk" class="!text-pink-900 font-bold link">contact us</a> for further questions.</p>
+
+    </div>
+</div>

@@ -1,0 +1,60 @@
+---
+title: Site Map
+layout: base.njk
+templateEngineOverride: njk
+---
+
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Site Map") }}
+
+
+<div class="container w-100 md:w-75 pt-[3rem]">
+
+  <ul class="list-disc pl-4">
+      <li>
+        <a class="link" href="/">Home page</a>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/about">About i.AI</a>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/projects">Projects</a>
+        <ul class="list-disc pl-4">
+          {% for project in projects %}
+            <li class="mt-2">
+              <a class="link" href="{% if project.url %}{{ project.url }}{% else %}/projects/{{ project.title | slugify }}{% endif %}">{{ project.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/blogs">Blogs</a>
+        <ul class="list-disc pl-4">
+          {% for blog in blogs %}
+            {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
+              <li class="mt-2">
+                <a class="link" href="/blogs/{{ blog.title | slugify  }}">{{ blog.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/press-mentions">Press</a>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/opportunities">Opportunities</a>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/register-your-interest">Register your interest</a>
+      </li>
+      <li class="mt-2">
+        <a class="link" href="/accessibility">Accessibility statement</a>
+      </li>
+    </ul>
+
+    <h2 class="text-[24px] font-semibold mt-5">Credits</h2>
+    <p class="mt-3">Homepage banner image: Merlin Lightpainting</p>
+
+</div>

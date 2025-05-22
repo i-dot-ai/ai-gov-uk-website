@@ -1,0 +1,32 @@
+---
+title: rAPId
+layout: base.njk
+templateEngineOverride: njk
+ogTitle: rAPId
+ogImage: https://ai.gov.uk/img/rapid2.webp
+ogUrl: https://ai.gov.uk/projects/rapid
+ogDescription: "An end-to-end solution to sharing data across government"
+---
+
+{% from "../_includes/banner.njk" import banner %}
+{{ banner("rAPId", ogDescription) }}
+
+<div class="container w-100 md:w-75 pt-[2rem] project-content">
+
+    {% set content %}
+        <p>Sharing quality data across government while delivering high impact priorities at pace is a significant challenge. Often data in these scenarios is shared through spreadsheets, documents and emails, posing substantial difficulties when collaborating with others, or when trying to leverage the latest data tools and technologies.</p>
+        <p class="mt-4">Created and pioneered by Number 10's Data Science team, <a class="link" href="https://rapid.readthedocs.io/en/latest/">rAPId</a> is a standardised lightweight data sharing solution to these challenges, provided free of charge. Its aim is to enable government departments and others to securely share data in an automated way at scale, replacing the use of spreadsheets and emails to share data.</p>
+        <p class="mt-4">rAPId helps match the rising demand for good-quality evidence in the design, delivery, and evaluation of public policy by providing decision and policy makers with high quality data on demand. The solution makes data more accessible for policy and decision makers and enables data professionals to work with big data shared in rAPId.</p>
+    {% endset %}
+    <text-image-block side="left" content="{{ content }}" image="/img/rapid2.webp"></text-image-block>
+
+    <h2 class="mt-5 text-[24px] font-semibold">How does rAPId work?</h2>
+    <p class="mt-4">rAPId is an open-source end-to-end solution, with API and infrastructure code included. The solution is built to be scalable, allowing users to work with big data; and secure, with the ability to control fine grained permissions.</p>
+    <p class="mt-4">It’s also built to be cost-effective, with the solution's operating cost scaling with the amount of data shared. As the solution is available open-source, users can easily deploy a working version of rAPId for themselves. Code can be found on GitHub and is open to all departments, other organisations and the public: <a class="link" href="https://github.com/no10ds/rapid">https://github.com/no10ds/rapid</a>.</p>
+    <p class="mt-4">By using rAPId, government departments have been able to discover, manage and share high-impact data internally and across government. Several government departments are actively using rAPId e.g. Cabinet Office, No10, HMT.</p>
+    <p class="mt-4">See the documentation to read more about rAPId: <a class="link" href="https://rapid.readthedocs.io/en/latest/">https://rapid.readthedocs.io/en/latest/</a></p>
+
+    <h2 class="mt-5 text-[24px] font-semibold">Future</h2>
+    <p class="mb-2 mt-4">Work is currently going beyond rAPId to offer open-source, cutting edge cloud infrastructure (Project Condor) that will allow departments to create the infrastructure that suits their data, analytical and AI needs. The purpose of this is to reduce reliance on contractors and increasing government’s cloud expertise and capability, allowing it to better leverage data at scale.</p>
+
+</div>

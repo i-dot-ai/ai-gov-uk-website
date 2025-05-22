@@ -1,0 +1,94 @@
+---
+title: Projects
+layout: base.njk
+templateEngineOverride: njk
+---
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Projects", "A selection of projects we have been working on") }}
+
+
+{% macro card (project) %}
+  <div class="projects__card card bg-slate-50 drop-shadow">
+    <img src="{{project.img}}" class="card-img-top aspect-video object-cover" alt="">
+    <div class="border-top card-body flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between">
+          <h3 class="card-title font-semibold text-xl">{{project.title}}</h3>
+          {% if project.phase and project.phase != "N/A" %}
+            <span class="projects__card-phase">{{ project.phase }}</span>
+          {% endif %}
+        </div>
+        <p class="card-text text-[16px]">{{project.synopsis}}</p>
+      </div>
+      {#<a href="{% if project.url %}{{ project.url }}{% else %}{{ project.title | slugify }}{% endif %}" class="btn btn-primary bg-[#c50978] border-[#c50978] mt-3 text-s">More details</a>#}
+      <a href="{% if project.url %}{{ project.url }}{% else %}{{ project.title | slugify }}{% endif %}" class="btn btn-dark mt-3 text-s focus:ring-2 focus:ring-offset-2 focus:ring-slate-700">
+        Visit page
+        <span aria-hidden="true">&#8594;</span>
+        <span class="sr-only">{{project.title}}</span>
+      </a>
+    </div>
+  </div>
+{% endmacro %}
+
+<div class="container w-100 md:w-75">
+
+  <h2 class="mt-5 text-[24px] font-semibold">Introducing the GovAI toolkit for civil servants!</h2>
+  <p class="mt-3">We at i.AI have created a suite of bespoke tools for civil servants in order to improve a range of different processes within government and better deliver on ministerial plans. Browse through our current offering!</p>
+  <div class="projects pt-4">
+    {% for project in projects %}
+      {% if project.type == "Productivity tools" %}
+        {{ card(project) }}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <h2 class="sr-only">Other projects</h2>
+  <p class="mt-5">We are also working on a range of projects to support the wider public sector with more to come. Watch this space!</p>
+  <div class="projects pt-4">
+    {% for project in projects %}
+      {% if project.type == "Other" %}
+        {{ card(project) }}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="mt-5 project-content">
+    <h2>Our Product Development Stages explained</h2>
+    <p>As our products develop, they progress through different stage gates. This encourages us to spend the early stages resolving uncertainty and failing first, and the later stages on putting the pieces together and evaluating process and impact. It also helps us be proportionate with the level of burden and assurance we expect from our products at different stages.</p>
+    <p>We have five product development stages:</p>
+    <ol>
+      <li>
+        <dl>
+          <dt>Scoping (what’s the problem?): </dt>
+          <dd>Define the problem and come up with AI solution hypotheses</dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>Incubation (does the model solve the problem?): </dt>
+          <dd>Run technical experiments and address uncertainties</dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>Alpha (does the product work?): </dt>
+          <dd>Build and technically evaluate solution</dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>Beta (does the product have impact?): </dt>
+          <dd>Productionise the solution and test and improve with real users</dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+          <dt>Scaling (will it be able to handle lots of users?): </dt>
+          <dd>Launch and rollout of the product</dd>
+        </dl>
+      </li>
+    </ol>
+  </div>
+
+</div>
