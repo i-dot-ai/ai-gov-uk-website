@@ -49,7 +49,20 @@
             }
           });
         });
-        this[property].sort();
+
+        if (property === 'governmentBody') {
+          const requiredOrder = ['UK Government', 'Scottish Government', 'Welsh Government', 'Northern Ireland Executive', 'Local Government'];
+          this['governmentBody'].sort((a, b) => {
+            return requiredOrder.indexOf(a) - requiredOrder.indexOf(b);
+          });
+        } else if (property === 'typeOfTechnology') {
+          const requiredOrder = ['Generative AI', 'Machine Learning', 'Data or Infrastructure'];
+          this['typeOfTechnology'].sort((a, b) => {
+            return requiredOrder.indexOf(a) - requiredOrder.indexOf(b);
+          });
+        } else {
+          this[property].sort();
+        }
       });
     }
 
