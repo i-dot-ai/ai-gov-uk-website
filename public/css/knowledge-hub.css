@@ -1,0 +1,65 @@
+/* Knowledge Hub specific CSS to go here */
+
+
+/* HOMEPAGE */
+
+.app-masthead {
+  /* https://css-pattern.com/cube-columns/ */
+  --s: 82px; /* control the size*/
+  --c1: #f7f7f7;
+  --c2: #eeeeee;
+  --c3: #fbfbfb;
+  --_g: var(--c3) 0 120deg,#0000 0;
+  background: conic-gradient(from -60deg at 50% 33.3333333333%, var(--_g)), conic-gradient(from 120deg at 50% 66.6666666667%, var(--_g)), conic-gradient(from 60deg at 66.6666666667%, var(--c3) 60deg, var(--c2) 0 120deg, rgba(0, 0, 0, 0) 0), conic-gradient(from 180deg at 33.3333333333%, var(--c1) 60deg, var(--_g)), linear-gradient(90deg, var(--c1) 16.6666666667%, var(--c2) 0 50%, var(--c1) 0 83.3333333333%, var(--c2) 0);
+  background-size: calc(1.732 * var(--s)) var(--s);
+}
+.app-masthead__title {
+  font-weight: 500;
+}
+.app-masthead__logo {
+  display: none;
+}
+@media (min-width: 641px) {
+  .app-masthead__logo {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.centre-section {
+  background-color: #f7f7f7;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+
+/* SVG colours */
+.fill-brand {
+  fill: var(--iai-pink);
+}
+.fill-light {
+  fill: #fff;
+}
+.fill-dark {
+  fill: #0b0c0c;
+}
+
+
+/* Styles that could go back into i.AI Design System */
+
+.govuk-header {
+  border-bottom-width: 5px;
+  padding: 10px 0;
+}
+
+.govuk-link--call-to-action {
+  border: 3px solid var(--iai-pink);
+  border-radius: 4px;
+  display: inline-block;
+  padding: 10px 15px !important;
+  text-decoration: none;
+}
+.govuk-link--call-to-action:hover {
+  background-color: white;
+  text-decoration: underline;
+}

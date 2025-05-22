@@ -15,6 +15,9 @@ const mdToHtmlConverter = new showdown.Converter();
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
+    // To be added once we no longer need Netlify for the Knowledge Hub prototype
+    //"./node_modules/i.ai-design-system/dist/iai-design-system.css": "/",
+    //"./node_modules/i.ai-design-system/dist/fonts/": "/fonts/"
   });
 
   eleventyConfig.addPlugin(litPlugin, {
@@ -23,6 +26,10 @@ module.exports = function (eleventyConfig) {
       "public/js/lit-components/blog-carousel.mjs",
       "public/js/lit-components/text-image-block.mjs",
       "public/js/lit-components/project-quote.mjs",
+      "public/js/lit-components/usecase-filters.mjs",
+      // To be swapped over once we no longer need Netlify for the Knowledge Hub prototype
+      "public/js/lit-components/iai-header.mjs"
+      //"node_modules/i.ai-design-system/dist/components/iai-header.mjs"
     ],
   });
 
@@ -59,7 +66,10 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
-  eleventyConfig.addFilter("dateFormat", (dateString) => {
+  eleventyConfig.addFilter("dateFormat", (dateString, type) => {
+    if (type === 'int') {
+      dateString = parseInt(dateString);
+    }
     const date = new Date(dateString);
     const day = date.getDate();
     const monthNames = [
@@ -139,7 +149,7 @@ module.exports = function (eleventyConfig) {
     return crypto.randomUUID();
   });
 
-  eleventyConfig.addFilter("markdownToHtml", (value) => {
+  eleventyConfig.addFilter("markdownToHtml", (value, govukStyles) => {
     let html = mdToHtmlConverter.makeHtml(value);
 
     let images = html.match(/<img\s+src="[^"]*"\s*[^>]*>/g);
@@ -169,8 +179,33 @@ module.exports = function (eleventyConfig) {
         );
       }
     });
+
+    if (govukStyles) {
+      html = html
+        .replace(/<h2/g, '<h2 class="govuk-heading-m"')
+        .replace(/<ul>/g, '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">');
+    }
+
     return html;
   });
+
+
+  /**
+   * Creates an array from all <h2>s within html
+   */
+  eleventyConfig.addFilter("getHeadings", (html) => {
+    const regex = /<h2[^>]* id="([^"]*)"[^>]*>(.*?)<\/h2>/g;
+    const h2Array = [];
+    let match;
+    while ((match = regex.exec(html)) !== null) {
+      h2Array.push({
+          id: match[1], // Captured ID from the h2 tag
+          content: match[2] // The content captured between <h2> and </h2>
+      });
+    }
+    return h2Array;
+  });
+
 
   eleventyConfig.addFilter("rssDate", (dateStr) => {
     const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -178,6 +213,7 @@ module.exports = function (eleventyConfig) {
     let date = new Date(dateStr);
     return `${DAYS[date.getDay()]}, ${date.getDate()} ${MONTHS[date.getMonth()]} ${date.getFullYear()} 00:00:00 GMT`;
   });
+
 
   // *** Rename regularly-changing assets, to prevent browser-cache issues ***
   (() => {

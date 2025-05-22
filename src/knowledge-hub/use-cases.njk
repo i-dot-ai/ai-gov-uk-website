@@ -1,0 +1,97 @@
+---
+layout: knowledge-hub/base.njk
+templateEngineOverride: njk
+title: Use cases
+---
+
+{% set properties = [
+  {name: "Organisation", property: "organisation"},
+  {name: "Government body", property: "governmentBody"},
+  {name: "User group", property: "userGroup"},
+  {name: "Type of technology", property: "typeOfTechnology"},
+  {name: "Impact", property: "impact"}
+] %}
+
+<div class="govuk-width-container">
+  <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
+
+    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link govuk-back-link govuk-!-margin-0" href="/knowledge-hub">Home</a>
+        </li>
+      </ol>
+    </nav>
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">Use Case Library</h1>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p>Discover how AI is making a difference across the public sector. These use cases showcase projects that are already delivering impact.</p>
+        <p><em>Entries marked 'Draft' are based on publicly available official information and are pending verification by the tool owners.</em></p>
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" style="background-color: var(--iai-pink); border-color: var(--iai-pink);" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">Please note: Information reflects a specific point in time and may be outdated. Where third-party tools are mentioned, this does not imply endorsement. Please carry out your own due diligence before use.</strong>
+        </div>
+      </div>
+    </div>
+
+    <details class="govuk-details govuk-!-margin-top-4 govuk-!-padding-left-6 govuk-!-padding-right-6 govuk-!-padding-top-4 govuk-!-padding-bottom-4" style="border: 1px solid #b1b4b6; background-color: #f3f2f1;">
+      <summary class="govuk-details__summary">
+        <h2 class="govuk-details__summary-text govuk-heading-s govuk-!-margin-bottom-0" style="color: var(--iai-pink);">Search and filter</h2>
+      </summary>
+      <usecase-filters class="govuk-!-display-block govuk-!-margin-top-4"></usecase-filters>
+    </details>
+
+    <h2 class="govuk-body-l govuk-!-margin-top-7">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> use cases</h2>
+
+    <div class="govuk-grid-row govuk-!-margin-top-7 govuk-!-display-flex">
+
+      {% for useCase in knowledgeHubUseCases %}
+        <div class="govuk-grid-column-full govuk-grid-column-one-half-from-desktop govuk-grid-column-one-third-from-large-desktop" data-category="use-case">
+          <div class="govuk-summary-card govuk-!-margin-bottom-5" style="height: calc(100% - 40px);">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title"><a class="govuk-link" href="{{ useCase.title | slugify }}">{{ useCase.title }}</a></h3>
+              {% if useCase.draft %}
+                <ul class="govuk-summary-card__actions">
+                  <li class="govuk-summary-card__action">
+                    <strong class="govuk-tag govuk-tag--pink">DRAFT</strong>
+                  </li>
+                </ul>
+              {% endif %}
+            </div>
+            <div class="govuk-summary-card__content">
+              {% if useCase.synopsis %}
+                <p>{{ useCase.synopsis }}</p>
+              {% endif %}
+              <dl class="govuk-summary-list">
+                {% for property in properties %}
+                  {% if useCase[property.property] %}
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key govuk-body-xs" style="width: 102px;">{{ property.name }}</dt>
+                      <dd class="govuk-summary-list__value govuk-body-xs" data-category="{{ property.property}}">{{ useCase[property.property] }}</dd>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </dl>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </main>
+</div>
+
+<script type="module" src="/js/lit-components/usecase-filters.mjs"></script>
+
+
+{# Temporary - so all options display for this field (for demos) #}
+<div style="display: none;">
+  <div data-category="governmentBody">UK Government</div>
+  <div data-category="governmentBody">Local Government</div>
+  <div data-category="governmentBody">Welsh Government</div>
+  <div data-category="governmentBody">Scottish Government</div>
+  <div data-category="governmentBody">Northern Ireland Executive</div>
+</div>
