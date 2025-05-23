@@ -45,6 +45,17 @@
 }
 
 
+/* Use cases */
+.use-case-card {
+  height: calc(100% - 16px);
+}
+@media (min-width: 641px) {
+  .use-case-card {
+    height: calc(100% - 40px);
+  }
+}
+
+
 /* Styles that could go back into i.AI Design System */
 
 .govuk-header {

@@ -49,7 +49,7 @@ title: Use cases
 
       {% for useCase in knowledgeHubUseCases %}
         <div class="govuk-grid-column-full govuk-grid-column-one-half-from-desktop govuk-grid-column-one-third-from-large-desktop" data-category="use-case">
-          <div class="govuk-summary-card govuk-!-margin-bottom-5" style="height: calc(100% - 40px);">
+          <div class="use-case-card govuk-summary-card govuk-!-margin-bottom-5">
             <div class="govuk-summary-card__title-wrapper">
               <h3 class="govuk-summary-card__title"><a class="govuk-link" href="{{ useCase.title | slugify }}">{{ useCase.title }}</a></h3>
               {% if useCase.draft %}
