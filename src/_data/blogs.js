@@ -23,7 +23,15 @@ if (USE_PREVIEW) {
 }
 const client = contentful.createClient(contentfulOptions);
 
+let cache;
+
 module.exports = async () => {
+
+  if (cache) {
+    console.log("Using cached blogs");
+    return cache;
+  }
+
   let response = await client.getEntries({
     content_type: "blog",
   });
@@ -168,5 +176,6 @@ module.exports = async () => {
   blogs.sort((a, b) => {
     return a.date < b.date ? 1 : -1;
   });
+  cache = blogs;
   return blogs;
 };

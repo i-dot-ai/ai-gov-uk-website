@@ -5,7 +5,15 @@
 
 const getProjects = require("./projects.js");
 
+let cache;
+
 module.exports = async () => {
+
+    if (cache) {
+        console.log("Using cached projects (new)");
+        return cache;
+    }
+
     let allProjects = await getProjects();
 
     allProjects.push({
@@ -20,7 +28,11 @@ module.exports = async () => {
         ]
     });
 
-    return allProjects.filter((project) => {
+    const filteredProjects = allProjects.filter((project) => {
         return !project.url;
     });
+
+    cache = filteredProjects;
+    return filteredProjects;
+
 }
