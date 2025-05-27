@@ -3,7 +3,14 @@ const getData = require("./_shared.js").getData;
 
 const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
 
+let cache;
+
 module.exports = async () => {
+
+  if (cache) {
+    console.log("Using cached press data");
+    return cache;
+  }
 
   let pressMentions = [];
     
@@ -27,7 +34,7 @@ module.exports = async () => {
     mirror: 1
   }
 
-  return pressMentions.sort((entryA, entryB) => {
+  const sortedPressMentions = pressMentions.sort((entryA, entryB) => {
     // sort by date first
     if (entryA.date.toString() !== entryB.date.toString()) {
       return entryA.date < entryB.date ? 1 : -1;
@@ -39,5 +46,8 @@ module.exports = async () => {
     const outletBIndex = mediaOutletSortPreferences[outletB] || 0;
     return outletBIndex - outletAIndex;
   });
+
+  cache = sortedPressMentions;
+  return sortedPressMentions;
 
 };

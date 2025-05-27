@@ -3,7 +3,14 @@ const getData = require("./_shared.js").getData;
 
 const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
 
+let cache;
+
 module.exports = async () => {
+
+  if (cache) {
+    console.log("Using cached Knowledge Hub use cases");
+    return cache;
+  }
 
   let useCases = [];
     
@@ -26,7 +33,7 @@ module.exports = async () => {
   });
 
   //console.log(useCases);
-  return useCases.sort((a, b) => {
+  const sortedUseCases = useCases.sort((a, b) => {
     if (a.draft && !b.draft) {
       return 1;
     } else if (b.draft && !a.draft) {
@@ -34,5 +41,8 @@ module.exports = async () => {
     }
     return (b.updated || b.created) - (a.updated || a.created);
   });
+
+  cache = sortedUseCases;
+  return sortedUseCases;
 
 };

@@ -9,7 +9,15 @@ if (process.env.CONTENTFUL_ACCESS_TOKEN === 'test') {
   return;
 }
 
+let cache;
+
 module.exports = async () => {
+
+  if (cache) {
+    console.log("Using cached projects");
+    return cache;
+  }
+
   let projects = [
     {
       title: "rAPId",
@@ -58,7 +66,7 @@ module.exports = async () => {
     projects.push(projectData);
   }
 
-  return projects.sort((projectA, projectB) => {
+  const sortedProjects = projects.sort((projectA, projectB) => {
     const phaseMap = [
       "N/A",
       "Paused",
@@ -73,4 +81,8 @@ module.exports = async () => {
       phaseMap.indexOf(projectA.phase || "N/A")
     );
   });
+
+  cache = sortedProjects;
+  return sortedProjects;
+
 };

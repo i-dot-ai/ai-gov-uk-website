@@ -1,3 +1,4 @@
+/*
 require('dotenv').config();
 const contentful = require('contentful');
 
@@ -49,3 +50,4 @@ module.exports = () => {
     });
 
 };
+*/
