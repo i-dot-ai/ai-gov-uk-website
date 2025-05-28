@@ -21,6 +21,16 @@ main a:hover {
   text-decoration: none;
 }
 
+a:focus {
+  background-color: initial;
+  box-shadow: none;
+  outline-color: white;
+}
+a:focus-visible {
+  outline: 2px solid var(--iai-pink);
+}
+
+
 h1,
 h2,
 h3,
@@ -110,14 +120,15 @@ figcaption svg {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
 }
-.iai-button--pink {
+.iai-button--pink, .iai-button--pink:focus-visible {
   background-color: var(--iai-pink);
 }
 .iai-button--pink:hover {
   color: white;
   opacity: 0.9;
 }
-.iai-button--green {
+
+.iai-button--green, .iai-button--green:focus-visible {
   background-color: #0b8478;
 }
 .iai-button--green:hover {
@@ -125,9 +136,14 @@ figcaption svg {
   opacity: 0.9;
 }
 
+.skip-link:focus {
+  background-color: #ffdd00;
+}
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
 .iai-header {
   background-color: black;
   color: white;
@@ -149,6 +165,13 @@ figcaption svg {
   font-weight: 400;
   letter-spacing: 3px;
   text-transform: uppercase;
+}
+.iai-header a:any-link {
+  color: white;
+  text-decoration: none;
+}
+.iai-header a:any-link:hover {
+  text-decoration: underline;
 }
 .iai-header__mobile-button {
   background-color: transparent;
@@ -490,7 +513,8 @@ figcaption svg {
   width: 2.75rem;
 }
 .iai-quote-carousel__btn:focus-visible {
-  outline: 2px solid blue;
+  background-color: #666666;
+  outline: 2px solid var(--iai-pink);
 }
 @media (min-width: 768px) {
   .iai-homepage-quote p {
@@ -609,6 +633,7 @@ figcaption svg {
 # About page
 --------------------------------------------------------------*/
 .iai-faqs__answer p {
+  font-size: 1rem;
   margin-top: 1rem;
 }
 .iai-faqs__answer ul {
@@ -643,6 +668,9 @@ figcaption svg {
   min-width: 288px;
   padding: 0.875rem 1.25rem;
   width: 100%;
+}
+.iai-notification-buttons__button span {
+  color: white;
 }
 .iai-notification-buttons__button-icon {
   margin-right: 1rem;
@@ -1394,6 +1422,7 @@ figcaption svg {
 }
 
 .services .title {
+  color: #1e293b;
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
@@ -1637,6 +1666,7 @@ figcaption svg {
   width: 100%;
 }
 .iai-blogs-list__title {
+  color: #1e293b;
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 1.5rem;
@@ -2744,6 +2774,10 @@ img.iai-project-types__icon {
 }
 .footer__section {
   min-height: 6rem;
+}
+.footer__section a, .footer__section p {
+  color: white;
+  font-size: 12px;
 }
 .footer__section--left p {
   border-top: 1px solid #555;
