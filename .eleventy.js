@@ -16,15 +16,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "public/": "/"
   });
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/i.ai-design-system/dist/iai-design-system.css": "/"
-  });
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/i.ai-design-system/dist/fonts/": "/fonts/"
-  });
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/i.ai-design-system/dist/iai-design-system.js": "js/"
-  });
 
   eleventyConfig.addPlugin(litPlugin, {
     mode: "worker",
@@ -33,7 +24,7 @@ module.exports = function (eleventyConfig) {
       "public/js/lit-components/text-image-block.mjs",
       "public/js/lit-components/project-quote.mjs",
       "public/js/lit-components/usecase-filters.mjs",
-      "node_modules/i.ai-design-system/dist/components/iai-header.mjs"
+      "public/js/lit-components/iai-header.mjs"
     ],
   });
 
