@@ -14,10 +14,16 @@ const mdToHtmlConverter = new showdown.Converter();
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
-    "./public/": "/",
-    // To be added once we no longer need Netlify for the Knowledge Hub prototype
-    //"./node_modules/i.ai-design-system/dist/iai-design-system.css": "/",
-    //"./node_modules/i.ai-design-system/dist/fonts/": "/fonts/"
+    "public/": "/"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/i.ai-design-system/dist/iai-design-system.css": "/"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/i.ai-design-system/dist/fonts/": "/fonts/"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/i.ai-design-system/dist/iai-design-system.js": "js/"
   });
 
   eleventyConfig.addPlugin(litPlugin, {
@@ -27,9 +33,7 @@ module.exports = function (eleventyConfig) {
       "public/js/lit-components/text-image-block.mjs",
       "public/js/lit-components/project-quote.mjs",
       "public/js/lit-components/usecase-filters.mjs",
-      // To be swapped over once we no longer need Netlify for the Knowledge Hub prototype
-      "public/js/lit-components/iai-header.mjs"
-      //"node_modules/i.ai-design-system/dist/components/iai-header.mjs"
+      "node_modules/i.ai-design-system/dist/components/iai-header.mjs"
     ],
   });
 
