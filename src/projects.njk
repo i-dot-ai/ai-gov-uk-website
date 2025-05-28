@@ -22,7 +22,7 @@ templateEngineOverride: njk
         <p class="card-text text-[16px]">{{project.synopsis}}</p>
       </div>
       {#<a href="{% if project.url %}{{ project.url }}{% else %}{{ project.title | slugify }}{% endif %}" class="btn btn-primary bg-[#c50978] border-[#c50978] mt-3 text-s">More details</a>#}
-      <a href="{% if project.url %}{{ project.url }}{% else %}{{ project.title | slugify }}{% endif %}" class="btn btn-dark mt-3 text-s focus:ring-2 focus:ring-offset-2 focus:ring-slate-700">
+      <a href="{% if project.url %}{{ project.url }}{% else %}{{ project.title | slugify }}{% endif %}" class="btn btn-dark mt-3 text-s text-white focus:ring-2 focus:ring-offset-2 focus:ring-slate-700">
         Visit page
         <span aria-hidden="true">&#8594;</span>
         <span class="sr-only">{{project.title}}</span>
