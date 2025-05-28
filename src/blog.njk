@@ -122,7 +122,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
                 document.querySelector("main").style.paddingTop = "0";
                 document.querySelector("main").style.paddingBottom = "2rem";
                 document.querySelector("footer").remove();
-                componentTemplates.video = contentContainer.removeChild(contentContainer.querySelector("video")).outerHTML;
+                componentTemplates.video = contentContainer?.removeChild(contentContainer.querySelector("video")).outerHTML;
                 componentTemplates.infographic = document.querySelector(".iai-infographic").parentElement.removeChild(document.querySelector(".iai-infographic")).outerHTML;
             });
 
