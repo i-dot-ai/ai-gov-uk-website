@@ -58,6 +58,7 @@
         {% endif %}
         <link href="/css/tailwind.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> {# pragma: allowlist secret #}
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> {# pragma: allowlist secret #}
@@ -71,11 +72,12 @@
         <script type="module" src="/js/iai-design-system.js"></script>
     </head>
 
-    <body class="relative min-h-screen overfow-x-hidden">
+    <body class="govuk-template__body govuk-frontend-supported">
 
         <a class="skip-link bg-[#ffdd00] fixed left-0 link opacity-0 pointer-events-none px-2 py-1 top-0 z-[998] focus:!opacity-100 focus:pointer-events-auto" href="#main">Skip to main content</a>
 
-        {% include "header.njk" %}
+                <iai-header home-url="/" nav-items='[{"text": "About", "href": "/about"}, {"text": "Projects", "href": "/projects"}, {"text": "Blog", "href": "/blogs"}, {"text": "Press", "href": "/press-mentions"}, {"text": "Opportunities", "href": "/opportunities"}]'></iai-header>
+
 
         <main id="main" class="main">
             {{ content | safe }}
