@@ -6,181 +6,192 @@ templateEngineOverride: njk
 {% from "./_includes/homepage-banner.njk" import homepageBanner %}
 {{ homepageBanner() }}
 
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-5 govuk-!-padding-top-9">
 
-<div class="container flex w-90 my-5 py-3 md:w-75 gap-5">
-  <div class="flex gap-3 align-center justify-center text-center w-full js-carousel-container">
+    <div class="flex gap-3 align-center justify-center text-center w-full js-carousel-container">
 
-    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <blockquote class="iai-homepage-quote">
-            <p>“AI has arrived, our defining opportunity is here and together we will harness it for the good of <span class="inline-block">our country”</span></p>
-            <footer class="mt-3">Sir Keir Starmer <span aria-hidden="true">|</span> Prime Minister</footer>
-          </blockquote>
+      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <blockquote class="iai-homepage-quote">
+              <p>“AI has arrived, our defining opportunity is here and together we will harness it for the good of <span class="inline-block">our country”</span></p>
+              <footer class="mt-3">Sir Keir Starmer <span aria-hidden="true">|</span> Prime Minister</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-item">
+            <blockquote class="iai-homepage-quote">
+              <p>“We choose fully to embrace the opportunity that AI presents to build a better future for all our citizens”</p>
+              <footer class="mt-3">Peter Kyle <span aria-hidden="true">|</span> Secretary of State for Science, Innovation and Technology</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-item">
+            <blockquote class="iai-homepage-quote">
+              <p class="text-xl">“With AI we can grow our economy, improve lives, and make the UK a global hub for AI investment <span class="inline-block">and innovation”</span></p>
+              <footer class="mt-3">Feryal Clark <span aria-hidden="true">|</span> Minister for AI and Digital Government</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-item">
+            <blockquote class="iai-homepage-quote">
+              <p class="text-xl">“We welcome the establishment of i.AI and the focus on AI deployment set out in the public sector productivity programme”</p>
+              <footer class="mt-3">House of Commons, Science, Innovation and Technology Committee</footer>
+            </blockquote>
+          </div>
         </div>
-        <div class="carousel-item">
-          <blockquote class="iai-homepage-quote">
-            <p>“We choose fully to embrace the opportunity that AI presents to build a better future for all our citizens”</p>
-            <footer class="mt-3">Peter Kyle <span aria-hidden="true">|</span> Secretary of State for Science, Innovation and Technology</footer>
-          </blockquote>
-        </div>
-        <div class="carousel-item">
-          <blockquote class="iai-homepage-quote">
-            <p class="text-xl">“With AI we can grow our economy, improve lives, and make the UK a global hub for AI investment <span class="inline-block">and innovation”</span></p>
-            <footer class="mt-3">Feryal Clark <span aria-hidden="true">|</span> Minister for AI and Digital Government</footer>
-          </blockquote>
-        </div>
-        <div class="carousel-item">
-          <blockquote class="iai-homepage-quote">
-            <p class="text-xl">“We welcome the establishment of i.AI and the focus on AI deployment set out in the public sector productivity programme”</p>
-            <footer class="mt-3">House of Commons, Science, Innovation and Technology Committee</footer>
-          </blockquote>
-        </div>
+        <a class="iai-quote-carousel__btn carousel-control-prev" href="#quote-carousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="iai-quote-carousel__btn carousel-control-next" href="#quote-carousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      <a class="iai-quote-carousel__btn carousel-control-prev" href="#quote-carousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="iai-quote-carousel__btn carousel-control-next" href="#quote-carousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+
     </div>
 
   </div>
 </div>
 
+      
 
-<div style="background-color: var(--iai-grey);">
-  <section class="iai-blogs-list container pb-5 pt-4">
-    <div data-aos="fade-up">
-      <h2 class="iai-blogs-list__title">Browse our new <span class="inline-block">Knowledge Hub</span></h2>
-      <p class="mt-3">Information for teams adopting AI in the public sector.</p>
-      <a href="/knowledge-hub" class="iai-button iai-button--pink iai-notification-buttons__button mt-4">
-        <span>
-            <span class="iai-notification-button__main-text">Browse AI use cases and guidance</span>
-            <span>in the Knowledge Hub</span>
-        </span>
-      </a>
-    </div>
-    <div data-aos="fade-up">
-      <h2 class="iai-blogs-list__title">We're hiring!</h2>
-      <p class="mt-3">We're based in Bristol, London and Manchester. For technical roles our selection process includes a technical assessment as well as an interview.</p>
-      <div class="iai-notification-buttons mt-4">
-        <a class="iai-button iai-button--green iai-notification-buttons__button" href="https://www.civilservicejobs.service.gov.uk/csr/index.cgi?SID=b3duZXJ0eXBlPWZhaXImcGFnZWNsYXNzPVNlYXJjaCZjb250ZXh0aWQ9MTAxNjYzMjcxJnBhZ2VhY3Rpb249c2VhcmNoY29udGV4dCZvd25lcj01MDcwMDAwJnJlcXNpZz0xNzI5NTA5NDU4LTdjZmQwMGQ5MDQ3OWE5NzU2MTA4NGY2MDFiZjQzOGQwMGM0ZmViMjk=">
-            <svg class="iai-notification-buttons__button-icon" width="37" height="37" viewBox="0 0 37 37" fill="none">
-                <path d="M3.69675 20.0898C4.10028 19.1036 3.63662 17.9704 2.65034 17.5681C1.67446 17.1645 0.54712 17.6386 0.144745 18.6272C-0.265724 19.6088 0.20487 20.7281 1.17496 21.1258C2.15084 21.5421 3.28859 21.0715 3.68056 20.0898H3.69675ZM4.99868 15.0856C5.39643 14.1097 4.93278 12.9778 3.93956 12.5615C2.96368 12.1649 1.83171 12.6401 1.40968 13.6218C0.994589 14.6034 1.45709 15.7296 2.42718 16.1332C3.42734 16.5413 4.53503 16.073 4.95706 15.0844L4.99868 15.0856ZM6.83596 13.3986C7.82918 13.8091 8.94381 13.3385 9.35775 12.358C9.74971 11.3763 9.2849 10.2386 8.31712 9.83391C7.34125 9.43038 6.20812 9.90675 5.78725 10.8873C5.371 11.8758 5.86009 12.9963 6.83596 13.3986ZM11.7015 15.0185C12.6947 15.4163 13.8093 14.9526 14.2302 13.9768C14.6222 12.9835 14.1597 11.8458 13.1653 11.455C12.1836 11.0329 11.0517 11.5209 10.6539 12.4956C10.2388 13.4657 10.7267 14.6046 11.7026 15.0012L11.7015 15.0185ZM33.3037 20.054C33.7188 21.0241 34.8334 21.4878 35.8255 21.0715C36.8013 20.6553 37.265 19.5418 36.843 18.5416C36.4279 17.5484 35.2901 17.0848 34.3212 17.501C33.321 17.8976 32.8632 19.0307 33.2794 20.0297L33.3037 20.054ZM34.4345 16.0673C35.4104 15.6695 35.874 14.5375 35.4763 13.5374C35.06 12.5615 33.9223 12.0805 32.9522 12.4956C31.9532 12.9118 31.4895 14.0265 31.9104 15.0197C32.3024 15.9956 33.4401 16.4592 34.4091 16.0684L34.4345 16.0673ZM30.1286 13.3986C31.0987 13.002 31.5624 11.8689 31.1646 10.8873C30.7484 9.88825 29.6233 9.42459 28.6347 9.82813C27.6589 10.2444 27.1906 11.3578 27.6045 12.358C28.0208 13.3281 29.1527 13.7906 30.1286 13.3986ZM24.8723 14.7179C25.8424 14.3017 26.3049 13.1639 25.9141 12.1938C25.4921 11.1948 24.3832 10.7312 23.3842 11.1289C22.4083 11.544 21.9447 12.6829 22.3667 13.6507C22.7818 14.6266 23.8964 15.0902 24.8954 14.6763L24.8723 14.7179ZM14.532 7.60697L14.6765 11.3104L17.374 9.88247C17.4284 9.94259 17.4943 10.0027 17.5602 10.0524C17.2827 11.1532 16.6028 13.0032 16.1738 14.0207C15.6616 15.2729 16.2582 16.7067 17.5047 17.2247C18.7581 17.7369 20.1976 17.1275 20.7156 15.8823C21.0891 15.0023 20.9017 14.045 20.3467 13.3767C19.7455 12.3279 19.1431 11.0168 18.817 9.99116C18.9142 9.92641 18.9789 9.82928 19.0448 9.76338L21.9724 11.27L22.1112 7.58384L19.0691 8.55972C19.0448 8.51231 19.0275 8.46259 19.0032 8.44525L20.1837 5.07825L16.5947 4.96378L17.6851 8.27528C17.5879 8.32269 17.522 8.39553 17.4492 8.48688L14.532 7.60697ZM32.8689 21.6496C33.1152 23.0105 33.1592 23.6303 32.8458 24.516C32.4064 24.0766 32.0145 23.2765 31.6953 22.0601L30.346 26.3602C31.1461 25.8295 31.7612 25.4918 32.4538 25.4803C31.1947 28.1246 29.6465 28.7929 28.6602 28.601C27.4438 28.3547 26.8842 27.2644 27.0935 26.3359C27.3652 25.0409 28.7203 24.716 29.3273 26.2342C30.5495 23.8188 28.5272 23.0302 27.2195 23.7286C29.2441 21.7583 29.4846 19.9881 27.8762 17.8143C25.6181 19.5175 25.5822 21.223 26.5627 23.6314C25.2689 22.1144 23.2038 22.9146 23.9265 25.3473C24.8897 23.8847 26.1292 24.812 25.9245 26.2214C25.7568 27.4436 24.13 28.3952 22.1308 28.209C19.2587 27.9558 19.12 25.9624 19.0726 24.3183C19.7709 24.2038 21.0417 24.8733 22.1308 26.4088L22.5714 21.8381C21.3908 23.0417 20.3005 23.295 19.12 23.3262C19.5362 22.1225 21.3666 20.0979 21.3666 20.0979L15.6223 20.032C15.6223 20.032 17.4527 22.0728 17.8435 23.2961C16.6583 23.2788 15.5911 23.0429 14.4117 21.815L14.8083 26.3798C15.894 24.8571 17.1705 24.2061 17.8689 24.3206C17.7961 25.9405 17.6342 27.9338 14.7609 28.1928C12.7675 28.3559 11.143 27.38 10.9857 26.1521C10.7996 24.7611 12.0507 23.8338 12.9976 25.3207C13.7376 22.888 11.6783 22.074 10.3764 23.5806C11.402 21.1709 11.3766 19.4551 9.13112 17.7392C7.50428 19.8944 7.74015 21.66 9.75087 23.6765C8.45587 22.955 6.41509 23.7193 7.61875 26.1521C8.24659 24.6223 9.59478 24.9715 9.87112 26.2665C10.0527 27.195 9.49765 28.2842 8.29399 28.5131C7.29962 28.6993 5.7699 28.0321 4.51884 25.3635C5.21143 25.3878 5.81384 25.737 6.60125 26.2665L5.28312 21.9792C4.95821 23.1828 4.54196 23.9783 4.09565 24.4119C3.81353 23.5332 3.84243 22.9053 4.11993 21.5456L1.33684 22.4902C2.75787 24.442 4.20434 27.1441 5.33631 31.9021C8.8409 31.3182 14.8268 30.969 18.4528 30.969C22.0649 30.9933 28.0508 31.4084 31.545 32.0339C32.7302 27.2829 34.1894 24.5969 35.6277 22.6694L32.8944 21.6762L32.8689 21.6496Z" fill="white"/>
-            </svg>
-            <span>
-                <span class="iai-notification-button__main-text">Civil Service Jobs</span>
-                <span>Search 'i.ai' in the 'What' field</span>
-            </span>
-        </a>
-        <a class="iai-button iai-button--green iai-notification-buttons__button" href="https://www.linkedin.com/company/i-dot-ai/">
-            <svg class="iai-notification-buttons__button-icon" width="37" height="40" viewBox="0 0 37 40" fill="none">
-                <path d="M31.5225 33.4285H26.0434V24.326C26.0434 22.1554 26.0017 19.3621 23.1882 19.3621C20.3315 19.3621 19.8952 21.7239 19.8952 24.1659V33.4285H14.4161V14.7104H19.6794V17.2618H19.7503C20.4857 15.7908 22.274 14.238 24.9457 14.238C30.4972 14.238 31.524 18.1117 31.524 23.1541L31.5225 33.4285ZM8.22787 12.1491C6.46421 12.1491 5.04742 10.6356 5.04742 8.77392C5.04742 6.91387 6.46575 5.40197 8.22787 5.40197C9.98537 5.40197 11.4099 6.91387 11.4099 8.77392C11.4099 10.6356 9.98383 12.1491 8.22787 12.1491ZM10.9751 33.4285H5.48063V14.7104H10.9751V33.4285ZM34.2635 0H2.73029C1.221 0 0 1.26509 0 2.82603V36.4016C0 37.9642 1.221 39.2276 2.73029 39.2276H34.2589C35.7667 39.2276 37 37.9642 37 36.4016V2.82603C37 1.26509 35.7667 0 34.2589 0H34.2635Z" fill="white"/>
-            </svg>
-            <span>
-                <span class="iai-notification-button__main-text">LinkedIn</span>
-                <span>Search for 'i.ai'</span>
-            </span>
-        </a>
+
+<section class="iai-homepage-blogs" style="background-color: var(--iai-grey);">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-!-padding-bottom-3 govuk-!-padding-top-1">
+      <h2 class="block mt-5 font-semibold text-center">Latest Blogs</h2>
+      <div class="iai-blogs-list">
+        {% set count = 0 %}
+        {% for blog in blogs %}
+            {% if blog.summaryShort and count < 3 %} {# This ensures the CMS preview blog isn't displayed here #}
+              {% set count = count + 1 %}
+              <a class="iai-blogs-list-item" href="/blogs/{{ blog.title | slugify  }}" data-aos="fade-up">
+                <div class="iai-blogs-list__image-container">
+                  <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt=""/>
+                </div>
+                <h3 class="iai-blogs-list__title" >{{ blog.title }}</h3>
+                <p class="iai-blog-list__summary">{{ blog.summaryShort }}</p>
+                <p class="iai-blog-list__date">{{ blog.date | dateFormat }}</p>
+              </a>
+            {% endif %}
+        {% endfor %}
       </div>
     </div>
-    <div data-aos="fade-up">
-      <h2 class="iai-blogs-list__title">Register your interest for the GovAI toolkit</h2>
-      <p class="mt-3">Find out more about our projects and how to register your interest.</p>
-      <a href="/register-your-interest" class="iai-button iai-button--pink iai-notification-buttons__button mt-4">
-        <span>
-            <span class="iai-notification-button__main-text">Register your interest</span>
-            <span>For the GovAI toolkit</span>
-        </span>
-      </a>
-    </div>
-  </section>
-</div>
-
-
-<section class="iai-homepage-blogs">
-  <div class="container">
-    <h2 class="block mt-2 font-semibold text-center">Latest Blogs</h2>
-  </div>
-  <div class="iai-blogs-list container">
-    {% set count = 0 %}
-    {% for blog in blogs %}
-        {% if blog.summaryShort and count < 3 %} {# This ensures the CMS preview blog isn't displayed here #}
-          {% set count = count + 1 %}
-          <a class="iai-blogs-list-item" href="/blogs/{{ blog.title | slugify  }}" data-aos="fade-up">
-            <div class="iai-blogs-list__image-container">
-              <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt=""/>
-            </div>
-            <h3 class="iai-blogs-list__title" >{{ blog.title }}</h3>
-            <p class="iai-blog-list__summary">{{ blog.summaryShort }}</p>
-            <p class="iai-blog-list__date">{{ blog.date | dateFormat }}</p>
-          </a>
-        {% endif %}
-    {% endfor %}
   </div>
 </section>
 
 
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-3 govuk-!-padding-top-1">
+    <section class="iai-blogs-list pb-4 pt-4">
+      <div data-aos="fade-up">
+        <h2 class="iai-blogs-list__title">Browse our new <span class="inline-block">Knowledge Hub</span></h2>
+        <p class="mt-3">Information for teams adopting AI in the public sector.</p>
+        <a href="/knowledge-hub" class="iai-button iai-button--pink iai-notification-buttons__button mt-4">
+          <span>
+              <span class="iai-notification-button__main-text">Browse AI use cases and guidance</span>
+              <span>in the Knowledge Hub</span>
+          </span>
+        </a>
+      </div>
+      <div data-aos="fade-up">
+        <h2 class="iai-blogs-list__title">See what jobs are available</h2>
+        <p class="mt-3">Our team is based out of 3 digital hubs across the UK, in Bristol, London and Manchester. Our selection process varies for each role. For technical roles it includes a technical assessment as well as an interview.</p>
+        <div class="iai-notification-buttons mt-4">
+          <a class="iai-button iai-button--green iai-notification-buttons__button" href="https://www.civilservicejobs.service.gov.uk/csr/index.cgi?SID=b3duZXJ0eXBlPWZhaXImcGFnZWNsYXNzPVNlYXJjaCZjb250ZXh0aWQ9MTAxNjYzMjcxJnBhZ2VhY3Rpb249c2VhcmNoY29udGV4dCZvd25lcj01MDcwMDAwJnJlcXNpZz0xNzI5NTA5NDU4LTdjZmQwMGQ5MDQ3OWE5NzU2MTA4NGY2MDFiZjQzOGQwMGM0ZmViMjk=">
+              <svg class="iai-notification-buttons__button-icon" width="37" height="37" viewBox="0 0 37 37" fill="none">
+                  <path d="M3.69675 20.0898C4.10028 19.1036 3.63662 17.9704 2.65034 17.5681C1.67446 17.1645 0.54712 17.6386 0.144745 18.6272C-0.265724 19.6088 0.20487 20.7281 1.17496 21.1258C2.15084 21.5421 3.28859 21.0715 3.68056 20.0898H3.69675ZM4.99868 15.0856C5.39643 14.1097 4.93278 12.9778 3.93956 12.5615C2.96368 12.1649 1.83171 12.6401 1.40968 13.6218C0.994589 14.6034 1.45709 15.7296 2.42718 16.1332C3.42734 16.5413 4.53503 16.073 4.95706 15.0844L4.99868 15.0856ZM6.83596 13.3986C7.82918 13.8091 8.94381 13.3385 9.35775 12.358C9.74971 11.3763 9.2849 10.2386 8.31712 9.83391C7.34125 9.43038 6.20812 9.90675 5.78725 10.8873C5.371 11.8758 5.86009 12.9963 6.83596 13.3986ZM11.7015 15.0185C12.6947 15.4163 13.8093 14.9526 14.2302 13.9768C14.6222 12.9835 14.1597 11.8458 13.1653 11.455C12.1836 11.0329 11.0517 11.5209 10.6539 12.4956C10.2388 13.4657 10.7267 14.6046 11.7026 15.0012L11.7015 15.0185ZM33.3037 20.054C33.7188 21.0241 34.8334 21.4878 35.8255 21.0715C36.8013 20.6553 37.265 19.5418 36.843 18.5416C36.4279 17.5484 35.2901 17.0848 34.3212 17.501C33.321 17.8976 32.8632 19.0307 33.2794 20.0297L33.3037 20.054ZM34.4345 16.0673C35.4104 15.6695 35.874 14.5375 35.4763 13.5374C35.06 12.5615 33.9223 12.0805 32.9522 12.4956C31.9532 12.9118 31.4895 14.0265 31.9104 15.0197C32.3024 15.9956 33.4401 16.4592 34.4091 16.0684L34.4345 16.0673ZM30.1286 13.3986C31.0987 13.002 31.5624 11.8689 31.1646 10.8873C30.7484 9.88825 29.6233 9.42459 28.6347 9.82813C27.6589 10.2444 27.1906 11.3578 27.6045 12.358C28.0208 13.3281 29.1527 13.7906 30.1286 13.3986ZM24.8723 14.7179C25.8424 14.3017 26.3049 13.1639 25.9141 12.1938C25.4921 11.1948 24.3832 10.7312 23.3842 11.1289C22.4083 11.544 21.9447 12.6829 22.3667 13.6507C22.7818 14.6266 23.8964 15.0902 24.8954 14.6763L24.8723 14.7179ZM14.532 7.60697L14.6765 11.3104L17.374 9.88247C17.4284 9.94259 17.4943 10.0027 17.5602 10.0524C17.2827 11.1532 16.6028 13.0032 16.1738 14.0207C15.6616 15.2729 16.2582 16.7067 17.5047 17.2247C18.7581 17.7369 20.1976 17.1275 20.7156 15.8823C21.0891 15.0023 20.9017 14.045 20.3467 13.3767C19.7455 12.3279 19.1431 11.0168 18.817 9.99116C18.9142 9.92641 18.9789 9.82928 19.0448 9.76338L21.9724 11.27L22.1112 7.58384L19.0691 8.55972C19.0448 8.51231 19.0275 8.46259 19.0032 8.44525L20.1837 5.07825L16.5947 4.96378L17.6851 8.27528C17.5879 8.32269 17.522 8.39553 17.4492 8.48688L14.532 7.60697ZM32.8689 21.6496C33.1152 23.0105 33.1592 23.6303 32.8458 24.516C32.4064 24.0766 32.0145 23.2765 31.6953 22.0601L30.346 26.3602C31.1461 25.8295 31.7612 25.4918 32.4538 25.4803C31.1947 28.1246 29.6465 28.7929 28.6602 28.601C27.4438 28.3547 26.8842 27.2644 27.0935 26.3359C27.3652 25.0409 28.7203 24.716 29.3273 26.2342C30.5495 23.8188 28.5272 23.0302 27.2195 23.7286C29.2441 21.7583 29.4846 19.9881 27.8762 17.8143C25.6181 19.5175 25.5822 21.223 26.5627 23.6314C25.2689 22.1144 23.2038 22.9146 23.9265 25.3473C24.8897 23.8847 26.1292 24.812 25.9245 26.2214C25.7568 27.4436 24.13 28.3952 22.1308 28.209C19.2587 27.9558 19.12 25.9624 19.0726 24.3183C19.7709 24.2038 21.0417 24.8733 22.1308 26.4088L22.5714 21.8381C21.3908 23.0417 20.3005 23.295 19.12 23.3262C19.5362 22.1225 21.3666 20.0979 21.3666 20.0979L15.6223 20.032C15.6223 20.032 17.4527 22.0728 17.8435 23.2961C16.6583 23.2788 15.5911 23.0429 14.4117 21.815L14.8083 26.3798C15.894 24.8571 17.1705 24.2061 17.8689 24.3206C17.7961 25.9405 17.6342 27.9338 14.7609 28.1928C12.7675 28.3559 11.143 27.38 10.9857 26.1521C10.7996 24.7611 12.0507 23.8338 12.9976 25.3207C13.7376 22.888 11.6783 22.074 10.3764 23.5806C11.402 21.1709 11.3766 19.4551 9.13112 17.7392C7.50428 19.8944 7.74015 21.66 9.75087 23.6765C8.45587 22.955 6.41509 23.7193 7.61875 26.1521C8.24659 24.6223 9.59478 24.9715 9.87112 26.2665C10.0527 27.195 9.49765 28.2842 8.29399 28.5131C7.29962 28.6993 5.7699 28.0321 4.51884 25.3635C5.21143 25.3878 5.81384 25.737 6.60125 26.2665L5.28312 21.9792C4.95821 23.1828 4.54196 23.9783 4.09565 24.4119C3.81353 23.5332 3.84243 22.9053 4.11993 21.5456L1.33684 22.4902C2.75787 24.442 4.20434 27.1441 5.33631 31.9021C8.8409 31.3182 14.8268 30.969 18.4528 30.969C22.0649 30.9933 28.0508 31.4084 31.545 32.0339C32.7302 27.2829 34.1894 24.5969 35.6277 22.6694L32.8944 21.6762L32.8689 21.6496Z" fill="white"/>
+              </svg>
+              <span>
+                  <span class="iai-notification-button__main-text">Civil Service Jobs</span>
+                  <span>Search 'i.ai' in the 'What' field</span>
+              </span>
+          </a>
+          <a class="iai-button iai-button--green iai-notification-buttons__button" href="https://www.linkedin.com/company/i-dot-ai/">
+              <svg class="iai-notification-buttons__button-icon" width="37" height="40" viewBox="0 0 37 40" fill="none">
+                  <path d="M31.5225 33.4285H26.0434V24.326C26.0434 22.1554 26.0017 19.3621 23.1882 19.3621C20.3315 19.3621 19.8952 21.7239 19.8952 24.1659V33.4285H14.4161V14.7104H19.6794V17.2618H19.7503C20.4857 15.7908 22.274 14.238 24.9457 14.238C30.4972 14.238 31.524 18.1117 31.524 23.1541L31.5225 33.4285ZM8.22787 12.1491C6.46421 12.1491 5.04742 10.6356 5.04742 8.77392C5.04742 6.91387 6.46575 5.40197 8.22787 5.40197C9.98537 5.40197 11.4099 6.91387 11.4099 8.77392C11.4099 10.6356 9.98383 12.1491 8.22787 12.1491ZM10.9751 33.4285H5.48063V14.7104H10.9751V33.4285ZM34.2635 0H2.73029C1.221 0 0 1.26509 0 2.82603V36.4016C0 37.9642 1.221 39.2276 2.73029 39.2276H34.2589C35.7667 39.2276 37 37.9642 37 36.4016V2.82603C37 1.26509 35.7667 0 34.2589 0H34.2635Z" fill="white"/>
+              </svg>
+              <span>
+                  <span class="iai-notification-button__main-text">LinkedIn</span>
+                  <span>Search for 'i.ai'</span>
+              </span>
+          </a>
+        </div>
+      </div>
+      <div data-aos="fade-up">
+        <h2 class="iai-blogs-list__title">Register your interest for the GovAI toolkit</h2>
+        <p class="mt-3">Find out more about our projects and how to register your interest.</p>
+        <a href="/register-your-interest" class="iai-button iai-button--pink iai-notification-buttons__button mt-4">
+          <span>
+              <span class="iai-notification-button__main-text">Register your interest</span>
+              <span>For the GovAI toolkit</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+
+
 <section class="services mt-3 pb-5 pt-5" style="background-color: #ececec; margin-bottom: -3rem;">
-  <div class="container">
-    <div class="row">
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-!-padding-bottom-3 govuk-!-padding-top-1">
+      <div class="row">
 
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
-        <a class="icon-box icon-box-cyan hover:text-black" href="/about#improve">
-          <div class="icon_new">
-            <img src="/img/Improve.png" class="img-fluid" alt="">
-          </div>
-          <h2 class="title">
-            <span>Prototyping</span>
-          </h2>
-          <p class="description">We provide an incubation function to quickly test and evaluate ideas for applications of AI to improve the running of government and the delivery of public services.</p>
-        </a>
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+          <a class="icon-box icon-box-cyan hover:text-black" href="/about#improve">
+            <div class="icon_new">
+              <img src="/img/Improve.png" class="img-fluid" alt="">
+            </div>
+            <h2 class="title">
+              <span>Prototyping</span>
+            </h2>
+            <p class="description">We provide an incubation function to quickly test and evaluate ideas for applications of AI to improve the running of government and the delivery of public services.</p>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <a class="icon-box icon-box-blue hover:text-black" href="/about#upgrade">
+            <div class="icon_new">
+              <img src="/img/Upgrade.svg" class="img-fluid" alt="">
+            </div>
+            <h2 class="title">
+              <span>Delivery</span>
+            </h2>
+            <p class="description">Successful prototypes, once trialled and evaluated, are scaled-up and deployed to business units where they can have maximum measurable impact.</p>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <a class="icon-box icon-box-pink hover:text-black" href="/about#upskill">
+            <div class="icon_new">
+              <img src="/img/Upskill.svg" class="img-fluid" alt="">
+            </div>
+            <h2 class="title">
+              <span>Modularisation</span>
+            </h2>
+            <p class="description">We work “in the open”, and share our technical work for broader application, making it possible for everyone in the public sector and beyond to learn from and adopt.</p>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <a class="icon-box icon-box-green hover:text-black" href="/about#hire">
+            <div class="icon_new">
+              <img src="/img/Hire.svg" class="img-fluid" alt="">
+            </div>
+            <h2 class="title">
+              <span>Convening and Advising</span>
+            </h2>
+            <p class="description">We play a convening role to help departments identify opportunities to learn from one another and share products to deploy at scale.</p>
+          </a>
+        </div>
+
       </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <a class="icon-box icon-box-blue hover:text-black" href="/about#upgrade">
-          <div class="icon_new">
-            <img src="/img/Upgrade.svg" class="img-fluid" alt="">
-          </div>
-          <h2 class="title">
-            <span>Delivery</span>
-          </h2>
-          <p class="description">Successful prototypes, once trialled and evaluated, are scaled-up and deployed to business units where they can have maximum measurable impact.</p>
-        </a>
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-        <a class="icon-box icon-box-pink hover:text-black" href="/about#upskill">
-          <div class="icon_new">
-            <img src="/img/Upskill.svg" class="img-fluid" alt="">
-          </div>
-          <h2 class="title">
-            <span>Modularisation</span>
-          </h2>
-          <p class="description">We work “in the open”, and share our technical work for broader application, making it possible for everyone in the public sector and beyond to learn from and adopt.</p>
-        </a>
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-        <a class="icon-box icon-box-green hover:text-black" href="/about#hire">
-          <div class="icon_new">
-            <img src="/img/Hire.svg" class="img-fluid" alt="">
-          </div>
-          <h2 class="title">
-            <span>Convening and Advising</span>
-          </h2>
-          <p class="description">We play a convening role to help departments identify opportunities to learn from one another and share products to deploy at scale.</p>
-        </a>
-      </div>
-
     </div>
   </div>
 </section>

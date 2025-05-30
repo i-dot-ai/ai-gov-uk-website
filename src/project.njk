@@ -14,7 +14,8 @@ permalink: "projects/{{ project.title | slugify }}/"
 
 {{ banner(project.title, project.synopsisHeader) }}
 
-<div class="container w-100 md:w-75 pt-[2rem]">
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
 
     <div class="project-content">
         {% for component in project.components %}
@@ -39,6 +40,7 @@ permalink: "projects/{{ project.title | slugify }}/"
         {% endfor %}
     </div>
 
+  </div>
 </div>
 
 {# CMS Preview #}

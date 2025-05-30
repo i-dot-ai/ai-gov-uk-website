@@ -352,14 +352,7 @@ figcaption svg {
   color: rgb(226, 232, 240);
 }
 
-.main {
-  padding-top: 4.25rem;
-}
-
 @media (min-width: 768px) {
-  .main {
-    padding-top: 4.875rem;
-  }
   .iai-header__outer-container {
     align-items: center;
     display: flex;
