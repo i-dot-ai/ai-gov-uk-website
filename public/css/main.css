@@ -47,3 +47,9 @@
   border-bottom-width: 5px;
   padding: 10px 0;
 }
+.govuk-header__navigation-list {
+  gap: 2rem;
+}
+.govuk-header__navigation-item a {
+  font-weight: 500;
+}
