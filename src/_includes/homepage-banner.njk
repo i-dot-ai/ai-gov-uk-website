@@ -1,22 +1,21 @@
 {# Option H #}
 
-{% macro homepageBanner () %}
+{% macro homepageBanner (title, description, logo, theme) %}
 
-<section class="iai-homepage-banner">
-
-  <img class="iai-homepage-banner__image" src="/img/homepage-banner-bg-extended.webp" {# srcset="/img/homepage-banner-bg-cropped.jpg 1920w, /img/homepage-banner-bg-extended.jpg 3830w" sizes="1920px, (min-width: 1600px) 3830px" #} alt=""/>
-  <div class="iai-homepage-banner__gradient"></div>
-
-  <div class="container">
-    <div class="iai-homepage-banner__box">
-      <div class="iai-homepage-banner__logo-container">
-        <img class="iai-homepage-banner__logo" src="/img/i-dot-ai-Official-Logo.svg" alt="I dot A I">
-        <h1>The Incubator for <span class="inline-block">Artificial Intelligence</span></h1>
+<div class="app-masthead app-masthead--product app-masthead--{{ theme }} govuk-!-padding-bottom-8 govuk-!-padding-top-8">
+  <div class="govuk-width-container govuk-!-margin-top-5 govuk-!-margin-bottom-5">
+    <div class="govuk-grid-row govuk-!-display-flex">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-right-0">
+        <h1 class="app-masthead__title govuk-heading-xl govuk-!-margin-bottom-0">{{ title | safe }}</h1>
+        {% if description %}
+          <p class="app-masthead__description govuk-!-margin-top-6">{{ description }}
+        {% endif %}
       </div>
-      <p>Our mission is to harness the opportunity of AI to improve lives, drive growth, and deliver better public services.</p>
+      <div class="govuk-grid-column-one-third app-masthead__logo">
+        {{ logo | safe }}
+      </div>
     </div>
   </div>
-
-</section>
+</div>
 
 {% endmacro %}
