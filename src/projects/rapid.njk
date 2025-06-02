@@ -11,12 +11,13 @@ ogDescription: "An end-to-end solution to sharing data across government"
 {% from "../_includes/banner.njk" import banner %}
 {{ banner("rAPId", ogDescription) }}
 
-<div class="container w-100 md:w-75 pt-[2rem] project-content">
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-0 project-content">
 
     {% set content %}
-        <p>Sharing quality data across government while delivering high impact priorities at pace is a significant challenge. Often data in these scenarios is shared through spreadsheets, documents and emails, posing substantial difficulties when collaborating with others, or when trying to leverage the latest data tools and technologies.</p>
-        <p class="mt-4">Created and pioneered by Number 10's Data Science team, <a class="link" href="https://rapid.readthedocs.io/en/latest/">rAPId</a> is a standardised lightweight data sharing solution to these challenges, provided free of charge. Its aim is to enable government departments and others to securely share data in an automated way at scale, replacing the use of spreadsheets and emails to share data.</p>
-        <p class="mt-4">rAPId helps match the rising demand for good-quality evidence in the design, delivery, and evaluation of public policy by providing decision and policy makers with high quality data on demand. The solution makes data more accessible for policy and decision makers and enables data professionals to work with big data shared in rAPId.</p>
+			<p>Sharing quality data across government while delivering high impact priorities at pace is a significant challenge. Often data in these scenarios is shared through spreadsheets, documents and emails, posing substantial difficulties when collaborating with others, or when trying to leverage the latest data tools and technologies.</p>
+			<p class="mt-4">Created and pioneered by Number 10's Data Science team, <a class="link" href="https://rapid.readthedocs.io/en/latest/">rAPId</a> is a standardised lightweight data sharing solution to these challenges, provided free of charge. Its aim is to enable government departments and others to securely share data in an automated way at scale, replacing the use of spreadsheets and emails to share data.</p>
+			<p class="mt-4">rAPId helps match the rising demand for good-quality evidence in the design, delivery, and evaluation of public policy by providing decision and policy makers with high quality data on demand. The solution makes data more accessible for policy and decision makers and enables data professionals to work with big data shared in rAPId.</p>
     {% endset %}
     <text-image-block side="left" content="{{ content }}" image="/img/rapid2.webp"></text-image-block>
 
@@ -29,4 +30,5 @@ ogDescription: "An end-to-end solution to sharing data across government"
     <h2 class="mt-5 text-[24px] font-semibold">Future</h2>
     <p class="mb-2 mt-4">Work is currently going beyond rAPId to offer open-source, cutting edge cloud infrastructure (Project Condor) that will allow departments to create the infrastructure that suits their data, analytical and AI needs. The purpose of this is to reduce reliance on contractors and increasing government’s cloud expertise and capability, allowing it to better leverage data at scale.</p>
 
+	</div>
 </div>
