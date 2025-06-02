@@ -4,6 +4,9 @@ templateEngineOverride: njk
 ---
 
 {% from "./_includes/homepage-banner.njk" import homepageBanner %}
+{% from "./_includes/card.njk" import card %}
+
+
 {% set logo %}
   <img src="/logos/i-dot-ai-reverse.svg" width="230" class="govuk-!-padding-3" alt="">
 {% endset %}
@@ -61,35 +64,30 @@ templateEngineOverride: njk
   </div>
 </div>
 
-      
 
-
-<section class="iai-homepage-blogs" style="background-color: var(--iai-grey);">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-bottom-3 govuk-!-padding-top-1">
-      <h2 class="block mt-5 font-semibold text-center">Latest Blogs</h2>
-      <div class="iai-blogs-list">
-        {% set count = 0 %}
-        {% for blog in blogs %}
-            {% if blog.summaryShort and count < 3 %} {# This ensures the CMS preview blog isn't displayed here #}
-              {% set count = count + 1 %}
-              <a class="iai-blogs-list-item" href="/blogs/{{ blog.title | slugify  }}" data-aos="fade-up">
-                <div class="iai-blogs-list__image-container">
-                  <img class="iai-blogs-list__cover-image" src="{{ blog.coverImage.file.url }}?w=1536" alt=""/>
-                </div>
-                <h3 class="iai-blogs-list__title" >{{ blog.title }}</h3>
-                <p class="iai-blog-list__summary">{{ blog.summaryShort }}</p>
-                <p class="iai-blog-list__date">{{ blog.date | dateFormat }}</p>
-              </a>
-            {% endif %}
-        {% endfor %}
-      </div>
+<section class="govuk-width-container govuk-!-margin-top-7" style="border-top: 5px solid;">
+  <div class="govuk-main-wrapper">
+    <h2 class="govuk-heading-l govuk-!-margin-top-0">Latest blog posts</h2>
+    <div class="govuk-grid-row" data-aos="fade-up">
+      {% set count = 0 %}
+      {% for blog in blogs %}
+          {% if blog.summaryShort and count < 3 %} {# This ensures the CMS preview blog isn't displayed here #}
+            {% set count = count + 1 %}
+            {{ card(
+              blog.coverImage.file.url + '?w=1536',
+              blog.date | dateFormat,
+              blog.title,
+              '/blogs/' + blog.title | slugify,
+              blog.summaryShort
+            ) }}
+          {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>
 
 
-<div class="govuk-width-container">
+<div class="govuk-width-container" style="border-top: 5px solid;">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-3 govuk-!-padding-top-1">
     <section class="iai-blogs-list pb-4 pt-4">
       <div data-aos="fade-up">

@@ -1,0 +1,14 @@
+{% macro card (image, tag, title, url, summary) %}
+
+  <div class="govuk-grid-column-one-third">
+    <img src="{{ image }}" style="aspect-ratio: 16/9; border: 1px solid #b1b4b6" alt="" loading="lazy"/>
+    {% if tag %}
+      <p class="govuk-body-s govuk-!-margin-top-3 govuk-!-margin-bottom-0" style="color: #505a5f;">{{ tag }}</p>
+    {% endif %}
+    <h3 class="govuk-heading-s govuk-!-padding-top-{% if tag %}1{% else %}3{% endif %}">
+      <a class="govuk-link" href="{{ url }}">{{ title }}</a>
+    </h3>
+    <p class="govuk-body govuk-!-margin-bottom-1">{{ summary }}</p>
+  </div>
+
+{% endmacro %}

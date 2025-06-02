@@ -5,60 +5,68 @@ templateEngineOverride: njk
 ---
 
 {% from "./_includes/banner.njk" import banner %}
+{% from "./_includes/card.njk" import card %}
+
+
 {{ banner("Projects", "A selection of projects we have been working on") }}
 
 
-{% macro card (project) %}
-  <div class="projects__card card bg-slate-50 drop-shadow">
-    <img src="{{project.img}}" class="card-img-top aspect-video object-cover" alt="">
-    <div class="border-top card-body flex flex-col justify-between">
-      <div>
-        <div class="flex items-center justify-between">
-          <h3 class="card-title font-semibold text-xl">{{project.title}}</h3>
-          {% if project.phase and project.phase != "N/A" %}
-            <span class="projects__card-phase">{{ project.phase }}</span>
-          {% endif %}
-        </div>
-        <p class="card-text text-[16px]">{{project.synopsis}}</p>
-      </div>
-      {#<a href="{% if project.url %}{{ project.url }}{% else %}{{ project.title | slugify }}{% endif %}" class="btn btn-primary bg-[#c50978] border-[#c50978] mt-3 text-s">More details</a>#}
-      <a href="{% if project.url %}{{ project.url }}{% else %}{{ project.title | slugify }}{% endif %}" class="btn btn-dark mt-3 text-s text-white focus:ring-2 focus:ring-offset-2 focus:ring-slate-700">
-        Visit page
-        <span aria-hidden="true">&#8594;</span>
-        <span class="sr-only">{{project.title}}</span>
-      </a>
-    </div>
-  </div>
-{% endmacro %}
 
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
 
-    <h2 class="mt-3 text-[24px] font-semibold">Introducing the GovAI toolkit for civil servants!</h2>
-    <p class="mt-3">We at i.AI have created a suite of bespoke tools for civil servants in order to improve a range of different processes within government and better deliver on ministerial plans. Browse through our current offering!</p>
-    <div class="projects pt-4">
-      {% for project in projects %}
-        {% if project.type == "Productivity tools" %}
-          {{ card(project) }}
-        {% endif %}
-      {% endfor %}
-    </div>
+    <section>
+      <h2 class="govuk-heading-m">Introducing the GovAI toolkit for civil servants!</h2>
+      <p class="govuk-body">We at i.AI have created a suite of bespoke tools for civil servants in order to improve a range of different processes within government and better deliver on ministerial plans. Browse through our current offering!</p>
+      
+      <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+        {% for project in projects %}
+          {% if project.type == "Productivity tools" %}
+            {% if project.url %}
+              {% set projectUrl = project.url %}
+            {% else %}
+              {% set projectUrl = project.title | slugify %}
+            {% endif %}
+            {{ card(
+              project.img,
+              project.phase,
+              project.title,
+              projectUrl,
+              project.synopsis
+            ) }}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
 
-    <h2 class="sr-only">Other projects</h2>
-    <p class="mt-5">We are also working on a range of projects to support the wider public sector with more to come. Watch this space!</p>
-    <div class="projects pt-4">
-      {% for project in projects %}
-        {% if project.type == "Other" %}
-          {{ card(project) }}
-        {% endif %}
-      {% endfor %}
-    </div>
+    <section class="govuk-!-margin-top-7" style="border-top: 5px solid;">
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">Other projects</h2>
+      <p class="govuk-!-body">We are also working on a range of projects to support the wider public sector with more to come. Watch this space!</p>
+      <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+        {% for project in projects %}
+          {% if project.type == "Other" %}
+            {% if project.url %}
+              {% set projectUrl = project.url %}
+            {% else %}
+              {% set projectUrl = project.title | slugify %}
+            {% endif %}
+            {{ card(
+              project.img,
+              project.phase | default('-'),
+              project.title,
+              projectUrl,
+              project.synopsis
+            ) }}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
 
-    <div class="mt-5 project-content">
-      <h2>Our Product Development Stages explained</h2>
-      <p>As our products develop, they progress through different stage gates. This encourages us to spend the early stages resolving uncertainty and failing first, and the later stages on putting the pieces together and evaluating process and impact. It also helps us be proportionate with the level of burden and assurance we expect from our products at different stages.</p>
-      <p>We have five product development stages:</p>
-      <ol>
+    <section class="govuk-!-margin-top-7" style="border-top: 5px solid;">
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">Our Product Development Stages explained</h2>
+      <p class="govuk-body">As our products develop, they progress through different stage gates. This encourages us to spend the early stages resolving uncertainty and failing first, and the later stages on putting the pieces together and evaluating process and impact. It also helps us be proportionate with the level of burden and assurance we expect from our products at different stages.</p>
+      <p class="govuk-body">We have five product development stages:</p>
+      <ol class="govuk-list govuk-list--number govuk-list--spaced">
         <li>
           <dl>
             <dt>Scoping (what’s the problem?): </dt>
@@ -90,7 +98,7 @@ templateEngineOverride: njk
           </dl>
         </li>
       </ol>
-    </div>
+    </section>
 
   </div>
 </div>

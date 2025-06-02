@@ -518,15 +518,6 @@ figcaption svg {
   }
 }
 
-.iai-homepage-blogs {
-  margin-top: 3rem;
-  padding-bottom: 3rem;
-  padding-top: 0.125rem;
-}
-.iai-homepage-blogs h2 {
-  font-size: 2rem;
-  margin-bottom: -1rem;
-}
 
 .iai-homepage-info-section {
   padding: 4rem 0;
@@ -543,31 +534,6 @@ figcaption svg {
 }
 
 
-/*--------------------------------------------------------------
-# Projects page cards
---------------------------------------------------------------*/
-.projects {
-  display: grid;
-  gap: 3rem;
-}
-@media (min-width: 768px) {
-  .projects {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (min-width: 1024px) {
-  .projects {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-.project-content a,
-.project-content a:hover {
-  text-decoration: underline;
-}
-.project-content a:hover {
-  color: var(--iai-pink);
-}
 
 /*--------------------------------------------------------------
 # Banner
@@ -1641,47 +1607,11 @@ figcaption svg {
   gap: 2.5rem;
   padding-top: 3rem;
 }
-.iai-blogs-list-item {
-  border-top: 1px solid var(--iai-pink);
-  padding-top: 2.5rem;
-}
-.iai-blogs-list-item:first-child {
-  border: none;
-  padding-top: 0;
-}
-.iai-blogs-list__image-container {
-  aspect-ratio: 16/9;
-}
-.iai-blogs-list__cover-image {
-  border: 1px solid #ddd;
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
 .iai-blogs-list__title {
   color: #1e293b;
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 1.5rem;
-}
-.iai-blogs-list-item:hover .iai-blogs-list__title {
-  color: var(--iai-pink);
-}
-.iai-blog-list__summary {
-  font-size: 1rem;
-  font-weight: 400;
-  margin-top: 1.5rem;
-}
-.iai-blog-list__date {
-  font-size: 0.875rem;
-  font-weight: 400;
-  margin-top: 0.75rem;
-}
-@media (min-width: 68rem) {
-  .iai-blogs-list-item {
-    border: none;
-    padding-top: 0;
-  }
 }
 
 .iai-blog-title {
