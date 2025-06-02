@@ -5,28 +5,21 @@ templateEngineOverride: njk
 
 <main id="main">
 
-  <div class="app-masthead app-masthead--product govuk-!-padding-bottom-8 govuk-!-padding-top-8">
-    <div class="govuk-width-container govuk-!-margin-top-5 govuk-!-margin-bottom-5">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds govuk-!-padding-right-0">
-          <h1 class="app-masthead__title govuk-heading-xl govuk-!-margin-bottom-0">Guidance and case studies for teams adopting AI technologies in the public sector</h1>
-        </div>
-        <div class="govuk-grid-column-one-third app-masthead__logo">
-          <svg width="160px" viewBox="0 0 540 540" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true" focusable="false">
-            <g clip-path="url(#p.0)">
-              <path class="fill-brand" d="m28.850393 270.0l0 0c0 -133.18324 107.96636 -241.14961 241.14961 -241.14961l0 0c63.95685 0 125.29419 25.40676 170.51852 70.63108c45.224335 45.22432 70.63107 106.561676 70.63107 170.51852l0 0c0 133.18326 -107.96634 241.1496 -241.1496 241.1496l0 0c-133.18324 0 -241.14961 -107.96634 -241.14961 -241.1496z" fill-rule="evenodd"></path>
-              <path class="fill-light" d="m55.102364 270.0l0 0c0 -118.68469 96.212944 -214.89764 214.89764 -214.89764l0 0c56.994385 0 111.65445 22.640938 151.95557 62.942062c40.301147 40.301125 62.942078 94.961174 62.942078 151.95557l0 0c0 118.68469 -96.21295 214.89764 -214.89764 214.89764l0 0c-118.68469 0 -214.89764 -96.21295 -214.89764 -214.89764zm29.165909 0l0 0c0 102.57681 83.15493 185.73172 185.73172 185.73172c102.57681 0 185.73172 -83.15491 185.73172 -185.73172l0 0c0 -102.5768 -83.15491 -185.73172 -185.73172 -185.73172l0 0c-102.5768 0 -185.73172 83.15493 -185.73172 185.73172z" fill-rule="evenodd"></path>
-              <path class="fill-light" d="m256.70868 218.10892l26.582672 0l0 156.25198l-26.582672 0z" fill-rule="evenodd"></path>
-              <path class="fill-light" d="m249.88715 184.96194l0 0c0 -10.671707 8.651123 -19.32283 19.322815 -19.32283l0 0c5.124756 0 10.039581 2.035797 13.66333 5.6595306c3.6237183 3.6237335 5.6595154 8.538574 5.6595154 13.6633l0 0c0 10.671707 -8.651123 19.322845 -19.322845 19.322845l0 0c-10.671692 0 -19.322815 -8.651138 -19.322815 -19.322845z" fill-rule="evenodd"></path>
-              <path class="fill-light" d="m312.53543 347.77823l0 26.582672l-85.07086 0l0 -26.582672z" fill-rule="evenodd"></path>
-              <path class="fill-light" d="m283.31497 218.10892l0 26.582687l-55.84253 0l0 -26.582687z" fill-rule="evenodd"></path>
-              <path class="fill-dark" d="m227.46457 374.3622l85.07086 0l0 7.653534l-85.07086 0z" fill-rule="evenodd"></path>
-            </g>
-            </svg>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% from "../_includes/homepage-banner.njk" import homepageBanner %}
+  {% set logo %}
+    <svg width="160px" viewBox="0 0 540 540" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true" focusable="false">
+      <g clip-path="url(#p.0)">
+        <path class="fill-brand" d="m28.850393 270.0l0 0c0 -133.18324 107.96636 -241.14961 241.14961 -241.14961l0 0c63.95685 0 125.29419 25.40676 170.51852 70.63108c45.224335 45.22432 70.63107 106.561676 70.63107 170.51852l0 0c0 133.18326 -107.96634 241.1496 -241.1496 241.1496l0 0c-133.18324 0 -241.14961 -107.96634 -241.14961 -241.1496z" fill-rule="evenodd"></path>
+        <path class="fill-light" d="m55.102364 270.0l0 0c0 -118.68469 96.212944 -214.89764 214.89764 -214.89764l0 0c56.994385 0 111.65445 22.640938 151.95557 62.942062c40.301147 40.301125 62.942078 94.961174 62.942078 151.95557l0 0c0 118.68469 -96.21295 214.89764 -214.89764 214.89764l0 0c-118.68469 0 -214.89764 -96.21295 -214.89764 -214.89764zm29.165909 0l0 0c0 102.57681 83.15493 185.73172 185.73172 185.73172c102.57681 0 185.73172 -83.15491 185.73172 -185.73172l0 0c0 -102.5768 -83.15491 -185.73172 -185.73172 -185.73172l0 0c-102.5768 0 -185.73172 83.15493 -185.73172 185.73172z" fill-rule="evenodd"></path>
+        <path class="fill-light" d="m256.70868 218.10892l26.582672 0l0 156.25198l-26.582672 0z" fill-rule="evenodd"></path>
+        <path class="fill-light" d="m249.88715 184.96194l0 0c0 -10.671707 8.651123 -19.32283 19.322815 -19.32283l0 0c5.124756 0 10.039581 2.035797 13.66333 5.6595306c3.6237183 3.6237335 5.6595154 8.538574 5.6595154 13.6633l0 0c0 10.671707 -8.651123 19.322845 -19.322845 19.322845l0 0c-10.671692 0 -19.322815 -8.651138 -19.322815 -19.322845z" fill-rule="evenodd"></path>
+        <path class="fill-light" d="m312.53543 347.77823l0 26.582672l-85.07086 0l0 -26.582672z" fill-rule="evenodd"></path>
+        <path class="fill-light" d="m283.31497 218.10892l0 26.582687l-55.84253 0l0 -26.582687z" fill-rule="evenodd"></path>
+        <path class="fill-dark" d="m227.46457 374.3622l85.07086 0l0 7.653534l-85.07086 0z" fill-rule="evenodd"></path>
+      </g>
+    </svg>
+  {% endset %}
+  {{ homepageBanner('Guidance and case studies for teams adopting AI technologies in the public sector', '', logo, 'light') }}
 
   <div class="govuk-width-container">
     <div class="govuk-main-wrapper govuk-!-padding-top-9">
@@ -43,7 +36,7 @@ templateEngineOverride: njk
     </div>
   </div>
 
-  <div class="centre-section">
+  <div class="kh-centre-section">
     <div class="govuk-width-container govuk-!-padding-left-5 govuk-!-padding-right-5">
       <div class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-8">
         <div class="govuk-grid-row">

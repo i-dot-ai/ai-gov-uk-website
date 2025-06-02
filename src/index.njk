@@ -4,7 +4,10 @@ templateEngineOverride: njk
 ---
 
 {% from "./_includes/homepage-banner.njk" import homepageBanner %}
-{{ homepageBanner() }}
+{% set logo %}
+  <img src="/logos/i-dot-ai-reverse.svg" width="230" class="govuk-!-padding-3" alt="">
+{% endset %}
+{{ homepageBanner('The Incubator for <span class="govuk-!-display-inline-block">Artificial Intelligence</span>', "Our mission is to act on government's duty to harness AI for public good.", logo, 'dark') }}
 
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-5 govuk-!-padding-top-9">
