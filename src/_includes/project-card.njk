@@ -1,7 +1,7 @@
-{% macro card (image, tag, title, url, summary) %}
+{% macro projectCard (image, tag, title, url, summary) %}
 
   <div class="govuk-grid-column-one-third">
-    <img src="{{ image }}" style="aspect-ratio: 16/9; border: 1px solid #b1b4b6; object-fit: cover;" alt="" loading="lazy"/>
+    <img src="{{ image }}" class="govuk-!-padding-3" style="aspect-ratio: 16/9; background: linear-gradient(#fafafa 0%, #efefef 100%); object-fit: contain;" alt="" loading="lazy"/>
     {% if tag %}
       <p class="govuk-body-s govuk-!-margin-top-3 govuk-!-margin-bottom-0" style="color: #505a5f;">{{ tag }}</p>
     {% endif %}

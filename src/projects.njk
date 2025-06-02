@@ -5,11 +5,10 @@ templateEngineOverride: njk
 ---
 
 {% from "./_includes/banner.njk" import banner %}
-{% from "./_includes/card.njk" import card %}
+{% from "./_includes/project-card.njk" import projectCard %}
 
 
 {{ banner("Projects", "A selection of projects we have been working on") }}
-
 
 
 <div class="govuk-width-container">
@@ -27,8 +26,9 @@ templateEngineOverride: njk
             {% else %}
               {% set projectUrl = project.title | slugify %}
             {% endif %}
-            {{ card(
-              project.img,
+            {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
+            {{ projectCard(
+              logo,
               project.phase,
               project.title,
               projectUrl,
@@ -50,8 +50,12 @@ templateEngineOverride: njk
             {% else %}
               {% set projectUrl = project.title | slugify %}
             {% endif %}
-            {{ card(
-              project.img,
+            {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
+            {% if project.title == 'i.AI and NHS England Collaboration Charter' %}
+              {% set logo = project.img %}
+            {% endif %}
+            {{ projectCard(
+              logo,
               project.phase | default('-'),
               project.title,
               projectUrl,
