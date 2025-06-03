@@ -18,9 +18,9 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 {{ blogHeader() }}
 
 <div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-!-padding-0">
+  <div class="govuk-main-wrapper govuk-!-padding-top-0">
 
-    <div class="iai-blog-title">
+    <div class="iai-blog-title govuk-!-margin-top-6">
         <h2 class="govuk-heading-l govuk-!-margin-bottom-0" style="text-wrap: balance;">{{ blog.title }}</h2>
         <p class="iai-blog-title__date">{{ blog.date | dateFormat }}</p>
         <div class="d-md-flex gap-5">
