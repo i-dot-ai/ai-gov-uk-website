@@ -2620,16 +2620,18 @@ img.iai-project-types__icon {
   background-color: black;
   color: white;
   font-size: 0.75rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
   padding: 2rem 0;
-}
-.footer__inner-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
 }
 .footer__section {
   min-height: 6rem;
+  margin-top: 1.5rem;
+}
+.footer__section--left {
+  margin-top: 0;
+}
+.footer__section h2 {
+  color: white;
 }
 .footer__section a, .footer__section p {
   color: white;
@@ -2666,21 +2668,11 @@ img.iai-project-types__icon {
 .footer__social-media-link {
   cursor: pointer;
 }
-@media (min-width: 768px) {
-  .footer__inner-container {
-    flex-direction: row;
-    justify-content: space-between;
+@media (min-width: 769px) {
+  .footer__section {
+    margin-top: 0;
   }
-}
-@media (min-width: 1024px) {
-  .footer__inner-container {
-    align-items: flex-end;
-  }
-}
-
-
-@media (max-width: 640px) {
-  #backgroundBlur {
-    min-width: 100vw;
+  .footer__section a {
+    display: block;
   }
 }
