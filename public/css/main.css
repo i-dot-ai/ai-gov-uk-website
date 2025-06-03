@@ -39,21 +39,3 @@
     justify-content: center;
   }
 }
-
-
-/* Styles that could go back into i.AI Design System */
-
-.govuk-header {
-  border-bottom-width: 5px;
-  padding: 10px 0;
-}
-.govuk-header__navigation-list {
-  gap: 2rem;
-}
-.govuk-header__navigation-item a {
-  font-weight: 500;
-}
-.govuk-link:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-}
