@@ -21,7 +21,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
   <div class="govuk-main-wrapper govuk-!-padding-0">
 
     <div class="iai-blog-title">
-        <h2 class="iai-blog-title__title">{{ blog.title }}</h2>
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-0" style="text-wrap: balance;">{{ blog.title }}</h2>
         <p class="iai-blog-title__date">{{ blog.date | dateFormat }}</p>
         <div class="d-md-flex gap-5">
             {% for author in blog.authors %}

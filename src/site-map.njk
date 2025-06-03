@@ -12,51 +12,48 @@ templateEngineOverride: njk
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
 
-    <ul class="list-disc pl-4">
-        <li>
-          <a class="link" href="/">Home page</a>
-        </li>
-        <li class="mt-2">
-          <a class="link" href="/about">About i.AI</a>
-        </li>
-        <li class="mt-2">
-          <a class="link" href="/projects">Projects</a>
-          <ul class="list-disc pl-4">
-            {% for project in projects %}
-              <li class="mt-2">
-                <a class="link" href="{% if project.url %}{{ project.url }}{% else %}/projects/{{ project.title | slugify }}{% endif %}">{{ project.title }}</a>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+      <li>
+        <a class="govuk-link" href="/">Home page</a>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/about">About i.AI</a>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/projects">Projects</a>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          {% for project in projects %}
+            <li class="govuk-!-margin-top-2">
+              <a class="govuk-link" href="{% if project.url %}{{ project.url }}{% else %}/projects/{{ project.title | slugify }}{% endif %}">{{ project.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/blogs">Blogs</a>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          {% for blog in blogs %}
+            {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
+              <li class="govuk-!-margin-top-2">
+                <a class="govuk-link" href="/blogs/{{ blog.title | slugify  }}">{{ blog.title }}</a>
               </li>
-            {% endfor %}
-          </ul>
-        </li>
-        <li class="mt-2">
-          <a class="link" href="/blogs">Blogs</a>
-          <ul class="list-disc pl-4">
-            {% for blog in blogs %}
-              {% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
-                <li class="mt-2">
-                  <a class="link" href="/blogs/{{ blog.title | slugify  }}">{{ blog.title }}</a>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </li>
-        <li class="mt-2">
-          <a class="link" href="/press-mentions">Press</a>
-        </li>
-        <li class="mt-2">
-          <a class="link" href="/opportunities">Opportunities</a>
-        </li>
-        <li class="mt-2">
-          <a class="link" href="/register-your-interest">Register your interest</a>
-        </li>
-        <li class="mt-2">
-          <a class="link" href="/accessibility">Accessibility statement</a>
-        </li>
-      </ul>
-
-      <h2 class="text-[24px] font-semibold mt-5">Credits</h2>
-      <p class="mt-3">Homepage banner image: Merlin Lightpainting</p>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/press-mentions">Press</a>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/opportunities">Opportunities</a>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/register-your-interest">Register your interest</a>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/accessibility">Accessibility statement</a>
+      </li>
+    </ul>
 
   </div>
 </div>

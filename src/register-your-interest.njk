@@ -17,11 +17,14 @@ templateEngineOverride: njk
     <ul>
       {% for project in projects %}
         {% if project.registerInterest.currentAvailability %}
+
+          {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
+
           <li class="ryi__project">
-            <img src="{{project.img}}" class="object-cover" alt="">
+            <img src="{{ logo }}" class="object-cover" alt="">
             <div>
               <div class="ryi__project--header">
-                <h2>{{ project.title }}</h2>
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{ project.title }}</h2>
                 <div>
                   {% if project.registerInterest.githubLink %}
                     <a class="link" href="{{ project.registerInterest.githubLink }}">{{ project.title }} on Github</a>
@@ -29,10 +32,10 @@ templateEngineOverride: njk
                   <a class="link" href="/projects/{{ project.title | slugify }}">{{ project.title }} project page</a>
                 </div>
               </div>
-              <h3>Current availability:</h3>
+              <h3 class="govuk-heading-s govuk-!-margin-top-5 govuk-!-margin-bottom-1">Current availability:</h3>
               <div>{{ project.registerInterest.currentAvailability | markdownToHtml | safe }}</div>
               {% if project.registerInterest.whereToApply %}
-                <h3>Where to apply:</h3>
+                <h3 class="govuk-heading-s govuk-!-margin-top-5 govuk-!-margin-bottom-1">Where to apply:</h3>
                 <div>{{ project.registerInterest.whereToApply | markdownToHtml | safe }}</div>
               {% endif %}
             </div>
@@ -41,9 +44,9 @@ templateEngineOverride: njk
       {% endfor %}
     </ul>
 
-    <p class="mt-5"><a class="link" href="https://youtu.be/_xLrvDD1oOw?feature=shared" rel="noopener">See how GovAI could help you pass legislation</a></p>
+    <p class="govuk-body govuk-!-margin-top-9"><a class="link" href="https://youtu.be/_xLrvDD1oOw?feature=shared" rel="noopener">See how GovAI could help you pass legislation</a></p>
 
-    <p class="mt-4">For any other enquiries please email us at <a class="link" href="mailto:i-dot-ai-enquiries@cabinetoffice.gov.uk">i-dot-ai-enquiries@cabinetoffice.gov.uk</a>.</p>
+    <p>For any other enquiries please email us at <a class="link" href="mailto:i-dot-ai-enquiries@cabinetoffice.gov.uk">i-dot-ai-enquiries@cabinetoffice.gov.uk</a>.</p>
 
   </div>
 </div>

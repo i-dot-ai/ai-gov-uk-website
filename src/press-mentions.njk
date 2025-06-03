@@ -16,17 +16,17 @@ templateEngineOverride: njk
         <li>
           <img src="{{ entry.logo }}" alt="{{ entry.media }}"/>
           <div>
-            <h2>
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
               <a href="{{ entry.link }}" rel="noopener">{{ entry.headline }}</a>
             </h2>
-            <p class="press-mentions__date">{{ entry.date | dateFormat }}</p>
-            <p>{{ entry.summary }}</p>
+            <p class="press-mentions__date govuk-body-s govuk-!-margin-bottom-2">{{ entry.date | dateFormat }}</p>
+            <p class="govuk-body-s">{{ entry.summary }}</p>
           </div>
         </li>
       {% endfor %}
     </ul>
 
-    <p class="mt-5">Please email <a class="link" href="mailto:press@dsit.gov.uk">press@dsit.gov.uk</a> for any enquiries.</p>
+    <p class="govuk-body govuk-!-margin-top-7 govuk-!-margin-bottom-0">Please email <a class="link" href="mailto:press@dsit.gov.uk">press@dsit.gov.uk</a> for any enquiries.</p>
 
   </div>
 </div>
