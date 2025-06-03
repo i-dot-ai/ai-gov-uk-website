@@ -17,7 +17,7 @@ permalink: "projects/{{ project.title | slugify }}/"
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
 
-    <div class="project-content">
+    <div class="project-content govuk-body">
         {% for component in project.components %}
             {% if component.type == "bodyText" %}
                 {{ component.content | markdownToHtml | safe }}
