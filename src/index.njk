@@ -3,8 +3,9 @@ layout: base.njk
 templateEngineOverride: njk
 ---
 
-{% from "./_includes/homepage-banner.njk" import homepageBanner %}
 {% from "./_includes/card.njk" import card %}
+{% from "./_includes/homepage-banner.njk" import homepageBanner %}
+{% from "./_includes/project-card.njk" import projectCard %}
 
 
 {% set logo %}
@@ -12,9 +13,12 @@ templateEngineOverride: njk
 {% endset %}
 {{ homepageBanner('The Incubator for <span class="govuk-!-display-inline-block">Artificial Intelligence</span>', "Our mission is to act on government's duty to harness AI for public good.", logo, 'dark') }}
 
-<div class="govuk-width-container">
-  <div class="govuk-main-wrapper govuk-!-padding-bottom-5 govuk-!-padding-top-9">
 
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+
+
+    {#
     <div class="flex gap-3 align-center justify-center text-center w-full js-carousel-container">
 
       <div class="carousel slide" data-ride="carousel" id="quote-carousel">
@@ -60,36 +64,66 @@ templateEngineOverride: njk
       </div>
 
     </div>
-
-  </div>
-</div>
+    #}
 
 
-<section class="govuk-width-container govuk-!-margin-top-7" style="border-top: 5px solid;">
-  <div class="govuk-main-wrapper">
-    <h2 class="govuk-heading-l govuk-!-margin-top-0">Latest blog posts</h2>
-    <div class="govuk-grid-row" data-aos="fade-up">
-      {% set count = 0 %}
-      {% for blog in blogs %}
-          {% if blog.summaryShort and count < 3 %} {# This ensures the CMS preview blog isn't displayed here #}
-            {% set count = count + 1 %}
-            {{ card(
-              blog.coverImage.file.url + '?w=1536',
-              blog.date | dateFormat,
-              blog.title,
-              '/blogs/' + blog.title | slugify,
-              blog.summaryShort
+    <section>   
+      <h2 class="govuk-heading-l">Featured projects</h2>
+      <div class="govuk-grid-row" data-aos="fade-up">
+        {{ projectCard(
+            '/img/project-logos/logo-knowledge-hub.png',
+            '',
+            'AI Knowledge Hub',
+            '/knowledge-hub',
+            'Guidance and case studies for teams adopting AI technologies in the public sector'
+          ) }}
+        {% for project in projects %}
+          {% if project.title == 'Extract' or project.title == 'Minute' %}
+            {% if project.url %}
+              {% set projectUrl = project.url %}
+            {% else %}
+              {% set projectUrl = project.title | slugify %}
+            {% endif %}
+            {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
+            {% if project.title == 'i.AI and NHS England Collaboration Charter' %}
+              {% set logo = project.img %}
+            {% endif %}
+            {{ projectCard(
+              logo,
+              '',
+              project.title,
+              projectUrl,
+              project.synopsis
             ) }}
           {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
+        {% endfor %}
+      </div>
+      <p class="govuk-!-margin-top-6"><a class="govuk-link govuk-!-font-weight-bold" href="/blogs">Discover more of our projects</a></p>
+    </section>
+
+    <section class="govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;">   
+      <h2 class="govuk-heading-l">Latest blog posts</h2>
+      <div class="govuk-grid-row" data-aos="fade-up">
+        {% set count = 0 %}
+        {% for blog in blogs %}
+            {% if blog.summaryShort and count < 3 %} {# This ensures the CMS preview blog isn't displayed here #}
+              {% set count = count + 1 %}
+              {{ card(
+                blog.coverImage.file.url + '?w=1536',
+                blog.date | dateFormat,
+                blog.title,
+                '/blogs/' + blog.title | slugify,
+                blog.summaryShort
+              ) }}
+            {% endif %}
+        {% endfor %}
+      </div>
+      <p class="govuk-!-margin-top-6"><a class="govuk-link govuk-!-font-weight-bold" href="/blogs">Read more of our blog posts</a></p>
+    </section>
 
 
-<div class="govuk-width-container" style="border-top: 5px solid;">
-  <div class="govuk-main-wrapper govuk-!-padding-bottom-3 govuk-!-padding-top-0">
-    <section class="iai-blogs-list">
+    {#
+    <section class="iai-blogs-list govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;">
       <div data-aos="fade-up">
         <h2 class="govuk-heading-m">Browse our new <span class="inline-block">Knowledge Hub</span></h2>
         <p class="mt-3">Information for teams adopting AI in the public sector.</p>
@@ -135,56 +169,104 @@ templateEngineOverride: njk
         </a>
       </div>
     </section>
+    #}
+
+
+    <section class="govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;"> 
+      <h2 class="govuk-heading-l">What we do</h2>
+      <div class="govuk-grid-row" data-aos="fade-up">
+        <div class="govuk-grid-column-one-quarter">
+          <img src="/img/what-we-do/scanning.png" alt="" loading="lazy"/>
+          <h3 class="govuk-heading-m govuk-!-margin-top-3">Scanning</h3>
+          <p>We partner with departments and the private sector to identify opportunities to address real problems with AI.</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <img src="/img/what-we-do/incubating.png" alt="" loading="lazy"/>
+          <h3 class="govuk-heading-m govuk-!-margin-top-3">Incubating</h3>
+          <p>We quickly test and evaluate applications of AI that could help the public sector deliver better services more effectively.</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <img src="/img/what-we-do/scaling.png" alt="" loading="lazy"/>
+          <h3 class="govuk-heading-m govuk-!-margin-top-3">Scaling</h3>
+          <p>We develop production versions of successfully incubated products, ready to be adopted more widely.</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <img src="/img/what-we-do/advising.png" alt="" loading="lazy"/>
+          <h3 class="govuk-heading-m govuk-!-margin-top-3">Advising</h3>
+          <p>We advise departments on how best to deploy AI, and openly develop and share AI tools and resources for reuse across government.</p>
+        </div>
+      </div>
+      <p class="govuk-!-margin-top-6"><a class="govuk-link govuk-!-font-weight-bold" href="/about">Find out more about what we do</a></p>
+    </section>
+
+
+    {#
+    <section class="services mt-3 pb-5 pt-5" style="background-color: #ececec; margin-bottom: -3rem;">
+      <div class="govuk-width-container">
+        <div class="govuk-main-wrapper govuk-!-padding-bottom-3 govuk-!-padding-top-1">
+          <div class="row">
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+              <a class="icon-box icon-box-cyan hover:text-black" href="/about#improve">
+                <div class="icon_new">
+                  <img src="/img/Improve.png" class="img-fluid" alt="">
+                </div>
+                <h2 class="govuk-heading-s">Prototyping</h2>
+                <p class="govuk-body-s govuk-!-margin-bottom-0" style="line-height: 1.5;">We provide an incubation function to quickly test and evaluate ideas for applications of AI to improve the running of government and the delivery of public services.</p>
+              </a>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+              <a class="icon-box icon-box-blue hover:text-black" href="/about#upgrade">
+                <div class="icon_new">
+                  <img src="/img/Upgrade.svg" class="img-fluid" alt="">
+                </div>
+                <h2 class="govuk-heading-s">Delivery</h2>
+                <p class="govuk-body-s govuk-!-margin-bottom-0" style="line-height: 1.5;">Successful prototypes, once trialled and evaluated, are scaled-up and deployed to business units where they can have maximum measurable impact.</p>
+              </a>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+              <a class="icon-box icon-box-pink hover:text-black" href="/about#upskill">
+                <div class="icon_new">
+                  <img src="/img/Upskill.svg" class="img-fluid" alt="">
+                </div>
+                <h2 class="govuk-heading-s">Modularisation</h2>
+                <p class="govuk-body-s govuk-!-margin-bottom-0" style="line-height: 1.5;">We work “in the open”, and share our technical work for broader application, making it possible for everyone in the public sector and beyond to learn from and adopt.</p>
+              </a>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+              <a class="icon-box icon-box-green hover:text-black" href="/about#hire">
+                <div class="icon_new">
+                  <img src="/img/Hire.svg" class="img-fluid" alt="">
+                </div>
+                <h2 class="govuk-heading-s">Convening and Advising</h2>
+                <p class="govuk-body-s govuk-!-margin-bottom-0" style="line-height: 1.5;">We play a convening role to help departments identify opportunities to learn from one another and share products to deploy at scale.</p>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    #}
+
+
+    <section class="govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;"> 
+      <h2 class="govuk-heading-l">Working with us</h2>
+      <div class="govuk-grid-row" data-aos="fade-up">
+        <div class="govuk-grid-column-one-half govuk-!-padding-right-5">
+          <h3 class="govuk-heading-m">Jobs</h3>
+          <p>Check for i.AI jobs on <a class="govuk-link" href="https://www.linkedin.com/company/i-dot-ai/">Linkedin</a> or <a class="govuk-link" href="https://www.civilservicejobs.service.gov.uk/csr/index.cgi?SID=b3duZXJ0eXBlPWZhaXImcGFnZWNsYXNzPVNlYXJjaCZjb250ZXh0aWQ9MTAxNjYzMjcxJnBhZ2VhY3Rpb249c2VhcmNoY29udGV4dCZvd25lcj01MDcwMDAwJnJlcXNpZz0xNzI5NTA5NDU4LTdjZmQwMGQ5MDQ3OWE5NzU2MTA4NGY2MDFiZjQzOGQwMGM0ZmViMjk=">Civil Service Jobs</a>. We're based in London, Bristol and Manchester.</p>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <h3 class="govuk-heading-m">GovAI toolkit</h3>
+          <p>Find out more about our projects and how to register your interest for the <a class="govuk-link" href="/register-your-interest">GovAI toolkit</a>.</p>
+        </div>
+      </div>
+    </section>
+
+
   </div>
 </div>
-
-
-<section class="services mt-3 pb-5 pt-5" style="background-color: #ececec; margin-bottom: -3rem;">
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-bottom-3 govuk-!-padding-top-1">
-      <div class="row">
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
-          <a class="icon-box icon-box-cyan hover:text-black" href="/about#improve">
-            <div class="icon_new">
-              <img src="/img/Improve.png" class="img-fluid" alt="">
-            </div>
-            <h2 class="govuk-heading-s">Prototyping</h2>
-            <p class="govuk-body-s govuk-!-margin-bottom-0" style="line-height: 1.5;">We provide an incubation function to quickly test and evaluate ideas for applications of AI to improve the running of government and the delivery of public services.</p>
-          </a>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-          <a class="icon-box icon-box-blue hover:text-black" href="/about#upgrade">
-            <div class="icon_new">
-              <img src="/img/Upgrade.svg" class="img-fluid" alt="">
-            </div>
-            <h2 class="govuk-heading-s">Delivery</h2>
-            <p class="govuk-body-s govuk-!-margin-bottom-0" style="line-height: 1.5;">Successful prototypes, once trialled and evaluated, are scaled-up and deployed to business units where they can have maximum measurable impact.</p>
-          </a>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-          <a class="icon-box icon-box-pink hover:text-black" href="/about#upskill">
-            <div class="icon_new">
-              <img src="/img/Upskill.svg" class="img-fluid" alt="">
-            </div>
-            <h2 class="govuk-heading-s">Modularisation</h2>
-            <p class="govuk-body-s govuk-!-margin-bottom-0" style="line-height: 1.5;">We work “in the open”, and share our technical work for broader application, making it possible for everyone in the public sector and beyond to learn from and adopt.</p>
-          </a>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-          <a class="icon-box icon-box-green hover:text-black" href="/about#hire">
-            <div class="icon_new">
-              <img src="/img/Hire.svg" class="img-fluid" alt="">
-            </div>
-            <h2 class="govuk-heading-s">Convening and Advising</h2>
-            <p class="govuk-body-s govuk-!-margin-bottom-0" style="line-height: 1.5;">We play a convening role to help departments identify opportunities to learn from one another and share products to deploy at scale.</p>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
