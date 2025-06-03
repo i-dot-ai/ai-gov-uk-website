@@ -1520,43 +1520,6 @@ figcaption svg {
 /*--------------------------------------------------------------
 # Blogs
 --------------------------------------------------------------*/
-.iai-blog-header {
-  padding-top: 3rem;
-  position: relative;
-}
-.iai-blog-header__title {
-  font-size: 2rem;
-  font-weight: 700;
-}
-.iai-blog-header__subtitle {
-  margin-top: 1rem;
-  font-size: 1.25rem;
-  font-weight: 400;
-}
-.iai-blog-header__separator {
-  border-bottom: 1px solid var(--iai-pink);
-  padding-top: 3rem;
-}
-@media (min-width: 1220px) {
-  .iai-blog-header::before {
-    background-color: var(--iai-pink);
-    border-radius: 100%;
-    content: "";
-    display: block;
-    height: 5rem;
-    left: -2.5rem;
-    position: absolute;
-    top: 2.5rem;
-    width: 5rem;
-  }
-  .iai-blog-header__title {
-    font-size: 3rem;
-  }
-  .iai-blog-header__subtitle {
-    font-size: 1.5rem;
-    margin-top: 3rem;
-  }
-}
 
 .iai-blogs-list {
   display: grid;
