@@ -5,9 +5,9 @@
         <div class="container">
             <div class="w-100 flex justify-center">
                 <div class="flex flex-col section-title lg:w-3/4">
-                    <h1 class="text-[33px] font-semibold">{{title}}</h1>
+                    <h1 class="govuk-heading-l">{{title}}</h1>
                     {% if synopsis %}
-                      <p class="text-[18px] text-slate-800 font-light self-center" style="text-wrap-style: balance">{{synopsis|safe}}</p>
+                      <p class="govuk-body text-slate-800 font-light self-center" style="text-wrap-style: balance">{{ synopsis | safe }}</p>
                     {% endif %}
                 </div>
             </div>

@@ -405,14 +405,6 @@ figcaption svg {
   position: absolute;
   right: 0;
 }
-.iai-homepage-banner .container {
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
-  padding-bottom: 7rem;
-  padding-top: 2rem;
-  position: relative;
-}
 .iai-homepage-banner__box {
   background-color: white;
   border-radius: 0.5rem;
@@ -460,10 +452,6 @@ figcaption svg {
   .iai-homepage-banner__image {
     height: 100%;
     top: 0;
-  }
-  .iai-homepage-banner .container {
-    min-height: 50vh;
-    padding-top: 6rem;
   }
   .iai-homepage-banner__box {
     padding: 2rem;
@@ -797,28 +785,12 @@ figcaption svg {
   gap: 1.5rem;
   margin-top: 0.25rem;
 }
-.ryi__project h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.ryi__project h3 {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
-}
 .ryi__project a {
-  color: var(--iai-pink);
   display: inline-block;
-  font-size: 0.875rem;
   text-decoration: underline;
 }
 .ryi__project a:hover {
   text-decoration: underline;
-}
-.ryi__project p {
-  font-size: 0.875rem;
-  margin: 0.25rem 0;
 }
 @media (min-width: 640px) {
   .ryi__project {
@@ -1380,22 +1352,6 @@ figcaption svg {
   line-height: 1;
 }
 
-.services .title {
-  color: #1e293b;
-  font-weight: 700;
-  margin-bottom: 15px;
-  font-size: 18px;
-}
-
-.services .title a {
-  color: #111;
-}
-
-.services .description {
-  font-size: 15px;
-  line-height: 28px;
-  margin-bottom: 0;
-}
 
 .services .icon-box-pink .icon {
   background: #fceef3;
@@ -1581,7 +1537,7 @@ figcaption svg {
   border-bottom: 1px solid var(--iai-pink);
   padding-top: 3rem;
 }
-@media (min-width: 68rem) {
+@media (min-width: 1220px) {
   .iai-blog-header::before {
     background-color: var(--iai-pink);
     border-radius: 100%;
@@ -1618,15 +1574,6 @@ figcaption svg {
   padding-bottom: 0;
   padding-top: 3rem;
 }
-.iai-blog-title__title {
-  font-size: 1.75rem;
-  font-weight: 700;
-}
-.iai-blog-title__summary {
-  font-size: 1.125rem;
-  font-weight: 400;
-  margin-top: 1.5rem;
-}
 .iai-blog-title__date {
   font-size: 0.875rem;
   font-weight: 400;
@@ -1640,14 +1587,7 @@ figcaption svg {
   border: 1px solid #757575;
   object-fit: cover;
 }
-@media (min-width: 68rem) {
-  .iai-blog-title__title {
-    font-size: 2.25rem;
-  }
-  .iai-blog-title__summary {
-    font-size: 1.25rem;
-  }
-}
+
 
 .iai-blog-author {
   align-items: center;
@@ -2660,14 +2600,7 @@ img.iai-project-types__icon {
   width: 5rem;
 }
 .press-mentions h2 a {
-  color: var(--iai-pink);
-  font-weight: 700;
-  font-size: 1.25rem;
   text-decoration: underline;
-}
-.press-mentions p {
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
 }
 .press-mentions__date {
   color: #757575;
@@ -2745,10 +2678,6 @@ img.iai-project-types__icon {
   }
 }
 
-
-.container div {
-  scroll-margin-top: 220px !important;
-}
 
 @media (max-width: 640px) {
   #backgroundBlur {

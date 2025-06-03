@@ -53,3 +53,7 @@
 .govuk-header__navigation-item a {
   font-weight: 500;
 }
+.govuk-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
