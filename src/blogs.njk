@@ -4,12 +4,12 @@ layout: base.njk
 templateEngineOverride: njk
 ---
 
+{% from "./_includes/banner.njk" import banner %}
 {% from "./_includes/blog-author.njk" import blogAuthor %}
-{% from "./_includes/blog-header.njk" import blogHeader %}
 {% from "./_includes/card.njk" import card %}
 
 
-{{ blogHeader() }}
+{{ banner('Blog') }}
 
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">

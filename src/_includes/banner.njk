@@ -1,18 +1,9 @@
 {% macro banner (title, synopsis) %}
 
-  <section class="iai-banner w-100 flex flex-col justify-center pb-[2.5rem] pt-[4rem]">
-    <div class="features">
-        <div class="container">
-            <div class="w-100 flex justify-center">
-                <div class="flex flex-col section-title lg:w-3/4">
-                    <h1 class="govuk-heading-l">{{title}}</h1>
-                    {% if synopsis %}
-                      <p class="govuk-body text-slate-800 font-light self-center" style="text-wrap-style: balance">{{ synopsis | safe }}</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+  <div class="govuk-width-container">
+    <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-0 govuk-!-padding-bottom-7" style="border-bottom: 5px solid;">{{ title }}</h1>
     </div>
-  </section>
+  </div>
 
 {% endmacro %}
