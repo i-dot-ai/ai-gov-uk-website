@@ -1572,10 +1572,6 @@ figcaption svg {
   font-weight: 700;
 }
 
-.iai-blog-content {
-  font-size: 1rem;
-  line-height: 1.75rem;
-}
 .iai-blog-content__inner-container {
   max-width: 48rem;
 }
@@ -1595,28 +1591,36 @@ figcaption svg {
 .iai-blog-content li > p {
   margin-top: 0;
 }
+.iai-blog-content ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+.iai-blog-content ul > li {
+  margin-top: 0.75rem;
+}
 .iai-blog-content h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   margin-top: 2rem;
 }
 .iai-blog-content h3:not(.iai-project-types__heading) {
-  font-size: 1rem;
+  font-size: 1.1875rem;
   font-weight: 700;
   margin-bottom: 1rem;
   margin-top: 2rem;
 }
-.iai-blog-content ul {
-  list-style-type: disc;
-  padding-left: 2rem;
-}
 .iai-blog-content a,
 .iai-blog-content a:hover {
+  font-weight: 400;
   text-decoration: underline;
 }
 .iai-blog-content a:hover {
   color: var(--iai-pink);
+  text-decoration-thickness: 3px;
+}
+.iai-blog-content h3 a {
+  font-weight: 700;
 }
 .iai-blog-content img {
   display: block;
@@ -2517,12 +2521,15 @@ img.iai-project-types__icon {
 }
 .project-content h2 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 2rem;
 }
 .project-content p {
-    font-size: 1rem;
     margin-top: 1.5rem;
+}
+.project-content a:hover {
+  color: var(--iai-pink);
+  text-decoration-thickness: 3px;
 }
 .project-content video {
     margin-top: 1.75rem;
