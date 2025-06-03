@@ -10,6 +10,7 @@ templateEngineOverride: njk
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
 
+		{#
 		<h2 class="govuk-heading-m text-center">We have four key functions</h2>
 
 		<div class="flex flex-col md:flex-col lg:flex-row w-[100%] md:w-[80%] self-center border-b border-grey-300 pb-5 pt-5" style="margin: 0 auto;" id="improve" data-aos="fade-up" >
@@ -55,13 +56,43 @@ templateEngineOverride: njk
 						<p class="govuk-body-s text-slate-800" style="line-height: 1.4;">We play a convening role to help departments identify opportunities to learn from one another and share products to deploy at scale. We advise on design, build and procurement to ensure that departments implement the best solutions at the best price.</p>
 				</div>
 		</div>
+		#}
 
 
-    <div class="iai-faqs mt-5 self-center" id="improve" data-aos="fade-up">
+		<section> 
+      <h2 class="govuk-heading-l">What we do</h2>
+      <div class="govuk-grid-row" data-aos="fade-up">
+        <div class="govuk-grid-column-one-quarter">
+          <img src="/img/what-we-do/scanning.png" alt="" loading="lazy"/>
+          <h3 class="govuk-heading-m govuk-!-margin-top-3">Scanning</h3>
+          <p>We partner with departments and the private sector to identify opportunities to address real problems with AI.</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <img src="/img/what-we-do/incubating.png" alt="" loading="lazy"/>
+          <h3 class="govuk-heading-m govuk-!-margin-top-3">Incubating</h3>
+          <p>We quickly test and evaluate applications of AI that could help the public sector deliver better services more effectively.</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <img src="/img/what-we-do/scaling.png" alt="" loading="lazy"/>
+          <h3 class="govuk-heading-m govuk-!-margin-top-3">Scaling</h3>
+          <p>We develop production versions of successfully incubated products, ready to be adopted more widely.</p>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <img src="/img/what-we-do/advising.png" alt="" loading="lazy"/>
+          <h3 class="govuk-heading-m govuk-!-margin-top-3">Advising</h3>
+          <p>We advise departments on how best to deploy AI, and openly develop and share AI tools and resources for reuse across government.</p>
+        </div>
+      </div>
+      <p class="govuk-!-margin-top-6"><a class="govuk-link govuk-!-font-weight-bold" href="/about">Find out more about what we do</a></p>
+    </section>
+
+
+    <section class="govuk-!-margin-top-9">
         
         <h2 class="govuk-heading-l">{{ faqs.title }}</h2>
 
         {% for section in faqs.headings %}
+					<div data-aos="fade-up">
             <h3 class="govuk-heading-m govuk-!-margin-top-8 govuk-!-margin-bottom-5">{{ section.heading }}</h3>
             {% for question in section.questions %}
                 <details-enhanced>
@@ -71,9 +102,10 @@ templateEngineOverride: njk
                     </details>
                 </details-enhanced>
             {% endfor %}
+					</div>
         {% endfor %}
 
-    </div>
+    </section>
 
 	</div>
 </div>
