@@ -11,7 +11,16 @@ templateEngineOverride: njk
 {% set logo %}
   <img src="/logos/i-dot-ai-reverse.svg" width="230" class="govuk-!-padding-3" alt="">
 {% endset %}
-{{ homepageBanner('The Incubator for <span class="govuk-!-display-inline-block">Artificial Intelligence</span>', "Our mission is to act on government's duty to harness AI for public good.", logo, 'dark') }}
+{{ homepageBanner(
+  'The Incubator for <span class="govuk-!-display-inline-block">Artificial Intelligence</span>',
+  "Our mission is to act on government's duty to harness AI for public good.",
+  logo, 
+  'dark',
+  {
+    desc: "We're hiring",
+    url: '/opportunities'
+  }
+) }}
 
 
 <div class="govuk-width-container">
@@ -78,7 +87,7 @@ templateEngineOverride: njk
             'Guidance and case studies for teams adopting AI technologies in the public sector'
           ) }}
         {% for project in projects %}
-          {% if project.title == 'Extract' or project.title == 'Minute' %}
+          {% if project.title == 'Extract' or project.title == 'Consult' %}
             {% if project.url %}
               {% set projectUrl = project.url %}
             {% else %}
