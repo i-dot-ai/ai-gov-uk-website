@@ -66,3 +66,28 @@
     width: 120px;
   }
 }
+
+
+/* TO MOVE TO I.AI DESIGN SYSTEM */
+
+/* Relates to changes in iai-header.mjs */
+.govuk-header__navigation-list {
+  max-height: 200px;
+  overflow: hidden;
+  transition: all 0.7s;
+}
+.govuk-header__menu-button[aria-expanded="false"] + .govuk-header__navigation-list {
+  max-height: 0;
+  display: block !important;
+  visibility: hidden;
+}
+@media (min-width: 769px) {
+  .govuk-frontend-supported .govuk-header__menu-button {
+    display: none;
+  }
+  .govuk-header__navigation-list, .govuk-header__menu-button[aria-expanded="false"] + .govuk-header__navigation-list {
+    display: flex !important;
+    visibility: visible !important;
+    overflow: visible;
+  }
+}
