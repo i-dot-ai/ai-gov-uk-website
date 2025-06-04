@@ -14,6 +14,8 @@ templateEngineOverride: njk
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
 
+		<h2 class="govuk-visually-hidden">All blogs</h2>
+
     <div class="govuk-grid-row govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 10px 0;">
 			{% for blog in blogs %}
 				{% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
