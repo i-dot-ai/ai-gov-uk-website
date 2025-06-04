@@ -41,6 +41,17 @@
 }
 
 
+/* ABOUT PAGE */
+.about-function-image {
+  border-bottom: 3px solid var(--iai-pink);
+  position: relative;
+}
+.about-function-image img {
+  bottom: -3px;
+  position: absolute;
+  right: 0;
+}
+
 /* PROJECTS PAGE */
 .iai-project-card-vertical__logo {
   width: 80px;
