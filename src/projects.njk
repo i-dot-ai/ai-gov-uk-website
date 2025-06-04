@@ -10,7 +10,7 @@ templateEngineOverride: njk
 {{ banner("Projects") }}
 
 {% macro projectCardVertical(logo, title, url, synopsis) %}
-  <div class="iai-project-card-vertical govuk-grid-column-one-third-from-large-desktop govuk-!-display-flex govuk-!-padding-left-3 govuk-!-padding-right-3" style="align-items: flex-start;">
+  <div class="iai-project-card-vertical govuk-grid-column-one-third-from-large-desktop govuk-!-display-flex govuk-!-padding-left-3 govuk-!-padding-right-3" style="align-items: flex-start;" data-aos="fade-up">
     <img class="iai-project-card-vertical__logo" src="{{ logo }}" alt="" loading="lazy"/>
     <div class="govuk-body govuk-!-margin-left-2">
       <a class="govuk-link govuk-!-font-weight-bold" href="{{ url }}">{{ title }}</a>

@@ -112,7 +112,7 @@ templateEngineOverride: njk
 
     <section class="govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;">   
       <h2 class="govuk-heading-l">Latest blog posts</h2>
-      <div class="govuk-grid-row" data-aos="fade-up">
+      <div class="govuk-grid-row">
         {% set count = 0 %}
         {% for blog in blogs %}
             {% if blog.summaryShort and count < 3 %} {# This ensures the CMS preview blog isn't displayed here #}
@@ -264,7 +264,7 @@ templateEngineOverride: njk
 
     <section class="govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;"> 
       <h2 class="govuk-heading-l">Working with us</h2>
-      <div class="govuk-grid-row" data-aos="fade-up">
+      <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-half govuk-!-padding-right-5">
           <h3 class="govuk-heading-m">Jobs</h3>
           <p>Check for i.AI jobs on <a class="govuk-link" href="https://www.linkedin.com/company/i-dot-ai/">Linkedin</a> or <a class="govuk-link" href="https://www.civilservicejobs.service.gov.uk/csr/index.cgi?SID=b3duZXJ0eXBlPWZhaXImcGFnZWNsYXNzPVNlYXJjaCZjb250ZXh0aWQ9MTAxNjYzMjcxJnBhZ2VhY3Rpb249c2VhcmNoY29udGV4dCZvd25lcj01MDcwMDAwJnJlcXNpZz0xNzI5NTA5NDU4LTdjZmQwMGQ5MDQ3OWE5NzU2MTA4NGY2MDFiZjQzOGQwMGM0ZmViMjk=">Civil Service Jobs</a>. We're based in London, Bristol and Manchester.</p>
