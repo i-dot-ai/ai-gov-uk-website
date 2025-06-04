@@ -84,7 +84,7 @@ templateEngineOverride: njk
             '',
             'AI Knowledge Hub',
             '/knowledge-hub',
-            'Guidance and case studies for teams adopting AI technologies in the public sector'
+            'Read case studies and guidance for building AI technologies.'
           ) }}
         {% for project in projects %}
           {% if project.title == 'Extract' or project.title == 'Consult' %}
@@ -102,12 +102,12 @@ templateEngineOverride: njk
               '',
               project.title,
               projectUrl,
-              project.synopsis
+              project.synopsis + '.'
             ) }}
           {% endif %}
         {% endfor %}
       </div>
-      <p class="govuk-!-margin-top-6"><a class="govuk-link govuk-!-font-weight-bold" href="/blogs">Discover more of our projects</a></p>
+      <p class="govuk-!-margin-top-6"><a class="govuk-link govuk-!-font-weight-bold" href="/projects">Discover more of our projects</a></p>
     </section>
 
     <section class="govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;">   

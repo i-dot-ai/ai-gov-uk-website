@@ -24,7 +24,7 @@ module.exports = async () => {
       url: "/projects/rapid",
       type: "Other",
       img: "/img/rapid2.webp",
-      synopsis: "An end-to-end solution to sharing data across government",
+      synopsis: "A secure, interoperable API for data storage and sharing",
     },
     {
       title: "i.AI and NHS England Collaboration Charter",
