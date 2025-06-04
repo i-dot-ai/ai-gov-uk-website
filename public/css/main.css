@@ -39,3 +39,14 @@
     justify-content: center;
   }
 }
+
+
+/* PROJECTS PAGE */
+.iai-project-card-vertical__logo {
+  width: 80px;
+}
+@media (min-width: 641px) {
+  .iai-project-card-vertical__logo {
+    width: 120px;
+  }
+}
