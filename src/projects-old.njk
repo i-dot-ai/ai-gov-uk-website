@@ -1,0 +1,108 @@
+---
+title: Projects
+layout: base.njk
+templateEngineOverride: njk
+---
+
+{% from "./_includes/banner.njk" import banner %}
+{% from "./_includes/project-card.njk" import projectCard %}
+
+
+{{ banner("Projects", "A selection of projects we have been working on") }}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
+
+    <section>
+      <h2 class="govuk-heading-m">Introducing the GovAI toolkit for civil servants!</h2>
+      <p class="govuk-body">We at i.AI have created a suite of bespoke tools for civil servants in order to improve a range of different processes within government and better deliver on ministerial plans. Browse through our current offering!</p>
+      
+      <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+        {% for project in projects %}
+          {% if project.type == "Productivity tools" %}
+            {% if project.url %}
+              {% set projectUrl = project.url %}
+            {% else %}
+              {% set projectUrl = project.title | slugify %}
+            {% endif %}
+            {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
+            {{ projectCard(
+              logo,
+              project.phase,
+              project.title,
+              projectUrl,
+              project.synopsis
+            ) }}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="govuk-!-margin-top-7" style="border-top: 5px solid;">
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">Other projects</h2>
+      <p class="govuk-!-body">We are also working on a range of projects to support the wider public sector with more to come. Watch this space!</p>
+      <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+        {% for project in projects %}
+          {% if project.type == "Other" %}
+            {% if project.url %}
+              {% set projectUrl = project.url %}
+            {% else %}
+              {% set projectUrl = project.title | slugify %}
+            {% endif %}
+            {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
+            {% if project.title == 'i.AI and NHS England Collaboration Charter' %}
+              {% set logo = project.img %}
+            {% endif %}
+            {{ projectCard(
+              logo,
+              project.phase | default('-'),
+              project.title,
+              projectUrl,
+              project.synopsis
+            ) }}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="govuk-!-margin-top-7" style="border-top: 5px solid;">
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">Our Product Development Stages explained</h2>
+      <p class="govuk-body">As our products develop, they progress through different stage gates. This encourages us to spend the early stages resolving uncertainty and failing first, and the later stages on putting the pieces together and evaluating process and impact. It also helps us be proportionate with the level of burden and assurance we expect from our products at different stages.</p>
+      <p class="govuk-body">We have five product development stages:</p>
+      <ol class="govuk-list govuk-list--number govuk-list--spaced">
+        <li>
+          <dl>
+            <dt>Scoping (what’s the problem?): </dt>
+            <dd>Define the problem and come up with AI solution hypotheses</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Incubation (does the model solve the problem?): </dt>
+            <dd>Run technical experiments and address uncertainties</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Alpha (does the product work?): </dt>
+            <dd>Build and technically evaluate solution</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Beta (does the product have impact?): </dt>
+            <dd>Productionise the solution and test and improve with real users</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Scaling (will it be able to handle lots of users?): </dt>
+            <dd>Launch and rollout of the product</dd>
+          </dl>
+        </li>
+      </ol>
+    </section>
+
+  </div>
+</div>

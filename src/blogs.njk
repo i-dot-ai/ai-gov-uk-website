@@ -14,26 +14,21 @@ templateEngineOverride: njk
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
 
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-two-thirds">
-				{% for blog in blogs %}
-					{% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
+    <div class="govuk-grid-row govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+			{% for blog in blogs %}
+				{% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
 
-						{{ card(
-							blog.coverImage.file.url + '?w=1536',
-							blog.date | dateFormat,
-							blog.title,
-							'/blogs/' + blog.title | slugify,
-							blog.summaryShort
-						) }}
+					{{ card(
+						blog.coverImage.file.url + '?w=1536',
+						blog.date | dateFormat,
+						blog.title,
+						'/blogs/' + blog.title | slugify,
+						blog.summaryShort
+					) }}
 
-					{% endif %}
-				{% endfor %}
-			</div>
+				{% endif %}
+			{% endfor %}
+    </div>
 
-			<div class="govuk-grid-column-one-third">
-			</div>
-
-		</div>
 	</div>
 </div>
