@@ -10,102 +10,61 @@ templateEngineOverride: njk
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
 
-		{#
-		<h2 class="govuk-heading-m text-center">We have four key functions</h2>
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-two-thirds"> 
 
-		<div class="flex flex-col md:flex-col lg:flex-row w-[100%] md:w-[80%] self-center border-b border-grey-300 pb-5 pt-5" style="margin: 0 auto;" id="improve" data-aos="fade-up" >
-				<div class="flex flex-col items-end pr-12 lg:w-[20%] md:w-[100%]">
-						<img src="/img/Improve.png" class="img-fluid w-[25%] lg:w-[100%] xl:w-[50%] self-start xl:self-end mb-[2rem]" alt="">
-				</div>
+				<p class="govuk-body">The Incubator for Artificial Intelligence (i.AI) is an agile delivery team within the <a class="govuk-link" href="https://www.gov.uk/government/organisations/government-digital-service">Government Digital Service (GDS)</a>, part of the <a class="govuk-link" href="https://www.gov.uk/government/organisations/department-for-science-innovation-and-technology">Department for Science, Innovation and Technology (DSIT)</a>.</p>
+				<p class="govuk-body">Our mission is to act on government's duty to harness AI for public good. To do this we recruit top talent from industry, academia and across the public sector to make government better and serve the public interest.</p>
 
-				<div class="flex flex-col gap-3 w-[100%] md:w-[80%]">
-						<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Prototyping</h3>
-						<p class="govuk-body-s text-slate-800" style="line-height: 1.4;">We provide an incubation function to quickly test and evaluate ideas for applications of AI to improve the function of government and the delivery of public services. We work in collaboration to co-design and build tools with policy and delivery professionals in government departments and in the wider public sector.</p>
+      	<h2 class="govuk-heading-l">Who we are</h2>
+				<p class="govuk-body">We're a highly technical team composed of AI experts with deep knowledge and experience, allowing us to tackle complex challenges and innovate continuously.</p>
+				<p class="govuk-body">We are set up to rapidly design, test and deliver AI products for government, and have been given a mandate to operate in a more agile style than is typical for the civil service.</p>
+				<p class="govuk-body">Because we operate from the digital centre of government we're able to build AI products that cut across multiple domains and policy areas and draw on and coordinate with the excellent AI teams across the public sector.</p> 
+				<p class="govuk-body">Many of these outstanding teams are joining us on our mission to harness AI for the public good. We highly value our partners and actively seek collaboration to work together in delivering better products, faster.</p>
+				<p class="govuk-body"><a class="govuk-link" href="./press">Read more about i.AI in the press</a>.</p>
+
+				<h2 class="govuk-heading-l">What we do</h2>
+				<p class="govuk-body">Our 4 main functions are scanning, incubating, scaling and advising.</p>
+
+				<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Scanning</h3>
+				<div class="about-function-image govuk-!-margin-bottom-6">
+					<img width="155" src="/img/what-we-do/scanning.png" alt="" loading="lazy"/>
 				</div>
+				<p class="govuk-body">We partner with departments and the private sector to identify opportunities to address real problems with AI.</p>
+				<p class="govuk-body">The team sources ideas for product development from ministerial priorities, departmental suggestions, external engagement, and internal ideation. Before proceeding, these ideas are prioritised by assessing and balancing deliverability, value for money and potential impact.</p>
+				<p class="govuk-body">This structured approach helps in selecting projects that are not only viable but also strategically aligned with our overarching missions and government priorities.</p>
+
+				<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Incubating</h3>
+				<div class="about-function-image govuk-!-margin-bottom-6">
+					<img width="155" src="/img/what-we-do/incubating.png" alt="" loading="lazy"/>
+				</div>
+				<p class="govuk-body">We provide an incubation function to quickly test and evaluate ideas for applications of AI to improve the function of government and the delivery of public services. We work in collaboration to co-design and build tools with policy and delivery professionals in government departments and in the wider public sector.</p>
+
+				<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Scaling</h3>      
+				<div class="about-function-image govuk-!-margin-bottom-6">
+					<img width="155" src="/img/what-we-do/scaling.png" alt="" loading="lazy"/>
+				</div>
+				<p class="govuk-body">Successful prototypes, once trialled and evaluated, are productionised and delivered by our “scale up” team. These will then be deployed to business units where they can have maximum measurable impact.</p>
+				<p class="govuk-body">We work “in the open”, and share our technical work across government for broader application. This includes open sourcing our code (in the majority of cases, where there are no security or proprietary issues), making it available for everyone in the public sector and beyond to learn from and adopt.</p>
+
+				<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Advising</h3>      
+				<div class="about-function-image govuk-!-margin-bottom-6">
+					<img width="155" src="/img/what-we-do/advising.png" alt="" loading="lazy"/>
+				</div>
+				<p class="govuk-body">We play a convening role to help departments identify opportunities to learn from one another and share products to deploy at scale. We advise on design, build and procurement to ensure that departments implement the best solutions at the best price.</p>
+
+				<h2 class="govuk-heading-l">How we evaluate our products</h2>
+				<p class="govuk-body">We use a range of approaches dependent on the development stage each product is at. This includes:</p>
+
+				<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+					<li><strong>Model &amp; product evaluation</strong> throughout the product lifecycle. This is used to ensure, for example, that the outputs are accurate and don’t create or entrench bias. This can include testing the product against human performance on the same task, to understand any differences in outputs.</li>
+					<li><strong>Formative evaluation</strong> with working prototypes, to understand how the product performs with real users. This includes measuring metrics that will be key to its success, such as uptake of the product and frequency of use. This level of evaluation tends to also include a high degree of user feedback, to understand any challenges to its use, as well as its potential impact.</li>
+					<li><strong>Impact evaluation</strong> with developed tools, to measure the product’s impact on key outcomes like task performance and efficiency, as well as wider metrics like job satisfaction and strain. We favour experimental and quasi-experimental designs where possible, to robustly evaluate tool impacts.</li>
+					<li><strong>Economic evaluation</strong> to understand the costs and benefits of tool roll-out. This is based on estimates of impact from the other evaluation stages, so generally happens towards the later stage of product development. However, rougher estimates may be produced earlier in development based on estimates from similar tools and the estimated size of the product’s market.</li>
+				</ul>
+
+			</div>
 		</div>
-
-		<div class="flex flex-col md:flex-col lg:flex-row w-[100%] md:w-[80%] self-center border-b border-grey-300 pb-5 pt-5" style="margin: 0 auto;" id="upgrade" data-aos="fade-up">
-				<div class="flex flex-col items-end pr-12 lg:w-[20%] md:w-[100%]">
-						<img src="/img/Upgrade.svg" class="img-fluid w-[25%] lg:w-[100%] xl:w-[50%] self-start xl:self-end mb-[2rem]" alt="">
-				</div>
-
-				<div class="flex flex-col gap-3 w-[100%] md:w-[80%]">
-						<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Delivery</h3>
-						<p class="govuk-body-s text-slate-800" style="line-height: 1.4;">Successful prototypes, once trialled and evaluated, are productionised and delivered by our “scale up” team. These will then be deployed to business units where they can have maximum measurable impact.</p>
-				</div>
-		</div>
-
-		<div class="flex flex-col md:flex-col lg:flex-row w-[100%] md:w-[80%] self-center border-b border-grey-300 pb-5 pt-5" style="margin: 0 auto;" id="upskill" data-aos="fade-up">
-				<div class="flex flex-col items-end pr-12 lg:w-[20%] md:w-[100%]">
-						<img src="/img/Upskill.svg" class="img-fluid w-[25%] lg:w-[100%] xl:w-[50%] self-start xl:self-end mb-[2rem]" alt="">
-				</div>
-
-				<div class="flex flex-col gap-3 w-[100%] md:w-[80%]">
-						<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Modularisation</h3>
-						<p class="govuk-body-s text-slate-800" style="line-height: 1.4;">We work “in the open”, and share our technical work across government for broader application. This includes <a href="https://github.com/i-dot-ai" class="link">open sourcing our code</a> (in the majority of cases, where there are no security or proprietary issues), making it available for everyone in the public sector and beyond to learn from and adopt.</p>
-				</div>
-		</div>
-
-		<div class="flex flex-col md:flex-col lg:flex-row w-[100%] md:w-[80%] self-center border-b border-grey-300 pb-5 pt-5" style="margin: 0 auto;" id="hire" data-aos="fade-up">
-				<div class="flex flex-col items-end pr-12 lg:w-[20%] md:w-[100%]">
-						<img src="/img/Hire.svg" class="img-fluid w-[25%] lg:w-[100%] xl:w-[50%] self-start xl:self-end mb-[2rem]" alt="">
-				</div>
-
-				<div class="flex flex-col gap-3 w-[100%] md:w-[80%]">
-						<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Convening and Advising</h3>
-						<p class="govuk-body-s text-slate-800" style="line-height: 1.4;">We play a convening role to help departments identify opportunities to learn from one another and share products to deploy at scale. We advise on design, build and procurement to ensure that departments implement the best solutions at the best price.</p>
-				</div>
-		</div>
-		#}
-
-
-		<section> 
-      <h2 class="govuk-heading-l">What we do</h2>
-      <div class="govuk-grid-row" data-aos="fade-up">
-        <div class="govuk-grid-column-one-quarter">
-          <img src="/img/what-we-do/scanning.png" alt="" loading="lazy"/>
-          <h3 class="govuk-heading-m govuk-!-margin-top-3">Scanning</h3>
-          <p>We partner with departments and the private sector to identify opportunities to address real problems with AI.</p>
-        </div>
-        <div class="govuk-grid-column-one-quarter">
-          <img src="/img/what-we-do/incubating.png" alt="" loading="lazy"/>
-          <h3 class="govuk-heading-m govuk-!-margin-top-3">Incubating</h3>
-          <p>We quickly test and evaluate applications of AI that could help the public sector deliver better services more effectively.</p>
-        </div>
-        <div class="govuk-grid-column-one-quarter">
-          <img src="/img/what-we-do/scaling.png" alt="" loading="lazy"/>
-          <h3 class="govuk-heading-m govuk-!-margin-top-3">Scaling</h3>
-          <p>We develop production versions of successfully incubated products, ready to be adopted more widely.</p>
-        </div>
-        <div class="govuk-grid-column-one-quarter">
-          <img src="/img/what-we-do/advising.png" alt="" loading="lazy"/>
-          <h3 class="govuk-heading-m govuk-!-margin-top-3">Advising</h3>
-          <p>We advise departments on how best to deploy AI, and openly develop and share AI tools and resources for reuse across government.</p>
-        </div>
-      </div>
-      <p class="govuk-!-margin-top-6"><a class="govuk-link govuk-!-font-weight-bold" href="/about">Find out more about what we do</a></p>
-    </section>
-
-
-    <section class="govuk-!-margin-top-9">
-        
-        <h2 class="govuk-heading-l">{{ faqs.title }}</h2>
-
-        {% for section in faqs.headings %}
-					<div data-aos="fade-up">
-            <h3 class="govuk-heading-m govuk-!-margin-top-8 govuk-!-margin-bottom-5">{{ section.heading }}</h3>
-            {% for question in section.questions %}
-                <details-enhanced>
-                    <details class="govuk-details">
-                        <summary class="govuk-details__summary"><h3 class="govuk-details__summary-text">{{ question.questionText }}</h3></summary>
-                        <div class="govuk-details__text">{{ question.response | markdownToHtml | safe }}
-                    </details>
-                </details-enhanced>
-            {% endfor %}
-					</div>
-        {% endfor %}
-
-    </section>
 
 	</div>
 </div>
