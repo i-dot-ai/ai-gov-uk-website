@@ -16,11 +16,11 @@ templateEngineOverride: njk
         <li data-aos="fade-up">
           <img src="{{ entry.logo }}" alt="{{ entry.media }}"/>
           <div>
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1" style="text-wrap: balance; line-height: 1.4;">
               <a href="{{ entry.link }}" rel="noopener">{{ entry.headline }}</a>
             </h2>
             <p class="press-mentions__date govuk-body-s govuk-!-margin-bottom-2">{{ entry.date | dateFormat }}</p>
-            <p class="govuk-body-s">{{ entry.summary }}</p>
+            <p class="govuk-body-s" style="line-height: 1.3;">{{ entry.summary }}</p>
           </div>
         </li>
       {% endfor %}
