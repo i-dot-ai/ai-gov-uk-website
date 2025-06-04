@@ -11,7 +11,7 @@
 <div class="app-masthead app-masthead--product app-masthead--{{ theme }} govuk-!-padding-bottom-{{ padding }} govuk-!-padding-top-{{ padding }}">
   <div class="govuk-width-container govuk-!-margin-top-5 govuk-!-margin-bottom-5">
     <div class="govuk-grid-row govuk-!-display-flex">
-      <div class="govuk-grid-column-two-thirds govuk-!-padding-right-0">
+      <div class="govuk-grid-column-two-thirds {% if not cta %}govuk-!-padding-right-0{% endif %}">
         <h1 class="app-masthead__title govuk-heading-xl govuk-!-margin-bottom-0">{{ title | safe }}</h1>
         {% if description %}
           <p class="app-masthead__description govuk-!-margin-top-6">{{ description }}</p>
