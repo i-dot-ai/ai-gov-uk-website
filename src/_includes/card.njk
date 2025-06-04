@@ -1,6 +1,6 @@
 {% macro card (image, tag, title, url, summary) %}
 
-  <div class="govuk-grid-column-one-third" data-aos="fade-up">
+  <div class="govuk-grid-column-one-third govuk-!-margin-top-6" data-aos="fade-up">
     <img src="{{ image }}" style="aspect-ratio: 16/9; border: 1px solid #b1b4b6; object-fit: cover;" alt="" loading="lazy"/>
     {% if tag %}
       <p class="govuk-body-s govuk-!-margin-top-3 govuk-!-margin-bottom-0" style="color: #505a5f;">{{ tag }}</p>

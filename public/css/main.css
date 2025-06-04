@@ -53,6 +53,12 @@
     position: absolute;
     transition: opacity 0.7s;
     right: 0;
+    width: 120px;
+  }
+}
+@media (min-width: 641px) {
+  .about-function-image img {
+    width: 155px;
   }
 }
 
