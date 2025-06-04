@@ -45,10 +45,12 @@
 .about-function-image {
   border-bottom: 3px solid var(--iai-pink);
   position: relative;
+  transition: width 1.5s;
 }
 .about-function-image img {
   bottom: -3px;
   position: absolute;
+  transition: opacity 0.7s;
   right: 0;
 }
 

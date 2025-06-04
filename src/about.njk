@@ -27,30 +27,30 @@ templateEngineOverride: njk
 				<p class="govuk-body">Our 4 main functions are scanning, incubating, scaling and advising.</p>
 
 				<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Scanning</h3>
-				<div class="about-function-image govuk-!-margin-bottom-6">
+				<about-function-image class="about-function-image govuk-!-display-block govuk-!-margin-bottom-6">
 					<img width="155" src="/img/what-we-do/scanning.png" alt="" loading="lazy"/>
-				</div>
+				</about-function-image>
 				<p class="govuk-body">We partner with departments and the private sector to identify opportunities to address real problems with AI.</p>
 				<p class="govuk-body">The team sources ideas for product development from ministerial priorities, departmental suggestions, external engagement, and internal ideation. Before proceeding, these ideas are prioritised by assessing and balancing deliverability, value for money and potential impact.</p>
 				<p class="govuk-body">This structured approach helps in selecting projects that are not only viable but also strategically aligned with our overarching missions and government priorities.</p>
 
 				<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Incubating</h3>
-				<div class="about-function-image govuk-!-margin-bottom-6">
+				<about-function-image class="about-function-image govuk-!-display-block govuk-!-margin-bottom-6">
 					<img width="155" src="/img/what-we-do/incubating.png" alt="" loading="lazy"/>
-				</div>
+				</about-function-image>
 				<p class="govuk-body">We provide an incubation function to quickly test and evaluate ideas for applications of AI to improve the function of government and the delivery of public services. We work in collaboration to co-design and build tools with policy and delivery professionals in government departments and in the wider public sector.</p>
 
 				<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Scaling</h3>      
-				<div class="about-function-image govuk-!-margin-bottom-6">
+				<about-function-image class="about-function-image govuk-!-display-block govuk-!-margin-bottom-6">
 					<img width="155" src="/img/what-we-do/scaling.png" alt="" loading="lazy"/>
-				</div>
+				</about-function-image>
 				<p class="govuk-body">Successful prototypes, once trialled and evaluated, are productionised and delivered by our “scale up” team. These will then be deployed to business units where they can have maximum measurable impact.</p>
 				<p class="govuk-body">We work “in the open”, and share our technical work across government for broader application. This includes open sourcing our code (in the majority of cases, where there are no security or proprietary issues), making it available for everyone in the public sector and beyond to learn from and adopt.</p>
 
 				<h3 class="govuk-heading-m govuk-!-margin-bottom-2">Advising</h3>      
-				<div class="about-function-image govuk-!-margin-bottom-6">
+				<about-function-image class="about-function-image govuk-!-display-block govuk-!-margin-bottom-6">
 					<img width="155" src="/img/what-we-do/advising.png" alt="" loading="lazy"/>
-				</div>
+				</about-function-image>
 				<p class="govuk-body">We play a convening role to help departments identify opportunities to learn from one another and share products to deploy at scale. We advise on design, build and procurement to ensure that departments implement the best solutions at the best price.</p>
 
 				<h2 class="govuk-heading-l">How we evaluate our products</h2>
@@ -68,3 +68,46 @@ templateEngineOverride: njk
 
 	</div>
 </div>
+
+
+<script>
+
+	class AboutFunctionImage extends HTMLElement {
+
+		connectedCallback() {
+
+			// Only animate if user hasn't specified no animations
+			if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				return;
+			}
+
+			// Hide line/image
+			this.style.width = '0%';
+			this.image = this.querySelector('img');
+			this.image.style.opacity = '0';
+
+			// Animate once in view
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						this.#animate();
+					}
+				});
+			});
+			observer.observe(this);
+			
+		}
+
+		#animate() {
+			window.setTimeout(() => {
+				this.style.width = '100%';
+				window.setTimeout(() => {
+					this.image.style.opacity = '1';
+				}, 1100);
+			}, 1);
+		}
+
+	}
+	customElements.define('about-function-image', AboutFunctionImage);
+
+</script>
