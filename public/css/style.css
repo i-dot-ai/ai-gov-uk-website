@@ -1810,7 +1810,7 @@ img.iai-project-types__icon {
   margin: 2rem 0;
   padding-bottom: 1.5rem;
 }
-.iai-blog-carousel h3 {
+.iai-blog-carousel__heading {
   font-size: 1.25rem !important;
   font-weight: 400 !important;
   padding: 0.5rem;

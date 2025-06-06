@@ -49,9 +49,15 @@
     }
 
     render() {
+
+      const startHeadingLevel = this.items?.find((item) => item.includes('<h3')) ? '2' : '3';
       return html`
         <section class="iai-blog-carousel splide" aria-labelledby="carousel-heading-${this.id}" id="carousel-${this.id}">
-          <h3 id="carousel-heading-${this.id}">${this.title}</h3>
+          ${startHeadingLevel === '2' ? html`
+            <h2 class="iai-blog-carousel__heading" id="carousel-heading-${this.id}">${this.title}</h2>
+          ` : html`
+            <h3 class="iai-blog-carousel__heading" id="carousel-heading-${this.id}">${this.title}</h3>
+          `}
           <div class="splide__track">
             <ul class="splide__list">
               ${this.items?.map(
