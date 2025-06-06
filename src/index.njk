@@ -91,7 +91,7 @@ templateEngineOverride: njk
             {% if project.url %}
               {% set projectUrl = project.url %}
             {% else %}
-              {% set projectUrl = project.title | slugify %}
+              {% set projectUrl = '/projects/' + project.title | slugify %}
             {% endif %}
             {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
             {% if project.title == 'i.AI and NHS England Collaboration Charter' %}
