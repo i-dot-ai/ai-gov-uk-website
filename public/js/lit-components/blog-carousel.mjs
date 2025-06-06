@@ -50,7 +50,9 @@
 
     render() {
 
+      // Determine what level the main heading should be, based on what is within the item content. We want one higher.
       const startHeadingLevel = this.items?.find((item) => item.includes('<h3')) ? '2' : '3';
+      
       return html`
         <section class="iai-blog-carousel splide" aria-labelledby="carousel-heading-${this.id}" id="carousel-${this.id}">
           ${startHeadingLevel === '2' ? html`
