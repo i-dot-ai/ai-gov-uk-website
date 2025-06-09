@@ -23,7 +23,7 @@ permalink: "projects/{{ project.title | slugify }}/"
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
 
-    <div class="project-content govuk-body">
+    <div class="iai-blog-content govuk-body">
         {% for component in project.components %}
             {% if component.type == "bodyText" %}
                 {{ component.content | markdownToHtml | safe }}
@@ -57,7 +57,7 @@ permalink: "projects/{{ project.title | slugify }}/"
 
     <script>
 
-        let contentContainer = document.querySelector(".project-content");
+        let contentContainer = document.querySelector(".iai-blog-content");
         let componentTemplates = {};
 
         // Defaults
