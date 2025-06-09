@@ -1,0 +1,65 @@
+---
+layout: knowledge-hub/base.njk
+templateEngineOverride: njk
+title: Prompt Library
+---
+
+<div class="govuk-width-container">
+  <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
+
+    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link govuk-back-link govuk-!-margin-0" href="/knowledge-hub">Home</a>
+        </li>
+      </ol>
+    </nav>
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">Prompt Library</h1>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p>A collection of useful prompts for the public sector, by the public sector.</p>
+      </div>
+    </div>
+
+
+    <details class="govuk-details govuk-!-margin-top-4 govuk-!-padding-left-6 govuk-!-padding-right-6 govuk-!-padding-top-4 govuk-!-padding-bottom-4" style="border: 1px solid #b1b4b6; background-color: #f3f2f1;">
+      <summary class="govuk-details__summary">
+        <h2 class="govuk-details__summary-text govuk-heading-s govuk-!-margin-bottom-0" style="color: var(--iai-pink);">Search and filter</h2>
+      </summary>
+      <prompt-filters class="govuk-!-display-block govuk-!-margin-top-4"></prompt-filters>
+    </details>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <h2 class="govuk-body-l govuk-!-margin-top-7">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> prompts</h2>
+
+        {% for prompt in knowledgeHubPrompts %}
+          <details class="govuk-details govuk-!-margin-top-4 govuk-!-padding-left-6 govuk-!-padding-right-6 govuk-!-padding-top-4 govuk-!-padding-bottom-4 js-prompt" style="border: 1px solid #b1b4b6; background-color: #f3f2f1;">
+            <summary class="govuk-details__summary">
+              <h3 class="govuk-details__summary-text govuk-heading-s govuk-!-margin-bottom-0" style="color: var(--iai-pink);">{{ prompt.title }}</h3>
+              <p class="govuk-body-s govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{ prompt.description }}
+              {% if prompt.tags %}
+                <ul class="govuk-!-padding-left-0 govuk-!-margin-top-0 govuk-!-margin-bottom-1">
+                  {% for tag in prompt.tags %}
+                    <li class="govuk-summary-card__action">
+                      <strong class="govuk-tag govuk-tag--pink js-prompt__tag govuk-!-margin-top-2" style="font-size: 1rem; max-width: none;">{{ tag }}</strong>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </summary>
+            <div class="govuk-!-margin-top-6 govuk-!-padding-top-5" style="border-top: 1px solid	#b1b4b6;">{{ prompt.prompt | markdownToHtml | safe }}</div>
+          </details>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script type="module" src="/js/lit-components/prompt-filters.mjs"></script>
