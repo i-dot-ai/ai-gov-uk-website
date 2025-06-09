@@ -9,10 +9,16 @@ permalink: "projects/{{ project.title | slugify }}/"
 # Note: If permalink changes - also update in base.njk
 ---
 
-{% from "./_includes/banner.njk" import banner %}
 {% from "./_includes/video.njk" import video %}
 
-{{ banner(project.title, project.synopsisHeader) }}
+<div class="govuk-width-container project-banner">
+<div class="govuk-main-wrapper govuk-!-padding-top-4 govuk-!-padding-bottom-0">
+    <div class="govuk-!-display-flex govuk-!-display-flex--align-center govuk-!-padding-bottom-4" style="border-bottom: 5px solid; justify-content: space-between;">
+        <h1 class="govuk-heading-xl govuk-!-margin-0 govuk-!-padding-right-3" >{{ project.title }}</h1>
+        <img class="project-banner__logo" width="120" src="/img/project-logos/logo-{{ project.title | lower }}.png" alt=""/>
+    </div>
+</div>
+</div>
 
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper govuk-!-padding-bottom-0">

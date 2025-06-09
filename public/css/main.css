@@ -74,6 +74,18 @@
 }
 
 
+/* PROJECT PAGE */
+.project-banner__logo {
+  width: 80px;
+}
+@media (min-width: 641px) {
+  .project-banner__logo {
+    width: 120px;
+  }
+}
+
+
+
 /* TO MOVE TO I.AI DESIGN SYSTEM */
 
 /* Relates to changes in iai-header.mjs */
