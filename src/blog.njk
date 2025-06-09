@@ -131,7 +131,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
 
                     //console.log(evt.data);
                     
-                    document.querySelector(".iai-blog-title__title").textContent = evt.data.title || "[Title goes here]";
+                    document.querySelector("h1").textContent = evt.data.title || "[Title goes here]";
 
                     const date = evt.data.date;
                     document.querySelector(".iai-blog-title__date").textContent = date || "[Date goes here]";
