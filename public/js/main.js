@@ -1,6 +1,7 @@
 // @ts-check
 
 // Scroll animations
+/*
 window.addEventListener("load", () => {
   AOS.init({
     duration: 1000,
@@ -9,6 +10,7 @@ window.addEventListener("load", () => {
     mirror: false,
   });
 });
+*/
 
 
 // Carousel
