@@ -26,6 +26,7 @@ module.exports = async () => {
       img: "/img/rapid2.webp",
       synopsis: "A secure, interoperable API for data storage and sharing",
     },
+    /*
     {
       title: "i.AI and NHS England Collaboration Charter",
       url: "/projects/nhs-collaboration",
@@ -34,6 +35,7 @@ module.exports = async () => {
       synopsis:
         "i.AI and NHS England sign Collaboration Charter to support the use of AI in the NHS",
     },
+    */
   ];
 
   const newProjects = await getData(
