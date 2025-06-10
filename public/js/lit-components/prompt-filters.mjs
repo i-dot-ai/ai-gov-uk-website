@@ -73,8 +73,8 @@
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
               ${this.tags.map((tag) => html`
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" name="tags" type="checkbox" value="${tag}" @click=${this.#applyFilters}>
-                  <label class="govuk-label govuk-checkboxes__label" for="tags" style="font-size: 1rem;">${tag}</label>
+                  <input class="govuk-checkboxes__input" name="tags" id="tag-${tag}" type="checkbox" value="${tag}" @click=${this.#applyFilters}>
+                  <label class="govuk-label govuk-checkboxes__label" for="tag-${tag}" style="font-size: 1rem;">${tag}</label>
                 </div>
               `)}
             </div>
