@@ -71,12 +71,16 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend">Tags</legend>
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-              ${this.tags.map((tag) => html`
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" name="tags" id="tag-${tag}" type="checkbox" value="${tag}" @click=${this.#applyFilters}>
-                  <label class="govuk-label govuk-checkboxes__label" for="tag-${tag}" style="font-size: 1rem;">${tag}</label>
-                </div>
-              `)}
+              <div class="govuk-grid-row">
+                ${this.tags.map((tag) => html`
+                  <div class="govuk-grid-column-one-third-from-desktop">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" name="tags" id="tag-${tag}" type="checkbox" value="${tag}" @click=${this.#applyFilters}>
+                      <label class="govuk-label govuk-checkboxes__label" for="tag-${tag}" style="font-size: 1rem;">${tag}</label>
+                    </div>
+                  </div>
+                `)}
+              </div>
             </div>
           </fieldset>
         </div>
