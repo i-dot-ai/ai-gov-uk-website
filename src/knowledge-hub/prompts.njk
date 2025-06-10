@@ -52,7 +52,15 @@ title: Prompt Library
                 </ul>
               {% endif %}
             </summary>
-            <div class="govuk-!-margin-top-6 govuk-!-padding-top-5" style="border-top: 1px solid	#b1b4b6;">{{ prompt.prompt | markdownToHtml | safe }}</div>
+            <div class="govuk-!-margin-top-6 govuk-!-padding-top-5" style="border-top: 1px solid	#b1b4b6;">
+              <div id="prompt-{{ loop.index0 }}">
+                {{ prompt.prompt | markdownToHtml | safe }}
+              </div>
+              <copy-button copy="prompt-{{ loop.index0 }}">
+                Copy prompt
+                <span class="govuk-visually-hidden">{{ prompt.title }}</span>
+              </copy-button>
+            </div>
           </details>
         {% endfor %}
 
@@ -63,3 +71,4 @@ title: Prompt Library
 </div>
 
 <script type="module" src="/js/lit-components/prompt-filters.mjs"></script>
+<script type="module" src="/js/lit-components/copy-button.mjs"></script>
