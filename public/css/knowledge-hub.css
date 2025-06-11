@@ -32,6 +32,18 @@
 }
 
 
+/* Prompts */
+.prompt__copy-button-container {
+  justify-content: flex-end;
+  margin-top: -0.5rem;
+}
+@media (min-width: 641px) {
+  .prompt__copy-button-container {
+    margin-top: -1rem;
+  }
+}
+
+
 /* Styles that could go back into i.AI Design System */
 
 .govuk-link--call-to-action {
