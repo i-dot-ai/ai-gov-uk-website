@@ -53,13 +53,15 @@ title: Prompt Library
               {% endif %}
             </summary>
             <div class="govuk-!-margin-top-6 govuk-!-padding-top-5" style="border-top: 1px solid	#b1b4b6;">
+              <div class="prompt__copy-button-container govuk-!-display-flex govuk-!-margin-bottom-1">
+                <copy-button copy="prompt-{{ loop.index0 }}">
+                  Copy prompt
+                  <span class="govuk-visually-hidden">{{ prompt.title }}</span>
+                </copy-button>
+              </div>
               <div id="prompt-{{ loop.index0 }}">
                 {{ prompt.prompt | markdownToHtml | safe }}
               </div>
-              <copy-button copy="prompt-{{ loop.index0 }}">
-                Copy prompt
-                <span class="govuk-visually-hidden">{{ prompt.title }}</span>
-              </copy-button>
             </div>
           </details>
         {% endfor %}
