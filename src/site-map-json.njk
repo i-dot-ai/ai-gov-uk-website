@@ -27,5 +27,11 @@ module.exports = [
   '/press-mentions',
   '/opportunities',
   '/register-your-interest',
-  '/accessibility'
+  '/accessibility',
+  '/knowledge-hub',
+  '/knowledge-hub/use-cases',
+  {% for useCase in knowledgeHubUseCases %}
+    '/knowledge-hub/use-cases/{{ useCase.title | slugify }}',
+  {% endfor %}
+  '/knowledge-hub/guidance',
 ];

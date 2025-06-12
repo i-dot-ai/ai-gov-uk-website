@@ -23,9 +23,11 @@ templateEngineOverride: njk
         <a class="govuk-link" href="/projects">Projects</a>
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
           {% for project in projects %}
-            <li class="govuk-!-margin-top-2">
-              <a class="govuk-link" href="{% if project.url %}{{ project.url }}{% else %}/projects/{{ project.title | slugify }}{% endif %}">{{ project.title }}</a>
-            </li>
+            {% if project.title != 'Preview' %}
+              <li class="govuk-!-margin-top-2">
+                <a class="govuk-link" href="{% if project.url %}{{ project.url }}{% else %}/projects/{{ project.title | slugify }}{% endif %}">{{ project.title }}</a>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </li>
