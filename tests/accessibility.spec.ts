@@ -10,7 +10,6 @@ for (let pageToTest of pagesToTest) {
   test(`Accessibility - ${pageToTest}`, async ({ page }) => {
 
     await page.goto(`${urlPrefix}${pageToTest}`);
-    await page.waitForTimeout(1000); // allow animation to run (otherwise may get a false positive for colour contrast)
     
     // Axe tests
     const accessibilityScanResults = await new AxeBuilder({page}).analyze();
