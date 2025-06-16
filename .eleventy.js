@@ -178,6 +178,9 @@ module.exports = function (eleventyConfig) {
           image.replace(
             "/images/uploads",
             "https://i-dot-ai-cms.netlify.app/assets"
+          ).replace(
+            // Add .webp to end of image path (for most optimised image)
+            /(<img\b[^>]*\ssrc=")([^"]+?)(?<!\.webp)(")/gi,(_, prefix, url, quote) => `${prefix}${url}.webp${quote}`
           )
         );
       }
