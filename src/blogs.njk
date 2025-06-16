@@ -5,7 +5,6 @@ templateEngineOverride: njk
 ---
 
 {% from "./_includes/banner.njk" import banner %}
-{% from "./_includes/blog-author.njk" import blogAuthor %}
 {% from "./_includes/card.njk" import card %}
 
 
@@ -20,8 +19,14 @@ templateEngineOverride: njk
 			{% for blog in blogs %}
 				{% if blog.summaryShort %} {# This ensures the CMS preview blog isn't displayed here #}
 
+					{% if blog.source == 'DecapCMS' %}
+						{% set imagePath = blog.coverImage.file.url + '.webp' %}
+					{% else %}
+						{% set imagePath = blog.coverImage.file.url + '?w=1536' %}
+					{% endif %}
+
 					{{ card(
-						blog.coverImage.file.url + '?w=1536',
+						imagePath,
 						blog.date | dateFormat,
 						blog.title,
 						'/blogs/' + blog.title | slugify,
