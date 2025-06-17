@@ -13,8 +13,12 @@ const showdown = require("showdown");
 const mdToHtmlConverter = new showdown.Converter();
 
 module.exports = function (eleventyConfig) {
+
   eleventyConfig.addPassthroughCopy({
     "public/": "/"
+  });
+  eleventyConfig.addPassthroughCopy({
+    "src/google3a3ba1da5272ff32.html" : "/"
   });
 
   eleventyConfig.addPlugin(litPlugin, {
