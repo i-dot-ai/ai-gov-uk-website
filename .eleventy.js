@@ -18,7 +18,7 @@ module.exports = function (eleventyConfig) {
     "public/": "/"
   });
   eleventyConfig.addPassthroughCopy({
-    "src/google3a3ba1da5272ff32.html" : "/"
+    "src/google3a3ba1da5272ff32.html" : "/google3a3ba1da5272ff32.html"
   });
 
   eleventyConfig.addPlugin(litPlugin, {
