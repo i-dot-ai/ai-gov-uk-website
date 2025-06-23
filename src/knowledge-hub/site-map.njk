@@ -1,0 +1,35 @@
+---
+title: Site Map
+layout: knowledge-hub/base.njk
+templateEngineOverride: njk
+---
+
+
+{% from "../_includes/banner.njk" import banner %}
+{{ banner("Site Map") }}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
+
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+      <li>
+        <a class="govuk-link" href="/knowledge-hub">Home page</a>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/knowledge-hub/use-cases">Use cases</a>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          {% for useCase in knowledgeHubUseCases %}
+            <li class="govuk-!-margin-top-2">
+              <a class="govuk-link" href="/knowledge-hub/use-cases/{{ useCase.title | slugify }}">{{ useCase.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="govuk-!-margin-top-2">
+        <a class="govuk-link" href="/knowledge-hub/guidance">Guidance</a>
+      </li>
+    </ul>
+
+  </div>
+</div>
