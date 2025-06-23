@@ -26,7 +26,7 @@ permalink: "projects/{{ project.title | slugify }}/"
     <div class="iai-blog-content govuk-body">
         {% for component in project.components %}
             {% if component.type == "bodyText" %}
-                {{ component.content | markdownToHtml | safe }}
+                {{ component.content | markdownToHtml(true) | safe }}
             {% elif component.type == "video" %}
                 {{ video({
                     classes: "iai-promo-video",
@@ -39,7 +39,12 @@ permalink: "projects/{{ project.title | slugify }}/"
                 {% else %}
                     {% set side = "right" %}
                 {% endif %}
-                <text-image-block side="{{ side }}" content="{{ component.content | markdownToHtml }}" image="{{ component.image | replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/") }}.webp" imageAlt="{{ component.imageAlt }}" imageCaption="{{ component.imageCaption }}"></text-image-block>
+                {% if '.svg' in component.image %}
+                    {% set imgPath = component.image %}
+                {% else %}
+                    {% set imgPath = component.image + '.webp' %}
+                {% endif %}
+                <text-image-block side="{{ side }}" content="{{ component.content | markdownToHtml(true) }}" image="{{ imgPath | replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/") }}" imageAlt="{{ component.imageAlt }}" imageCaption="{{ component.imageCaption }}"></text-image-block>
             {% elif component.type == "quote" %}
                 <project-quote quote="{{ component.quote }}" by="{{ component.author }}" link="{{ component.link | trim }}"></project-quote>
             {% endif %}

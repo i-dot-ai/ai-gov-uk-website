@@ -65,7 +65,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
                 {% if component.type == "bodyText" %}
                     <div class="iai-blog-content__inner-container">
                         <div id="content">
-                            {{ component.content | markdownToHtml | safe }}
+                            {{ component.content | markdownToHtml(true) | safe }}
                         </div>
                     </div>
                 {% elif component.type == "video" %}

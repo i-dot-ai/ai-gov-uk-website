@@ -26,7 +26,7 @@
 
     render() {
       return html`
-        <blockquote class="border-l-4 mt-4 pl-4 lg:border-l-8 lg:pl-8 lg:py-4">
+        <blockquote class="border-l-4 pl-4 lg:border-l-8 lg:pl-8 lg:py-4 govuk-!-margin-top-7 govuk-!-margin-bottom-7">
           <p class="text-xl">“${this.quote}”</p>
           <footer class="mt-2 text-sm">
           ${this.link ? html`

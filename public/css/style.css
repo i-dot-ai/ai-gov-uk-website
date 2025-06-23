@@ -1578,59 +1578,22 @@ figcaption svg {
 .iai-blog-content {
   margin-top: 2rem;
 }
-.iai-blog-content p {
-  margin-top: 1rem;
-}
-.iai-blog-content ol {
-  list-style: decimal;
-  padding-left: 1rem;
-}
-.iai-blog-content ol > li {
-  margin-top: 1rem;
-}
-.iai-blog-content li > p {
-  margin-top: 0;
-}
-.iai-blog-content ul {
-  list-style-type: disc;
-  padding-left: 2rem;
-}
-.iai-blog-content ul > li {
-  margin-top: 0.75rem;
-}
-.iai-blog-content h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-}
-.iai-blog-content h3:not(.iai-project-types__heading) {
-  font-size: 1.1875rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-}
-.iai-blog-content a,
-.iai-blog-content a:hover {
-  font-weight: 400;
-  text-decoration: underline;
-}
-.iai-blog-content a:hover {
-  color: var(--iai-pink);
-  text-decoration-thickness: 3px;
-}
-.iai-blog-content h3 a {
-  font-weight: 700;
-}
 .iai-blog-content img {
   display: block;
-  margin-top: 1.5rem;
+  margin: 30px 0;
   max-width: 100%;
 }
+.iai-blog-content figure {
+  margin-bottom: 30px;
+  img {
+    margin-bottom: 0;
+  }
+}
+
 .iai-blog-content figcaption, .iai-blog-title__figcaption {
   font-size: 0.7rem;
   line-height: 1.5;
-  margin-top: 0.5rem;
+  margin-top: 10px;
 }
 .iai-blog-content video {
   margin-top: 2rem;
@@ -1667,6 +1630,10 @@ figcaption svg {
   gap: 0.5rem;
   justify-content: flex-end;
   margin: 0 auto !important;
+  margin-bottom: 25px !important;
+  img {
+    margin-bottom: 0;
+  }
 }
 .iai-promo-video + .iai-video__audio-description {
   max-width: 800px;

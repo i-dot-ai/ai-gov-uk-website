@@ -102,7 +102,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("richTextToHTML", (value) => {
-    return documentToHtmlString(value, {
+    let html = documentToHtmlString(value, {
       renderNode: {
         [BLOCKS.EMBEDDED_ASSET]: ({
           data: {
@@ -118,15 +118,15 @@ module.exports = function (eleventyConfig) {
             `;
             if (fields.description) {
               html += `
-                <p class="iai-video__audio-description" id="video-desc">
+                <span class="iai-video__audio-description" id="video-desc">
                   <img src="/icons/audio-description.svg" loading="lazy" alt=""/>
-                  <a class="link" href="${fields.description}">Audio described video</a>
-                </p>
+                  <a href="${fields.description}">Audio described video</a>
+                </span>
               `;
             }
             return html;
           } else {
-            if (fields.title) {
+            if (fields.title?.trim()) {
               return `
                 <figure>
                   <img src="${fields.file?.url}" alt="${fields.description}" loading="lazy"/>
@@ -135,13 +135,21 @@ module.exports = function (eleventyConfig) {
               `;
             } else {
               return `
-                <img src="${fields.file?.url}" alt="${fields.description}" loading="lazy"/>
+                <img class="govuk-!-margin-bottom-6 govuk-!-margin-top-6" src="${fields.file?.url}" alt="${fields.description}" loading="lazy"/>
               `;
             }
           }
         },
       },
     });
+    html = html
+      .replaceAll('<p></p>', '')
+      .replaceAll('<p>', '<p class="govuk-body">')
+      .replaceAll('<a', '<a class="govuk-link"')
+      .replaceAll('<h2', '<h2 class="govuk-heading-m"')
+      .replaceAll('<h3', '<h3 class="govuk-heading-s"')
+      .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">');
+    return html;
   });
 
   eleventyConfig.addFilter("UUID", () => {
@@ -192,8 +200,12 @@ module.exports = function (eleventyConfig) {
 
     if (govukStyles) {
       html = html
-        .replace(/<h2/g, '<h2 class="govuk-heading-m"')
-        .replace(/<ul>/g, '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">');
+        .replaceAll('<p>', '<p class="govuk-body">')
+        .replaceAll('<a', '<a class="govuk-link"')
+        .replaceAll('<h2', '<h2 class="govuk-heading-m"')
+        .replaceAll('<h3', '<h3 class="govuk-heading-s"')
+        .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">')
+        .replaceAll('<ol>', '<ol class="govuk-list govuk-list--number govuk-list--spaced">');
     }
 
     return html;
