@@ -152,7 +152,13 @@ permalink: "blogs/{{ blog.title | slugify }}/"
                     let mainContent = "";
                     evt.data.components?.forEach((component) => {
                         if (component.type === "bodyText") {
-                            mainContent += component.content;
+                            mainContent += component.content
+                                .replaceAll('<p>', '<p class="govuk-body">')
+                                .replaceAll('<a', '<a class="govuk-link"')
+                                .replaceAll('<h2', '<h2 class="govuk-heading-m"')
+                                .replaceAll('<h3', '<h3 class="govuk-heading-s"')
+                                .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">')
+                                .replaceAll('<ol>', '<ol class="govuk-list govuk-list--number govuk-list--spaced">');
                         } else if (component.type === "video") {
                             mainContent += componentTemplates.video.replace(`src=""`, `src="${component.source}"`);
                         } else if (component.type === "infographic") {
