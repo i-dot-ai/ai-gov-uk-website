@@ -1,5 +1,4 @@
 const htmlmin = require("html-minifier");
-const fs = require("fs").promises;
 const _fs = require("fs");
 const path = require("path");
 const { BLOCKS } = require("@contentful/rich-text-types");
@@ -11,6 +10,9 @@ const litPlugin = require("@lit-labs/eleventy-plugin-lit");
 
 const showdown = require("showdown");
 const mdToHtmlConverter = new showdown.Converter();
+
+const addGovukClasses = require("./public/js/add-govuk-classes.js");
+
 
 module.exports = function (eleventyConfig) {
 
@@ -142,14 +144,7 @@ module.exports = function (eleventyConfig) {
         },
       },
     });
-    html = html
-      .replaceAll('<p></p>', '')
-      .replaceAll('<p>', '<p class="govuk-body">')
-      .replaceAll('<a', '<a class="govuk-link"')
-      .replaceAll('<h2', '<h2 class="govuk-heading-m"')
-      .replaceAll('<h3', '<h3 class="govuk-heading-s"')
-      .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">');
-    return html;
+    return addGovukClasses(html);
   });
 
   eleventyConfig.addFilter("UUID", () => {
@@ -199,13 +194,7 @@ module.exports = function (eleventyConfig) {
     });
 
     if (govukStyles) {
-      html = html
-        .replaceAll('<p>', '<p class="govuk-body">')
-        .replaceAll('<a', '<a class="govuk-link"')
-        .replaceAll('<h2', '<h2 class="govuk-heading-m"')
-        .replaceAll('<h3', '<h3 class="govuk-heading-s"')
-        .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">')
-        .replaceAll('<ol>', '<ol class="govuk-list govuk-list--number govuk-list--spaced">');
+      html = addGovukClasses(html);
     }
 
     return html;
