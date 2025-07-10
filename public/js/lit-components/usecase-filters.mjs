@@ -60,6 +60,11 @@
           this['typeOfTechnology'].sort((a, b) => {
             return requiredOrder.indexOf(a) - requiredOrder.indexOf(b);
           });
+        } else if (property === 'userGroup') {
+          const requiredOrder = ['General Public', 'Civil Servants', 'Wider Public Sector'];
+          this['userGroup'].sort((a, b) => {
+            return requiredOrder.indexOf(a) - requiredOrder.indexOf(b);
+          });
         } else {
           this[property].sort();
         }
