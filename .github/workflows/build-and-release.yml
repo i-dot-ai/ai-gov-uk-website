@@ -88,10 +88,10 @@ jobs:
         run: |
           npx playwright test
         
-      - name: Copy built _site folder to s3
+      - name: Sync built _site folder to s3
         run: |
           cd _site 
-          aws s3 cp . s3://${{ secrets[inputs.destination_bucket] }}/ --recursive
+          aws s3 sync . s3://${{ secrets[inputs.destination_bucket] }}/ --delete
 
   determine-success:
     needs:
