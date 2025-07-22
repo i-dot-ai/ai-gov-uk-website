@@ -43,6 +43,8 @@ title: Guidance
 <script>
   // Data from CMS
   window.addEventListener('message', function(evt) {
-    document.querySelector("#content").innerHTML = `<p>["On this page" links will appear here]</p>${evt.data.content}`;
+    if (typeof(evt.data?.content) !== 'undefined') {
+      document.querySelector("#content").innerHTML = `<p>["On this page" links will appear here]</p>${evt.data.content}`;
+    }
   });
 </script>
