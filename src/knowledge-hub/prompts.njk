@@ -5,6 +5,16 @@ title: Prompt Library
 ---
 
 <div class="govuk-width-container">
+
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">Experimental</strong>
+      <span class="govuk-phase-banner__text">
+        This is an experimental service. Help us improve it and give your feedback by email at <a class="govuk-link" href="mailto:{{ knowledgeHubData.contactEmail }}">{{ knowledgeHubData.contactEmail }}</a>.
+      </span>
+    </p>
+  </div>
+
   <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
 
     <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
@@ -16,11 +26,26 @@ title: Prompt Library
     </nav>
 
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">Prompt Library</h1>
+    <p class="govuk-body-l">A collection of useful AI prompts by the public sector, for the public sector.</p>
     
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <p>Well-crafted prompts help unlock more meaningful and reliable results from AI assistants. This library shares practical examples, created by and for public sector professionals, to support smarter, more effective use of AI. If you're new to prompting, the PICKSIE framework is a great place to start. PICKSIE stands for Persona, Intention and Context, Criteria, Knowledge, Structure, Instructions and Examples. It was developed by the Cabinet Office’s Open Innovation Team as part of the <a href="https://www.gov.uk/government/news/accelerating-ai-adoption-in-the-civil-service" rel="noopener noreferrer">AI Adoption Accelerator</a>, a programme designed to help public sector teams build confidence with generative AI. They’ve also created a <a href="https://picksieprompt.netlify.app/" rel="noopener noreferrer">prompt-building tool</a> to help you put the framework into practice.</p>
-        <p>If you have prompts that others could benefit from, we’d love to hear from you. You can get in touch by using the <a href="https://forms.office.com/e/mM4TTWS59c" rel="noopener noreferrer">share your prompt form</a>.</p>
+        
+        <h2 class="govuk-heading-m">What is a Prompt?</h2>
+        <p>A prompt is a way to converse with an AI assistant. It can be a question, instruction, or input that helps the AI generate a useful response. The better the prompt, the better the output.</p>
+        
+        <h2 class="govuk-heading-m">Why a Prompt Library?</h2>
+        <p>Crafting good prompts takes time. This library helps make that easier by offering ready-made prompts you can use, adapt, and build on. It is a starting point for creativity, productivity, and problem-solving with AI.</p>
+        <p>This library is a shared resource built by the public sector, for the public sector. If you have created a prompt that others might find helpful, help grow the collection by completing the <a href="https://forms.office.com/e/mM4TTWS59c" rel="noopener noreferrer">share your prompt form</a>.</p>
+        
+        <h2 class="govuk-heading-m">How to Use It</h2>
+        <p>Click the "Copy Prompt" button to quickly copy a prompt. Before you use it, edit the text in [square brackets] with your own details or context. This helps guide the AI more effectively.</p>
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" style="background-color: var(--iai-pink); border-color: var(--iai-pink);" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text" style="text-wrap: balance;">Keep in mind: AI can be helpful, but it is not perfect. Always review and fact-check the results before use.</strong>
+        </div>
+
       </div>
     </div>
 
@@ -53,8 +78,13 @@ title: Prompt Library
                 </ul>
               {% endif %}
             </summary>
-            <div class="govuk-!-margin-top-6 govuk-!-padding-top-5" style="border-top: 1px solid	#b1b4b6;">
-              <div class="prompt__copy-button-container govuk-!-display-flex govuk-!-margin-bottom-1">
+            <div class="govuk-!-margin-top-6">
+              {% if prompt.use %}
+                <h4 class="govuk-heading-s">Usage notes</h4>
+                <div class="govuk-body">{{ prompt.use }}</div>
+              {% endif %}
+              <div class="prompt__copy-button-container govuk-!-display-flex govuk-!-margin-top-5 govuk-!-padding-top-3 govuk-!-margin-bottom-1">
+                <h4 class="govuk-heading-s">The prompt</h4>
                 <copy-button copy="prompt-{{ loop.index0 }}">
                   Copy prompt
                   <span class="govuk-visually-hidden">{{ prompt.title }}</span>
