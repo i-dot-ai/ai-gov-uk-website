@@ -59,8 +59,8 @@
 
 /* Prompts */
 .prompt__copy-button-container {
-  justify-content: flex-end;
-  margin-top: -0.5rem;
+  border-top: 1px solid	#b1b4b6;
+  justify-content: space-between;
 }
 @media (min-width: 641px) {
   .prompt__copy-button-container {
