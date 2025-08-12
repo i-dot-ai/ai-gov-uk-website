@@ -21,72 +21,39 @@ permalink: "projects/{{ project.title | slugify }}/"
 </div>
 
 <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
 
-        
-
-                <div class="iai-blog-content govuk-body">
-                {% for component in project.components %}
-                    {% if component.type == "bodyText" %}
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-two-thirds">
-                        {{ component.content | markdownToHtml(true) | safe }}
-                        </div>
-                    </div>
-                    {% elif component.type == "video" %}
-
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-two-thirds">
-                        {{ video({
-                            classes: "iai-promo-video",
-                            source: component.source,
-                            audioDescription: component.audioDescription
-                        }) }}
-                        </div>
-                    </div>
-                    {% elif component.type == "doubleColumn" %}
-
-
-                        {% if component.order == "Text (left) - Image (right)" %}
-                            {% set side = "left" %}
-                        {% else %}
-                            {% set side = "right" %}
-                        {% endif %}
-
-                        {% if '.svg' in component.image %}
-                            {% set imgPath = component.image %}
-                        {% else %}
-                            {% set imgPath = component.image + '.webp' %}
-                        {% endif %}
-
-
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-two-thirds">
-                            {{ component.content | markdownToHtml(true) | safe }}
-
-                        </div>
-                        <div class="govuk-grid-column-one-third">
-                            <figure>
-                           <img class="block mt-4 w-full lg:!mt-0" src='{{ imgPath | replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/") }}' alt="{{ component.imageAlt }}"> 
-                           <figcaption>{{ component.imageCaption }}</figcaption> 
-                       </figure>
-                        </div>
-                    </div>
-
-                    {% elif component.type == "quote" %}
-                        <div class="govuk-grid-row">
-                            <div class="govuk-grid-column-two-thirds">
-                                <project-quote quote="{{ component.quote }}" by="{{ component.author }}" link="{{ component.link | trim }}"></project-quote>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-                </div>
-
-
-
+    <div class="iai-blog-content govuk-body">
+        {% for component in project.components %}
+            {% if component.type == "bodyText" %}
+                {{ component.content | markdownToHtml(true) | safe }}
+            {% elif component.type == "video" %}
+                {{ video({
+                    classes: "iai-promo-video",
+                    source: component.source,
+                    audioDescription: component.audioDescription
+                }) }}
+            {% elif component.type == "doubleColumn" %}
+                {% if component.order == "Text (left) - Image (right)" %}
+                    {% set side = "left" %}
+                {% else %}
+                    {% set side = "right" %}
+                {% endif %}
+                {% if '.svg' in component.image %}
+                    {% set imgPath = component.image %}
+                {% else %}
+                    {% set imgPath = component.image + '.webp' %}
+                {% endif %}
+                <text-image-block side="{{ side }}" content="{{ component.content | markdownToHtml(true) }}" image="{{ imgPath | replace("/images/uploads/", "https://i-dot-ai-cms.netlify.app/assets/") }}" imageAlt="{{ component.imageAlt }}" imageCaption="{{ component.imageCaption }}"></text-image-block>
+            {% elif component.type == "quote" %}
+                <project-quote quote="{{ component.quote }}" by="{{ component.author }}" link="{{ component.link | trim }}"></project-quote>
+            {% endif %}
+        {% endfor %}
     </div>
+
+  </div>
 </div>
+
 {# CMS Preview #}
 {% if project.title === "Preview" %}
     <script src="/js/add-govuk-classes.js"></script>
