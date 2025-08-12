@@ -84,6 +84,14 @@
   }
 }
 
+.fact-panel{
+  background: linear-gradient(#fafafa 0%, #efefef 100%);
+  padding: 1em;
+  margin: 2em 0;
+}
+.fact-panel p{
+  margin-bottom: 1em;
+}
 
 
 /* TO MOVE TO I.AI DESIGN SYSTEM */
