@@ -34,5 +34,8 @@ module.exports = [
     '/knowledge-hub/use-cases/{{ useCase.title | slugify }}',
   {% endfor %}
   '/knowledge-hub/prompts',
+  {% for prompt in knowledgeHubPrompts %}
+    '/knowledge-hub/prompts/{{ prompt.title | slugify }}',
+  {% endfor %}
   '/knowledge-hub/guidance',
 ];
