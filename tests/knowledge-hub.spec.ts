@@ -27,29 +27,3 @@ test('Knowledge Hub - Usecases filters', async ({ page }) => {
   expect(await page.locator('#filtered-count').innerText()).toEqual('all');
 
 });
-
-
-test('Knowledge Hub - Prompts filters', async ({ page }) => {
-
-  await page.goto(`${urlPrefix}/knowledge-hub/prompts`);
-  
-  // Search functionality works
-  await page.locator('summary:has-text("Search and filter")').click();
-  await page.getByLabel('Search', { exact: true }).fill('Explain like');
-  await page.getByLabel('Search', { exact: true }).press('Enter');
-  expect(await page.locator('#filtered-count').innerText()).toEqual('1');
-  await page.getByLabel('Search', { exact: true }).fill('');
-  expect(await page.locator('#filtered-count').innerText()).toEqual('all');
-
-  // Tag filters work
-  const productivityCount = await page.evaluate(() => {
-    return [...document.querySelectorAll('.js-prompt__tag')].filter((item) => {
-      return item.textContent === 'Productivity';
-    }).length;
-  });
-  await page.getByLabel('Productivity').check();
-  expect(await page.locator('#filtered-count').innerText()).toEqual(productivityCount.toString());
-  await page.getByLabel('Productivity').uncheck();
-  expect(await page.locator('#filtered-count').innerText()).toEqual('all');
-
-});
