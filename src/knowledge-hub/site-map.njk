@@ -28,6 +28,13 @@ templateEngineOverride: njk
       </li>
       <li class="govuk-!-margin-top-2">
         <a class="govuk-link" href="/knowledge-hub/prompts">Prompt Library</a>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          {% for prompt in knowledgeHubPrompts %}
+            <li class="govuk-!-margin-top-2">
+              <a class="govuk-link" href="/knowledge-hub/prompts/{{ prompt.title | slugify }}">{{ prompt.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </li>
       <li class="govuk-!-margin-top-2">
         <a class="govuk-link" href="/knowledge-hub/guidance">Guidance</a>

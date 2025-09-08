@@ -1,0 +1,75 @@
+---
+layout: knowledge-hub/base.njk
+templateEngineOverride: njk
+pagination:
+    data: knowledgeHubPrompts
+    size: 1
+    alias: prompt
+permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
+---
+
+<main class="govuk-width-container">
+
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">Experimental</strong>
+      <span class="govuk-phase-banner__text">
+        This is an experimental service. Help us improve it and give your feedback by email at <a class="govuk-link" href="mailto:{{ knowledgeHubData.contactEmail }}">{{ knowledgeHubData.contactEmail }}</a>.
+      </span>
+    </p>
+  </div>
+
+  <div id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
+
+    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link govuk-back-link govuk-!-margin-0" href="/knowledge-hub">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <back-link>
+            <a class="govuk-breadcrumbs__link" href="/knowledge-hub/prompts">Prompts</a>
+          </back-link>
+        </li>
+      </ol>
+    </nav>
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ prompt.title }}</h1>
+    <p class="govuk-body-l govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">{{ prompt.description }}</p>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% if prompt.use %}
+          <h2 class="govuk-heading-m">How to use this prompt</h2>
+          <div class="govuk-body">{{ prompt.use }}</div>
+        {% endif %}
+        <h2 class="govuk-heading-m">The prompt</h2>
+        <div id="prompt-{{ loop.index0 }}">
+          {{ prompt.prompt | markdownToHtml | safe }}
+        </div>
+        <copy-button copy="prompt-{{ loop.index0 }}">
+          Copy prompt
+          <span class="govuk-visually-hidden">{{ prompt.title }}</span>
+        </copy-button>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-s">Important</h2>
+        <p class="govuk-body-s">The prompts in this <a href="../">library</a> have not been evaluated by i.AI, so you should exercise caution when using them.</p>
+        <p class="govuk-body-s">AI assistants make mistakes, even with good prompts, so always check the results.</p>
+        <p class="govuk-body-s">We're keen to hear about people's experiences of using this prompt. If you have any feedback to share please <a href="mailto:{{ knowledgeHubData.contactEmail }}">contact us</a>.</p>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<script type="module" src="/js/lit-components/back-link.mjs"></script>
+
+<script>
+  window.addEventListener('load', () => {
+    let copyButton = document.querySelector('.copy-button');
+    copyButton?.classList.remove('copy-button');
+  });
+</script>
