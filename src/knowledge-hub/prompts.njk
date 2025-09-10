@@ -31,12 +31,28 @@ title: Prompt Library
     <div class="govuk-grid-row">
  
       <div class="govuk-grid-column-two-thirds">
-        {% for prompt in knowledgeHubPrompts %}
-          <a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0" style="color: var(--iai-pink);">{{ prompt.title }}</h2>
-          </a>
-          <p class="govuk-body govuk-!-margin-bottom-5 govuk-!-margin-top-3">{{ prompt.description }}</p>
+
+        <h2 class="govuk-heading-m">On this page:</h2>
+        <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-7" style="border-bottom: 1px solid #b1b4b6;">
+          {% for section in knowledgeHubPrompts | getSections %}
+            <li><a href="#{{ section | slugify }}">{{ section }}</a></li>
+          {% endfor %}
+        </ul>
+
+        {% for section in knowledgeHubPrompts | getSections %}
+          <h2 class="govuk-heading-l" id="{{ section | slugify }}">{{ section }} prompts</h2>
+
+          {% for prompt in knowledgeHubPrompts %}
+            {% if prompt.category == section %}
+              <a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-0" style="color: var(--iai-pink);">{{ prompt.title }}</h3>
+              </a>
+              <p class="govuk-body govuk-!-margin-bottom-5 govuk-!-margin-top-3">{{ prompt.description }}</p>
+            {% endif %}
+          {% endfor %}
+
         {% endfor %}
+      
       </div>
 
 
