@@ -218,6 +218,25 @@ module.exports = function (eleventyConfig) {
   });
 
 
+  eleventyConfig.addFilter("getSections", (knowledgeHubPrompts) => {
+    let sections = [];
+    knowledgeHubPrompts.forEach((prompt) => {
+      if (prompt.category && !sections.includes(prompt.category)) {
+        sections.push(prompt.category);
+      }
+    });
+    return sections.sort((a, b) => {
+      if (a.indexOf('General') === 0) {
+        return -1;
+      }
+      if (b.indexOf('General') === 0) {
+        return 1;
+      }
+      return a > b ? 1 : -1;
+    });
+  });
+
+
   eleventyConfig.addFilter("rssDate", (dateStr) => {
     const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
