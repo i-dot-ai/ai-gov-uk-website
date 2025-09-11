@@ -12,8 +12,10 @@ const addGovukClasses = (htmlString) => {
     .replaceAll('<a', '<a class="govuk-link"')
     .replaceAll('<h2', '<h2 class="govuk-heading-m"')
     .replaceAll('<h3', '<h3 class="govuk-heading-s"')
+    .replaceAll('<h4', '<h4 class="govuk-heading-xs govuk-!-font-weight-bold govuk-!-margin-bottom-1"')
     .replaceAll('<ul>', '<ul class="govuk-list govuk-list--bullet govuk-list--spaced">')
-    .replaceAll('<ol>', '<ol class="govuk-list govuk-list--number govuk-list--spaced">');
+    .replaceAll('<ol>', '<ol class="govuk-list govuk-list--number govuk-list--spaced">')
+    .replaceAll('<blockquote>', '<blockquote class="govuk-inset-text">');
 };
 
 if (typeof(module) !== 'undefined') {
