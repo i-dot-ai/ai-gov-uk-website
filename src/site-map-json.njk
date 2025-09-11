@@ -28,6 +28,9 @@ module.exports = [
   '/opportunities',
   '/register-your-interest',
   '/accessibility',
+  {% for evaluation in evaluations %}
+    '/evaluations/{{ evaluation.title | slugify }}',
+  {% endfor %}
   '/knowledge-hub',
   '/knowledge-hub/use-cases',
   {% for useCase in knowledgeHubUseCases %}

@@ -1,0 +1,70 @@
+---
+layout: base.njk
+templateEngineOverride: njk
+pagination:
+    data: evaluations
+    size: 1
+    alias: evaluation
+permalink: "evaluations/{{ evaluation.title | slugify }}/"
+# Note: If permalink changes - also update in base.njk
+---
+
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+
+    <div class="iai-blog-title govuk-!-margin-top-4">
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-0" style="text-wrap: balance;">{{ evaluation.title }}</h1>
+    </div>
+
+    {% set cmsContent = evaluation.content | markdownToHtml(true) | safe %}
+
+    <div class="iai-blog-content govuk-body">
+        <div class="iai-blog-content__inner-container">
+            
+            <div class="govuk-!-padding-5 govuk-!-margin-bottom-6 govuk-!-margin-top-7" style="border: 1px solid #0b0c0c;">
+                <h2 class="govuk-heading-s">On this page:</h2>
+                <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+                {% for heading in cmsContent | getHeadings %}
+                    <li class="govuk-!-padding-1"><a class="govuk-link" href="#{{ heading.id }}">{{ heading.content }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            
+            <div id="content">
+                {{ cmsContent }}
+            </div>
+        </div>
+          
+
+
+        {# CMS Preview #}
+        {% if blog.title === "Preview" %}
+            <script src="/js/add-govuk-classes.js"></script>
+            <script>
+
+                let contentContainer = document.querySelector("#content");
+                let componentTemplates = {};
+
+                // Defaults
+                window.addEventListener("DOMContentLoaded", () => {
+                    document.querySelector("header").remove();
+                    document.querySelector("main").style.paddingTop = "0";
+                    document.querySelector("main").style.paddingBottom = "2rem";
+                    document.querySelector("footer").remove();
+                    componentTemplates.video = contentContainer?.removeChild(contentContainer.querySelector("video")).outerHTML;
+                    componentTemplates.infographic = document.querySelector(".iai-infographic").parentElement.removeChild(document.querySelector(".iai-infographic")).outerHTML;
+                });
+
+                // Data from CMS
+                window.addEventListener('message', function(evt) {
+                    document.querySelector("h1").textContent = evt.data.title || "[Title goes here]";
+                    contentContainer.innerHTML = evt.data.content;
+                });
+
+            </script>
+        {% endif %}
+
+	</div>
+</div>
+
