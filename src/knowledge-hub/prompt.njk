@@ -51,6 +51,16 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
           Copy prompt
           <span class="govuk-visually-hidden">{{ prompt.title }}</span>
         </copy-button>
+        {% if prompt.created %}
+          <p class="govuk-body-s govuk-!-margin-bottom-0 govuk-!-margin-top-9">
+            {% set created = prompt.created | dateFormat('int') %}
+            {% set updated = prompt.updated | dateFormat('int') %}
+            Content created: {{ created }}
+            {% if updated != created %}
+              | Last updated: {{ updated }}
+            {% endif %}
+          </p>
+        {% endif %}
       </div>
 
       <div class="govuk-grid-column-one-third">
