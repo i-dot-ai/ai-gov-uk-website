@@ -58,13 +58,15 @@
 
 
 /* Prompts */
-.prompt__copy-button-container {
-  border-top: 1px solid	#b1b4b6;
-  justify-content: space-between;
-}
-@media (min-width: 641px) {
-  .prompt__copy-button-container {
-    margin-top: -1rem;
+.prompt-text {
+  border: 1px solid #b1b4b6;
+  p:last-child {
+    margin: 0;
+  }
+  * {
+    font-family: monospace;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 }
 
