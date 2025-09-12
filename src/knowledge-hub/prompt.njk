@@ -44,10 +44,10 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
           <div class="govuk-body">{{ prompt.use }}</div>
         {% endif %}
         <h2 class="govuk-heading-m">The prompt</h2>
-        <div id="prompt-{{ loop.index0 }}">
+        <div class="prompt-text govuk-!-padding-3 govuk-!-margin-bottom-3" id="prompt-0">
           {{ prompt.prompt | markdownToHtml | safe }}
         </div>
-        <copy-button copy="prompt-{{ loop.index0 }}">
+        <copy-button copy="prompt-0">
           Copy prompt
           <span class="govuk-visually-hidden">{{ prompt.title }}</span>
         </copy-button>
