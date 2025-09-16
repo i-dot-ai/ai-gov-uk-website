@@ -56,9 +56,11 @@ templateEngineOverride: njk
         <a class="govuk-link" href="/accessibility">Accessibility statement</a>
       </li>
       {% for evaluation in evaluations %}
-        <li class="govuk-!-margin-top-2">
-          <a class="govuk-link" href="/evaluations/{{ evaluation.title | slugify }}">{{ evaluation.title }}</a>
-        </li>
+        {% if evaluation.title != 'CMS Preview' %}
+          <li class="govuk-!-margin-top-2">
+            <a class="govuk-link" href="/evaluations/{{ evaluation.title | slugify }}">{{ evaluation.title }}</a>
+          </li>
+        {% endif %}
       {% endfor %}
     </ul>
 

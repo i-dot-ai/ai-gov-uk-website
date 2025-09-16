@@ -20,7 +20,9 @@ module.exports = async () => {
     return cache;
   }
 
-  let evaluations = [];
+  let evaluations = [
+    { title: "CMS Preview", content: "" }
+  ];
 
   const evaluationsFetch = await getData(
     `https://api.github.com/repos/${CMS_REPO}/contents/content/evals`

@@ -29,7 +29,9 @@ module.exports = [
   '/register-your-interest',
   '/accessibility',
   {% for evaluation in evaluations %}
-    '/evaluations/{{ evaluation.title | slugify }}',
+    {% if evaluation.title != "CMS Preview" %}
+      '/evaluations/{{ evaluation.title | slugify }}',
+    {% endif %}
   {% endfor %}
   '/knowledge-hub',
   '/knowledge-hub/use-cases',

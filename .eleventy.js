@@ -30,7 +30,8 @@ module.exports = function (eleventyConfig) {
       "public/js/lit-components/text-image-block.mjs",
       "public/js/lit-components/project-quote.mjs",
       "public/js/lit-components/usecase-filters.mjs",
-      "public/js/lit-components/iai-header.mjs"
+      "public/js/lit-components/iai-header.mjs",
+      "public/js/lit-components/on-this-page.mjs",
     ],
   });
 

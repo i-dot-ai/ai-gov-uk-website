@@ -21,15 +21,8 @@ permalink: "evaluations/{{ evaluation.title | slugify }}/"
 
     <div class="iai-blog-content govuk-body">
         <div class="iai-blog-content__inner-container">
-            
-            <div class="govuk-!-padding-5 govuk-!-margin-bottom-6 govuk-!-margin-top-7" style="border: 1px solid #0b0c0c;">
-                <h2 class="govuk-heading-s">On this page:</h2>
-                <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-                {% for heading in cmsContent | getHeadings %}
-                    <li class="govuk-!-padding-1"><a class="govuk-link" href="#{{ heading.id }}">{{ heading.content }}</a></li>
-                {% endfor %}
-                </ul>
-            </div>
+
+            <on-this-page></on-this-page>
             
             <div id="content">
                 {{ cmsContent }}
@@ -39,27 +32,35 @@ permalink: "evaluations/{{ evaluation.title | slugify }}/"
 
 
         {# CMS Preview #}
-        {% if blog.title === "Preview" %}
+        {% if evaluation.title === "CMS Preview" %}
             <script src="/js/add-govuk-classes.js"></script>
             <script>
 
                 let contentContainer = document.querySelector("#content");
                 let componentTemplates = {};
+                let onThisPage = document.querySelector("on-this-page");
 
                 // Defaults
-                window.addEventListener("DOMContentLoaded", () => {
-                    document.querySelector("header").remove();
+                const removeUnwantedSections = () => {
+                    let header = document.querySelector("header");
+                    let footer = document.querySelector("footer");
+                    if (!header || !footer) {
+                        window.setTimeout(removeUnwantedSections, 100);
+                        return;
+                    }
+                    header.style.display = "none";
                     document.querySelector("main").style.paddingTop = "0";
                     document.querySelector("main").style.paddingBottom = "2rem";
-                    document.querySelector("footer").remove();
-                    componentTemplates.video = contentContainer?.removeChild(contentContainer.querySelector("video")).outerHTML;
-                    componentTemplates.infographic = document.querySelector(".iai-infographic").parentElement.removeChild(document.querySelector(".iai-infographic")).outerHTML;
-                });
+                    footer.style.display = "none";
+                };
+                window.addEventListener("DOMContentLoaded", removeUnwantedSections);
+                removeUnwantedSections();
 
                 // Data from CMS
                 window.addEventListener('message', function(evt) {
                     document.querySelector("h1").textContent = evt.data.title || "[Title goes here]";
-                    contentContainer.innerHTML = evt.data.content;
+                    contentContainer.innerHTML = addGovukClasses(evt.data.content || '');
+                    onThisPage.updateHeadings();
                 });
 
             </script>
@@ -68,3 +69,5 @@ permalink: "evaluations/{{ evaluation.title | slugify }}/"
 	</div>
 </div>
 
+
+<script type="module" src="/js/lit-components/on-this-page.mjs"></script>
