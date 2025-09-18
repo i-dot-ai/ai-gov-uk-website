@@ -160,7 +160,13 @@ module.exports = async () => {
       },
     ],
     date: new Date().toDateString(),
-    coverImage: blogs[0].coverImage,
+    coverImage: {
+      file: {
+        url: blogs[0].coverImage.file.url,
+      },
+      description: blogs[0].coverImage.description,
+      title: "Optional image caption goes here",
+    },
     components: [
       {
         type: "video",
