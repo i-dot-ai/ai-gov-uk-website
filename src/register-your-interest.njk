@@ -21,7 +21,7 @@ templateEngineOverride: njk
           {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
 
           <li class="ryi__project" data-aos="fade-up">
-            <img src="{{ logo }}" class="object-cover" alt="">
+            <img src="{{ logo }}" class="object-cover" alt="" data-pagefind-ignore="all">
             <div>
               <div class="ryi__project--header">
                 <h2 class="govuk-heading-m govuk-!-margin-bottom-0">{{ project.title }}</h2>

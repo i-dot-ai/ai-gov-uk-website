@@ -76,3 +76,8 @@ This is for the old CMS, which still contains some data. Our new CMS is backed u
 1. Install Contentful using `npm install -g contentful-cli`
 2. Login using `npx contentful-cli login` 
 3. Run `cd contentful-backups` followed by `npx contentful-cli space export --space-id [space-id]` (the space ID should be in your .env file)
+
+
+## Search
+
+Search is powered by [Pagefind](https://pagefind.app/). To re-index the site when running locally, run `npm run index`.

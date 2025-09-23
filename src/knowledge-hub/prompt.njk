@@ -8,7 +8,7 @@ pagination:
 permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
 ---
 
-<main class="govuk-width-container">
+<main class="govuk-width-container" data-pagefind-body>
 
   <div class="govuk-phase-banner">
     <p class="govuk-phase-banner__content">
@@ -36,6 +36,9 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
 
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ prompt.title }}</h1>
     <p class="govuk-body-l govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">{{ prompt.description }}</p>
+
+    {# For search results #}
+    <img src="/img/project-logos/logo-knowledge-hub.png" alt="Knowledge Hub" style="display: none;"/>
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">

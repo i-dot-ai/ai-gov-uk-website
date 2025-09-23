@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install && npm install -g @11ty/eleventy && eleventy",
-    "dev": "eleventy --serve"
+    "dev": "eleventy --serve",
+    "index": "npx pagefind --site ./_site"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "html-minifier": "^4.0.0",
     "i.ai-design-system": "^0.7.3",
     "lit-html": "^3.2.1",
+    "pagefind": "^1.4.0",
     "postcss-cli": "^10.1.0",
     "showdown": "^2.1.0",
     "yaml": "^2.8.0"

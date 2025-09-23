@@ -48,6 +48,16 @@
                         </a>
                       </li>
                     `)}
+                    <li class="govuk-header__navigation-item govuk-header__navigation-item--search">
+                      <a class="govuk-header__link" href="/search">
+                        <span class="govuk-visually-hidden">Search</span>
+                        <span class="govuk-header__search-text" aria-hidden="true">Search</span>
+                        <svg width="24" height="24" viewBox="0 0 27 27" fill="none" aria-hidden="true" focusable="false">
+                          <circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>
+                          <line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>
+                        </svg>
+                      </a>
+                    </li>
                   </ul>
                 </nav>
               </div>

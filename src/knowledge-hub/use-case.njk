@@ -19,7 +19,7 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
 ] %}
 
 <div class="govuk-width-container">
-  <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
+  <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7" data-pagefind-body>
 
     <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
         <ol class="govuk-breadcrumbs__list">
@@ -35,11 +35,15 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
     </nav>
 
     <h1 class="govuk-heading-l govuk-!-display-flex govuk-!-display-flex--align-center">
+        <span class="govuk-visually-hidden">Use case: </span> {# for search #}
         {{ useCase.title }}
         {% if useCase.draft %}
             <strong class="govuk-tag govuk-tag--pink govuk-!-margin-left-5">Publicly Sourced</strong>
         {% endif %}
     </h1>
+
+    {# For search results #}
+    <img src="/img/project-logos/logo-knowledge-hub.png" alt="Knowledge Hub" style="display: none;"/>
 
     <p class="govuk-body-l">{{ useCase.synopsis }}</p>
 

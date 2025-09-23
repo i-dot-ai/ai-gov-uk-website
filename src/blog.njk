@@ -20,7 +20,7 @@ permalink: "blogs/{{ blog.title | slugify }}/"
     <div class="iai-blog-title govuk-!-margin-top-4">
         <h1 class="govuk-heading-l govuk-!-margin-bottom-0" style="text-wrap: balance;">{{ blog.title }}</h1>
         <p class="iai-blog-title__date">{{ blog.date | dateFormat }}</p>
-        <div class="d-md-flex gap-5">
+        <div class="d-md-flex gap-5" data-pagefind-ignore="all">
             {% for author in blog.authors %}
                 {{ blogAuthor (author, blog.source) }}
             {% endfor %}

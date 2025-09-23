@@ -26,7 +26,7 @@ templateEngineOverride: njk
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
 
-    <section>   
+    <section data-pagefind-ignore>   
       <h2 class="govuk-heading-l govuk-!-margin-bottom-0">Featured projects</h2>
       <div class="govuk-grid-row">
         {{ projectCard(
@@ -61,7 +61,7 @@ templateEngineOverride: njk
     </section>
 
 
-    <section class="govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;">   
+    <section class="govuk-!-margin-top-7 govuk-!-padding-top-7" style="border-top: 5px solid;" data-pagefind-ignore>   
       <h2 class="govuk-heading-l govuk-!-margin-bottom-0">Latest blog posts</h2>
       <div class="govuk-grid-row">
         {% set count = 0 %}
