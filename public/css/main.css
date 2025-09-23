@@ -1,3 +1,32 @@
+/* HEADER */
+.govuk-header__navigation-item--search {
+  a {
+    align-items: center;
+    color: white;
+    display: flex;
+    gap: 0.5rem;
+  }
+  svg {
+    height: 20px;
+  }
+}
+@media (min-width: 769px) {
+  .govuk-header__navigation-item--search {
+    padding-top: 2px;
+    .govuk-header__search-text {
+      display: none;
+    }
+    a:hover {
+      color: #e5e7eb;
+    }
+    svg {
+      height: 24px;
+    }
+  }
+}
+
+
+
 /* HOMEPAGE */
 
 .app-masthead {
@@ -84,6 +113,39 @@
   }
 }
 
+
+/* SEARCH PAGE */
+.pagefind-ui {
+  --pagefind-ui-border: #b1b4b6;
+  --pagefind-ui-tag: #b1b4b6;
+  --pagefind-ui-font: Inter, Arial;
+}
+.pagefind-ui__result-excerpt mark {
+  background-color: rgba(197, 8, 120, 0.1) !important;
+}
+.pagefind-ui__search-input::placeholder {
+  color: var(--pagefind-ui-border) !important;
+  opacity: 1 !important;
+}
+.pagefind-ui__message {
+  font-size: 1rem !important;
+}
+.pagefind-ui__result-inner {
+  margin-top: 0 !important;
+}
+.pagefind-ui__result-link {
+  color: var(--iai-pink) !important;
+  font-size: 1.25rem !important;
+  text-decoration: underline !important;
+  text-underline-offset: 5px !important;
+}
+.pagefind-ui__result-link:hover {
+  text-decoration-thickness: 3px !important;
+}
+.pagefind-ui__result-excerpt {
+  font-size: 1rem !important;
+  margin-top: 0.5rem !important;
+}
 
 
 /* TO MOVE TO I.AI DESIGN SYSTEM */

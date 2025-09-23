@@ -14,7 +14,7 @@ templateEngineOverride: njk
     <ul class="press-mentions">
       {% for entry in press %}
         <li data-aos="fade-up">
-          <img src="{{ entry.logo }}" alt="{{ entry.media }}"/>
+          <img src="{{ entry.logo }}" alt="{{ entry.media }}" data-pagefind-ignore="all"/>
           <div>
             <h2 class="govuk-heading-s govuk-!-margin-bottom-1" style="text-wrap: balance; line-height: 1.4;">
               <a href="{{ entry.link }}" rel="noopener">{{ entry.headline }}</a>

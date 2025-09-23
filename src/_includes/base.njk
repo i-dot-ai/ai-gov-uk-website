@@ -89,7 +89,7 @@
 
         <iai-header home-url="/" nav-items='[{"text": "About", "href": "/about"}, {"text": "Projects", "href": "/projects"}, {"text": "Blog", "href": "/blogs"}, {"text": "Opportunities", "href": "/opportunities"}]'></iai-header>
 
-        <main id="main" class="main">
+        <main id="main" class="main" {% if not noIndex %}data-pagefind-body{% endif %}>
             {{ content | safe }}
         </main>
 

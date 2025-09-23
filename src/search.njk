@@ -1,0 +1,48 @@
+---
+title: Search
+layout: base.njk
+templateEngineOverride: njk
+noIndex: true
+---
+
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Search") }}
+
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+
+<p class="govuk-visually-hidden" aria-live="polite" id="screen-reader-announcements"></p>
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-0" id="search-container">
+
+  </div>
+</div>
+
+<script>
+
+  new PagefindUI({
+    element: '#search-container',
+    pageSize: 10,
+  });
+
+  // accessibility
+  const searchInput = document.querySelector('.pagefind-ui__search-input');
+  searchInput.setAttribute('aria-label', 'Search');
+  searchInput.addEventListener('input', () => {
+    window.setTimeout(() => {
+      document.querySelector('#screen-reader-announcements').textContent = document.querySelector('.pagefind-ui__message')?.textContent;
+    }, 1000);
+  });
+
+  // if back button pressed, this could already contain a value
+  window.setTimeout(() => {
+    if (searchInput.value !== '') {
+      let evt = new Event('input');
+      searchInput.dispatchEvent(evt);
+    }
+  }, 100);
+
+</script>
