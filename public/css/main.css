@@ -129,6 +129,9 @@
 }
 .pagefind-ui__message {
   font-size: 1rem !important;
+  height: auto !important;
+  min-height: calc(24px * var(--pagefind-ui-scale)) !important;
+  word-break: break-word !important;
 }
 .pagefind-ui__result-inner {
   margin-top: 0 !important;
