@@ -1,0 +1,20 @@
+[project]
+name = "plausible-to-posthog"
+version = "0.1.0"
+description = ""
+package-mode = false
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "posthog (>=6.7.6,<7.0.0)",
+    "uuid7 (>=0.1.0,<0.2.0)",
+    "numpy (>=2.3.3,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
