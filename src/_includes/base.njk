@@ -51,8 +51,6 @@
 
         <link href="/iai-design-system.css" rel="stylesheet">
 
-        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
         {% if blog.title %}
             <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
         {% endif %}
@@ -60,8 +58,9 @@
         <link href="/css/style.css" rel="stylesheet">
         <link href="/css/main.css" rel="stylesheet">
 
-        {# These 2 scripts are needed if we use the quote carousel #}
+        {# These are needed if we use the quote carousel #}
         <!--
+        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> {# pragma: allowlist secret #}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> {# pragma: allowlist secret #}
         -->
@@ -97,6 +96,9 @@
         })();
         </script>
         <!-- End Matomo Code -->
+
+        <!-- Umami -->
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="8168174d-8ea8-4a34-a37a-88cd5e688693"></script>
 
     </head>
 

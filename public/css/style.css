@@ -592,6 +592,7 @@ img.iai-project-types__icon {
   display: block;
   font-size: 0.625rem;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 1020px) {
@@ -605,10 +606,10 @@ img.iai-project-types__icon {
   .iai-project-types__sub-head {
     font-size: 1rem;
   }
-  .iai-project-types.js-initialised .iai-project-types__content--mobile {
+  .iai-project-types.js-initialised .iai-project-types__content--mobile:not([hidden]) {
     display: none;
   }
-  .iai-project-types.js-initialised .iai-project-types__content--desktop {
+  .iai-project-types.js-initialised .iai-project-types__content--desktop:not([hidden]) {
     display: block;
   }
   .iai-project-types.js-initialised .iai-project-types__content h3 {
@@ -616,6 +617,9 @@ img.iai-project-types__icon {
   }
   .iai-project-types__no-content {
     display: block;
+  }
+  .iai-project-types__credit {
+    margin-bottom: 0;
   }
 }
 
