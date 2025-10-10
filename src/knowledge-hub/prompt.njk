@@ -46,6 +46,19 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
           <h2 class="govuk-heading-m">How to use this prompt</h2>
           <div class="govuk-body">{{ prompt.use }}</div>
         {% endif %}
+         {% if prompt.feedback %}
+          <div class="govuk-notification-banner govuk-!-margin-bottom-5" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-notification-banner__heading">Some people have flagged potential issues with this prompt. Use with caution.
+                  <a class="govuk-link" href="#feedback-details">Jump to feedback about this prompt.</a>
+              </p>
+            </div>
+          </div>
+          <div class="govuk-body">{{ prompt.feedback | markdownToHtml | safe }}</div>
+        {% endif %}
         <h2 class="govuk-heading-m">The prompt</h2>
         <div class="prompt-text govuk-!-padding-3 govuk-!-margin-bottom-3" id="prompt-0">
           {{ prompt.prompt | markdownToHtml | safe }}
@@ -55,15 +68,7 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
           <span class="govuk-visually-hidden">{{ prompt.title }}</span>
         </copy-button>
         {% if prompt.feedback %}
-          <h2 class="govuk-heading-m govuk-!-margin-top-7">Feedback about this prompt</h2>
-          <div class="govuk-notification-banner govuk-!-margin-bottom-5" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-            <div class="govuk-notification-banner__header">
-              <h3 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h3>
-            </div>
-            <div class="govuk-notification-banner__content">
-              <p class="govuk-notification-banner__heading">Some people have flagged potential issues with this prompt. Use with caution.</p>
-            </div>
-          </div>
+          <h2 class="govuk-heading-m govuk-!-margin-top-7" id="feedback-details">Feedback about this prompt</h2>
           <div class="govuk-body">{{ prompt.feedback | markdownToHtml | safe }}</div>
         {% endif %}
         {% if prompt.created %}
