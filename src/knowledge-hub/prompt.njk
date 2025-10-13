@@ -52,12 +52,11 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
               <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Important</h2>
             </div>
             <div class="govuk-notification-banner__content">
-              <p class="govuk-notification-banner__heading">Some people have flagged potential issues with this prompt. Use with caution.
-                  <a class="govuk-link" href="#feedback-details">Jump to feedback about this prompt.</a>
+              <p class="govuk-notification-banner__heading">Some people have flagged potential issues with this prompt. Use with caution - some users have shared
+                  <a class="govuk-link" href="#feedback-details">feedback about potential issues.</a>
               </p>
             </div>
           </div>
-          <div class="govuk-body">{{ prompt.feedback | markdownToHtml | safe }}</div>
         {% endif %}
         <h2 class="govuk-heading-m">The prompt</h2>
         <div class="prompt-text govuk-!-padding-3 govuk-!-margin-bottom-3" id="prompt-0">
