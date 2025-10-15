@@ -55,8 +55,7 @@ To prevent browser caching issues (which can otherwise occur even after invalida
 
 To run the tests, use the below commands from the root of this project.
 
-1. `cd tests`
-2. `npx playwright test`
+1. `npx playwright test`
 
 
 ## Content Management System (CMS)

@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-const urlPrefix = 'http://localhost:8080';
 const pagesToTest = require('../_site/site-map.js');
 
 for (let pageToTest of pagesToTest) {
@@ -9,7 +8,7 @@ for (let pageToTest of pagesToTest) {
   // Run accessibility tests
   test(`Accessibility - ${pageToTest}`, async ({ page }) => {
 
-    await page.goto(`${urlPrefix}${pageToTest}`);
+    await page.goto(pageToTest);
     
     // Axe tests
     const accessibilityScanResults = await new AxeBuilder({page}).analyze();

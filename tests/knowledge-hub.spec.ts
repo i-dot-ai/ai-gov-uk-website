@@ -1,11 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-const urlPrefix = 'http://localhost:8080';
-
-
 test('Knowledge Hub - Usecases filters', async ({ page }) => {
 
-  await page.goto(`${urlPrefix}/knowledge-hub/use-cases`);
+  await page.goto('/knowledge-hub/use-cases');
   
   // Search functionality works
   await page.locator('summary:has-text("Search and filter")').click();
