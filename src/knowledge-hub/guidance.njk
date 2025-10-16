@@ -21,20 +21,14 @@ title: Guidance
     <img src="/img/project-logos/logo-knowledge-hub.png" alt="Knowledge Hub" style="display: none;"/>
 
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds" id="content">
+      <div class="govuk-grid-column-two-thirds">
+        <on-this-page></on-this-page>
 
         {% set cmsContent = knowledgeHubGuidance | markdownToHtml(true) | safe %}
 
-        <div class="govuk-!-padding-5 govuk-!-margin-bottom-6" style="border: 1px solid #0b0c0c;">
-          <h2 class="govuk-heading-s">On this page:</h2>
-          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-            {% for heading in cmsContent | getHeadings %}
-              <li><a href="#{{ heading.id }}">{{ heading.content }}</a></li>
-            {% endfor %}
-          </ul>
+        <div id="content">
+          {{ cmsContent }}
         </div>
-
-        {{ cmsContent }}
 
       </div>
     </div>
@@ -44,10 +38,17 @@ title: Guidance
 
 
 <script>
+  const onThisPage = document.querySelector("on-this-page");
+  
   // Data from CMS
   window.addEventListener('message', function(evt) {
     if (typeof(evt.data?.content) !== 'undefined') {
-      document.querySelector("#content").innerHTML = `<p>["On this page" links will appear here]</p>${evt.data.content}`;
+      document.querySelector("#content").innerHTML = evt.data.content;
+      document.querySelector("h1").textContent = evt.data.title || "[Title goes here]";
+      onThisPage.updateHeadings();
     }
   });
 </script>
+
+<script type="module" src="/js/lit-components/on-this-page.mjs"></script>
+
