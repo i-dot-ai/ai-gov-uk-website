@@ -20,33 +20,48 @@ noIndex: true
   </div>
 {% endmacro %}
 
+{% macro listProjectsByStage(stage) %}
+    {% for project in projects %}
+      {% if project['project-stage'] === stage %}
+        {% if project.url %}
+          {% set projectUrl = project.url %}
+        {% else %}
+          {% set projectUrl = project.title | slugify %}
+        {% endif %}
+        {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
+        {{ projectCardVertical(
+          logo,
+          project.title,
+          projectUrl,
+          project.synopsis
+        ) }}
+      {% endif %}
+    {% endfor %}
+{% endmacro %}
+
 
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
 
-    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+    <h2 class="govuk-heading-m">Live development:</h2>
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-9 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
       {{ projectCardVertical(
         '/img/project-logos/logo-knowledge-hub.png',
         'AI Knowledge Hub',
         '/knowledge-hub',
         'Read case studies and guidance for building AI technologies'
       ) }}
-      {% for project in projects %}
-        {% if project.title !== 'Preview' and project.title !== 'i.AI and NHS England Collaboration Charter' %}
-          {% if project.url %}
-            {% set projectUrl = project.url %}
-          {% else %}
-            {% set projectUrl = project.title | slugify %}
-          {% endif %}
-          {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
-          {{ projectCardVertical(
-            logo,
-            project.title,
-            projectUrl,
-            project.synopsis
-          ) }}
-        {% endif %}
-      {% endfor %}
+      {{ listProjectsByStage('Live Development') }}
+    </div>
+
+    <h2 class="govuk-heading-m">Handed over:</h2>
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-9 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+      {{ listProjectsByStage('Handed Over') }}
+    </div>
+
+    <h2 class="govuk-heading-m">Paused development:</h2>
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-9 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+      {{ listProjectsByStage('Paused Development') }}
     </div>
 
   </div>
