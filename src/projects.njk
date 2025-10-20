@@ -10,11 +10,11 @@ noIndex: true
 
 {{ banner("Projects") }}
 
-{% macro projectCardVertical(logo, title, url, synopsis) %}
+{% macro projectCardVertical(logo, title, url, synopsis, partner) %}
   <div class="iai-project-card-vertical govuk-grid-column-one-third-from-large-desktop govuk-!-display-flex govuk-!-padding-left-3 govuk-!-padding-right-3" style="align-items: flex-start;" data-aos="fade-up">
     <img class="iai-project-card-vertical__logo" src="{{ logo }}" alt="" loading="lazy"/>
     <div class="govuk-body govuk-!-margin-left-2">
-      <a class="govuk-link govuk-!-font-weight-bold" href="{{ url }}">{{ title }}</a>
+      <a class="govuk-link govuk-!-font-weight-bold" href="{{ url }}">{{ title }}{% if partner %} ({{ partner }}){% endif %}</a>
       <p class="govuk-!-margin-top-2">{{ synopsis }}.</p>
     </div>
   </div>
@@ -29,11 +29,17 @@ noIndex: true
           {% set projectUrl = project.title | slugify %}
         {% endif %}
         {% set logo = '/img/project-logos/logo-' + project.title | lower + '.png' %}
+        {% if stage === 'Handed Over' %}
+          {% set partner = project.partner %}
+        {% else %}
+          {% set partner = null %}
+        {% endif %}
         {{ projectCardVertical(
           logo,
           project.title,
           projectUrl,
-          project.synopsis
+          project.synopsis,
+          partner
         ) }}
       {% endif %}
     {% endfor %}
@@ -43,8 +49,8 @@ noIndex: true
 <div class="govuk-width-container">
   <div class="govuk-main-wrapper">
 
-    <h2 class="govuk-heading-m">Live development:</h2>
-    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-9 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+    <h2 class="govuk-heading-m">Active</h2>
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-4 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6; padding-bottom: 40px;">
       {{ projectCardVertical(
         '/img/project-logos/logo-knowledge-hub.png',
         'AI Knowledge Hub',
@@ -54,15 +60,17 @@ noIndex: true
       {{ listProjectsByStage('Live Development') }}
     </div>
 
-    <h2 class="govuk-heading-m">Handed over:</h2>
-    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-9 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+    <h2 class="govuk-heading-m">Partner-led*</h2>
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-4 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6; padding-bottom: 40px;">
       {{ listProjectsByStage('Handed Over') }}
     </div>
 
-    <h2 class="govuk-heading-m">Paused development:</h2>
-    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-9 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0;">
+    <h2 class="govuk-heading-m">Paused</h2>
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-4 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6; padding-bottom: 40px;">
       {{ listProjectsByStage('Paused Development') }}
     </div>
+
+    <p class="govuk-body-s govuk-!-margin-bottom-0 govuk-!-margin-top-9">* Tools which have come through the Incubator and are now being delivered by partner organisations</p>
 
   </div>
 </div>
