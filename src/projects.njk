@@ -50,6 +50,7 @@ noIndex: true
   <div class="govuk-main-wrapper">
 
     <h2 class="govuk-heading-m">Active</h2>
+    <p class="govuk-body-s">Products that are in active development by the Incubator.</p>
     <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-6 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6;">
       {{ projectCardVertical(
         '/img/project-logos/logo-knowledge-hub.png',
@@ -67,6 +68,7 @@ noIndex: true
     </div>
 
     <h2 class="govuk-heading-m">Paused</h2>
+    <p class="govuk-body-s">Products that have been paused or wound down.</p>
     <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-6 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6;">
       {{ listProjectsByStage('Paused Development') }}
     </div>
