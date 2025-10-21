@@ -50,7 +50,7 @@ noIndex: true
   <div class="govuk-main-wrapper">
 
     <h2 class="govuk-heading-m">Active</h2>
-    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-4 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6; padding-bottom: 40px;">
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-6 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6;">
       {{ projectCardVertical(
         '/img/project-logos/logo-knowledge-hub.png',
         'AI Knowledge Hub',
@@ -60,17 +60,17 @@ noIndex: true
       {{ listProjectsByStage('Live Development') }}
     </div>
 
-    <h2 class="govuk-heading-m">Partner-led*</h2>
-    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-4 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6; padding-bottom: 40px;">
+    <h2 class="govuk-heading-m">Partner-led</h2>
+    <p class="govuk-body-s">Tools which have come through the Incubator and are now being delivered by partner organisations.</p>
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-6 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6;">
       {{ listProjectsByStage('Handed Over') }}
     </div>
 
     <h2 class="govuk-heading-m">Paused</h2>
-    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-4 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6; padding-bottom: 40px;">
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-6 govuk-!-padding-bottom-4 govuk-!-display-flex govuk-!-display-flex--wrap" style="gap: 30px 0; border-bottom: 1px solid #b1b4b6;">
       {{ listProjectsByStage('Paused Development') }}
     </div>
 
-    <p class="govuk-body-s govuk-!-margin-bottom-0 govuk-!-margin-top-9">* Tools which have come through the Incubator and are now being delivered by partner organisations</p>
 
   </div>
 </div>
