@@ -1,7 +1,6 @@
-const matter = require("gray-matter");
-const getData = require("./_shared.js").getData;
-
-const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
+const YAML = require("yaml");
+const fs = require("fs");
+const path = require("path");
 
 let cache;
 
@@ -13,15 +12,15 @@ module.exports = async () => {
   }
 
   let useCases = [];
-    
-  const useCasesData = await getData(
-    `https://api.github.com/repos/${CMS_REPO}/contents/content/knowledge_hub/use_cases`
-  );
-
-  for (const entry of useCasesData.map((entry) => entry.url)) {
-    const entryRawData = await getData(entry);
-    const entryContent = Buffer.from(entryRawData.content, "base64").toString("utf8");
-    const entryData = matter(entryContent).data;
+  
+  // Read from local YAML use cases directory
+  const useCasesDir = path.join(__dirname, "../use-case-files");
+  const files = fs.readdirSync(useCasesDir).filter(file => file.endsWith('.yaml') || file.endsWith('.yml'));
+  
+  for (const file of files) {
+    const filePath = path.join(useCasesDir, file);
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    const entryData = YAML.parse(fileContent);
     useCases.push(entryData);
   }
 

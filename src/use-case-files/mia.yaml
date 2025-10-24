@@ -1,0 +1,49 @@
+title: Mia
+created: "1747634613446"
+updated: "1747636214899"
+synopsis: Streamlining breast cancer screening with AI
+draft: true
+organisation: NHS Grampian
+governmentBody: Scottish Government
+userGroup: Wider Public Sector
+useCaseType: Specific
+typeOfTechnology: Machine Learning
+impact:
+  - Better Customer Experience
+  - Time Savings
+  - Cost Savings
+  - Improved Efficiency
+phase: Beta
+challenge: The NHS Breast Screening Programme in NHS Grampian faced the challenge of
+  improving breast cancer detection rates while managing growing pressure on radiologist
+  capacity and reducing unnecessary patient recalls. Traditional screening methods
+  rely on double reading, where two radiologists independently review each mammogram.
+  If they disagree, a third expert is required to make the final decision. This process
+  is highly resource-intensive and difficult to scale.
+solution: The NHS Breast Screening Programme in NHS Grampian faced the challenge of
+  improving breast cancer detection rates while managing growing pressure on radiologist
+  capacity and reducing unnecessary patient recalls. Traditional screening methods
+  rely on double reading, where two radiologists independently review each mammogram.
+  If they disagree, a third expert is required to make the final decision. This process
+  is highly resource-intensive and difficult to scale.
+results: Mia was developed to support radiologists by automatically analysing mammograms
+  and recommending whether further investigation is needed. The system processes images
+  securely by removing all identifiable patient data before analysis. It enables radiologists
+  to benefit from AI-assisted double reading without increasing reporting time or
+  requiring additional clinical resources.
+learnings: >-
+  Results from the pilot:
+
+
+  * Detected 10.4% more cancers than standard practice, marking a substantial boost in early breast cancer identification.
+
+  * Up to 36% reduction in radiologist workload, streamlining the screening process without increasing unnecessary recalls.  
+
+  * Potential to reduce patient notification times from 14 days to just 3, helping to ease anxiety and accelerate care.
+links:
+  - text: "Post (Feb 2025): AI award success for GEMINI project "
+    url: https://www.abdn.ac.uk/news/24113/
+  - text: "Post (Mar 2024): More breast cancers detected in first evaluation of breast
+      screening AI"
+    url: https://www.abdn.ac.uk/news/22964/
+

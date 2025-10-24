@@ -1,0 +1,52 @@
+title: Redbox
+created: "1746806236515"
+updated: "1748001952632"
+synopsis: Harnessing AI for documents up to OFFICIAL-SENSITIVE
+organisation: Department for Science, Innovation and Technology (DSIT) / Incubator for
+  AI (i.AI)
+governmentBody: UK Government
+userGroup: Civil Servants
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Improved Efficiency
+challenge: The Ministerial red box has been the primary destination for state papers
+  since they came into government in the mid-19th century. Redbox was initially envisioned
+  as a way to leverage AI to search through thousands of documents, chat with them
+  and summarise them into tailored briefings.
+applicationFocus: Knowledge Assistant
+organisationType: Central
+phase: Beta
+solution: Just like Ministers, civil servants deal with a wealth of information on
+  a day to day basis. The Incubator for AI (i.AI) decided to streamline Redbox to
+  improve user experience and build an app that can scale to a bigger user base. Redbox
+  provides an easy and cheap way for civil servants to chat with LLMs (up to an OFFICIAL-SENSITIVE
+  level). i.AI has rolled out Redbox to the Cabinet Office (CO), 10 Downing Street
+  (No10) and the Department of Science, Innovation and Technology (DSIT).
+results: >-
+  An initial survey with 282 Redbox users revealed the following:
+
+
+  * Net Promoter Score of 56.
+
+  * 80% of respondents said that they think having access to Redbox improves the quality of their work.
+
+  * 89% of respondents said that they think having access to Redbox saves them time.
+
+  * 269 people told us about the task that they used Redbox for most often. The median estimated time saving on this task was 2 hours per week.
+learnings: >-
+  * Context is everything! Users want AI to understand the datasets that they rely
+  on, including specific and sensitive examples like national security data feeds,
+  or more general ones such as Hansard. 
+
+  * There are many ways civil servants can be using LLMs (including some we did not expect).
+links:
+  - text: Read the full technical details in the Algorithmic Transparency Recording Standard
+      repository
+    url: https://www.gov.uk/algorithmic-transparency-records/dsit-redbox
+  - text: Official project page
+    url: " https://ai.gov.uk/projects/redbox/"
+  - text: "Explore the code for Redbox on GitHub "
+    url: https://github.com/i-dot-ai/redbox
+applicationArea: Chatbot
+

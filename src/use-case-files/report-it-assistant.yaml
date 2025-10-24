@@ -1,0 +1,35 @@
+title: "'Report It' Assistant"
+created: "1746877644831"
+updated: "1747569249579"
+synopsis: Simplifying reporting of street issues using image classification
+draft: false
+organisation: Westminster City Council
+governmentBody: Local Government
+userGroup: General Public
+useCaseType: Reusable
+typeOfTechnology: Machine Learning
+impact:
+  - Better Customer Experience
+  - Time Savings
+phase: Live
+challenge: The 'Report it' service allows residents, businesses, and visitors to report
+  street issues like fly-tipping, graffiti, animal fouling and street noise. However,
+  the process required users to fill out forms and manually select the issue type,
+  making it time-consuming and prone to errors. This discouraged reporting and led
+  to delays in resolution when issues were misclassified.
+organisationType: Local
+solution: The 'Report it' Assistant (RIA) uses AI to automatically identify the type
+  of issue using a combination of image classification (on user-uploaded photos) and
+  natural language understanding. This removes the need for users to manually select
+  categories, speeding up the reporting process. It also ensures accurate onward triage
+  and action, improving the overall resident experience.
+results: The AI correctly identified the report category in 86% of cases, leading
+  to a 38% reduction in time spent selecting the right category and a 20% drop in
+  the number of steps required. Overall, the average time to report an issue fell
+  from 3.65 minutes to 1.37 minutes.
+learnings: "* Incident triage is a feasible and effective opportunity space for machine-learning
+  application."
+links:
+  - text: Interact with the tool
+    url: https://www.westminster.gov.uk/report-it
+

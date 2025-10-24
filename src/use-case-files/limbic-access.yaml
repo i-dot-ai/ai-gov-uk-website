@@ -1,0 +1,45 @@
+title: Limbic Access
+created: "1746855380021"
+updated: "1747990787781"
+synopsis: Streamlining access to therapy through a chatbot
+draft: true
+organisation: Department for Health and Social Care (DHSC) /  NHS England (NHSE)
+governmentBody: UK Government
+userGroup: General Public
+useCaseType: Specific
+typeOfTechnology: Generative AI
+impact:
+  - Better Customer Experience
+  - Time Savings
+phase: Live
+challenge: Accessing mental health support can be a [difficult first step for many people](https://www.oxfordhealth.nhs.uk/news/limbic-chatbot-talking-therapies/).
+  Traditional self-referral methods such as web forms or phone calls can be time-consuming
+  and [often feel off-putting to patients](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/workforce-digital-playbook/using-an-ai-chatbot-to-streamline-mental-health-referrals/),
+  leading to high drop-out rates. This not only delays access to care but also places
+  additional pressure on NHS services.
+organisationType: Central
+solution: Limbic Access is an AI-powered chatbot that streamlines the referral process
+  for [NHS talking therapies](https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/).
+  It offers an interactive, patient-friendly experience, guiding users through the
+  referral process, replacing lengthy traditional forms. It reduces administrative
+  workload for clinicians by collecting essential patient data, screening individuals,
+  and flagging high-risk cases for prioritisation. By providing a more efficient,
+  accessible and personalised path to mental health support, Limbic Access enhances
+  patient engagement and ensures timely care.
+results: >-
+  * There was a 30% increase in the number of patients completing their referral process.
+
+  * Assessment time was reduced by 23.5%, saving 12.7 minutes per referral.
+
+  * There was an 18% decrease in the number of patients dropping out of treatment.
+
+  * Increased triage accuracy led to 45% fewer changes in treatment.
+
+  * The system identified ineligible referrals and redirected them to appropriate services, thereby creating additional clinician capacity. For [Mind Matters Surrey, this applied to 20% of referrals](https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/workforce-digital-playbook/using-an-ai-chatbot-to-streamline-mental-health-referrals/).
+learnings: "* Staff training supports adoption of new technology by easing the transition."
+links:
+  - text: Case study by NHSE's Transformation Directorate (2022)
+    url: https://transform.england.nhs.uk/key-tools-and-info/digital-playbooks/workforce-digital-playbook/using-an-ai-chatbot-to-streamline-mental-health-referrals/
+  - text: Explore the tool / Official project page
+    url: https://www.limbic.ai/access
+

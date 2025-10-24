@@ -1,0 +1,38 @@
+title: Content Education Store
+created: "1747126641652"
+updated: "1749713957540"
+synopsis: Enabling better AI tools through curated educational content
+draft: true
+organisation: Department for Education (DfE)
+governmentBody: UK Government
+userGroup: General Public
+useCaseType: Specific
+typeOfTechnology: Data or Infrastructure
+impact:
+  - Better Customer Experience
+  - Improved Efficiency
+challenge: Teachers face high workload pressures, managing time-consuming tasks like
+  marking, lesson planning, and administrative work. While AI offers promising solutions,
+  current tools often fall short. A major limitation is their lack of access to high-quality,
+  reliable educational data, which limited effectiveness and reduces trust among educators.
+organisationType: Central
+phase: Beta
+solution: A centralised content store is being developed to consolidate government
+  educational resources. It brings together curriculum guidance, lesson plans, and
+  anonymised pupil assessments. This repository is designed to support the training
+  of AI models, enabling the development of accurate, high-quality, and legally compliant
+  educational tools tailored for schools.
+results: >-
+  * Early tests by the Department for Education (DfE) show that supplying generative
+  AI models with targeted educational data can [increase accuracy to 92%, compared
+  to 67%](https://www.gov.uk/government/news/teachers-to-get-more-trustworthy-ai-tech-as-generative-tools-learn-from-new-bank-of-lesson-plans-and-curriculums-helping-them-mark-homework-and-save)
+  without such data.
+
+  * [16 education technology providers](https://www.gov.uk/government/news/ai-teacher-tools-set-to-break-down-barriers-to-opportunity) are using the content store to develop AI-powered tools for teachers, supported by £1 million in Innovate UK funding.
+links:
+  - text: "Press Release (Jan 2025): AI teacher tools set to break down barriers to opportunity"
+    url: https://www.gov.uk/government/news/ai-teacher-tools-set-to-break-down-barriers-to-opportunity
+  - text: "Press Release (Aug 2024): Teachers to get more trustworthy AI tech, helping
+      them mark homework and save time"
+    url: https://www.gov.uk/government/news/teachers-to-get-more-trustworthy-ai-tech-as-generative-tools-learn-from-new-bank-of-lesson-plans-and-curriculums-helping-them-mark-homework-and-save
+

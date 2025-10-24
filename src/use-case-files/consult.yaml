@@ -1,0 +1,54 @@
+title: Consult
+created: "1746805558088"
+updated: "1748001714619"
+synopsis: Processing consultation responses to support policymaking
+organisation: Department for Science, Innovation and Technology (DSIT) / Incubator for
+  AI (i.AI)
+governmentBody: UK Government
+userGroup: Civil Servants
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Cost Savings
+  - Time Savings
+challenge: The current method of analysing responses is manual and often relies on
+  external consultants, costing up to £100,000 per consultation and taking months.
+applicationFocus: Knowledge Assistant
+organisationType: Central
+phase: Beta
+solution: Consult is an AI tool to analyse responses to public consultations. It analyses
+  the thousands of responses any government consultation might receive in hours, before
+  presenting policy makers and experts with interactive dashboards to explore what
+  the public are saying directly. Initial testing suggested that the tool would be
+  400x cheaper to use for this analysis than the existing methods. With around 500
+  public consultations run every year, this single tool could significantly reduce
+  the estimated £20m spent on this process and increase its speed and effectiveness.
+results: >-
+  In an evaluation on a Scottish Government consultation on the regulation of non-surgical
+  cosmetic procedures:
+
+
+  * The overall performance (F1) score was 0.76 out of 1 (generally considered 'good') and reviewers made no changes to the Consult themes for 60% of responses.
+
+  * Differences between Consult and reviewer-identified themes had negligible impact on the overall theme rankings – the key driver of policy recommendations. 
+
+  * Changes to themes were heavily concentrated on a small number of specific themes. This should make it quicker to detect and correct difficult themes early.
+
+  * Reviewing Consult themes is quick, with a median time of 23s per response. By reducing analysis time, Consult freed up time to focus on the implications.
+learnings: "* It is important to evaluate both technical performance of a model and how
+  it is used to make improvements and build trust."
+links:
+  - text: Read the full technical details in the Algorithmic Transparency Recording Standard
+      repository
+    url: https://www.gov.uk/algorithmic-transparency-records/dsit-consult
+  - text: Official project page
+    url: https://ai.gov.uk/projects/consult/
+  - text: "Blogpost (Oct 2024): Developing and Evaluating an AI capability"
+    url: " https://ai.gov.uk/blogs/developing-and-evaluating-an-ai-capability/"
+  - url: https://github.com/i-dot-ai/consult
+    text: "Explore the code for Consult on GitHub "
+  - text: Explore the code for ThemeFinder (the AI capability that powers Consult) on
+      GitHub
+    url: https://github.com/i-dot-ai/themefinder/
+applicationArea: Chatbot
+

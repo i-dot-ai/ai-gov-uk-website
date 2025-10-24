@@ -1,0 +1,38 @@
+title: Consular Digital Triage
+created: "1747155275410"
+updated: "1749137365528"
+synopsis: Automating consular enquiry responses
+draft: false
+organisation: Foreign, Commonwealth & Development Office (FCDO)
+governmentBody: UK Government
+userGroup: General Public
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Time Savings
+  - Improved Efficiency
+  - Better Customer Experience
+challenge: The Foreign, Commonwealth and Development Office (FCDO) receives approximately
+  100,000 written consular enquiries annually from British nationals abroad, covering
+  issues such as lost passports or marriage overseas. Responding to these manually
+  led to delays, with response times stretching to several days, limiting the speed
+  and efficiency of consular support.
+organisationType: Central
+phase: Beta
+solution: An AI-powered system leveraging large language models (LLMs) to automatically
+  match user enquiries to pre-written, pre-approved response templates. The tool provides
+  immediate guidance and relevant information, thereby enabling faster self-service.
+  If users require further assistance, they can still submit enquiries for human review.
+  The AI system minimises hallucinations by suggesting only vetted templates rather
+  than generating free-text responses.
+results: "* Reduced written enquiries by 80% and calls by up to 50% within three months
+  of implementation. It is projected to save the FCDO millions over five years, while
+  maintaining accuracy and safety standards."
+links:
+  - text: Read the full technical details in the Algorithmic Transparency Recording Standard
+      repository
+    url: https://www.gov.uk/algorithmic-transparency-records/fcdo-consular-digital-triage-written-enquiries-llm
+  - text: "Blogpost (April 2025): The future of Artificial Intelligence in government is
+      trust-first or not at all"
+    url: https://www.thinkdigitalpartners.com/guest-blog/2025/04/14/the-future-of-artificial-intelligence-in-government-is-trust-first-or-not-at-all/
+

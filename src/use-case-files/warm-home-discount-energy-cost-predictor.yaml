@@ -1,0 +1,34 @@
+title: Warm Home Discount Energy Cost Predictor
+created: "1746963612561"
+updated: "1747576847741"
+synopsis: Modelling energy costs to determine eligibility for Warm Home Discount scheme
+draft: true
+organisation: Department for Energy Security and Net Zero (DESNZ)
+governmentBody: UK Government
+userGroup: Civil Servants
+useCaseType: Specific
+typeOfTechnology: Machine Learning
+impact:
+  - Better Customer Experience
+challenge: The Warm Home Discount (WHD) scheme provides a £150 rebate for low-income
+  households. Previously, eligibility required households to apply to an energy supplier
+  for rebates, which were allocated on a first-come, first-served basis. This manual
+  application process limited the scheme's ability to reach all eligible households,
+  especially considering the 27 million households across England and Wales.
+organisationType: Central
+phase: Live
+solution: The system uses a log-linear regression model to predict energy costs based
+  on property characteristics such as property type, age, and floor area, alongside
+  an imputation model to fill gaps in missing data. These predictions are matched
+  with benefits data from the Department for Work and Pensions (DWP) to identify eligible
+  households. A rigorous appeals process allows customers to challenge decisions if
+  they believe they are eligible for the scheme.
+results: >-
+  * In 2023/24, over 90% of the total 3 million rebates were issued automatically. 
+
+  * The implementation of this solution has made the process fairer by eliminating the first-come, first-served system. As a result, vulnerable customers who may not have been aware of the support available are now proactively identified and included.
+links:
+  - text: Read the full technical details in the Algorithmic Transparency Recording Standard
+      repository
+    url: https://www.gov.uk/algorithmic-transparency-records/desnz-warm-home-discount-eligibility-energy-cost-modelling
+

@@ -1,0 +1,42 @@
+title: Health Deterioration and Fall Prediction Tool
+created: "1752163749717"
+updated: "1752163749717"
+synopsis: Predicting Health Deterioration in NHS Home Care
+draft: true
+organisation: Department of Health and Social Care (DHSC) / NHS England (NHSE)
+governmentBody: UK Government
+userGroup: Wider Public Sector
+useCaseType: Specific
+typeOfTechnology: Machine Learning
+impact:
+  - Better Customer Experience
+  - Time Savings
+  - Cost Savings
+phase: Live
+challenge: Preventable hospital admissions, particularly among older adults, place
+  significant strain on the NHS. Falls alone account for over 4 million hospital bed
+  days and cost the NHS an estimated £2 billion per year. However, early signs of
+  deterioration often go unnoticed in home care settings due to limited real-time
+  clinical oversight and a reliance on manual reporting.
+solution: The tool predicts early signs of health deterioration, including fall risk,
+  by analysing vital signs such as temperature, heart rate, and blood pressure. This
+  information is collected by carers, family members, or healthcare professionals
+  using a mobile app. It then generates real-time alerts to enable timely intervention.
+  The system also supports care planning, detects illnesses like flu and COVID-19,
+  and automates routine tasks such as scheduling and documentation.
+results: >-
+  * Predicts a patient's risk of falling with up to 97% accuracy, potentially avoiding
+  up to 2,000 hospital admissions per day. 
+
+  * As of March 2025, the tool is used in over two-thirds of NHS Integrated Care Systems, identifying up to 5,000 high-risk cases daily to enable care at home and reduce hospitalisations by up to 70%. 
+
+  * It is estimated to save the NHS over £1 million per day by reducing A&E attendances and freeing up hospital beds. 
+
+  * Currently used daily by nearly 10,000 home healthcare professionals, boosting staff efficiency and improving patient outcomes.
+links:
+  - text: "Announcement (March 2025): Nationwide roll out of artificial intelligence tool
+      that predicts falls and viruses"
+    url: https://www.england.nhs.uk/2025/03/nationwide-roll-out-of-artificial-intelligence-tool-that-predicts-falls-and-viruses/
+  - text: Explore the tool / project page
+    url: https://www.cerahq.com/our-technology
+

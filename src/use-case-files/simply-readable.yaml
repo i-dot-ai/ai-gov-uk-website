@@ -1,0 +1,49 @@
+title: Simply Readable
+created: "1747169979597"
+updated: "1752164233823"
+synopsis: Improving inclusivity by automating Easy Read document creation
+draft: false
+organisation: Swindon Borough Council
+governmentBody: Local Government
+userGroup: Wider Public Sector
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Better Customer Experience
+  - Improved Efficiency
+  - Time Savings
+  - Cost Savings
+phase: Live
+challenge: With [1.5 million people in the UK living with a learning disability](https://www.mencap.org.uk/learning-disability-explained/research-and-statistics/how-common-learning-disability),
+  councils must provide accessible information in [Easy Read](https://abilitynet.org.uk/factsheets/what-easy-read)
+  formats. Traditional methods are slow and expensive, placing unsustainable pressure
+  on resources and risking the exclusion of vulnerable populations from vital information.
+organisationType: Local
+solution: Developed by Swindon Borough Council using [Amazon Bedrock](https://aws.amazon.com/bedrock/),
+  *Simply Readable* is an AI-powered tool that generates Easy-Read documents. Co-created
+  with residents with learning disabilities, it features larger fonts, clear language,
+  increased spacing, and supporting visuals to meet real user needs.
+results: >-
+  * Reduced the cost of creation of 5-10 page documents from £600 to circa 7-10 pence.
+
+  * Enabled the creation of the documents to be completed in under 30 minutes, compared to weeks using traditional methods.
+
+  * Freed up social worker time, improving frontline service delivery.
+learnings: >-
+  * Co-designing with target users ensured the solution met real needs, ensuring greater
+  user satisfaction.
+
+  * Open-sourcing the tool enabled its impact to be scaled across the public sector.
+links:
+  - text: Read the full details in the Local Government Association's Use Case Bank
+    url: https://www.local.gov.uk/case-studies/swindon-borough-council-simply-readable-ai-easy-read-solution
+  - text: "Blogpost (Dec 2023): Swindon Borough Council makes vital public information
+      more accessible using Amazon Bedrock"
+    url: https://aws.amazon.com/blogs/publicsector/swindon-borough-council-makes-vital-public-information-more-accessible-using-amazon-bedrock/
+  - text: "Video (Nov 2023): How to use generative AI to improve inclusivity"
+    url: https://www.youtube.com/watch?v=leQegdK-1M8
+  - text: Explore the project page / Open-source solution
+    url: https://aws-samples.github.io/document-translation/#simply-readable
+  - url: https://aws-samples.github.io/document-translation/docs/readable/architecture/
+    text: Documentation on installation and use
+
