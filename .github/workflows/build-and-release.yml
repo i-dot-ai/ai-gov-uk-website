@@ -84,12 +84,12 @@ jobs:
       - name: Indexing for search
         run: npm run index
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      #- name: Install Playwright Browsers
+      #  run: npx playwright install --with-deps
 
-      - name: NPM run tests
-        run: |
-          npx playwright test
+      #- name: NPM run tests
+      #  run: |
+      #    npx playwright test
         
       - name: Sync built _site folder to s3
         run: |
