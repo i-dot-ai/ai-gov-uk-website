@@ -1,6 +1,8 @@
+const getData = require("./_shared.js").getData;
 const YAML = require("yaml");
-const fs = require("fs");
-const path = require("path");
+
+const USE_CASE_REPO = "i-dot-ai/knowledge-hub";
+const USE_CASES_BRANCH = "develop"; // TODO: Change to main when ready
 
 let cache;
 
@@ -12,14 +14,19 @@ module.exports = async () => {
   }
 
   let useCases = [];
-  
-  const useCasesDir = path.join(__dirname, "../content/use-case-files");
-  const files = fs.readdirSync(useCasesDir).filter(file => file.endsWith('.yaml'));
-  
-  for (const file of files) {
-    const filePath = path.join(useCasesDir, file);
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    const entryData = YAML.parse(fileContent);
+    
+  const useCasesData = await getData(
+    `https://api.github.com/repos/${USE_CASE_REPO}/contents/frontend/src/content/use-case-files?ref=${USE_CASES_BRANCH}`
+  );
+
+  for (const entry of useCasesData) {
+    if (entry.type !== 'file' || (!entry.name.endsWith('.yaml') && !entry.name.endsWith('.yml'))) {
+      continue;
+    }
+
+    const fileData = await getData(entry.url);
+    const entryContent = Buffer.from(fileData.content, "base64").toString("utf8");
+    const entryData = YAML.parse(entryContent);
     useCases.push(entryData);
   }
 
