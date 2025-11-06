@@ -1,0 +1,48 @@
+title: Magic Notes (Wales)
+category: Transcription and documentation
+created: "1747169181010"
+updated: "1747581172595"
+synopsis: Assisting social care workers through transcription and note-taking
+draft: false
+organisation: Neath Port Talbot Council
+governmentBody: Welsh Government
+userGroup: Wider Public Sector
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Time Savings
+  - Improved Efficiency
+  - Better Customer Experience
+phase: Live
+challenge: Social workers have to deal with lengthy, time-consuming administrative
+  and back office tasks.
+organisationType: Wales
+solution: Deploy a Generative AI transcription product Magic Notes, developed by BEAM.
+results: >-
+  Results from pilot:
+
+
+  * Each practitioner involved in the pilot saved on average, 25 minutes per assessment write-up.  This equated to savings of around 7.5 hours per week per practitioner on administrative tasks.
+
+  * Practitioners submitted their assessments up to 8 hours faster when using the technology, with all participants reporting substantial time savings.
+
+  * The product consistently achieved over 97% accuracy in transcripts and summaries, significantly outperforming other products and increasing user confidence.
+
+  * Practitioners reported that conversations were more natural and higher in quality when using the product, resulting in better overall assessments compared to traditional methods.
+
+  * Managers noted progress in reducing case backlogs and improving workload distribution, leading to a positive impact on social worker wellbeing. All participating practitioners endorsed the product and expressed interest in continued use.
+learnings: >-
+  * When introducing new technologies into service areas, supporting their implementation
+  and adoption is essential. A key factor in the success of the trial of this product
+  was the high level of engagement and buy-in within the service area, driven largely
+  by the enthusiasm of the Adult Social Care team leader.  Developing champions who
+  understand both the technology and the service delivery needs creates the ideal conditions
+  for successful adoption.
+
+  * Maintaining organisational awareness of the pilot across Members, Unions and the wider workforce was also key challenge.
+
+  * This trial highlights the potential of generative AI to transform service delivery. To meet ongoing pressures in local government, it is important to continue adopting this technology and to develop practical use cases that demonstrate its value, while also managing risks through strong governance, continuous monitoring, and a commitment to ethical AI practices.
+links:
+  - text: Explore the tool / project page
+    url: https://magicnotes.ai/
+

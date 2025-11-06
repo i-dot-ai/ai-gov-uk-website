@@ -1,0 +1,49 @@
+title: GOV.UK Chat
+created: "1746980602687"
+updated: "1747563295041"
+synopsis: Simplifying navigation across GOV.UK's pages
+draft: true
+organisation: Department for Science, Innovation and Technology (DSIT) / Government Digital
+  Service (GDS)
+governmentBody: UK Government
+userGroup: General Public
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Better Customer Experience
+phase: Beta
+challenge: GOV.UK hosts over 700,000 pages, with new content added regularly. The
+  sheer volume renders traditional search and navigation methods less effective. This
+  makes it hard for users to quickly find the information they need, especially in
+  cases involving more complex queries.
+organisationType: Central
+solution: >-
+  GOV.UK Chat uses a Retrieval-Augmented Generation (RAG) approach, allowing users
+  to ask natural language queries and receive relevant information. Safeguards have
+  been put in place to protect user privacy. 
+
+  Personal data is removed from the GOV.UK pages accessed by the LLM. The tool is developed in compliance with UK data protection legislation, and a thorough Data Protection Impact Assessment (DPIA) was conducted. Additionally, red teaming exercises were conducted to identify and mitigate potential vulnerabilities.
+results: Tested by hundreds of users in a controlled environment, the tool demonstrated
+  strong potential to improve access to government information. Nearly 70% of users
+  found the chatbot's responses useful, and approximately 65% reported satisfaction
+  with the overall experience. These experiments have helped the GOV.UK Chat team
+  understand the types of user queries and the most common failure modes. It has enabled
+  the team to assess the feasibility of integrating such a system more broadly.
+learnings: >-
+  * Given the frequent updates to GOV.UK content, Retrieval-Augmented Generation (RAG)
+  provides better accuracy and relevance in responses compared to fine-tuning a large
+  language model (LLM).
+
+  * Automated quality assurance should be a key consideration to consistently maintain high response quality when scaling the solution.
+links:
+  - text: Read the full case study in the AI Playbook for the UK Government
+    url: https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government/artificial-intelligence-playbook-for-the-uk-government-html#govuk-chat-experimenting-with-generative-ai
+  - text: "Blogpost (Nov 2024): GOV.UK Chat - Understanding and addressing jailbreaking in our generative AI experiment"
+    url: https://insidegovuk.blog.gov.uk/2024/11/05/gov-uk-chat-understanding-and-addressing-jailbreaking-in-our-generative-ai-experiment/
+  - text: "Blogpost (Nov 2024): We're running a private beta of GOV.UK Chat"
+    url: https://insidegovuk.blog.gov.uk/2024/11/05/were-running-a-private-beta-of-gov-uk-chat/
+  - text: "Blogpost (Feb 2024): The findings of our first generative AI experiment - GOV.UK Chat"
+    url: https://insidegovuk.blog.gov.uk/2024/01/18/the-findings-of-our-first-generative-ai-experiment-gov-uk-chat/
+  - text: Explore the code on GitHub
+    url: https://github.com/alphagov/govuk-chat
+

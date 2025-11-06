@@ -1,0 +1,37 @@
+title: "SAM: Service AI Assistant Module"
+category: Answering questions
+created: "1747212775212"
+updated: "1747984181558"
+synopsis: Streamlining routine queries through AI-powered contact centre tools
+draft: true
+organisation: South Cambridgeshire District Council
+governmentBody: Local Government
+userGroup: General Public
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Better Customer Experience
+phase: Beta
+challenge: To improve resident service, the council aimed to streamline the handling
+  of routine contact centre queries, which made up 27% of all incoming calls.
+organisationType: Local
+solution: The council rapidly deployed a suite of AI tools, including a chatbot, live
+  chat, interactive voice response, and voicebots. The system was trained on content
+  from the website and policy documents, with predefined flows to manage sensitive
+  queries. Staff testing helped improve response accuracy. Robust governance was established
+  through an AI Board, a senior responsible officer, and completion of Data Protection
+  Impact Assessment and Equality Impact Assessment.
+results: |-
+  Early testing shows:
+
+  * 93% accuracy in the chatbot's responses.
+  * 86-90% user satisfaction, based on thumbs-up/down feedback.
+  * Reduced call volumes, observed within first three months of deployment.
+learnings: "* The chatbot development process surfaced issues with outdated or unclear
+  website information, prompting content reviews."
+links:
+  - text: Read the full details in the Local Government Association's Use Case Bank
+    url: https://www.local.gov.uk/case-studies/south-cambridgeshire-contact-centre-chatbot-improve-resident-satisfaction
+  - text: "Post (Mar 2025): South Cambridgeshire District Council showcases new website to enhance user experience"
+    url: https://www.scambs.gov.uk/news/south-cambridgeshire-district-council-showcases-new-website-to-enhance-user-experience
+

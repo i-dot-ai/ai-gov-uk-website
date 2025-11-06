@@ -1,0 +1,37 @@
+title: Data Disambiguation Assistant for the Tuberculosis Screening Programme
+created: "1752163956449"
+updated: "1752163956449"
+synopsis: "Reducing manual review through automated data cleanup "
+draft: true
+organisation: Department of Health and Social Care (DHSC) / UK Health Security Agency (UKHSA)
+governmentBody: UK Government
+userGroup: Wider Public Sector
+useCaseType: Specific
+typeOfTechnology: Machine Learning
+impact:
+  - Improved Efficiency
+  - Time Savings
+phase: Live
+challenge: The UK's Tuberculosis Screening Programme invites new migrants for testing
+  based on their country of birth, using data from GP registration records. However,
+  these records often include incomplete, misspelled, or ambiguous place names, resulting
+  in messy data that requires extensive manual review. On average, around 40,000 records
+  must be reviewed each year to ensure accurate screening.
+solution: >-
+  The team used AI to automatically match inconsistent place name data to countries,
+  significantly reducing the need for manual checks. The solution is now fully integrated
+  into the Tuberculosis Screening Programme team's regular workflow. 
+
+
+   
+
+  NOTE: An Algorithmic Transparency Recording Standard (ATRS) record is currently being prepared.
+results: >-
+  * Achieved 90% accuracy in correctly identifying country of birth from inconsistent
+  data. 
+
+  * Reduced manual review workload by 85%, from 40,000 to 6,000 records per year.
+links:
+  - text: "Corporate Report (Mar 2025): UKHSA Advisory Board - Update on artificial intelligence in UKHSA"
+    url: https://www.gov.uk/government/publications/ukhsa-advisory-board-meeting-papers-march-2025/ukhsa-advisory-board-update-on-artifical-intelligence-in-ukhsa
+

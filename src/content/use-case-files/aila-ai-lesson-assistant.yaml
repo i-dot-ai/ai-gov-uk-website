@@ -1,0 +1,73 @@
+title: "Aila: AI Lesson Assistant"
+created: "1747129570892"
+updated: "1747828908198"
+synopsis: Assisting Teachers with Lesson Planning
+draft: false
+organisation: Department for Education (DfE) / Oak National Academy
+governmentBody: UK Government
+userGroup: Wider Public Sector
+useCaseType: Specific
+typeOfTechnology: Generative AI
+impact:
+  - Improved Efficiency
+  - Time Savings
+  - Better Customer Experience
+challenge: Many teachers experience high workloads due to repetitive and time-intensive
+  lesson planning tasks. While generative tools may offer support in this area, teachers
+  are concerned about the accuracy, bias, and safety of AI-generated educational content.
+  There is a need for AI tools to support the creation of curriculum-aligned resources
+  that meet varied pupil requirements while maintaining teacher oversight.
+organisationType: Central
+phase: Beta
+solution: >-
+  Aila, developed by Oak National Academy (an arm's length body of the Department for
+  Education), is an AI-powered lesson assistant designed to help teachers create personalised,
+  curriculum-aligned lesson plans swiftly and efficiently. It combines a large language
+  model (currently OpenAI's GPT-4o) with retrieval-augmented generation to draw from
+  Oak's extensive, 
+
+  high-quality and quality-assured lesson repository, ensuring content accuracy and relevance. Teachers interact with Aila through a chat interface to generate lesson outlines, which can be refined iteratively.
+
+
+  To maintain safety and appropriateness, a separate moderation agent screens all outputs for harmful or biased content. The generated lessons follow Oak's established pedagogical format, including starter quizzes, slide decks, worksheets, and exit quizzes. In addition, Oak uses an auto-evaluation tool powered by language models to continuously monitor and improve content quality, addressing issues such as bias and pedagogical rigour. This approach aims to reduce teacher workload while maintaining high standards and enabling personalisation.
+results: >-
+  **Usage and Reach**
+
+
+  * In its first two months, Aila supported 10,000 users in creating nearly 25,000 lesson plans, with 85% rating the quality as 'fairly high' or 'very high'.
+
+
+  **Time Savings and Wellbeing**
+
+
+  * Nearly two-thirds of teachers said Aila reduced workload or freed up time for other priorities.
+
+  * Reported total time savings ranged from 1 to 15 hours, with an average of around 3 hours saved.
+
+  * Some teachers have also noted reduced stress and improved well-being. 
+
+
+  **Professional Development**
+
+
+  * Over half of teachers said Aila changed how they approach lesson planning, introducing new strategies and ideas.
+
+  * Those delivering teacher training used Aila to help trainees focus on pedagogy while simplifying the planning process.
+
+
+  **Support for Learners**
+
+
+  * Teachers found Aila effective for adapting content to mixed-ability classes and for specific pupil needs.
+
+  * Aila's quizzes have helped assess pupil understanding and identify misconceptions and common errors.
+links:
+  - text: Read the full technical details in the Algorithmic Transparency Recording Standard repository
+    url: https://www.gov.uk/algorithmic-transparency-records/oak-national-academy-aila-oaks-ai-lesson-assistant
+  - text: "Blogpost (Feb 2025): How is Aila impacting teacher lesson planning practices, workload and expertise? Early insights from the classroom"
+    url: https://www.thenational.academy/blog/how-is-aila-impacting-teacher-lesson-planning-practices-workload-and-expertise-early-insights#footnote-ref-4f1fcd1ec8a0
+  - text: "Blogpost (Dec 2024): Understanding the 'AI' in Aila"
+    url: https://www.thenational.academy/blog/understanding-the-ai-in-aila
+  - text: Explore the tool
+    url: https://labs.thenational.academy/
+

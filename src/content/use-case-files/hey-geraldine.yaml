@@ -1,0 +1,54 @@
+title: Hey Geraldine
+category: Answering questions
+created: "1752163195427"
+updated: "1753628442198"
+synopsis: Delivering instant, personalised support to social care staff
+draft: false
+organisation: Peterborough City Council
+governmentBody: Local Government
+userGroup: Wider Public Sector
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Better Customer Experience
+  - Time Savings
+phase: Live
+challenge: Peterborough City Council was facing growing pressure on its adult social
+  care teams. Practitioners often had to rely on one highly experienced colleague
+  for guidance, especially when trying to find the right technology-enabled care (TEC)
+  solutions. These are tools like sensors, apps, or devices that help people live
+  more safely and independently in their own homes. Off-the-shelf commercial systems
+  raised concerns about data privacy and did not reflect the specific local context
+  and nuances.
+solution: To address these challenges, the Council developed *Hey Geraldine,* a bespoke
+  AI-powered knowledge assistant named in honour of Geraldine, a highly respected
+  Occupational Therapist known for her deep expertise and willingness to support colleagues.
+  The assistant was co-created with frontline staff to ensure it offers real-time,
+  practical guidance and signposting on assistive technology and digital care solutions.
+  Designed to reflect Geraldine's spirit of helpfulness, the AI tool is accessible
+  24/7 and supports practitioners by answering detailed queries about TEC, helping
+  them make faster, more informed decisions.
+results: >-
+  Early testing shows: 
+
+
+  * A saving of 15 minutes per conversation for Occupational Therapists (OT), supporting better caseload management and prioritisation of complex cases. 
+
+  * Over 1,200 questions asked, with many genuine queries demonstrating practical value. 
+
+  * Responses were consistent with the real Geraldine's advice, boosting trust and adoption among staff.
+learnings: >-
+  * Developing a bespoke AI solution addressed data privacy concerns and embedded local
+  nuances more effectively than off-the-shelf commercial products. 
+
+  * Regular, structured feedback sessions with frontline staff during development allowed continuous refinement of the AI's accuracy and relevance, highlighting the importance of iterative, user-centred design in AI projects. 
+
+  * Building user trust is crucial for widespread adoption of AI tools. 
+
+  * Close collaboration with information governance teams and adherence to data protection protocols (Data Protection Impact Assessments, Data Processing Agreements) were crucial to managing risks and ensuring ethical AI deployment.
+links:
+  - text: Read the full details in the Local Government Association's Use Case Bank
+    url: https://www.local.gov.uk/case-studies/peterborough-city-council-hey-geraldine-personalised-ai-assistant
+  - text: "Blogpost: Reflections on Developing an AI Assistant for Adult Social Care - 'Hey Geraldine' by Datnexa"
+    url: https://www.datnexa.com/post/reflections-on-developing-an-ai-assistant-for-adult-social-care-hey-geraldine
+

@@ -1,0 +1,51 @@
+title: Automated Call Routing
+category: Triaging and routing
+created: "1752161442236"
+updated: "1752161442236"
+synopsis: Connecting people to local support faster through an AI voice assistant
+draft: true
+organisation: Citizens Advice Scotland
+governmentBody: Scottish Government
+userGroup: Wider Public Sector
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Better Customer Experience
+  - Improved Efficiency
+  - Cost Savings
+  - Time Savings
+phase: Live
+challenge: Citizens Advice Scotland (CAS) comprises 59 local and independent bureaux.
+  While this ensures local expertise, it made central access difficult. During the
+  pandemic, the Scottish Citizens Advice Helpline was established to provide a single,
+  national point of contact. However, the process relied on volunteers to manually
+  route calls to local bureaux, resulting in long wait times (up to 24 hours), increased
+  operational costs, and poor customer experience.
+solution: Partnering with CivTech and HelpFirst, Citizens Advice Scotland (CAS) deployed
+  a PolyAI voice assistant that interacts with customers over the phone and automatically
+  routes calls to the correct local bureau. The assistant understands Scottish accents
+  and is supported by a custom-built Scottish postcode extractor.
+results: >-
+  * Reduced average connection time from several days to 30 seconds across 23,000 calls
+  per quarter 
+
+  * Cut operational costs by ~90%, from £450k/year to £40k/year 
+
+  * Improved service accessibility and Equity, Diversity & Inclusion (EDI) across geographic, linguistic, literacy, and mobility dimensions 
+
+  * Freed up social worker time, improving frontline service delivery, while eradicating an error-prone step from the process.
+learnings: >-
+  * Localisation (e.g., postcode extractors and accent support) is critical for ensuring
+  user trust and accuracy in regional services. 
+
+  * Leveraging existing tech rather than building from scratch can help speed up delivery and reduce risks.
+links:
+  - text: "Case study: Faster support, lower costs"
+    url: https://www.helpfirst.ai/case-studies/faster-support-lower-costs
+  - text: "Case study: How the Citizens Advice Network in Scotland is providing better, faster support with PolyAI"
+    url: https://poly.ai/case-studies/citizens-advice-scotland/
+  - text: "Blogpost (Dec 2023): How we saved £400k/year for Citizens Advice Scotland - 3 lessons from a successful AI implementation"
+    url: https://www.helpfirst.ai/blog-posts/how-we-saved-ps400k-year-for-citizens-advice-scotland
+  - text: "Blogpost (May 2022): The journey of developing an inclusive helpline"
+    url: https://www.civtech.scot/blog/the-journey-of-developing-an-inclusive-helpline
+
