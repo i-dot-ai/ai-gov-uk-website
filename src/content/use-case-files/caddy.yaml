@@ -1,0 +1,55 @@
+title: Caddy
+category: Answering questions
+created: "1746806626905"
+updated: "1748002043904"
+synopsis: Supporting customer service agents with fast, precise information
+organisation: Department for Science, Innovation and Technology (DSIT) / Incubator for
+  AI (i.AI) / Citizens Advice Stockport, Oldham, Rochdale & Trafford (CASORT)
+governmentBody: UK Government
+userGroup: Wider Public Sector
+useCaseType: Reusable
+typeOfTechnology: Generative AI
+impact:
+  - Improved Efficiency
+challenge: In [2022-23 alone, Citizen Advice with its national organisation and network
+  of 250 independent local charities across England and Wales, helped over 2.5 million
+  people with one-to-one advice](https://assets.ctfassets.net/mfz4nbgura3g/1CvI8xMxxf8Qzm8uI2NKbF/ad0eec22a4379960bac66ca4ed5a84a4/Citizens_Advice_Annual_Report_2022-2023.pdf).
+  Highly trained advisors have to tackle a broad range of topics, with people often
+  seeking help on complex interconnected issues. Thus the need to make it easier for
+  the advisors to quickly find and share information with the people seeking  help
+  from the charity.
+applicationFocus: Knowledge Assistant
+organisationType: Central
+phase: Beta
+solution: Developed in collaboration with Citizens Advice Stockport, Oldham, Rochdale
+  & Trafford (CASORT), Caddy is a human-in-the-loop copilot for front-line contact
+  centres. Caddy is designed to support advisors by providing quick, accurate, and
+  validated information. It accesses public and internal training and guidance, utilizing
+  semantic routing for topic-specific consideration. Generated content is always reviewed
+  and validated by advisors and supervisors before being presented. Caddy is accessed
+  through existing chat platforms, minimising training needs for advisors.
+results: >-
+  - Initial results from a randomized control trial showed 80% of Caddy's responses
+  were of high enough quality to be passed directly to advisors without revisions.
+
+  - Messages were generated, validated, and returned in approximately 4 minutes, significantly faster than human research and typing.
+
+  - Advisors with access to Caddy were twice as likely to report confidence in giving advice and 1.5 times more likely to resolve client issues.
+
+  - Rolled out to 6 local Citizens Advice offices with plans for further expansion and government pilots.
+learnings: >-
+  * Building in "humans-in-the-loop" mitigates AI hallucination and risk. 
+
+  * Focusing on ease of use and integration with existing workflows is important for adoption.
+
+  * Measuring impact through randomized control trials provides valuable insights for improvement.
+capability: LLM
+links:
+  - text: Official project page
+    url: https://ai.gov.uk/projects/caddy/
+  - text: "Blogpost (March 2025): Transforming Civic Engagement with Caddy"
+    url: https://ai.gov.uk/blogs/transforming-civic-engagement-with-caddy/
+  - text: Explore the code for Caddy on GitHub
+    url: https://github.com/i-dot-ai/caddy-chatbot
+applicationArea: Chatbot
+

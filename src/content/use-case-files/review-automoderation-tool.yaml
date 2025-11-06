@@ -1,0 +1,53 @@
+title: Review Automoderation Tool
+category: Quality assurance and compliance
+created: "1747632590460"
+updated: "1753695867433"
+synopsis: Automating content moderation on NHS.UK
+draft: true
+organisation: Department of Health and Social Care (DHSC) / NHS England (NHSE)
+governmentBody: UK Government
+userGroup: General Public
+useCaseType: Reusable
+typeOfTechnology: Machine Learning
+impact:
+  - Better Customer Experience
+  - Cost Savings
+  - Time Savings
+phase: Retired
+challenge: The [NHS.UK website receives approximately 100,000 reviews annually](https://nhsengland.github.io/datascience/our_work/ratings-and-reviews/),
+  each of which must be carefully reviewed to ensure compliance with [strict moderation
+  policies](https://www.nhs.uk/our-policies/comments-policy/#:~:text=Users%20should%20only%20post%20one,service%20will%20not%20be%20published.)
+  concerning personal data, abuse, discrimination, and safeguarding. This process
+  depended on third-party human moderators, leading to delays of several days and
+  significant operational costs. Moreover, in 2021, 90% of reviews rejected during
+  moderation were never resubmitted, resulting in the loss of valuable patient feedback.
+solution: An automated moderation tool was developed to enforce nine distinct moderation
+  rules. It combines deterministic checks, such as detecting URLs, email addresses,
+  and profanity, with custom machine learning models trained on NHS.UK content. Reviews
+  flagged for safeguarding concerns or disputed by users are escalated to human moderators.
+  This ensures expert oversight where necessary. The system provides instant feedback
+  to users, allowing them to edit and resubmit reviews promptly.
+results: >-
+  * Moderation time reduced from several days to just seconds, enabling near-instant
+  feedback to users.
+
+  * Increased publication rates, with more reviews successfully published due to immediate detection of policy breaches, unlike the previous manual process where many rejected reviews were never resubmitted.
+
+  * Significant cost savings achieved by eliminating reliance on expensive third-party moderation services, while enabling efficient scaling as review volumes grow.
+
+  * ML models match or exceed human performance, delivering consistent and accurate policy enforcement across all reviews.
+
+  * First AI product to receive clinical approval on NHS.UK.
+links:
+  - text: Read the full technical details in the Algorithmic Transparency Recording Standard
+      repository
+    url: https://www.gov.uk/algorithmic-transparency-records/nhs-england-nhs-dot-uk-reviews-automoderation-tool
+  - text: Read the full case study in the AI Playbook for the UK Government
+    url: https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government/artificial-intelligence-playbook-for-the-uk-government-html#nhsuk-reviews-an-automated-reviews-moderator
+  - text: Explore the project page
+    url: https://nhsengland.github.io/datascience/our_work/ratings-and-reviews/
+  - text: Explore the code for the Reviews Automoderation Tool on GitHub
+    url: https://github.com/nhsengland/nhsuk.moderation-api-public
+  - text: Explore the ML models powering the Reviews Automoderation Tool on GitHub
+    url: https://github.com/nhsengland/nhsuk.moderation-ml-public
+
