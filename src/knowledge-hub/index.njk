@@ -9,80 +9,137 @@ templateEngineOverride: njk
   {% set logo %}
     <img src="/img/project-logos/logo-knowledge-hub.png" width="160px" height="160px" alt="" />
   {% endset %}
-  {{ homepageBanner('Guidance and case studies for teams adopting AI technologies in the public sector', '', logo, 'light') }}
-
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-top-9">
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-l">Welcome to the AI Knowledge Hub. We are here to help public sector teams explore, adopt, and apply artificial intelligence (AI) responsibly.</p>
-          <h2 class="govuk-heading-m govuk-!-margin-top-5"><span aria-hidden="true">💡 </span>What this is</h2>
-          <p>The AI Knowledge Hub is your starting point for understanding and using AI in government. It brings together key guidance, practical tools, and real examples to help you navigate AI with confidence.</p>
-          <p>This is a living resource that will grow over time. Everything here will be shaped by what public sector teams need most.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  {{ homepageBanner(
+    'Explore AI in government',
+    'Find use cases. Explore approaches. Start delivery.',
+    logo,
+    'light',
+    null,
+    {
+      desc: "Browse use cases",
+      url: "/knowledge-hub/use-cases"
+    },
+    {
+      desc: "Test prompts",
+      url: "/knowledge-hub/prompts"
+    }
+  ) }}
 
   <div class="kh-centre-section">
-    <div class="govuk-width-container govuk-!-padding-left-5 govuk-!-padding-right-5">
-      <div class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-8">
-        <div class="kh-centre-section__grid govuk-!-margin-top-8">
-
-          <h2 class="govuk-heading-m"><span aria-hidden="true">📚 </span>Use Case Library</h2>
-          <p class="govuk-body">Learn about real-world projects across the public sector that are making a difference.</p>
-          <div class="kh-centre-section__button">
-            <a href="/knowledge-hub/use-cases" class="govuk-link govuk-link--call-to-action">Browse use cases</a>
-          </div>
-
-          <h2 class="govuk-heading-m"><span aria-hidden="true">💬 </span>Prompt Library</h2>
-          <p class="govuk-body">Well-crafted prompts to help unlock more meaningful and reliable results from AI assistants.</p>
-          <div class="kh-centre-section__button">
-            <a href="/knowledge-hub/prompts" class="govuk-link govuk-link--call-to-action">Browse prompts</a>
-          </div>
-
-          <h2 class="govuk-heading-m"><span aria-hidden="true">📝 </span>Guidance for AI Adoption</h2>
-          <p class="govuk-body">Essential guidance for adopting AI; from identifying the right problem to using AI responsibly.</p>
-          <div class="kh-centre-section__button">
-            <a href="/knowledge-hub/guidance" class="govuk-link govuk-link--call-to-action">View the guidance</a>
-          </div>
-
+    <div class="govuk-width-container govuk-!-padding-top-9 govuk-!-padding-bottom-9">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <p class="govuk-heading-m kh-center-section__feature-number">{{ knowledgeHubUseCases.length }}</p>
+          <p class="govuk-body">use cases to inspire you</p>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <p class="govuk-heading-m kh-center-section__feature-number">{{ knowledgeHubPrompts.length }}</p>
+          <p class="govuk-body">prompts you can use</p>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <p class="govuk-heading-m kh-center-section__feature-number">15.7k</p>
+          <p class="govuk-body">users every day</p>
         </div>
       </div>
     </div>
   </div>
 
-
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-bottom-9">
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m govuk-!-margin-top-5"><span aria-hidden="true">🗣 </span>Help us build the right thing </h2>
-          <p>We are here to support your work, and we want to hear from you. What would help you take your next step with AI? Let us know at: <a href="mailto:{{ knowledgeHubData.contactEmail }}">{{ knowledgeHubData.contactEmail }}</a></p>
-          <p>Want to stay updated as the Hub grows? <a href="https://forms.office.com/e/wQNLDMU3rD" rel="noopener noreferrer">Sign up to receive the latest news</a>, new resources, and feature announcements.</p>
-          <h2 class="govuk-heading-m govuk-!-margin-top-7"><span aria-hidden="true">🧭 </span>Build your wider understanding</h2>
-          <p>The following documents set out the UK government’s approach to AI and can help you build a broader understanding of the context. They serve as useful points of reference as you explore this space.</p>
-          <ul class="govuk-list">
-            {% macro pdfLink (title, url, desc, img) %}
-              <li class="govuk-!-display-flex govuk-!-display-flex--align-center govuk-!-margin-bottom-3">
-                <img style="border: 1px solid #0b0c0c;" width="80" src="{{ img }}" alt="" loading="lazy"/>
-                <div class="govuk-!-margin-left-4">
-                  <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-2"><a href="{{ url }}" rel="noopener noreferrer">{{ title }}</a></h3>
-                  <p class="govuk-body-s govuk-!-margin-0">{{ desc }}</p>
-                </div>
+    <div class="kh-centre-section kh-centre-section--white">
+      <div class="govuk-width-container">
+        <div class="govuk-main-wrapper govuk-!-padding-top-9 govuk-!-margin-bottom-9">
+          <div class="govuk-grid-row govuk-!-margin-bottom-9">
+            <h2 class="govuk-heading-xl">Use cases in government</h2>
+          </div>
+          <div class="govuk-grid-row">
+            <ul class="govuk-list kh-light-box__container">
+              <li class="govuk-grid-column-one-half govuk-grid-column-one-third-from-large-desktop">
+                <a href="/knowledge-hub/use-cases#Transcription-and-Documentation" class="kh-light-box kh-light-box--link govuk-!-padding-5">
+                  <span aria-hidden="true" style="font-size: 40px;">🎙️</span>
+                  <h3 class="govuk-heading-m govuk-!-margin-top-1">Transcribe & summarise</h3>
+                  <p class="govuk-body">Convert meetings into structured notes and actions</p>
+                </a>
               </li>
-            {% endmacro %}
-            {{ pdfLink ("AI Opportunities Action Plan", "https://www.gov.uk/government/publications/ai-opportunities-action-plan", "Recommendations for the government to capture the opportunities of AI to enhance growth and productivity and create tangible benefits for UK citizens", "/img/aioap.webp") }}
-            {{ pdfLink ("A blueprint for modern digital government", "https://www.gov.uk/government/publications/a-blueprint-for-modern-digital-government", "A long-term vision for digital public services, a 6-point plan for reform, and the role of the new digital centre of government", "/img/blueprint.webp") }}
-            {{ pdfLink ("AI Playbook for the UK Government", "https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government", "The playbook offers guidance on using AI safely, effectively and securely for civil servants and people working in government organisations", "/img/aiplaybook.webp") }}
+              <li class="govuk-grid-column-one-half govuk-grid-column-one-third-from-large-desktop">
+                <a href="/knowledge-hub/use-cases#Triage-and-Routing" class="kh-light-box kh-light-box--link govuk-!-padding-5">
+                  <span aria-hidden="true" style="font-size: 40px;">🎯</span>
+                  <h3 class="govuk-heading-m govuk-!-margin-top-1">Triage & direct</h3>
+                  <p class="govuk-body">Sort and send requests to the right team</p>
+                </a>
+              </li>
+              <li class="govuk-grid-column-one-half govuk-grid-column-one-third-from-large-desktop">
+                <a href="/knowledge-hub/use-cases#Answering-Questions" class="kh-light-box kh-light-box--link govuk-!-padding-5">
+                  <span aria-hidden="true" style="font-size: 40px;">💬</span>
+                  <h3 class="govuk-heading-m govuk-!-margin-top-1">Build user chatbots</h3>
+                  <p class="govuk-body">Give users answers on demand</p>
+                </a>
+              </li>
+              <li class="govuk-grid-column-one-half govuk-grid-column-one-third-from-large-desktop">
+                <a href="/knowledge-hub/use-cases#Content-Creation-and-Drafting" class="kh-light-box kh-light-box--link govuk-!-padding-5">
+                  <span aria-hidden="true" style="font-size: 40px;">✍️</span>
+                  <h3 class="govuk-heading-m govuk-!-margin-top-1">Communicate & refine</h3>
+                  <p class="govuk-body">Draft clear, simple content faster</p>
+                </a>
+              </li>
+              <li class="govuk-grid-column-one-half govuk-grid-column-one-third-from-large-desktop">
+                <a href="/knowledge-hub/use-cases#Analysing-large-volumes-of-text" class="kh-light-box kh-light-box--link govuk-!-padding-5">
+                  <span aria-hidden="true" style="font-size: 40px;">📊</span>
+                  <h3 class="govuk-heading-m govuk-!-margin-top-1">Analyze & extract</h3>
+                  <p class="govuk-body">Review and identify patterns in data</p>
+                </a>
+              </li>
+              <li class="govuk-grid-column-one-half govuk-grid-column-one-third-from-large-desktop">
+                <a href="/knowledge-hub/use-cases#Uncategorised" class="kh-light-box kh-light-box--link govuk-!-padding-5">
+                  <span aria-hidden="true" style="font-size: 40px;">🔍</span>
+                  <h3 class="govuk-heading-m govuk-!-margin-top-1">Search & retrieve</h3>
+                  <p class="govuk-body">Find answers from large amounts of data</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-grid-row">
+            <a href="/knowledge-hub/use-cases" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-9">Browse all use cases</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="kh-centre-section">
+      <div class="govuk-width-container govuk-!-padding-top-9 govuk-!-padding-bottom-9">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <h2 class="govuk-heading-xl">Prompts you can use</h2>
+          </div>
+        </div>
+        <div class="govuk-grid-row">
+          <ul class="govuk-list kh-light-box__container">
+            <li class="govuk-grid-column-one-third">
+              <a href="/knowledge-hub/prompts#General-productivity" class="kh-light-box kh-light-box--link kh-light-box--thick-border govuk-!-padding-5">
+                <span aria-hidden="true" style="font-size: 40px;">🚀</span>
+                <h3 class="govuk-heading-m govuk-!-margin-top-1">Improve productivity</h3>
+                <p class="govuk-body">Work more efficiently and effectively</p>
+              </a>
+            </li>
+            <li class="govuk-grid-column-one-third">
+              <a href="/knowledge-hub/prompts#Project-management" class="kh-light-box kh-light-box--link kh-light-box--thick-border govuk-!-padding-5">
+                <span aria-hidden="true" style="font-size: 40px;">📈</span>
+                <h3 class="govuk-heading-m govuk-!-margin-top-1">Streamline project management</h3>
+                <p class="govuk-body">Reduce admin and focus on output</p>
+              </a>
+            </li>
+            <li class="govuk-grid-column-one-third">
+              <a href="/knowledge-hub/prompts#Writing-and-communicating" class="kh-light-box kh-light-box--link kh-light-box--thick-border govuk-!-padding-5">
+                <span aria-hidden="true" style="font-size: 40px;">📢</span>
+                <h3 class="govuk-heading-m govuk-!-margin-top-1">Communicate clearly</h3>
+                <p class="govuk-body">Make complex content simple</p>
+              </a>
+            </li>
           </ul>
         </div>
+        <div class="govuk-grid-row">
+          <a href="/knowledge-hub/prompts" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-9">Browse all prompts</a>
+        </div>
       </div>
-
     </div>
-  </div>
 
 </main>
