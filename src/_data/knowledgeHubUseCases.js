@@ -2,7 +2,6 @@ const getData = require("./_shared.js").getData;
 const YAML = require("yaml");
 
 const USE_CASE_REPO = "i-dot-ai/knowledge-hub";
-const USE_CASES_BRANCH = "develop"; // TODO: Change to main when ready
 
 let cache;
 
@@ -16,7 +15,7 @@ module.exports = async () => {
   let useCases = [];
     
   const useCasesData = await getData(
-    `https://api.github.com/repos/${USE_CASE_REPO}/contents/frontend/src/content/use-case-files?ref=${USE_CASES_BRANCH}`
+    `https://api.github.com/repos/${USE_CASE_REPO}/contents/frontend/src/content/use-case-files`
   );
 
   for (const entry of useCasesData) {
