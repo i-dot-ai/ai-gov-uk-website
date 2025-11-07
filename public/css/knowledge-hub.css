@@ -18,31 +18,17 @@
   background-color: #f7f7f7;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  text-align: center;
 }
-.kh-centre-section__grid {
 
-  h2 {
-    margin-top: 45px;
-  }
-  a {
-    margin-top: 5px;
-  }
+.kh-center-section__feature-number {
+  color: var(--iai-pink);
+  font-size: 84px;
+  font-weight: 800;
+}
 
-  @media (min-width: 768px) {
-    display: grid;
-    gap: 0 45px;
-    grid-auto-flow: column; 
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
-
-    h2 {
-      margin-top: 0;
-    }
-    a {
-      margin-top: 10px;
-    }
-  }
-  
+.kh-centre-section--white {
+  background-color: #fff;
 }
 
 
@@ -75,12 +61,69 @@
 
 .govuk-link--call-to-action {
   border: 3px solid var(--iai-pink);
+  background-color: #fff;
   border-radius: 4px;
   display: inline-block;
   padding: 10px 15px !important;
   text-decoration: none;
 }
+
 .govuk-link--call-to-action:hover {
-  background-color: white;
+  background-color: #d9d9d9;
   text-decoration: underline;
+}
+
+.kh-light-box__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 641px) {
+  .kh-light-box__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .kh-light-box__container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.kh-light-box {
+  flex: 1;
+  border: 1px solid #b1b4b6;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.kh-light-box--link {
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+.kh-light-box--link:hover,
+.kh-light-box--link:focus-visible {
+  border-color: var(--iai-pink);
+  scale: 1.05;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.kh-light-box--link:hover h3, 
+.kh-light-box--link:focus-visible h3 {
+  text-decoration: underline;
+}
+
+.kh-light-box__header {
+  background: var(--iai-pink);
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+}
+
+.kh-light-box--thick-border {
+  border-left: 10px solid var(--iai-pink);
 }
