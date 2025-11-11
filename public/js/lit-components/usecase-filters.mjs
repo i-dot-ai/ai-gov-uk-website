@@ -1,5 +1,7 @@
 // @ts-check
 
+import { filterCategoryHeadings } from "../filter-use-case-utils.js";
+
 (async () => {
 
   let LitElement, html;
