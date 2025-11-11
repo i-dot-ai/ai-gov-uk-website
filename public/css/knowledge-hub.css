@@ -56,6 +56,47 @@
   }
 }
 
+/* sticky sidebar */
+@media (min-width: 641px) {
+  .kh-sticky-sidebar {
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .kh-sticky-sidebar__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .kh-sticky-sidebar__nav-title {
+    flex-shrink: 0;
+  }
+
+  .kh-sticky-sidebar__nav-list {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+}
+
+.kh-sticky-sidebar__list-item--dashed {
+  position: relative;
+}
+
+.kh-sticky-sidebar__list-item--dashed::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  overflow: hidden;
+}
 
 /* Styles that could go back into i.AI Design System */
 
@@ -126,4 +167,22 @@
 
 .kh-light-box--thick-border {
   border-left: 10px solid var(--iai-pink);
+}
+
+
+.kh-back-to-top {
+  display: none;
+}
+
+.kh-back-to-top__icon {
+  margin-right: 10px;
+}
+
+@media (min-width: 641px) {
+  .kh-back-to-top {
+      display: block;
+      flex-shrink: 0;
+      padding-top: 1.5rem;
+      padding-bottom: 0.5rem;
+  }
 }
