@@ -34,29 +34,23 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
         </ol>
     </nav>
 
-    <h1 class="govuk-heading-l govuk-!-display-flex govuk-!-display-flex--align-center">
-        <span class="govuk-visually-hidden">Use case: </span> {# for search #}
-        {{ useCase.title }}
-        {% if useCase.draft %}
-            <strong class="govuk-tag govuk-tag--pink govuk-!-margin-left-5">Publicly Sourced</strong>
-        {% endif %}
-    </h1>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l govuk-!-display-flex govuk-!-display-flex--align-center" style="flex-wrap: wrap; gap: 15px;">
+            {{ useCase.synopsis }}
+            </h1>
+            <div class="govuk-!-margin-bottom-5">
 
-    {# For search results #}
-    <img src="/img/project-logos/logo-knowledge-hub.png" alt="Knowledge Hub" style="display: none;"/>
+                <span class="govuk-!-display-flex govuk-!-display-flex--align-center" style="flex-wrap: wrap; gap: 10px;">
+                    {% if useCase.draft %}
+                        <strong class="govuk-tag govuk-tag--pink govuk-!-margin-left-0">Publicly sourced</strong>
+                    {% endif %}
+                </span>
+            </div>
 
-    <p class="govuk-body-l">{{ useCase.synopsis }}</p>
+    <p class="govuk-body-l">{{ useCase.title }} - (Update to longer synopsis format) {{ useCase.synopsis }} </p>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-8 govuk-!-margin-top-7">
-        {% for property in properties %}
-            {% if property.value %}
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">{{ property.name }}</dt>
-                    <dd class="govuk-summary-list__value">{{ property.value }}</dd>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </dl>
+
 
     {% if useCase.challenge %}
     <h2 class="govuk-heading-m">The challenge</h2>
@@ -78,6 +72,18 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
     <div class="govuk-body">{{ useCase.learnings | markdownToHtml | safe }}</div>
     {% endif %}
 
+    <h2 class="govuk-heading-m">Details</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-8 govuk-!-margin-top-7">
+        {% for property in properties %}
+            {% if property.value %}
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">{{ property.name }}</dt>
+                    <dd class="govuk-summary-list__value">{{ property.value }}</dd>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </dl>
+
     {% if useCase.links %}
     <h2 class="govuk-heading-m">Links</h2>
     <ul class="govuk-list">
@@ -91,6 +97,28 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
         {% endfor %}
     </ul>
     {% endif %}
+    </div>
+    <div class="govuk-grid-column-one-third kh-sticky-sidebar">
+          <!-- TODO: update contact link to send email straight to the knowledge hub team -->
+          <a href="mailto:ai-knowledge-hub@dsit.gov.uk" class="govuk-link govuk-link--call-to-action govuk-!-text-align-centre">
+            Contact the knowledge hub team about this use case
+          </a>
+
+          <h2 class="govuk-heading-m govuk-!-margin-top-5" id="implementation">Implementation</h2>
+          <p class="govuk-body">Here are the relevant guidance pages for using or implementing this use case.</p>
+
+          <ul class="govuk-list">
+            <li class="kh-light-box govuk-!-padding-3">
+              <a class="govuk-heading-s govuk-link" href="/how-to-get-ai-for-your-project">
+                How to get AI for your project
+              </a>
+              <p class="govuk-body">Find the right procurement approach for your needs. Step by step guide.</p>
+            </li>
+          </ul>
+        </div>
+    </div>
+    </div>
+    <div class="govuk-grid-row">
 
 		{% if useCase.created %}
 			<p class="govuk-body-s govuk-!-margin-bottom-0 govuk-!-margin-top-9">
