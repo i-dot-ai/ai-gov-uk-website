@@ -186,3 +186,7 @@
       padding-bottom: 0.5rem;
   }
 }
+
+.hidden {
+  display: none;
+}

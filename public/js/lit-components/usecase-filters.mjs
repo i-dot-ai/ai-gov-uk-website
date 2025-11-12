@@ -1,6 +1,6 @@
 // @ts-check
 
-import { filterCategoryHeadings } from "../filter-use-case-utils.js";
+import { filterCategoryHeadings } from "../filter-categories.js";
 
 (async () => {
 
@@ -156,10 +156,10 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
         });
 
         if (cardIsVisible) {
-          card.style.display = "block";
+          card.classList.remove('hidden');
           filteredCount++;
         } else {
-          card.style.display = "none";
+          card.classList.add('hidden');
         }
 
       });
