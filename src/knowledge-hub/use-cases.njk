@@ -4,7 +4,13 @@ templateEngineOverride: njk
 title: Use cases
 ---
 
-{% set sortedUseCases = knowledgeHubUseCases | sort(false, false, "category") %}
+{% set properties = [
+  {name: "Organisation", property: "organisation"},
+  {name: "Government body", property: "governmentBody"},
+  {name: "User group", property: "userGroup"},
+  {name: "Type of technology", property: "typeOfTechnology"},
+  {name: "Impact", property: "impact"}
+] %}
 
 <div class="govuk-width-container">
   <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
@@ -21,24 +27,25 @@ title: Use cases
       <div class="govuk-grid-column-full govuk-!-margin-bottom-7 govuk-!-padding-bottom-5">
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5">Use Case Library</h1>
         <p class="govuk-body-l">Discover how AI is making a difference across the public sector. These use cases showcase projects that are already delivering impact.</p>
-        <site-search>
-          <div class="govuk-form-group">
-            <input type="hidden" name="type" id="search-type" value="use-case">
-            <label class="govuk-label govuk-label--m" for="search-term">Search</label>
-            <input class="govuk-input" id="search-term" name="eventName" type="search" autocomplete="off">
-          </div>
-        </site-search>
-
+        
+          <site-search>
+            <div class="govuk-form-group">
+              <input type="hidden" name="type" id="search-type" value="use-case">
+              <label class="govuk-label govuk-label--m" for="search-term">Search</label>
+              <input class="govuk-input" id="search-term" name="eventName" type="search" autocomplete="off">
+            </div>
+          </site-search>
+              
         <details class="govuk-details govuk-!-margin-top-4 govuk-!-padding-right-6 govuk-!-padding-top-4 govuk-!-padding-bottom-4">
           <summary class="govuk-details__summary">
-            <h2 class="govuk-details__summary-text govuk-heading-s govuk-!-margin-bottom-0">Filter</h2>
+            <h2 class="govuk-details__summary-text govuk-heading-m govuk-!-margin-bottom-0">Filter</h2>
           </summary>
           <usecase-filters class="govuk-!-display-block govuk-!-margin-top-4"></usecase-filters>
         </details>
 
-        <div style="display: flex; justify-content: space-between;" class="govuk-!-margin-top-4">
-          <p class="govuk-body-l govuk-!-margin-0">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> use cases<span id="active-filters"></span>.</p>
-          <a href="/knowledge-hub/use-cases" class="govuk-link govuk-link--call-to-action">Clear all filters</a>
+        <div style="display: flex; justify-content: space-between;">
+        <p class="govuk-body-l govuk-!-margin-0">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> use cases<span id="active-filters"></span>. </p>
+        <a href='/knowledge-hub/use-cases?filterBy=governmentBody' class="govuk-link govuk-link--call-to-action">Clear all filters</a>
         </div>
 
       </div>
@@ -48,27 +55,25 @@ title: Use cases
       <div class="govuk-grid-column-one-third kh-sticky-sidebar">
         <nav class="kh-sticky-sidebar__nav">
           <h2 class="govuk-heading-s govuk-!-font-weight-regular kh-sticky-sidebar__nav-title" id="contents">Categories</h2>
-          <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0 kh-sticky-sidebar__nav-list">
-        {% set currentCategory = "" %}
-        {% for useCase in sortedUseCases %}
-          {% set category = useCase.category or "Uncategorised" %}
-          {% if category != currentCategory %}
-              <li class="kh-sticky-sidebar__list-item--dashed govuk-!-padding-right-5 govuk-!-padding-left-6 category-nav-item" data-category="{{ category }}">
-                <a href="#{{ category | slugify }}">{{ category | lower | capitalize }}</a>
-              </li>
-              {% set currentCategory = category %}
-          {% endif %}
-          {% endfor %}
-          </ul>
-        </nav>
-
+          <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0 sticky-sidebar__nav-list">
+            {% set currentCategory = "" %}
+            {% for useCase in knowledgeHubUseCases %}
+              {% set category = useCase.category or "Uncategorised" %}
+              {% if category != currentCategory %}
+                  <li class="kh-sticky-sidebar__list-item--dashed govuk-!-padding-right-5 govuk-!-padding-left-6 category-nav-item" data-category="{{ category }}">
+                    <a href="#{{ category | slugify }}">{{ category | lower | capitalize }}</a>
+                  </li>
+                  {% set currentCategory = category %}
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </nav>
         {% include "back-to-top-link.njk" %}
-
       </div>
 
       <div class="govuk-grid-column-two-thirds">
         {% set currentCategory = "" %}
-        {% for useCase in sortedUseCases %}
+        {% for useCase in knowledgeHubUseCases %}
           {% set category = useCase.category or "Uncategorised" %}
           {% if category != currentCategory %}
             {% if not loop.first %}
@@ -118,8 +123,6 @@ title: Use cases
         {% endif %}
         {% endfor %}
       </div>
-    </div>
-
   </main>
 </div>
 
@@ -135,4 +138,3 @@ title: Use cases
   <div data-category="governmentBody">Scottish Government</div>
   <div data-category="governmentBody">Northern Ireland Executive</div>
 </div>
-

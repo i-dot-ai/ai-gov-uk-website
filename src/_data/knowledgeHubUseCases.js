@@ -37,12 +37,33 @@ module.exports = async () => {
   });
 
   const sortedUseCases = useCases.sort((a, b) => {
+    const categoryA = (a.category || "").toLowerCase();
+    const categoryB = (b.category || "").toLowerCase();
+
+    if (categoryA !== categoryB) {
+      if (!categoryA) {
+        return 1;
+      }
+      if (!categoryB) {
+        return -1;
+      }
+      return categoryA.localeCompare(categoryB);
+    }
+
     if (a.draft && !b.draft) {
       return 1;
     } else if (b.draft && !a.draft) {
       return -1;
     }
-    return (b.updated || b.created) - (a.updated || a.created);
+
+    const dateA = a.updated || a.created || 0;
+    const dateB = b.updated || b.created || 0;
+
+    if (dateA !== dateB) {
+      return dateB - dateA;
+    }
+
+    return (a.title || "").localeCompare(b.title || "");
   });
 
   cache = sortedUseCases;

@@ -17,32 +17,33 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
     
     static properties = {
       organisation: { type: Array, state: true },
-      governmentBody: { type: Array, state: true },
+      governmentBody: {type: Array, state: true },
       userGroup: { type: Array, state: true },
       typeOfTechnology: { type: Array, state: true },
       impact: { type: Array, state: true },
     };
+
     createRenderRoot() {
       this.innerHTML = "";
       return this;
     }
-  
-   constructor() {
+
+    constructor() {
       super();
-      (Object.keys(UsecaseFilters.properties)).forEach(
-        (property) => {
-          this[property] = [];
-        },
-      );
+      // initialise properties
+      Object.keys(UsecaseFilters.properties).forEach((property) => {
+        this[property] = [];
+      });
     }
-  
+
     connectedCallback() {
       super.connectedCallback();
+      // get options to filter from each use case
       Object.keys(UsecaseFilters.properties).forEach((property) => {
         // Convert camelCase to kebab-case for data attributes
         const dataAttr = property.replace(/([A-Z])/g, '-$1').toLowerCase();
         const cards = document.querySelectorAll('[data-card-type="use-case"]');
-        
+
         cards.forEach((card) => {
           const value = card.getAttribute(`data-${dataAttr}`);
           if (value) {
@@ -55,7 +56,7 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
             });
           }
         });
-  
+
         if (property === 'governmentBody') {
           const requiredOrder = ['UK Government', 'Scottish Government', 'Welsh Government', 'Northern Ireland Executive', 'Local Government'];
           this['governmentBody'].sort((a, b) => {
@@ -76,14 +77,14 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
         }
       });
     }
-  
+
     firstUpdated() {
       // listen for URL changes
       const getQueryParams = () => {
         Object.keys(UsecaseFilters.properties).forEach((property) => {
           const value = new URL(window.location.href).searchParams.get(property);
           if (value) {
-            (this.querySelector(`#${property}`)).value = value || "";
+            this.querySelector(`#${property}`).value = value || "";
           }
         });
         this.applyFilters();
@@ -91,7 +92,7 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
       window.addEventListener('popstate', getQueryParams);
       getQueryParams();
     }
-  
+
     render() {
       return html`
         <div class="govuk-grid-row" style="margin-bottom: -20px;">
@@ -111,22 +112,22 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
         </div>
       `;
     }
-  
+
     applyFilters() {
-  
+
       const url = new URL(window.location.href);
       Object.keys(UsecaseFilters.properties).map((property) => {
-        let value = (this.querySelector(`#${property}`))?.value;
+        let value = this.querySelector(`#${property}`).value;
         url.searchParams.set(property, value);
       });
       window.history.pushState({}, '', url);
-  
+
       /** @type {NodeListOf<HTMLElement>} */
       const cards = document.querySelectorAll('[data-card-type="use-case"]');
       const filteredCountElement = document.querySelector("#filtered-count");
       const activeFiltersElement = document.querySelector("#active-filters");
       let filteredCount = 0;
-      
+
       const activeFilters = [];
       Object.keys(UsecaseFilters.properties).forEach((property) => {
         let value = (this.querySelector(`#${property}`))?.value;
@@ -136,10 +137,11 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
           activeFilters.push(`${propertyName}: <strong>${value}</strong>`);
         }
       });
-  
+
+
       // show/hide cards based on selected filters
       cards.forEach((card) => {
-  
+
         let cardIsVisible = true;
         Object.keys(UsecaseFilters.properties).map((property) => {
           let value = (this.querySelector(`#${property}`))?.value;
@@ -152,18 +154,18 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
             }
           }
         });
-  
+
         if (cardIsVisible) {
           card.style.display = "block";
           filteredCount++;
         } else {
           card.style.display = "none";
         }
-  
+
       });
-  
+
       filterCategoryHeadings();
-  
+
       // show how many cards are visible
       if (!filteredCountElement) {
         return;
@@ -173,7 +175,7 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
       } else {
         filteredCountElement.textContent = filteredCount.toString();
       }
-  
+
       // show active filters
       if (activeFiltersElement) {
         if (activeFilters.length > 0) {
@@ -183,9 +185,9 @@ import { filterCategoryHeadings } from "../filter-use-case-utils.js";
           activeFiltersElement.innerHTML = '';
         }
       }
-  
+
     }
-  
+
   }
 
   customElements.define("usecase-filters", UsecaseFilters);
