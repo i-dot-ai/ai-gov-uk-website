@@ -11,7 +11,7 @@ const getPagefindInstance = async () => {
   return pagefindInstancePromise;
 };
 
-export const searchUseCases = async (rawQuery = "") => {
+export const searchKnowledgeHub = async (rawQuery = "", type = "use-cases") => {
   const query = rawQuery.trim();
   if (!query) {
     return [];
@@ -23,7 +23,7 @@ export const searchUseCases = async (rawQuery = "") => {
 
   for (const result of search.results) {
     const data = await result.data();
-    if (data.url.includes("/knowledge-hub/use-cases/")) {
+    if (data.url.includes(`/knowledge-hub/${type}/`)) {
       results.push(data);
     }
   }

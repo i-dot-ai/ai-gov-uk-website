@@ -25,46 +25,74 @@ title: Prompt Library
       </ol>
     </nav>
 
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Prompt Library</h1>
-    <p class="govuk-body-l govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">A collection of useful AI prompts by the public sector, for the public sector.</p>
+    <div class="govuk-grid-row govuk-!-margin-bottom-7 govuk-!-padding-bottom-5">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5">Prompt Library</h1>
+        <p class="govuk-body-l">A collection of useful AI prompts by the public sector, for the public sector.</p>
+        <p class="govuk-body">This library is a shared resource built by the public sector, for the public sector. If you have created a prompt that others might find helpful, help grow the collection by completing the <a href="https://forms.office.com/e/mM4TTWS59c" rel="noopener noreferrer">share your prompt form</a>.</p>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">What is a Prompt?</h2>
+        <p class="govuk-body govuk-!-margin-bottom-5">A prompt is a way to converse with an AI assistant. It can be a question, instruction, or input that helps the AI generate a useful response. The better the prompt, the better the output.</p>
+        
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+          <site-search>
+            <div class="govuk-form-group">
+              <input type="hidden" name="type" id="search-type" value="prompt">
+              <label class="govuk-label govuk-label--m" for="search-term">Search</label>
+              <input class="govuk-input" id="search-term" name="eventName" type="search" autocomplete="off">
+            </div>
+          </site-search>
+      </div>
+    </div>
     
     <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-one-third kh-sticky-sidebar">
+          <nav class="kh-sticky-sidebar__nav">
+            <h2 class="govuk-heading-s govuk-!-font-weight-regular kh-sticky-sidebar__nav-title" id="contents">Categories</h2>
+            <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0 kh-sticky-sidebar__nav-list">
+              {% for section in knowledgeHubPrompts | getSections %}
+                <li class="knowledge-hub__list-item--dashed govuk-!-padding-right-5 govuk-!-padding-left-6 category-nav-item" data-category="{{ section | slugify }}">
+                  <a href="#{{ section | slugify }}">{{ section }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+          {% include "back-to-top-link.njk" %}
+      </div>
  
       <div class="govuk-grid-column-two-thirds">
 
-        <h2 class="govuk-heading-m">On this page:</h2>
-        <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-7" style="border-bottom: 1px solid #b1b4b6;">
-          {% for section in knowledgeHubPrompts | getSections %}
-            <li><a href="#{{ section | slugify }}">{{ section }}</a></li>
-          {% endfor %}
-        </ul>
-
         {% for section in knowledgeHubPrompts | getSections %}
-          <h2 class="govuk-heading-l" id="{{ section | slugify }}">{{ section }} prompts</h2>
+          <h2 class="govuk-heading-l govuk-!-margin-top-9 govuk-!-margin-bottom-5 category-heading" id="{{ section | slugify }}" data-category="{{ section | slugify }}">{{ section }}</h2>
 
+          <ul class="govuk-grid-row govuk-list govuk-!-display-flex govuk-!-display-flex--wrap category-section" data-category="{{ section | slugify }}">
           {% for prompt in knowledgeHubPrompts %}
             {% if prompt.category == section %}
-              <a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}">
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0" style="color: var(--iai-pink);">{{ prompt.title }}</h3>
-              </a>
-              <p class="govuk-body govuk-!-margin-bottom-5 govuk-!-margin-top-3">{{ prompt.description }}</p>
+              <li class="govuk-grid-column-full govuk-grid-column-one-half-from-desktop kh-card" data-card-type="prompt">
+                <div class="kh-box-container">
+                  <div class="kh-light-box govuk-!-padding-5 govuk-!-margin-bottom-5" style="min-height: 200px;">
+                    <h3 class="govuk-heading-m"><a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/" class="govuk-link">{{ prompt.title }}</a></h3>
+                    <p class="govuk-body">{{ prompt.description }}</p>
+                  </div>
+                </div>
+              </li>
             {% endif %}
           {% endfor %}
+          </ul>
 
         {% endfor %}
       
       </div>
-
-
-      <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-s">What is a Prompt?</h2>
-        <p class="govuk-body-s">A prompt is a way to converse with an AI assistant. It can be a question, instruction, or input that helps the AI generate a useful response. The better the prompt, the better the output.</p>
-        <h2 class="govuk-heading-s">Why a Prompt Library?</h2>
-        <p class="govuk-body-s">Crafting good prompts takes time. This library helps make that easier by offering ready-made prompts you can use, adapt, and build on. It is a starting point for creativity, productivity, and problem-solving with AI.</p>
-        <p class="govuk-body-s">This library is a shared resource built by the public sector, for the public sector. If you have created a prompt that others might find helpful, help grow the collection by completing the <a href="https://forms.office.com/e/mM4TTWS59c" rel="noopener noreferrer">share your prompt form</a>.</p>
-      </div>
-
     </div>
 
   </div>
 </main>
+
+
+<script type="module" src="/js/lit-components/site-search.mjs"></script>

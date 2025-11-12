@@ -13,22 +13,23 @@ export const filterCategoryHeadings = () => {
       
       if (section && section.classList.contains('category-section')) {
         // Count visible cards in this section
-        const visibleCardsInSection = section.querySelectorAll('[data-card-type="use-case"][style*="display: block"]');
+        const visibleCardsInSection = section.querySelectorAll('.kh-card:not(.hidden)');
+
         
         if (visibleCardsInSection.length === 0) {
           // Hide heading and nav item
-          heading.style.display = 'none';
+          heading.classList.add('hidden');
           categoryNavItems.forEach((navItem) => {
             if (navItem.getAttribute('data-category') === category) {
-              navItem.style.display = 'none';
+              navItem.classList.add('hidden');
             }
           });
         } else {
           // Show heading and nav item
-          heading.style.display = 'block';
+          heading.classList.remove('hidden');
           categoryNavItems.forEach((navItem) => {
             if (navItem.getAttribute('data-category') === category) {
-              navItem.style.display = 'list-item';
+              navItem.classList.remove('hidden');
             }
           });
         }
