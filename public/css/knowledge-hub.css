@@ -190,3 +190,33 @@
 .hidden {
   display: none;
 }
+
+.kh-guidance__list-item {
+  position: relative;
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.kh-guidance__list-item:last-child {
+  border-bottom: none;
+}
+
+.kh-guidance__list-item::after {
+    content: "";
+    border: 2px solid var(--iai-pink);
+    border-width: 2px 2px 0 0;
+    width: .4375em;
+    height: .4375em;
+    margin: auto 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: .1875em;
+    transform: rotate(45deg);
+}
+
+.kh-guidance--draft {
+  font-style: italic;
+  background-color: #fbfbdc;
+  padding: 10px;
+}
