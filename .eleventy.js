@@ -10,6 +10,7 @@ const litPlugin = require("@lit-labs/eleventy-plugin-lit");
 
 const showdown = require("showdown");
 const mdToHtmlConverter = new showdown.Converter();
+mdToHtmlConverter.setOption('tables', true);
 
 const addGovukClasses = require("./public/js/add-govuk-classes.js");
 

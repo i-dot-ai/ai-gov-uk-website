@@ -50,8 +50,10 @@ permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
             </div>
           {% endif %}
 
+          {% set cmsContent = guidance.content | markdownToHtml(true) | safe %}
+
           <div class="govuk-grid-column-two-thirds {% if guidance.isDraftVersion %}kh-guidance--draft{% endif %}" id="content">
-            {{ guidance.content | markdownToHtml | safe }}
+            {{ cmsContent }}
           </div>
       </div>
 
