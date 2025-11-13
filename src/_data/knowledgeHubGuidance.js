@@ -20,17 +20,48 @@ const pageNameToDataNameMap = {
   'measure-impact': 'measure_impact.yaml',
 }
 
+const pageNameToTitleMap = {
+  'guidance': 'Guidance',
+  'plan-and-run-an-ai-project-a': 'Plan and run an AI project (A)',
+  'plan-and-run-an-ai-project-b': 'Plan and run an AI project (B)',
+  'using-ai-assistants-a': 'Using AI Assistants (A)',
+  'using-ai-assistants-b': 'Using AI Assistants (B)',
+  'playbook': 'Playbook',
+  'principles': 'The 10 AI Principles',
+  'procurement': 'Buy an AI solution',
+  'legal': 'Legal',
+  'ethics': 'Using AI ethically and responsibly',
+  'ethics-building-ai': 'Building with AI ethically and sustainably',
+  'understanding-ai': 'Understanding AI',
+  'building-ai-solutions': 'Building AI Solutions',
+  'security': 'Security',
+  'governance': 'Governance',
+  'measure-impact': 'How to measure impact of an AI project',
+}
+
+const draftPageNames = [
+  'legal',
+  'understanding-ai',
+  'building-ai-solutions',
+  'security',
+  'governance',
+]
+
+
+
 
 const CMS_REPO = "i-dot-ai/ai-gov-uk-cms-content";
 
-const cache = {};
+let cache;
 
 module.exports = async () => {
   
-  if (Object.keys(cache).length > 0) {
+  if (cache) {
     console.log('Using cached Knowledge Hub Guidance content');
     return cache;
   }
+
+  let guidance = [];
 
   for (const [pageName, dataName] of Object.entries(pageNameToDataNameMap)) {
     const guidanceData = await getData(
@@ -38,9 +69,16 @@ module.exports = async () => {
     );
     const yamlData = Buffer.from(guidanceData.content, "base64").toString("utf8");
     const content = yaml.parse(yamlData).content;
-    cache[pageName] = content;
+
+    const guidancePage = {};
+    guidancePage.content = content;
+    guidancePage.title = pageNameToTitleMap[pageName];
+    guidancePage.slug = pageName;
+    guidancePage.isDraftVersion = draftPageNames.includes(pageName);
+    guidance.push(guidancePage);
   }
 
-  return cache;
+  cache = guidance;
+  return guidance;
 
 };

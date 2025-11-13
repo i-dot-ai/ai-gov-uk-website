@@ -36,14 +36,12 @@
     render() {
       return html`
         ${this.headings.length ? html`
-          <div class="govuk-!-padding-5 govuk-!-margin-bottom-6 govuk-!-margin-top-7" style="border: 1px solid #0b0c0c;">
-            <h2 class="govuk-heading-s">On this page:</h2>
-            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <h2 class="govuk-heading-s govuk-!-font-weight-regular kh-sticky-sidebar__nav-title">Contents</h2>
+            <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0 kh-sticky-sidebar__nav-list">
               ${this.headings.map((heading) => html`
-                <li class="govuk-!-padding-1"><a class="govuk-link" href="#${heading.id}">${heading.content}</a></li>
+                <li class="kh-sticky-sidebar__list-item--dashed govuk-!-padding-right-5 govuk-!-padding-left-6"><a href="#${heading.id}">${heading.content}</a></li>
               `)}
             </ul>
-          </div>
         ` : ''}
       `;
     }
@@ -56,6 +54,14 @@
           content: heading.textContent,
         });
       });
+      if (this.headings.length === 0) {
+        document.querySelectorAll('#content h3').forEach((heading) => {
+          this.headings.push({
+            id: heading.id,
+            content: heading.textContent,
+          });
+        });
+      }
     }
 
   }
