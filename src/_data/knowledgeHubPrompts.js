@@ -22,6 +22,11 @@ module.exports = async () => {
     const entryRawData = await getData(entry);
     const entryContent = Buffer.from(entryRawData.content, "base64").toString("utf8");
     const entryData = matter(entryContent).data;
+    
+    if (entryData.hideFromLiveSite === true) {
+      continue;
+    }
+    
     prompts.push(entryData);
   }
 
