@@ -106,7 +106,6 @@ module.exports = async () => {
   const phases = extractPhases(htmlContent);
   const contentForPhases = phases.map(phase => extractContentForPhase(htmlContent, phase, phases.slice(1)));
 
-  console.log(contentForPhases);
   cache = contentForPhases;
   return contentForPhases;
 };
