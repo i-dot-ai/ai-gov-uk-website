@@ -2,12 +2,10 @@ const getData = require("./_shared.js").getData;
 const yaml = require("yaml");
 
 const pageNameToDataNameMap = {
-  'guidance': 'guidance.yaml',
   'plan-and-run-an-ai-project-a': 'guidance_dev_plan_run_v_a.yaml',
   'plan-and-run-an-ai-project-b': 'guidance_dev_plan_run_v_b.yaml',
   'using-ai-assistants-a': 'guidance_dev_v_a.yaml',
   'using-ai-assistants-b': 'guidance_dev_v_b.yaml',
-  'playbook': 'playbook.yaml',
   'principles': 'principles.yaml',
   'procurement': 'procurement.yaml',
   'legal': 'legal.yaml',
@@ -21,12 +19,10 @@ const pageNameToDataNameMap = {
 }
 
 const pageNameToTitleMap = {
-  'guidance': 'Guidance',
   'plan-and-run-an-ai-project-a': 'Plan and run an AI project (A)',
   'plan-and-run-an-ai-project-b': 'Plan and run an AI project (B)',
   'using-ai-assistants-a': 'Using AI Assistants (A)',
   'using-ai-assistants-b': 'Using AI Assistants (B)',
-  'playbook': 'Playbook',
   'principles': 'The 10 AI Principles',
   'procurement': 'Buy an AI solution',
   'legal': 'Legal',

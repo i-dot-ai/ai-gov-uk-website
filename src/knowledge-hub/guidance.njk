@@ -22,7 +22,7 @@ permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
         </ol>
       </nav>
 
-            <div class="govuk-grid-row">
+      <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-7 govuk-!-padding-bottom-5"  data-pagefind-body>
           <h1 class="govuk-heading-xl">{{ guidance.title }} {% if guidance.isDraftVersion %}(to be updated){% endif %}</h1>
           {% if guidance.isDraftVersion %}
@@ -43,9 +43,7 @@ permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
       <div class="govuk-grid-row">
           {% if guidance.slug !== 'principles' %}
             <div class="govuk-grid-column-one-third kh-sticky-sidebar">
-              <nav class="govuk-!-margin-bottom-6 kh-sticky-sidebar__nav">
-                <on-this-page></on-this-page>
-              </nav>
+              <on-this-page sidebar></on-this-page>
               {% include "back-to-top-link.njk" %}
             </div>
           {% endif %}
