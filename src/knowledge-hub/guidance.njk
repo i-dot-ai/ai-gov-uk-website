@@ -1,41 +1,64 @@
 ---
 layout: knowledge-hub/base.njk
 templateEngineOverride: njk
-title: Guidance
+pagination:
+    data: knowledgeHubGuidance
+    size: 1
+    alias: guidance
+permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
 ---
 
-<div class="govuk-width-container">
-  <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7" data-pagefind-body>
+  <div class="govuk-width-container">
+    <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
 
-    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
-      <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link govuk-back-link govuk-!-margin-0" href="/knowledge-hub">Home</a>
-        </li>
-      </ol>
-    </nav>
+      <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
+        <ol class="govuk-breadcrumbs__list">
+          <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub">Home</a>
+          </li>
+          <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub/guidance-home">Case studies</a>
+          </li>
+        </ol>
+      </nav>
 
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">Guidance</h1>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-7 govuk-!-padding-bottom-5"  data-pagefind-body>
+          <h1 class="govuk-heading-xl">{{ guidance.title }} {% if guidance.isDraftVersion %}(to be updated){% endif %}</h1>
+          {% if guidance.isDraftVersion %}
+            <p class="govuk-body">
+              This information is taken from the 
+            <a href="https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government" class="govuk-link"> 
+              AI Playbook for the UK Government
+            </a>
+              and reflects the latest guidance and best practice. This will be updated as needed.</p>
+          {% endif %}
 
-    {# For search results #}
-    <img src="/img/project-logos/logo-knowledge-hub.png" alt="Knowledge Hub" style="display: none;"/>
-
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <on-this-page></on-this-page>
-
-        {% set cmsContent = knowledgeHubGuidance | markdownToHtml(true) | safe %}
-
-        <div id="content">
-          {{ cmsContent }}
         </div>
-
+        <div class="govuk-grid-column-one-third">
+          <a href="#" class="govuk-link govuk-!-text-align-right">Give feedback about this page</a>
+        </div>
       </div>
-    </div>
 
-  </main>
-</div>
+      <div class="govuk-grid-row">
+          {% if guidance.slug !== 'principles' %}
+            <div class="govuk-grid-column-one-third kh-sticky-sidebar">
+              <on-this-page sidebar></on-this-page>
+              {% include "back-to-top-link.njk" %}
+            </div>
+          {% endif %}
 
+          {% set cmsContent = guidance.content | markdownToHtml(true) | safe %}
+
+          <div class="govuk-grid-column-two-thirds {% if guidance.isDraftVersion %}kh-guidance--draft{% endif %}" id="content">
+            {{ cmsContent }}
+          </div>
+      </div>
+
+
+
+    </main>
+  </div>
 
 <script>
   const onThisPage = document.querySelector("on-this-page");
@@ -51,4 +74,4 @@ title: Guidance
 </script>
 
 <script type="module" src="/js/lit-components/on-this-page.mjs"></script>
-
+<script type="module" src="/js/lit-components/back-to-top-link.mjs"></script>
