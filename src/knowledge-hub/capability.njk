@@ -1,0 +1,133 @@
+---
+layout: knowledge-hub/base.njk
+templateEngineOverride: njk
+pagination:
+    data: knowledgeHubCapability
+    size: 1
+    alias: capability
+permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
+---
+
+<main class="govuk-width-container" data-pagefind-body>
+
+  <div id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
+
+    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="/knowledge-hub#common-tasks-with-ai">What are you looking to do with AI?</a>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Use AI to {{ capability.title | lower }}</h1>
+            <p class="govuk-body govuk-!-margin-bottom-0">{{ capability.description | markdownToHtml(true) | safe }}</p>
+        </div> 
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <on-this-page></on-this-page>
+      </div>
+    </div>
+
+      <div class="govuk-grid-row" id="content">
+        {% set showPrompts = false %}
+        {% for prompt in knowledgeHubPrompts %}
+          {% if prompt.category === capability.title  %}
+            {% set showPrompts = true %}
+          {% endif %}
+        {% endfor %}
+      {% if showPrompts %}
+        <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-7">
+          <h2 class="govuk-heading-l">Get started with example prompts</h2>
+          <p class="govuk-body">Copy, adapt and learn from instructions (prompts) that have worked for similar tasks.</p>
+          {% set currentSubcategory = "" %}
+          {% set inSubcategoryList = false %}
+          
+          {% for prompt in knowledgeHubPrompts %}
+
+            {% if (prompt.category === capability.title and capability.title !== 'Project management') or prompt.tags.includes(capability.title.toLowerCase()) %}
+              {% set subcategory = prompt.subcategory or "General" %}
+
+              {% if subcategory and subcategory != currentSubcategory %}
+                {% if inSubcategoryList %}
+                  </ul>
+                {% elif not inSubcategoryList %}
+                  </ul>
+                {% endif %}
+                <h3 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-4 subcategory-heading">{{ subcategory }}</h3>
+                <ul class="govuk-list">
+                {% set currentSubcategory = subcategory %}
+                {% set inSubcategoryList = true %}
+              {% endif %}
+              <li>
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/" class="govuk-link">{{ prompt.title }}</a></h4>
+                <p class="govuk-body">{{ prompt.description }}</p>
+              </li>
+              {% if loop.last %}
+                </ul>
+              {% endif %}
+            {% endif %}
+
+
+            {% endfor %}
+
+           <a href="/knowledge-hub/prompts" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6">Explore all prompts</a>
+          </div>
+        {% endif %}
+
+
+      {% set showUseCases = false %}
+      {% for useCase in knowledgeHubUseCases %}
+        {% if useCase.category === capability.title %}
+          {% set showUseCases = true %}
+        {% endif %}
+      {% endfor %}
+      {% if showUseCases %}
+          <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-7 govuk-!-padding-bottom-5">
+              <h2 class="govuk-heading-l">Find AI tools built by other teams</h2>
+              <p class="govuk-body">See examples of custom tools developed across the public sector.</p>
+
+              {% set currentSubcategory = "" %}
+              {% set inSubcategoryList = false %}
+              
+              {% for useCase in knowledgeHubUseCases %}
+                {% if useCase.category === capability.title  %}
+                  {% set subcategory = useCase.subcategory or "General" %}
+
+                  {% if subcategory and subcategory != currentSubcategory %}
+                    {% if inSubcategoryList %}
+                      </ul>
+                    {% elif not inSubcategoryList %}
+                      </ul>
+                    {% endif %}
+                    <h3 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-4 subcategory-heading">{{ subcategory | replace('General tasks', 'General') }}</h3>
+                    <ul class="govuk-list">
+                    {% set currentSubcategory = subcategory %}
+                    {% set inSubcategoryList = true %}
+                  {% endif %}
+                  <li>
+                    <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="/knowledge-hub/tools/{{ useCase.title | slugify }}/" class="govuk-link">{{ useCase.title }}</a></h4>
+                    <p class="govuk-body">{{ useCase.synopsis }}</p>
+                  </li>
+                  {% if loop.last %}
+                    </ul>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+              <a href="/knowledge-hub/tools" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6">Explore all tools</a>
+
+            </div>
+          {% endif %}
+       
+        </div>
+    </div>
+
+</main>
+
+<script type="module" src="/js/lit-components/on-this-page.mjs"></script>
