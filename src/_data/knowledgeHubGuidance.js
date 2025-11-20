@@ -2,43 +2,36 @@ const getData = require("./_shared.js").getData;
 const yaml = require("yaml");
 
 const pageNameToDataNameMap = {
-  'plan-and-run-an-ai-project-a': 'guidance_dev_plan_run_v_a.yaml',
-  'plan-and-run-an-ai-project-b': 'guidance_dev_plan_run_v_b.yaml',
-  'using-ai-assistants-a': 'guidance_dev_v_a.yaml',
-  'using-ai-assistants-b': 'guidance_dev_v_b.yaml',
+  'how-to-use-ai-at-work': 'guidance_dev_v_b.yaml',
   'principles': 'principles.yaml',
   'procurement': 'procurement.yaml',
   'legal': 'legal.yaml',
   'ethics': 'ethics.yaml',
   'ethics-building-ai': 'ethics_building_ai.yaml',
   'understanding-ai': 'understanding_ai.yaml',
-  'building-ai-solutions': 'building_ai_solutions.yaml',
   'security': 'security.yaml',
   'governance': 'governance.yaml',
   'measure-impact': 'measure_impact.yaml',
+  'experiment-with-prompts': 'experiment_with_prompts.yaml',
 }
 
 const pageNameToTitleMap = {
-  'plan-and-run-an-ai-project-a': 'Plan and run an AI project (A)',
-  'plan-and-run-an-ai-project-b': 'Plan and run an AI project (B)',
-  'using-ai-assistants-a': 'Using AI Assistants (A)',
-  'using-ai-assistants-b': 'Using AI Assistants (B)',
+  'how-to-use-ai-at-work': 'How to use AI at work',
   'principles': 'The 10 AI Principles',
   'procurement': 'Buy an AI solution',
   'legal': 'Legal',
   'ethics': 'Using AI ethically and responsibly',
   'ethics-building-ai': 'Building with AI ethically and sustainably',
   'understanding-ai': 'Understanding AI',
-  'building-ai-solutions': 'Building AI Solutions',
   'security': 'Security',
   'governance': 'Governance',
   'measure-impact': 'How to measure impact of an AI project',
+  'experiment-with-prompts': 'Experiment with prompts',
 }
 
 const draftPageNames = [
   'legal',
   'understanding-ai',
-  'building-ai-solutions',
   'security',
   'governance',
 ]
