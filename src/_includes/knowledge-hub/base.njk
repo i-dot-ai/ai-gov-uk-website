@@ -14,11 +14,15 @@
                 {{ useCase.title }} -
             {% elseif prompt.title %}
                 {{ prompt.title }} -
+            {% elseif capability.title %}
+                {{ capability.title }} -
+            {% elseif guidance.title %}
+                {{ guidance.title }} -
             {% endif %}
             AI Knowledge Hub - AI.GOV.UK
         </title>
 
-        <meta property="og:title" content="{% if title %}{{ title }}{% elseif useCase.title %}{{ useCase.title }}{% endif %}">
+        <meta property="og:title" content="{% if title %}{{ title }}{% elseif useCase.title %}{{ useCase.title }}{% elseif prompt.title %}{{ prompt.title }}{% elseif capability.title %}{{ capability.title }}{% elseif guidance.title %}{{ guidance.title }}{% endif %}">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://ai.gov.uk/knowledge-hub/">
         <meta property="og:description" content="Guidance and case studies for teams adopting AI technologies in the UK government">
@@ -26,7 +30,7 @@
         <meta property="og:image" content="https://ai.gov.uk/img/knowledge-hub-banner.png">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@i_dot_ai">
-        <meta name="twitter:title" content="{% if title %}{{ title }}{% elseif useCase.title %}{{ useCase.title }}{% endif %}">
+        <meta name="twitter:title" content="{% if title %}{{ title }}{% elseif useCase.title %}{{ useCase.title }}{% elseif prompt.title %}{{ prompt.title }}{% elseif capability.title %}{{ capability.title }}{% elseif guidance.title %}{{ guidance.title }}{% endif %}">
         <meta name="twitter:description" content="Guidance and case studies for teams adopting AI technologies in the UK government">
         <meta name="twitter:image" content="https://ai.gov.uk/img/knowledge-hub-banner.png">
 
@@ -75,7 +79,7 @@
 
         <a class="govuk-skip-link" data-module="govuk-skip-link" href="#main">Skip to main content</a>
 
-        <iai-header product-name="Knowledge Hub" home-url="/knowledge-hub" nav-items='[{"text": "About", "href": "/knowledge-hub/about"}, {"text": "Tools", "href": "/knowledge-hub/tools"}, {"text": "Prompts", "href": "/knowledge-hub/prompts"}, {"text": "Guidance", "href": "/knowledge-hub/guidance-home"}]'></iai-header>
+        <iai-header product-name="Knowledge Hub" home-url="/knowledge-hub" nav-items='[{"text": "About", "href": "/knowledge-hub/about"}, {"text": "Tools", "href": "/knowledge-hub/tools"}, {"text": "Prompts", "href": "/knowledge-hub/prompts"}, {"text": "How tos", "href": "/knowledge-hub/guidance-home"}]'></iai-header>
 
         {{ content | safe }}
 
