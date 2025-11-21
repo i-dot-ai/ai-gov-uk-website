@@ -35,6 +35,7 @@ module.exports = [
     {% endif %}
   {% endfor %}
   '/knowledge-hub',
+  '/knowledge-hub/about',
   '/knowledge-hub/use-cases',
   {% for useCase in knowledgeHubUseCases %}
     '/knowledge-hub/use-cases/{{ useCase.title | slugify }}',
