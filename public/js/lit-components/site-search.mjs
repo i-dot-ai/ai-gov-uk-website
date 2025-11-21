@@ -79,6 +79,7 @@ const FILTER_PROPERTIES = ['organisation', 'governmentBody', 'userGroup', 'typeO
       const cards = document.querySelectorAll('.kh-card');
       const filteredCountElement = document.querySelector("#filtered-count");
       const activeFiltersElement = document.querySelector("#active-filters");
+      const ariaLiveSearchResults = document.querySelector("#aria-live-search-results");
       let filteredCount = 0;
   
       // Get current filter values from usecase-filters component
@@ -133,6 +134,10 @@ const FILTER_PROPERTIES = ['organisation', 'governmentBody', 'userGroup', 'typeO
         } else {
           filteredCountElement.textContent = filteredCount.toString();
         }
+      }
+
+      if (ariaLiveSearchResults) {
+        ariaLiveSearchResults.textContent = `Showing ${filteredCount} of ${cards.length} results`;
       }
   
       // Update active filters

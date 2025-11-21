@@ -34,13 +34,14 @@ title: Prompt Library
               <label class="govuk-label govuk-label--m" for="search-term">Search</label>
               <input class="govuk-input" id="search-term" name="eventName" type="search" autocomplete="off">
             </div>
+            <p id="aria-live-search-results" class="govuk-visually-hidden" aria-live="polite"></p>
           </site-search>
 
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Filter</h2>
           <usecase-filters class="govuk-!-display-block govuk-!-margin-top-4"></usecase-filters>
 
           <div style="display: flex; justify-content: space-between;">
-            <p class="govuk-body-l govuk-!-margin-0" aria-live="polite">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubPrompts.length }}</strong> prompts<span id="active-filters"></span>. </p>
+            <p class="govuk-body-l govuk-!-margin-0">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubPrompts.length }}</strong> prompts<span id="active-filters"></span>. </p>
             <a href='/knowledge-hub/prompts' class="govuk-link govuk-link--call-to-action">Clear all filters</a>
           </div>
       </div>
