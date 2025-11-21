@@ -14,13 +14,13 @@ for (let pageToTest of pagesToTest) {
     const accessibilityScanResults = await new AxeBuilder({page}).analyze();
     expect(accessibilityScanResults.violations).toEqual([]);
 
-    // Check any links that open in new tab contain "opens in new tab" text
+    // Check any links that open in new tab contain "opens in a new tab" text
     const links = await page.$$('a');
     for (let link of links) {
       const target = await link.getAttribute('target');
       if (target === '_blank') {
         const textContent = await link.textContent();
-        expect(textContent).toContain('opens in new tab');
+        expect(textContent).toContain('opens in a new tab');
       }
     }
 

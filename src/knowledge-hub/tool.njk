@@ -1,0 +1,121 @@
+---
+layout: knowledge-hub/base.njk
+templateEngineOverride: njk
+pagination:
+    data: knowledgeHubUseCases
+    size: 1
+    alias: useCase
+permalink: "knowledge-hub/tools/{{ useCase.title | slugify }}/"
+---
+
+{% set properties = [
+    {name: "Organisation name", value: useCase.organisation},
+    {name: "Government body", value: useCase.governmentBody},
+    {name: "User group", value: useCase.userGroup},
+    {name: "Use case type", value: useCase.useCaseType},
+    {name: "Type of technology", value: useCase.typeOfTechnology},
+    {name: "Phase", value: useCase.phase},
+	{name: "Impact", value: useCase.impact}
+] %}
+
+<div class="govuk-width-container">
+    <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7" data-pagefind-body>
+
+        <dynamic-breadcrumbs category="{{ useCase.category }}" type="use-case"></dynamic-breadcrumbs>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-l govuk-!-display-flex govuk-!-display-flex--align-center" style="flex-wrap: wrap; gap: 15px;">
+                {{ useCase.title }}
+                </h1>
+                <p class="govuk-body-l">{{ useCase.synopsis }} </p>
+                <div class="govuk-!-margin-bottom-5">
+                    <span class="govuk-!-display-flex govuk-!-display-flex--align-center" style="flex-wrap: wrap; gap: 10px;">
+                        {% if useCase.draft %}
+                            <strong class="govuk-tag govuk-tag--pink govuk-!-margin-left-0">Publicly sourced</strong>
+                        {% endif %}
+                    </span>
+                </div>
+
+
+
+                {% if useCase.challenge %}
+                <h2 class="govuk-heading-m">The challenge</h2>
+                <div class="govuk-body">{{ useCase.challenge | markdownToHtml | safe }}</div>
+                {% endif %}
+
+                {% if useCase.solution %}
+                <h2 class="govuk-heading-m">The solution</h2>
+                <div class="govuk-body">{{ useCase.solution | markdownToHtml | safe }}</div>
+                {% endif %}
+
+                {% if useCase.results %}
+                <h2 class="govuk-heading-m">The results</h2>
+                <div class="govuk-body">{{ useCase.results | markdownToHtml | safe }}</div>
+                {% endif %}
+
+                {% if useCase.learnings %}
+                <h2 class="govuk-heading-m">Learnings / insights</h2>
+                <div class="govuk-body">{{ useCase.learnings | markdownToHtml | safe }}</div>
+                {% endif %}
+
+                <h2 class="govuk-heading-m">Details</h2>
+                <dl class="govuk-summary-list govuk-!-margin-bottom-8 govuk-!-margin-top-7">
+                    {% for property in properties %}
+                        {% if property.value %}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">{{ property.name }}</dt>
+                                <dd class="govuk-summary-list__value">{{ property.value }}</dd>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </dl>
+
+                {% if useCase.links %}
+                <h2 class="govuk-heading-m">Links</h2>
+                <ul class="govuk-list">
+                    {% for link in useCase.links %}
+                        <li>
+                            <a class="govuk-link" href="{{ link.url }}">
+                                {{ link.text }}
+                                <span class="govuk-visually-hidden"> ({{ useCase.title }})</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="govuk-grid-column-one-third kh-sticky-sidebar">
+                <h2 class="govuk-heading-m">Get in touch</h2>
+                <p class="govuk-body">Email
+                <a href="mailto:ai-knowledge-hub@dsit.gov.uk" class="govuk-link">
+                    ai-knowledge-hub@dsit.gov.uk
+                </a>
+                to:</p>
+                 <ul class="govuk-list govuk-list--bullet">
+                    <li>find out how to use or collaborate on this tool</li>
+                    {% if useCase.draft %}
+                        <li>review content for this tool</li>
+                    {% endif %}
+                    <li>talk to us about your own tool</li>
+                </ul>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                {% if useCase.created %}
+                    <p class="govuk-body-s govuk-!-margin-bottom-0 govuk-!-margin-top-9">
+                        {% set created = useCase.created | dateFormat('int') %}
+                        {% set updated = useCase.updated | dateFormat('int') %}
+                        Content created: {{ created }}
+                        {% if updated != created %}
+                            | Last updated: {{ updated }}
+                        {% endif %}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+	</main>
+</div>
+
+<script type="module" src="/js/lit-components/dynamic-breadcrumbs.mjs"></script>

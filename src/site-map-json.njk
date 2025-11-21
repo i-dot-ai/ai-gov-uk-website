@@ -35,13 +35,20 @@ module.exports = [
     {% endif %}
   {% endfor %}
   '/knowledge-hub',
-  '/knowledge-hub/use-cases',
+  '/knowledge-hub/about',
+  {% for capability in knowledgeHubCapabilities %}
+    '/knowledge-hub/capability/{{ capability.title | slugify }}',
+  {% endfor %}
+  '/knowledge-hub/tools',
   {% for useCase in knowledgeHubUseCases %}
-    '/knowledge-hub/use-cases/{{ useCase.title | slugify }}',
+    '/knowledge-hub/tools/{{ useCase.title | slugify }}',
   {% endfor %}
   '/knowledge-hub/prompts',
   {% for prompt in knowledgeHubPrompts %}
     '/knowledge-hub/prompts/{{ prompt.title | slugify }}',
   {% endfor %}
-  '/knowledge-hub/guidance',
+  '/knowledge-hub/how-tos',
+  {% for guidance in knowledgeHubGuidance %}
+    '/knowledge-hub/how-to/{{ guidance.slug }}',
+  {% endfor %}
 ];

@@ -10,41 +10,41 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
 
 <main class="govuk-width-container" data-pagefind-body>
 
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">Experimental</strong>
-      <span class="govuk-phase-banner__text">
-        This is an experimental service. Help us improve it and give your feedback by email at <a class="govuk-link" href="mailto:{{ knowledgeHubData.contactEmail }}">{{ knowledgeHubData.contactEmail }}</a>.
-      </span>
-    </p>
-  </div>
-
   <div id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
 
-    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
-      <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link govuk-back-link govuk-!-margin-0" href="/knowledge-hub">Home</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-          <back-link>
-            <a class="govuk-breadcrumbs__link" href="/knowledge-hub/prompts">Prompts</a>
-          </back-link>
-        </li>
-      </ol>
-    </nav>
-
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ prompt.title }}</h1>
-    <p class="govuk-body-l govuk-!-margin-bottom-7 govuk-!-padding-bottom-5" style="border-bottom: 3px solid #0b0c0c;">{{ prompt.description }}</p>
-
-    {# For search results #}
-    <img src="/img/project-logos/logo-knowledge-hub.png" alt="Knowledge Hub" style="display: none;"/>
+    <dynamic-breadcrumbs category="{{ prompt.category }}" type="prompt"></dynamic-breadcrumbs>
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        {% if prompt.use %}
-          <h2 class="govuk-heading-m">How to use this prompt</h2>
-          <div class="govuk-body">{{ prompt.use }}</div>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ prompt.title }}</h1>
+        <p class="govuk-body-l">{{ prompt.description }}</p>
+
+        <div class="govuk-!-margin-bottom-5">
+            <span class="govuk-!-display-flex govuk-!-display-flex--align-center" style="flex-wrap: wrap; gap: 10px;">
+                {% if prompt.verified %}
+                    <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-0">Verified</strong>
+                {% else %}
+                    <strong class="govuk-tag govuk-tag--pink govuk-!-margin-left-0">Unverified</strong>
+                {% endif %}
+            </span>
+        </div>
+
+        {# For search results #}
+        <img src="/img/project-logos/logo-knowledge-hub.png" alt="Knowledge Hub" style="display: none;"/>
+        {% if prompt.content %}
+          <div id="prompt-content">
+            {{ prompt.content | markdownToHtml(true) | safe }}
+          </div>
+        {% else %}
+          {% if prompt.use %}
+            <h2 class="govuk-heading-m">What this prompt does</h2>
+            <div class="govuk-body">{{ prompt.use | markdownToHtml | safe }}</div>
+          {% endif %}
+          {% if prompt.beforeYouStart %}
+            <h2 class="govuk-heading-m">Before you start</h2>
+            <div class="govuk-body">{{ prompt.beforeYouStart | markdownToHtml | safe }}</div>
+          {% endif %}
         {% endif %}
          {% if prompt.feedback %}
           <div class="govuk-notification-banner govuk-!-margin-bottom-5" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -60,7 +60,11 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
         {% endif %}
         <h2 class="govuk-heading-m">The prompt</h2>
         <div class="prompt-text govuk-!-padding-3 govuk-!-margin-bottom-3" id="prompt-0">
-          {{ prompt.prompt | markdownToHtml | safe }}
+          <pre class="govuk-!-margin-0" style="white-space: pre-wrap;">
+            <code>
+            {{ prompt.prompt }}
+            </code>
+          </pre>
         </div>
         <copy-button copy="prompt-0">
           Copy prompt
@@ -82,20 +86,32 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
         {% endif %}
       </div>
 
-      <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-s">Important</h2>
-        <p class="govuk-body-s">The prompts in this <a href="../">library</a> have not been evaluated by i.AI, so you should exercise caution when using them.</p>
-        <p class="govuk-body-s">AI assistants make mistakes, even with good prompts, so always check the results.</p>
-        <p class="govuk-body-s">We're keen to hear about people's experiences of using this prompt. If you have any feedback to share please <a href="mailto:{{ knowledgeHubData.contactEmail }}">contact us</a>.</p>
-      </div>
+      <div class="govuk-grid-column-one-third kh-sticky-sidebar">
+          <h2 class="govuk-heading-m">Resources</h2>
+          <p class="govuk-body">Here are the relevant guidance pages for using prompts:</p>
+
+          <ul class="govuk-list">
+              <li class="kh-light-box govuk-!-padding-3">
+                  <a class="govuk-heading-s govuk-link" href="/knowledge-hub/how-to/how-to-use-ai-at-work">
+                      How to use AI at work
+                  </a>
+                  <p class="govuk-body">What AI can do, when to use it and how to use it responsibly</p>
+              </li>
+              <li class="kh-light-box govuk-!-padding-3">
+                  <a class="govuk-heading-s govuk-link" href="/knowledge-hub/how-to/experiment-with-prompts">
+                      Experiment with prompts
+                  </a>
+                  <p class="govuk-body">Best-practise to create simple and complex prompts.</p>
+              </li>
+          </ul>
+    </div>
 
     </div>
 
   </div>
 </main>
 
-<script type="module" src="/js/lit-components/back-link.mjs"></script>
-
+<script type="module" src="/js/lit-components/dynamic-breadcrumbs.mjs"></script>
 <script>
   window.addEventListener('load', () => {
     let copyButton = document.querySelector('.copy-button');

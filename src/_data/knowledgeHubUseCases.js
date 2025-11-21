@@ -37,12 +37,53 @@ module.exports = async () => {
   });
 
   const sortedUseCases = useCases.sort((a, b) => {
+    const categoryA = (a.category || "").toLowerCase();
+    const categoryB = (b.category || "").toLowerCase();
+
+    // First, sort by category
+    if (categoryA !== categoryB) {
+      if (!categoryA) {
+        return 1;
+      }
+      if (!categoryB) {
+        return -1;
+      }
+      return categoryA.localeCompare(categoryB);
+    }
+
+    // Within the same category, general subcategories come first
+    const subcategoryA = (a.subcategory || "");
+    const subcategoryB = (b.subcategory || "");
+    
+    if (subcategoryA.includes('General') && !subcategoryB.includes('General')) {
+      return -1;
+    }
+    if (!subcategoryA.includes('General') && subcategoryB.includes('General')) {
+      return 1;
+    }
+
+    // If both have subcategories, sort by subcategory
+    if (subcategoryA && subcategoryB && subcategoryA !== subcategoryB) {
+      return subcategoryA.localeCompare(subcategoryB);
+    }
+
+    // Within the same category and subcategory (or both without subcategory), sort by draft status
     if (a.draft && !b.draft) {
       return 1;
     } else if (b.draft && !a.draft) {
       return -1;
     }
-    return (b.updated || b.created) - (a.updated || a.created);
+
+    // Then by date
+    const dateA = a.updated || a.created || 0;
+    const dateB = b.updated || b.created || 0;
+
+    if (dateA !== dateB) {
+      return dateB - dateA;
+    }
+
+    // Finally by title
+    return (a.title || "").localeCompare(b.title || "");
   });
 
   cache = sortedUseCases;
