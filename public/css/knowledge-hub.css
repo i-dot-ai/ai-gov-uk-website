@@ -245,3 +245,7 @@
     max-height: unset !important;
   }
 }
+
+.govuk-table {
+  table-layout: fixed;
+}
