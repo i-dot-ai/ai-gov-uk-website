@@ -5,7 +5,7 @@ pagination:
     data: knowledgeHubGuidance
     size: 1
     alias: guidance
-permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
+permalink: "knowledge-hub/how-to/{{ guidance.slug }}/"
 ---
 
   <div class="govuk-width-container">
@@ -17,7 +17,7 @@ permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
             <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub">Home</a>
           </li>
           <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub/guidance-home">Guidance</a>
+            <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub/how-tos">How-tos and resources</a>
           </li>
         </ol>
       </nav>
@@ -27,11 +27,11 @@ permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
           <h1 class="govuk-heading-xl">{{ guidance.title }} {% if guidance.isDraftVersion %}(to be updated){% endif %}</h1>
           {% if guidance.isDraftVersion %}
             <p class="govuk-body">
-              This information is taken from the 
+              This information complements and updates the 
             <a href="https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government" class="govuk-link"> 
               AI Playbook for the UK Government
             </a>
-              and reflects the latest guidance and best practice. This will be updated as needed.</p>
+              . It reflects the latest guidance and best practice. This will be updated as needed.</p>
           {% endif %}
 
         </div>
