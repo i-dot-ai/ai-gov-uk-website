@@ -13,7 +13,6 @@
   const SendFeedback = class extends LitElement {
     createRenderRoot() {
         this.innerHTML = "";
-        this.showForm = false;
         this.baseGoogleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSf3DRMLYPKH-bzxqsqXvYFYmV052srpNUSOrcaLl5jyKUxxuA/viewform?usp=pp_url&entry.1713974245=No";
         this.pageURLID = "entry.1049646843";
         this.whatDidYouNeedID = "entry.1409682040";
