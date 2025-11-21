@@ -229,3 +229,19 @@
   padding: 10px;
 }
 
+/* Prevent overlap of nav and logo on tablet */
+
+@media (min-width: 769px) {
+  .govuk-header__logo,
+  .govuk-header__content {
+    width: auto !important;
+  }
+
+  .govuk-header__content {
+    float: right !important;
+  }
+
+  .govuk-header__navigation-list {
+    max-height: unset !important;
+  }
+}
