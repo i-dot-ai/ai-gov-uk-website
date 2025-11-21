@@ -36,6 +36,9 @@ module.exports = [
   {% endfor %}
   '/knowledge-hub',
   '/knowledge-hub/about',
+  {% for capability in knowledgeHubCapabilities %}
+    '/knowledge-hub/capability/{{ capability.title | slugify }}',
+  {% endfor %}
   '/knowledge-hub/tools',
   {% for useCase in knowledgeHubUseCases %}
     '/knowledge-hub/tools/{{ useCase.title | slugify }}',

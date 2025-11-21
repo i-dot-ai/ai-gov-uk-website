@@ -20,6 +20,15 @@ templateEngineOverride: njk
         <a class="govuk-link" href="/knowledge-hub/about">About</a>
       </li>
       <li class="govuk-!-margin-top-2">
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          {% for capability in knowledgeHubCapabilities %}
+            <li class="govuk-!-margin-top-2">
+              <a class="govuk-link" href="/knowledge-hub/capability/{{ capability.title | slugify }}">{{ capability.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="govuk-!-margin-top-2">
         <a class="govuk-link" href="/knowledge-hub/tools">Tools</a>
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
           {% for useCase in knowledgeHubUseCases %}
