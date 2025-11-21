@@ -57,27 +57,20 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
               {% if subcategory and subcategory != currentSubcategory %}
                 {% if inSubcategoryList %}
                   </ul>
-                {% elif not inSubcategoryList %}
-                  </ul>
                 {% endif %}
-                <h3 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-4 subcategory-heading">{{ subcategory }}</h3>
+                <h3 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-4 subcategory-heading">{{ subcategory | replace('General tasks', 'General') }}</h3>
                 <ul class="govuk-list">
                 {% set currentSubcategory = subcategory %}
                 {% set inSubcategoryList = true %}
+                {% endif %}
+                <li>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/" class="govuk-link">{{ prompt.title }}</a></h4>
+                  <p class="govuk-body">{{ prompt.description }}</p>
+                </li>
               {% endif %}
-              <li>
-                <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/" class="govuk-link">{{ prompt.title }}</a></h4>
-                <p class="govuk-body">{{ prompt.description }}</p>
-              </li>
-              {% if loop.last %}
-                </ul>
-              {% endif %}
-            {% endif %}
-
-
             {% endfor %}
-
-           <a href="/knowledge-hub/prompts" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6">Explore all prompts</a>
+            </ul>
+            <a href="/knowledge-hub/prompts" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6">Explore all prompts</a>
           </div>
         {% endif %}
 
@@ -103,8 +96,6 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
                   {% if subcategory and subcategory != currentSubcategory %}
                     {% if inSubcategoryList %}
                       </ul>
-                    {% elif not inSubcategoryList %}
-                      </ul>
                     {% endif %}
                     <h3 class="govuk-heading-m govuk-!-margin-top-6 govuk-!-margin-bottom-4 subcategory-heading">{{ subcategory | replace('General tasks', 'General') }}</h3>
                     <ul class="govuk-list">
@@ -115,11 +106,9 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
                     <h4 class="govuk-heading-s govuk-!-margin-bottom-1"><a href="/knowledge-hub/tools/{{ useCase.title | slugify }}/" class="govuk-link">{{ useCase.title }}</a></h4>
                     <p class="govuk-body">{{ useCase.synopsis }}</p>
                   </li>
-                  {% if loop.last %}
-                    </ul>
-                  {% endif %}
                 {% endif %}
               {% endfor %}
+              </ul>
               <a href="/knowledge-hub/tools" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6">Explore all tools</a>
 
             </div>
