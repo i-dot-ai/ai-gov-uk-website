@@ -17,7 +17,7 @@ permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
             <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub">Home</a>
           </li>
           <li class="govuk-breadcrumbs__list-item">
-            <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub/guidance-home">Case studies</a>
+            <a class="govuk-breadcrumbs__link govuk-!-margin-0" href="/knowledge-hub/guidance-home">Guidance</a>
           </li>
         </ol>
       </nav>
@@ -35,14 +35,11 @@ permalink: "knowledge-hub/guidance/{{ guidance.slug }}/"
           {% endif %}
 
         </div>
-        <div class="govuk-grid-column-one-third">
-          <a href="#" class="govuk-link govuk-!-text-align-right">Give feedback about this page</a>
-        </div>
       </div>
 
       <div class="govuk-grid-row">
           {% if guidance.slug !== 'principles' %}
-            <div class="govuk-grid-column-one-third kh-sticky-sidebar">
+            <div class="govuk-grid-column-one-third kh-sticky-sidebar kh-sticky-sidebar--with-back-to-top">
               <on-this-page sidebar></on-this-page>
               {% include "back-to-top-link.njk" %}
             </div>

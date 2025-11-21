@@ -46,6 +46,6 @@ module.exports = [
   {% endfor %}
   '/knowledge-hub/guidance-home',
   {% for guidance in knowledgeHubGuidance %}
-    '/knowledge-hub/guidance/{{ guidance.title | slugify }}',
+    '/knowledge-hub/guidance/{{ guidance.slug }}',
   {% endfor %}
 ];
