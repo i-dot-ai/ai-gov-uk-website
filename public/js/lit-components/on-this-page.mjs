@@ -37,6 +37,12 @@
         this.className = 'kh-sticky-sidebar__nav';
       }
       this.updateHeadings();
+
+      if (this.sidebar) {
+        this.className = 'kh-sticky-sidebar__nav';
+      }
+
+      this.updateHeadings();
     }
 
     render() {
