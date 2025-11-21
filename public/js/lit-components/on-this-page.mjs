@@ -32,7 +32,6 @@
 
     connectedCallback() {
       super.connectedCallback();
-      this.updateHeadings();
 
       if (this.sidebar) {
         this.className = 'kh-sticky-sidebar__nav';
