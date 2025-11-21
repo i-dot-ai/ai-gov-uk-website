@@ -32,39 +32,53 @@
         return html`
             <div class="kh-send-feedback govuk-!-margin-top-6 govuk-!-margin-bottom-2" id="kh-send-feedback">
                 <h2 class="govuk-heading-m govuk-!-display-inline-block govuk-!-margin-right-2">Did this page help you?</h2>
-                <button class="govuk-button govuk-!-margin-right-2" @click=${this.#handleYes}>Yes</button>
-                <button class="govuk-button" @click=${this.#handleNo}>No</button>
+                <ul class="govuk-list govuk-!-display-inline">
+                    <li class="govuk-!-display-inline-block"><button class="govuk-button govuk-!-margin-right-2" aria-controls="kh-send-feedback-thank-you" @click=${this.#handleYes}>Yes</button></li>
+                    <li class="govuk-!-display-inline-block"><button class="govuk-button" id="kh-send-feedback-no" aria-expanded="false" aria-controls="kh-send-feedback-form" @click=${this.#handleNo}>No</button></li>
+                </ul>
 
-                <form class="govuk-!-margin-top-2 hidden" @input=${this.#handleChange}>
+                <form class="govuk-!-margin-top-2 hidden" @input=${this.#handleChange} id="kh-send-feedback-form" hidden>
                     <label class="govuk-label" for="what-did-you-need">What did you need?</label>
                     <textarea class="govuk-textarea" id="what-did-you-need"></textarea>
                     <label class="govuk-label" for="what-was-missing-or-confusing">What was missing or confusing?</label>
                     <textarea class="govuk-textarea" id="what-was-missing-or-confusing"></textarea>
                     <a href="${this.fullURL}" 
                         class="govuk-button govuk-!-margin-right-2 kh-send-feedback-form-link">
-                        Submit feedback on Google Forms</a>
+                        Submit feedback on Google Forms
                     </a>
-                    <button class="govuk-button govuk-button--secondary" @click=${this.#handleCancel}>Cancel</button>
+                    <button type="button" class="govuk-button govuk-button--secondary" @click=${this.#handleCancel}>Cancel</button>
                 </form>
+
             </div>
-            <div class="kh-send-feedback-thank-you govuk-!-margin-top-6 govuk-!-margin-bottom-2 hidden">
+            <div class="kh-send-feedback-thank-you govuk-!-margin-top-6 govuk-!-margin-bottom-2 hidden" id="kh-send-feedback-thank-you" hidden>
                 <h2 class="govuk-heading-m">Thank you for your feedback</h2>
             </div>
         `;
     }
 
     #handleYes() {
-        this.querySelector('.kh-send-feedback').classList.add('hidden');
-        this.querySelector('.kh-send-feedback-thank-you').classList.remove('hidden');
+        const sendFeedback = this.querySelector('.kh-send-feedback');
+        sendFeedback.classList.add('hidden');
+        sendFeedback.setAttribute('hidden', '');
+        
+        const sendFeedbackThankYou = this.querySelector('.kh-send-feedback-thank-you');
+        sendFeedbackThankYou.classList.remove('hidden');
+        sendFeedbackThankYou.removeAttribute('hidden');
     }
     #handleCancel() {
-        this.querySelector('form').classList.add('hidden');
-        this.querySelector('.kh-send-feedback').classList.remove('hidden');
-        this.querySelector('.kh-send-feedback-thank-you').classList.add('hidden');
+        const sendFeedbackForm = this.querySelector('#kh-send-feedback-form');
+        sendFeedbackForm.classList.add('hidden');
+        sendFeedbackForm.setAttribute('hidden', '');
+
+        this.querySelector('#kh-send-feedback-no').setAttribute('aria-expanded', 'false');
     }
 
     #handleNo() {
-        this.querySelector('form').classList.remove('hidden');
+        const sendFeedbackForm = this.querySelector('#kh-send-feedback-form');
+        sendFeedbackForm.classList.remove('hidden');
+        sendFeedbackForm.removeAttribute('hidden');
+
+        this.querySelector('#kh-send-feedback-no').setAttribute('aria-expanded', 'true');
     }
     #handleChange(e) {
         const target = e.target.id;
