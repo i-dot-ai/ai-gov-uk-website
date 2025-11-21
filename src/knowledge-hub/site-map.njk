@@ -50,11 +50,11 @@ templateEngineOverride: njk
         </ul>
       </li>
       <li class="govuk-!-margin-top-2">
-        <a class="govuk-link" href="/knowledge-hub/guidance-home">Guidance</a>
+        <a class="govuk-link" href="/knowledge-hub/how-tos">How-tos and resources</a>
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
           {% for guidance in knowledgeHubGuidance %}
             <li class="govuk-!-margin-top-2">
-              <a class="govuk-link" href="/knowledge-hub/guidance/{{ guidance.slug }}">{{ guidance.title }}</a>
+              <a class="govuk-link" href="/knowledge-hub/how-to/{{ guidance.slug }}">{{ guidance.title }}</a>
             </li>
           {% endfor %}
         </ul>
