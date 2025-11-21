@@ -20,17 +20,17 @@ templateEngineOverride: njk
         <a class="govuk-link" href="/knowledge-hub/about">About</a>
       </li>
       <li class="govuk-!-margin-top-2">
-        <a class="govuk-link" href="/knowledge-hub/use-cases">Use cases</a>
+        <a class="govuk-link" href="/knowledge-hub/tools">Tools</a>
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
           {% for useCase in knowledgeHubUseCases %}
             <li class="govuk-!-margin-top-2">
-              <a class="govuk-link" href="/knowledge-hub/use-cases/{{ useCase.title | slugify }}">{{ useCase.title }}</a>
+              <a class="govuk-link" href="/knowledge-hub/tools/{{ useCase.title | slugify }}">{{ useCase.title }}</a>
             </li>
           {% endfor %}
         </ul>
       </li>
       <li class="govuk-!-margin-top-2">
-        <a class="govuk-link" href="/knowledge-hub/prompts">Prompt Library</a>
+        <a class="govuk-link" href="/knowledge-hub/prompts">Prompts</a>
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
           {% for prompt in knowledgeHubPrompts %}
             <li class="govuk-!-margin-top-2">

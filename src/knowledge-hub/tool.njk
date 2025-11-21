@@ -5,7 +5,7 @@ pagination:
     data: knowledgeHubUseCases
     size: 1
     alias: useCase
-permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
+permalink: "knowledge-hub/tools/{{ useCase.title | slugify }}/"
 ---
 
 {% set properties = [
@@ -21,24 +21,14 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
 <div class="govuk-width-container">
     <main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7" data-pagefind-body>
 
-        <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
-            <ol class="govuk-breadcrumbs__list">
-                <li class="govuk-breadcrumbs__list-item">
-                    <a class="govuk-breadcrumbs__link" href="/knowledge-hub">Home</a>
-                </li>
-                <li class="govuk-breadcrumbs__list-item">
-                    <back-link>
-                        <a class="govuk-breadcrumbs__link" href="/knowledge-hub/use-cases">Use cases</a>
-                    </back-link>
-                </li>
-            </ol>
-        </nav>
+        <dynamic-breadcrumbs category="{{ useCase.category }}" type="use-case"></dynamic-breadcrumbs>
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                 <h1 class="govuk-heading-l govuk-!-display-flex govuk-!-display-flex--align-center" style="flex-wrap: wrap; gap: 15px;">
-                {{ useCase.synopsis }}
+                {{ useCase.title }}
                 </h1>
+                <p class="govuk-body-l">{{ useCase.synopsis }} </p>
                 <div class="govuk-!-margin-bottom-5">
                     <span class="govuk-!-display-flex govuk-!-display-flex--align-center" style="flex-wrap: wrap; gap: 10px;">
                         {% if useCase.draft %}
@@ -46,8 +36,6 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
                         {% endif %}
                     </span>
                 </div>
-
-                <p class="govuk-body-l">{{ useCase.title }} - (Update to longer synopsis format) {{ useCase.synopsis }} </p>
 
 
 
@@ -98,21 +86,18 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
                 {% endif %}
             </div>
             <div class="govuk-grid-column-one-third kh-sticky-sidebar">
-                <!-- TODO: update contact link to send email straight to the knowledge hub team -->
-                <a href="mailto:ai-knowledge-hub@dsit.gov.uk" class="govuk-link govuk-link--call-to-action govuk-!-text-align-centre">
-                    Contact the Knowledge Hub team about this use case
+                <h2 class="govuk-heading-m">Get in touch</h2>
+                <p class="govuk-body">Email
+                <a href="mailto:ai-knowledge-hub@dsit.gov.uk" class="govuk-link">
+                    ai-knowledge-hub@dsit.gov.uk
                 </a>
-
-                <h2 class="govuk-heading-m govuk-!-margin-top-5" id="implementation">Implementation</h2>
-                <p class="govuk-body">Here are the relevant guidance pages for using or implementing this use case.</p>
-
-                <ul class="govuk-list">
-                    <li class="kh-light-box govuk-!-padding-3">
-                        <a class="govuk-heading-s govuk-link" href="/knowledge-hub/guidance/using-ai-assistants-a">
-                            Using AI Assistants
-                        </a>
-                        <p class="govuk-body">How to use AI Assistants to help you with your work.</p>
-                    </li>
+                to:</p>
+                 <ul class="govuk-list govuk-list--bullet">
+                    <li>find out how to use or collaborate on this tool</li>
+                    {% if useCase.draft %}
+                        <li>review content for this tool</li>
+                    {% endif %}
+                    <li>talk to us about your own tool</li>
                 </ul>
             </div>
         </div>
@@ -133,4 +118,4 @@ permalink: "knowledge-hub/use-cases/{{ useCase.title | slugify }}/"
 	</main>
 </div>
 
-<script type="module" src="/js/lit-components/back-link.mjs"></script>
+<script type="module" src="/js/lit-components/dynamic-breadcrumbs.mjs"></script>

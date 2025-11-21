@@ -1,0 +1,114 @@
+---
+layout: knowledge-hub/base.njk
+templateEngineOverride: njk
+title: Tools
+---
+
+{% set properties = [
+  {name: "Organisation", property: "organisation"},
+  {name: "Government body", property: "governmentBody"},
+  {name: "User group", property: "userGroup"},
+  {name: "Type of technology", property: "typeOfTechnology"},
+  {name: "Impact", property: "impact"}
+] %}
+
+<main id="main" class="govuk-main-wrapper govuk-!-padding-bottom-9 govuk-!-padding-top-7">
+  <div class="govuk-width-container">
+
+    <nav class="govuk-breadcrumbs govuk-!-margin-top-0 govuk-!-margin-bottom-5" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link govuk-back-link govuk-!-margin-0" href="/knowledge-hub">Home</a>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-7 govuk-!-padding-bottom-5">Tool library</h1>
+        <p class="govuk-body-l">Discover how AI is making a difference across the public sector. These tools showcase projects that are already delivering impact.</p>
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" style="background-color: var(--iai-pink); border-color: var(--iai-pink);" aria-hidden="true">!</span> 
+          <strong class="govuk-warning-text__text">
+            Please note: Information reflects a specific point in time and may be outdated. Where third-party tools are mentioned, this does not imply endorsement. Please carry out your own due diligence before use.
+          </strong>
+          </div>
+      </div>
+      <div class="govuk-grid-column-full govuk-!-margin-bottom-7">
+          <site-search>
+            <div class="govuk-form-group">
+              <input type="hidden" name="type" id="search-type" value="tools">
+              <label class="govuk-label govuk-label--m" for="search-term">Search</label>
+              <input class="govuk-input" id="search-term" name="eventName" type="search" autocomplete="off">
+            </div>
+          </site-search>
+
+              
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Filter</h2>
+          <usecase-filters class="govuk-!-display-block govuk-!-margin-top-4"></usecase-filters>
+
+        <div style="display: flex; justify-content: space-between;">
+          <p class="govuk-body-l govuk-!-margin-0">Showing <strong id="filtered-count">all</strong> of <strong>{{ knowledgeHubUseCases.length }}</strong> tools<span id="active-filters"></span>. </p>
+          <a href='/knowledge-hub/tools?filterBy=governmentBody' class="govuk-link govuk-link--call-to-action">Clear all filters</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="kh-centre-section">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row govuk-!-padding-top-9">
+
+        <div class="govuk-grid-column-full">
+          <ul class="govuk-list kh-light-box__container">
+          {% for useCase in knowledgeHubUseCases %}
+
+            <li
+              class="kh-card kh-light-box govuk-!-padding-5" 
+              data-card-type="use-case"
+              data-category="{{ useCase.category }}"
+              data-subcategory="{{ useCase.subcategory }}"
+              data-organisation="{{ useCase.organisation }}"
+              data-government-body="{{ useCase.governmentBody }}"
+              data-user-group="{{ useCase.userGroup }}"
+              data-type-of-technology="{{ useCase.typeOfTechnology }}"
+              data-impact="{{ useCase.impact }}"
+            >
+                  <h3 class="govuk-heading-m">
+                      <a href="/knowledge-hub/tools/{{ useCase.title | slugify }}/?directTo=library" class="govuk-link">{{ useCase.title }}</a>
+                  </h3>
+                    <p class="govuk-body">{{ useCase.synopsis }}</p>
+                    <ul class="govuk-!-padding-0">
+                      {% if useCase.openSource === true %}
+                      <li class="govuk-summary-card__action govuk-!-padding-0" style="border: 0;">
+                        <strong class="govuk-tag" style="font-size: 1rem;">Open source</strong>
+                      </li>
+                      {% endif %}
+                    {% if useCase.phase %}
+                        <li class="govuk-summary-card__action govuk-!-padding-0" style="border: 0;">
+                          <strong class="govuk-tag govuk-tag--pink" style="font-size: 1rem;">{{ useCase.phase }}</strong>
+                        </li>
+                    {% endif %}
+                    </ul>
+              </li>
+              {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="module" src="/js/lit-components/usecase-filters.mjs"></script>
+<script type="module" src="/js/lit-components/site-search.mjs"></script>
+
+
+{# Temporary - so all options display for this field (for demos) #}
+<div style="display: none;">
+  <div data-category="governmentBody">UK Government</div>
+  <div data-category="governmentBody">Local Government</div>
+  <div data-category="governmentBody">Welsh Government</div>
+  <div data-category="governmentBody">Scottish Government</div>
+  <div data-category="governmentBody">Northern Ireland Executive</div>
+</div>

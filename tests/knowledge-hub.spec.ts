@@ -4,21 +4,19 @@ import { test, expect } from '@playwright/test';
 
 test('Knowledge Hub - Usecases filters', async ({ page }) => {
 
-  await page.goto('/knowledge-hub/use-cases');
-  
-  await page.locator('summary:has-text("Filter")').click();
+  await page.goto('/knowledge-hub/tools');
 
-  const impactCount = await page.evaluate(() => {
-    const impacts = [...document.querySelectorAll('[data-card-type="use-case"]')].map((item) => {
-      return item.getAttribute('data-impact');
+  const categoryCount = await page.evaluate(() => {
+    const categories = [...document.querySelectorAll('.kh-card')].map((item) => {
+      return item.getAttribute('data-category');
     });
-    const costSavingsCount = impacts.filter((impact) => impact?.includes('Cost Savings'));
-    return costSavingsCount.length;
+    const analyseDataAndTextCount = categories.filter((category) => category?.includes('Analyse data and text'));
+    return analyseDataAndTextCount.length;
   });
 
-  await page.getByLabel('Impact').selectOption('Cost Savings');
-  expect(await page.locator('#filtered-count').innerText()).toEqual(impactCount.toString());
-  await page.getByLabel('Impact').selectOption('');
+  await page.getByLabel('Task', { exact: true }).selectOption('Analyse data and text');
+  expect(await page.locator('#filtered-count').innerText()).toEqual(categoryCount.toString());
+  await page.getByLabel('Task', { exact: true }).selectOption('');
   expect(await page.locator('#filtered-count').innerText()).toEqual('all');
 
 });

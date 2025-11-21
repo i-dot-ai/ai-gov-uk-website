@@ -1,7 +1,5 @@
 // @ts-check
 
-import { filterCategoryHeadings } from "../filter-categories.js";
-
 (async () => {
 
   let LitElement, html;
@@ -16,11 +14,11 @@ import { filterCategoryHeadings } from "../filter-categories.js";
   const UsecaseFilters = class extends LitElement {
     
     static properties = {
+      category: {type: Array, state: true },
+      subcategory: {type: Array, state: true },
       organisation: { type: Array, state: true },
       governmentBody: {type: Array, state: true },
-      userGroup: { type: Array, state: true },
-      typeOfTechnology: { type: Array, state: true },
-      impact: { type: Array, state: true },
+      profession: {type: Array, state: true },
     };
 
     createRenderRoot() {
@@ -42,7 +40,7 @@ import { filterCategoryHeadings } from "../filter-categories.js";
       Object.keys(UsecaseFilters.properties).forEach((property) => {
         // Convert camelCase to kebab-case for data attributes
         const dataAttr = property.replace(/([A-Z])/g, '-$1').toLowerCase();
-        const cards = document.querySelectorAll('[data-card-type="use-case"]');
+        const cards = document.querySelectorAll('.kh-card');
 
         cards.forEach((card) => {
           const value = card.getAttribute(`data-${dataAttr}`);
@@ -83,8 +81,10 @@ import { filterCategoryHeadings } from "../filter-categories.js";
       const getQueryParams = () => {
         Object.keys(UsecaseFilters.properties).forEach((property) => {
           const value = new URL(window.location.href).searchParams.get(property);
-          if (value) {
-            this.querySelector(`#${property}`).value = value || "";
+          const select = this.querySelector(`#${property}`);
+
+          if (value && select) {
+            select.value = value;
           }
         });
         this.applyFilters();
@@ -94,36 +94,49 @@ import { filterCategoryHeadings } from "../filter-categories.js";
     }
 
     render() {
+
+      const propertyToLabelMap ={
+        category: "Task",
+        subcategory: "Subtask",
+        organisation: "Organisation",
+        governmentBody: "Government body",
+        profession: "Function",
+      }
       return html`
-        <div class="govuk-grid-row" style="margin-bottom: -20px;">
-          ${Object.keys(UsecaseFilters.properties).map((property) => html`
-            <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-large-desktop">
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${property.replace(/([A-Z])/g, ' $1').trim()}</label>            
-                <select @change=${this.applyFilters} class="govuk-select" id="${property}">
-                  <option value="">All</option>
-                  ${this[property].map((value) => html`
-                    <option value="${value}">${value}</option>
-                  `)}
-                </select>
+        <div class="govuk-grid-row">
+          ${Object.keys(UsecaseFilters.properties).map((property) => {
+            if (this[property].length > 0) {
+              return html`
+              <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-large-desktop">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${propertyToLabelMap[property]}</label>            
+                  <select @change=${() => this.applyFilters(property === 'category')} class="govuk-select" id="${property}" ?disabled=${property === 'subcategory'} style="width: 100%;">
+                    <option value="">All</option>
+                    ${this[property].map((value) => html`
+                      <option value="${value}">${value}</option>
+                    `)}
+                  </select>
+                </div>
               </div>
-            </div>
-          `)}
+            `} else {
+              return null;
+            }})}
         </div>
       `;
     }
 
-    applyFilters() {
+    
+    applyFilters(isCategory = false) {
 
       const url = new URL(window.location.href);
       Object.keys(UsecaseFilters.properties).map((property) => {
-        let value = this.querySelector(`#${property}`).value;
+        let value = this.querySelector(`#${property}`)?.value;
         url.searchParams.set(property, value);
       });
       window.history.pushState({}, '', url);
 
       /** @type {NodeListOf<HTMLElement>} */
-      const cards = document.querySelectorAll('[data-card-type="use-case"]');
+      const cards = document.querySelectorAll('.kh-card');
       const filteredCountElement = document.querySelector("#filtered-count");
       const activeFiltersElement = document.querySelector("#active-filters");
       let filteredCount = 0;
@@ -164,7 +177,41 @@ import { filterCategoryHeadings } from "../filter-categories.js";
 
       });
 
-      filterCategoryHeadings();
+      // Handle subcategory filter
+      /** @type {HTMLSelectElement | null} */
+      const subcategorySelect = document.querySelector('#subcategory');
+      /** @type {HTMLSelectElement | null} */
+      const categorySelect = document.querySelector('#category');
+
+      if (subcategorySelect) {
+        if (categorySelect?.value === '') {
+          subcategorySelect.disabled = true;
+          subcategorySelect.value = '';
+        } else if (categorySelect?.value && categorySelect?.value !== 'All') {
+          subcategorySelect.disabled = false;
+
+          const newSubcategoryOptions = [];
+
+          const visibleCards = Array.from(cards).filter((card) => card.getAttribute(`data-category`) === categorySelect.value);
+
+          visibleCards.forEach((card) => {
+            const value = card.getAttribute(`data-subcategory`);
+            if (value && !newSubcategoryOptions.includes(value)) {
+              newSubcategoryOptions.push(value);
+          }});
+          this['subcategory'] = newSubcategoryOptions;
+
+          if (newSubcategoryOptions.length === 1) {
+            subcategorySelect.value = '';
+            subcategorySelect.disabled = true;
+          }
+        }
+      }
+
+      if (isCategory && subcategorySelect) {
+        subcategorySelect.value = '';
+      }
+
 
       // show how many cards are visible
       if (!filteredCountElement) {
