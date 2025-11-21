@@ -33,6 +33,12 @@
     connectedCallback() {
       super.connectedCallback();
       this.updateHeadings();
+
+      if (this.sidebar) {
+        this.className = 'kh-sticky-sidebar__nav';
+      }
+
+      this.updateHeadings();
     }
 
     render() {
@@ -40,6 +46,7 @@
         ${this.headings.length ? html`
           ${this.sidebar ? html`
               <nav class="govuk-!-margin-bottom-6 kh-sticky-sidebar__nav">
+              <nav class="govuk-!-margin-bottom-6">
                 <h2 class="govuk-heading-s govuk-!-font-weight-regular kh-sticky-sidebar__nav-title">Contents</h2>
                   <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0 kh-sticky-sidebar__nav-list">
                     ${this.headings.map((heading) => html`
