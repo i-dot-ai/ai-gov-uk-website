@@ -16,17 +16,17 @@ const pageNameToDataNameMap = {
 }
 
 const pageNameToTitleMap = {
-  'how-to-use-ai-at-work': 'How to use AI at work',
+  'how-to-use-ai-at-work': 'How to use AI at work (draft)',
   'principles': 'The 10 AI Principles',
-  'procurement': 'Buy an AI solution',
+  'procurement': 'Understand procurement and partnerships for AI solutions (draft)',
   'legal': 'Legal',
-  'ethics': 'Using AI ethically and responsibly',
-  'ethics-building-ai': 'Building with AI ethically and sustainably',
+  'ethics': 'Using AI ethically and responsibly (draft)',
+  'ethics-building-ai': 'Building with AI ethically and sustainably (draft)',
   'understanding-ai': 'Understanding AI',
   'security': 'Security',
   'governance': 'Governance',
-  'measure-impact': 'How to measure impact of an AI project',
-  'experiment-with-prompts': 'Experiment with prompts',
+  'measure-impact': 'How to measure impact of an AI project (draft)',
+  'experiment-with-prompts': 'Experiment with prompts (draft)',
 }
 
 const draftPageNames = [
