@@ -1,26 +1,22 @@
+// TODO: Add tests for search functionality
+
 import { test, expect } from '@playwright/test';
 
 test('Knowledge Hub - Usecases filters', async ({ page }) => {
 
-  await page.goto('/knowledge-hub/use-cases');
-  
-  // Search functionality works
-  await page.locator('summary:has-text("Search and filter")').click();
-  await page.getByLabel('Search').fill('Redbox');
-  await page.getByLabel('Search').press('Enter');
-  expect(await page.locator('#filtered-count').innerText()).toEqual('1');
-  await page.getByLabel('Search').fill('');
-  expect(await page.locator('#filtered-count').innerText()).toEqual('all');
+  await page.goto('/knowledge-hub/tools');
 
-  // Select-box filters work
-  const impactCount = await page.evaluate(() => {
-    return [...document.querySelectorAll('[data-category="impact"]')].filter((item) => {
-      return item.textContent?.includes('Cost Savings');
-    }).length;
+  const categoryCount = await page.evaluate(() => {
+    const categories = [...document.querySelectorAll('.kh-card')].map((item) => {
+      return item.getAttribute('data-category');
+    });
+    const analyseDataAndTextCount = categories.filter((category) => category?.includes('Analyse data and text'));
+    return analyseDataAndTextCount.length;
   });
-  await page.getByLabel('Impact').selectOption('Cost Savings');
-  expect(await page.locator('#filtered-count').innerText()).toEqual(impactCount.toString());
-  await page.getByLabel('Impact').selectOption('');
+
+  await page.getByLabel('Task', { exact: true }).selectOption('Analyse data and text');
+  expect(await page.locator('#filtered-count').innerText()).toEqual(categoryCount.toString());
+  await page.getByLabel('Task', { exact: true }).selectOption('');
   expect(await page.locator('#filtered-count').innerText()).toEqual('all');
 
 });

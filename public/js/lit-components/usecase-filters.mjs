@@ -14,11 +14,11 @@
   const UsecaseFilters = class extends LitElement {
     
     static properties = {
+      category: {type: Array, state: true },
+      subcategory: {type: Array, state: true },
       organisation: { type: Array, state: true },
       governmentBody: {type: Array, state: true },
-      userGroup: { type: Array, state: true },
-      typeOfTechnology: { type: Array, state: true },
-      impact: { type: Array, state: true },
+      profession: {type: Array, state: true },
     };
 
     createRenderRoot() {
@@ -38,16 +38,21 @@
       super.connectedCallback();
       // get options to filter from each use case
       Object.keys(UsecaseFilters.properties).forEach((property) => {
-        const elements = document.querySelectorAll(`[data-category="${property}"]`);
-        elements.forEach((element) => {
-          // allow for multiple entries using /
-          let itemsArray = element.textContent?.split(/[/;]+/);
-          itemsArray?.forEach((item) => {
-            let itemStr = item.trim().trimStart();
-            if ( itemStr && !this[property].includes(itemStr) ) {
-              this[property].push(itemStr);
-            }
-          });
+        // Convert camelCase to kebab-case for data attributes
+        const dataAttr = property.replace(/([A-Z])/g, '-$1').toLowerCase();
+        const cards = document.querySelectorAll('.kh-card');
+
+        cards.forEach((card) => {
+          const value = card.getAttribute(`data-${dataAttr}`);
+          if (value) {
+            let itemsArray = value.split(/[/;]+/);
+            itemsArray?.forEach((item) => {
+              let itemStr = item.trim().trimStart();
+              if ( itemStr && !this[property].includes(itemStr) ) {
+                this[property].push(itemStr);
+              }
+            });
+          }
         });
 
         if (property === 'governmentBody') {
@@ -76,81 +81,137 @@
       const getQueryParams = () => {
         Object.keys(UsecaseFilters.properties).forEach((property) => {
           const value = new URL(window.location.href).searchParams.get(property);
-          if (value) {
-            this.querySelector(`#${property}`).value = value || "";
+          const select = this.querySelector(`#${property}`);
+
+          if (value && select) {
+            select.value = value;
           }
         });
-        this.#applyFilters();
+        this.applyFilters();
       };
       window.addEventListener('popstate', getQueryParams);
       getQueryParams();
     }
 
     render() {
+
+      const propertyToLabelMap ={
+        category: "Task",
+        subcategory: "Subtask",
+        organisation: "Organisation",
+        governmentBody: "Government body",
+        profession: "Function",
+      }
       return html`
-        <div class="govuk-grid-row" style="margin-bottom: -20px;">
-          <div class="govuk-grid-column-full govuk-grid-column-one-half-from-large-desktop">
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="search">Search</label>
-              <input @keyup=${this.#applyFilters} class="govuk-input" id="search" name="search" type="text">
-            </div>
-          </div>
-          ${Object.keys(UsecaseFilters.properties).map((property) => html`
-            <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-large-desktop">
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${property.replace(/([A-Z])/g, ' $1').trim()}</label>            
-                <select @change=${this.#applyFilters} class="govuk-select" id="${property}">
-                  <option value="">All</option>
-                  ${this[property].map((value) => html`
-                    <option value="${value}">${value}</option>
-                  `)}
-                </select>
+        <div class="govuk-grid-row">
+          ${Object.keys(UsecaseFilters.properties).map((property) => {
+            if (this[property].length > 0) {
+              return html`
+              <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-large-desktop">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="${property}" style="text-transform: capitalize;">${propertyToLabelMap[property]}</label>            
+                  <select @change=${() => this.applyFilters(property === 'category')} class="govuk-select" id="${property}" ?disabled=${property === 'subcategory'} style="width: 100%;">
+                    <option value="">All</option>
+                    ${this[property].map((value) => html`
+                      <option value="${value}">${value}</option>
+                    `)}
+                  </select>
+                </div>
               </div>
-            </div>
-          `)}
+            `} else {
+              return null;
+            }})}
         </div>
       `;
     }
 
-    #applyFilters() {
+    
+    applyFilters(isCategory = false) {
 
       const url = new URL(window.location.href);
       Object.keys(UsecaseFilters.properties).map((property) => {
-        let value = this.querySelector(`#${property}`).value;
+        let value = this.querySelector(`#${property}`)?.value;
         url.searchParams.set(property, value);
       });
       window.history.pushState({}, '', url);
 
       /** @type {NodeListOf<HTMLElement>} */
-      const cards = document.querySelectorAll('[data-category="use-case"]');
+      const cards = document.querySelectorAll('.kh-card');
       const filteredCountElement = document.querySelector("#filtered-count");
+      const activeFiltersElement = document.querySelector("#active-filters");
       let filteredCount = 0;
 
-      let search = this.querySelector('#search')?.value.trim().toLowerCase();
+      const activeFilters = [];
+      Object.keys(UsecaseFilters.properties).forEach((property) => {
+        let value = (this.querySelector(`#${property}`))?.value;
+        if (value) {
+          // Convert camelCase to readable format (e.g., "typeOfTechnology" -> "Type of technology")
+          const propertyName = property.replace(/([A-Z])/g, ' $1').trim().toLowerCase();
+          activeFilters.push(`${propertyName}: <strong>${value}</strong>`);
+        }
+      });
+
 
       // show/hide cards based on selected filters
       cards.forEach((card) => {
 
         let cardIsVisible = true;
         Object.keys(UsecaseFilters.properties).map((property) => {
-          let value = this.querySelector(`#${property}`).value;
-          if (value && !card.querySelector(`[data-category="${property}"]`)?.textContent?.includes(value)) {
-            cardIsVisible = false;
+          let value = (this.querySelector(`#${property}`))?.value;
+          if (value) {
+            // Convert camelCase to kebab-case for data attributes
+            const dataAttr = property.replace(/([A-Z])/g, '-$1').toLowerCase();
+            const cardValue = card.getAttribute(`data-${dataAttr}`);
+            if (!cardValue || !cardValue.includes(value)) {
+              cardIsVisible = false;
+            }
           }
         });
 
-        if (search && !card.textContent?.toLowerCase().includes(search)) {
-          cardIsVisible = false;
-        }
-
         if (cardIsVisible) {
-          card.style.display = "block";
+          card.classList.remove('hidden');
           filteredCount++;
         } else {
-          card.style.display = "none";
+          card.classList.add('hidden');
         }
 
       });
+
+      // Handle subcategory filter
+      /** @type {HTMLSelectElement | null} */
+      const subcategorySelect = document.querySelector('#subcategory');
+      /** @type {HTMLSelectElement | null} */
+      const categorySelect = document.querySelector('#category');
+
+      if (subcategorySelect) {
+        if (categorySelect?.value === '') {
+          subcategorySelect.disabled = true;
+          subcategorySelect.value = '';
+        } else if (categorySelect?.value && categorySelect?.value !== 'All') {
+          subcategorySelect.disabled = false;
+
+          const newSubcategoryOptions = [];
+
+          const visibleCards = Array.from(cards).filter((card) => card.getAttribute(`data-category`) === categorySelect.value);
+
+          visibleCards.forEach((card) => {
+            const value = card.getAttribute(`data-subcategory`);
+            if (value && !newSubcategoryOptions.includes(value)) {
+              newSubcategoryOptions.push(value);
+          }});
+          this['subcategory'] = newSubcategoryOptions;
+
+          if (newSubcategoryOptions.length === 1) {
+            subcategorySelect.value = '';
+            subcategorySelect.disabled = true;
+          }
+        }
+      }
+
+      if (isCategory && subcategorySelect) {
+        subcategorySelect.value = '';
+      }
+
 
       // show how many cards are visible
       if (!filteredCountElement) {
@@ -160,6 +221,16 @@
         filteredCountElement.textContent = "all";
       } else {
         filteredCountElement.textContent = filteredCount.toString();
+      }
+
+      // show active filters
+      if (activeFiltersElement) {
+        if (activeFilters.length > 0) {
+          const filterText = activeFilters.join(', ');
+          activeFiltersElement.innerHTML = ` filtered by ${filterText}`;
+        } else {
+          activeFiltersElement.innerHTML = '';
+        }
       }
 
     }

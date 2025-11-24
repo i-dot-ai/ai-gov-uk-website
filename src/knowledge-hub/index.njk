@@ -9,80 +9,68 @@ templateEngineOverride: njk
   {% set logo %}
     <img src="/img/project-logos/logo-knowledge-hub.png" width="160px" height="160px" alt="" />
   {% endset %}
-  {{ homepageBanner('Guidance and case studies for teams adopting AI technologies in the public sector', '', logo, 'light') }}
+  {{ homepageBanner(
+    'Explore AI in government',
+    'Find tools. Explore approaches. Improve delivery.',
+    logo,
+    'dark'
+  ) }}
 
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-top-9">
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-l">Welcome to the AI Knowledge Hub. We are here to help public sector teams explore, adopt, and apply artificial intelligence (AI) responsibly.</p>
-          <h2 class="govuk-heading-m govuk-!-margin-top-5"><span aria-hidden="true">💡 </span>What this is</h2>
-          <p>The AI Knowledge Hub is your starting point for understanding and using AI in government. It brings together key guidance, practical tools, and real examples to help you navigate AI with confidence.</p>
-          <p>This is a living resource that will grow over time. Everything here will be shaped by what public sector teams need most.</p>
+    <div class="kh-centre-section">
+      <div class="govuk-width-container">
+        <div class="govuk-main-wrapper">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <h2 class="govuk-heading-l" id="common-tasks-with-ai">What are you looking to do with AI?</h2>
+              <p class="govuk-body govuk-!-margin-bottom-7">These resources have been shared by the public sector community. You can
+                email <a href="mailto:ai-knowledge-hub@dsit.gov.uk" class="govuk-link">ai-knowledge-hub@dsit.gov.uk</a> to share your tools or <a href="https://forms.office.com/pages/responsepage.aspx?id=BXCsy8EC60O0l-ZJLRst2CPAiyb1A7hLu9W1tgMzWfxUM1RMN1dSWEhQUzJEMTFFWUlJTlFSRllUUC4u&route=shorturl" class="govuk-link">use our form to share your prompts</a>.</p>
+              <ul class="govuk-list kh-light-box__container">
+                <li class="govuk-!-display-flex">
+                  <a href="/knowledge-hub/capability/find-information" class="kh-light-box kh-light-box--link govuk-!-padding-top-3 govuk-!-padding-left-5 govuk-!-padding-right-4">
+                    <h3 class="govuk-heading-m">Find information</h3>
+                    <p class="govuk-body">Answer questions using chatbots and semantic search</p>
+                  </a>
+                </li>
+                <li class="govuk-!-display-flex">
+                  <a href="/knowledge-hub/capability/analyse-data-and-text" class="kh-light-box kh-light-box--link govuk-!-padding-top-3 govuk-!-padding-left-5 govuk-!-padding-right-4">
+                    <h3 class="govuk-heading-m">Analyse data and text</h3>
+                    <p class="govuk-body">Review text and data to find themes, check standards and predict outcomes</p>
+                  </a>
+                </li>
+                <li class="govuk-!-display-flex">
+                  <a href="/knowledge-hub/capability/collect-and-clean-data" class="kh-light-box kh-light-box--link govuk-!-padding-top-3 govuk-!-padding-left-5 govuk-!-padding-right-4">
+                    <h3 class="govuk-heading-m">Collect and clean data</h3>
+                    <p class="govuk-body">Gather data and organise it so it's accurate, consistent and ready to use</p>
+                  </a>
+                </li>
+                <li class="govuk-!-display-flex">
+                  <a href="/knowledge-hub/capability/create-and-review-documents" class="kh-light-box kh-light-box--link govuk-!-padding-top-3 govuk-!-padding-left-5 govuk-!-padding-right-4">
+                    <h3 class="govuk-heading-m">Create and review documents</h3>
+                    <p class="govuk-body">Write reports and emails, create strategies and summarise information</p>
+                  </a>
+                </li>
+                <li class="govuk-!-display-flex">
+                  <a href="/knowledge-hub/capability/triage-and-route-information" class="kh-light-box kh-light-box--link govuk-!-padding-top-3 govuk-!-padding-left-5 govuk-!-padding-right-4">
+                    <h3 class="govuk-heading-m">Triage and route information</h3>
+                    <p class="govuk-body">Review and sort information, and send requests to the right place</p>
+                  </a>
+                </li>
+                <li class="govuk-!-display-flex">
+                  <a href="/knowledge-hub/capability/run-meetings-and-appointments" class="kh-light-box kh-light-box--link govuk-!-padding-top-3 govuk-!-padding-left-5 govuk-!-padding-right-4">
+                    <h3 class="govuk-heading-m">Run meetings and appointments</h3>
+                    <p class="govuk-body">Support meetings and appointments by transcribing, translating and preparing content</p>
+                  </a>
+                </li>
+                <li class="govuk-!-display-flex">
+                    <a href="/knowledge-hub/capability/digitise-documents" class="kh-light-box kh-light-box--link govuk-!-padding-top-3 govuk-!-padding-left-5 govuk-!-padding-right-4">
+                    <h3 class="govuk-heading-m">Digitise documents</h3>
+                    <p class="govuk-body">Turn paper documents and images into structured digital data that you can search, analyse and share</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
-
-  <div class="kh-centre-section">
-    <div class="govuk-width-container govuk-!-padding-left-5 govuk-!-padding-right-5">
-      <div class="govuk-main-wrapper govuk-!-padding-top-0 govuk-!-padding-bottom-8">
-        <div class="kh-centre-section__grid govuk-!-margin-top-8">
-
-          <h2 class="govuk-heading-m"><span aria-hidden="true">📚 </span>Use Case Library</h2>
-          <p class="govuk-body">Learn about real-world projects across the public sector that are making a difference.</p>
-          <div class="kh-centre-section__button">
-            <a href="/knowledge-hub/use-cases" class="govuk-link govuk-link--call-to-action">Browse use cases</a>
-          </div>
-
-          <h2 class="govuk-heading-m"><span aria-hidden="true">💬 </span>Prompt Library</h2>
-          <p class="govuk-body">Well-crafted prompts to help unlock more meaningful and reliable results from AI assistants.</p>
-          <div class="kh-centre-section__button">
-            <a href="/knowledge-hub/prompts" class="govuk-link govuk-link--call-to-action">Browse prompts</a>
-          </div>
-
-          <h2 class="govuk-heading-m"><span aria-hidden="true">📝 </span>Guidance for AI Adoption</h2>
-          <p class="govuk-body">Essential guidance for adopting AI; from identifying the right problem to using AI responsibly.</p>
-          <div class="kh-centre-section__button">
-            <a href="/knowledge-hub/guidance" class="govuk-link govuk-link--call-to-action">View the guidance</a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-bottom-9">
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m govuk-!-margin-top-5"><span aria-hidden="true">🗣 </span>Help us build the right thing </h2>
-          <p>We are here to support your work, and we want to hear from you. What would help you take your next step with AI? Let us know at: <a href="mailto:{{ knowledgeHubData.contactEmail }}">{{ knowledgeHubData.contactEmail }}</a></p>
-          <p>Want to stay updated as the Hub grows? <a href="https://forms.office.com/e/wQNLDMU3rD" rel="noopener noreferrer">Sign up to receive the latest news</a>, new resources, and feature announcements.</p>
-          <h2 class="govuk-heading-m govuk-!-margin-top-7"><span aria-hidden="true">🧭 </span>Build your wider understanding</h2>
-          <p>The following documents set out the UK government’s approach to AI and can help you build a broader understanding of the context. They serve as useful points of reference as you explore this space.</p>
-          <ul class="govuk-list">
-            {% macro pdfLink (title, url, desc, img) %}
-              <li class="govuk-!-display-flex govuk-!-display-flex--align-center govuk-!-margin-bottom-3">
-                <img style="border: 1px solid #0b0c0c;" width="80" src="{{ img }}" alt="" loading="lazy"/>
-                <div class="govuk-!-margin-left-4">
-                  <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-2"><a href="{{ url }}" rel="noopener noreferrer">{{ title }}</a></h3>
-                  <p class="govuk-body-s govuk-!-margin-0">{{ desc }}</p>
-                </div>
-              </li>
-            {% endmacro %}
-            {{ pdfLink ("AI Opportunities Action Plan", "https://www.gov.uk/government/publications/ai-opportunities-action-plan", "Recommendations for the government to capture the opportunities of AI to enhance growth and productivity and create tangible benefits for UK citizens", "/img/aioap.webp") }}
-            {{ pdfLink ("A blueprint for modern digital government", "https://www.gov.uk/government/publications/a-blueprint-for-modern-digital-government", "A long-term vision for digital public services, a 6-point plan for reform, and the role of the new digital centre of government", "/img/blueprint.webp") }}
-            {{ pdfLink ("AI Playbook for the UK Government", "https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government", "The playbook offers guidance on using AI safely, effectively and securely for civil servants and people working in government organisations", "/img/aiplaybook.webp") }}
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
 </main>

@@ -174,3 +174,14 @@
     overflow: visible;
   }
 }
+.govuk-header__search-icon {
+  height: 16px;
+  width: 16px;
+}
+
+@media (min-width: 769px) {
+  .govuk-header__search-icon {
+    height: 24px;
+    width: 24px;
+  }
+}

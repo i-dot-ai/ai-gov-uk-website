@@ -19,30 +19,15 @@
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
-.kh-centre-section__grid {
 
-  h2 {
-    margin-top: 45px;
-  }
-  a {
-    margin-top: 5px;
-  }
+.kh-center-section__feature-number {
+  color: var(--iai-pink);
+  font-size: 84px;
+  font-weight: 800;
+}
 
-  @media (min-width: 768px) {
-    display: grid;
-    gap: 0 45px;
-    grid-auto-flow: column; 
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
-
-    h2 {
-      margin-top: 0;
-    }
-    a {
-      margin-top: 10px;
-    }
-  }
-  
+.kh-centre-section--white {
+  background-color: #fff;
 }
 
 
@@ -70,17 +55,197 @@
   }
 }
 
+/* sticky sidebar */
+@media (min-width: 641px) {
+  .kh-sticky-sidebar {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .kh-sticky-sidebar--with-back-to-top {
+    height: calc(100vh - 40px);
+  }
+
+  .kh-sticky-sidebar__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .kh-sticky-sidebar__nav-title {
+    flex-shrink: 0;
+  }
+
+  .kh-sticky-sidebar__nav-list {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+}
+
+.kh-sticky-sidebar__list-item--dashed {
+  position: relative;
+}
+
+.kh-sticky-sidebar__list-item--dashed::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  width: 20px;
+  overflow: hidden;
+}
 
 /* Styles that could go back into i.AI Design System */
 
 .govuk-link--call-to-action {
   border: 3px solid var(--iai-pink);
+  background-color: #fff;
   border-radius: 4px;
   display: inline-block;
   padding: 10px 15px !important;
   text-decoration: none;
 }
+
 .govuk-link--call-to-action:hover {
-  background-color: white;
+  background-color: #d9d9d9;
   text-decoration: underline;
+}
+
+.kh-light-box__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 641px) {
+  .kh-light-box__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .kh-light-box__container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.kh-light-box {
+  flex: 1;
+  border: 1px solid #b1b4b6;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.kh-light-box--link {
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+.kh-light-box--link h3 {
+  color: var(--iai-pink);
+}
+
+.kh-light-box--link:hover,
+.kh-light-box--link:focus-visible {
+  border-color: var(--iai-pink);
+  scale: 1.05;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.kh-light-box--link:hover h3, 
+.kh-light-box--link:focus-visible h3 {
+  text-decoration: underline;
+}
+
+.kh-light-box__header {
+  background: var(--iai-pink);
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+}
+
+.kh-light-box--thick-border {
+  border-left: 10px solid var(--iai-pink);
+  background-color: #fff;
+}
+
+
+.kh-back-to-top {
+  display: none;
+}
+
+.kh-back-to-top__icon {
+  margin-right: 10px;
+}
+
+@media (min-width: 641px) {
+  .kh-back-to-top {
+      display: block;
+      flex-shrink: 0;
+      padding-top: 1.5rem;
+      padding-bottom: 0.5rem;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.kh-guidance__list-item {
+  position: relative;
+  border-bottom: 1px solid #b1b4b6;
+}
+
+.kh-guidance__list-item:last-child {
+  border-bottom: none;
+}
+
+.kh-guidance__list-item::after {
+    content: "";
+    border: 2px solid var(--iai-pink);
+    border-width: 2px 2px 0 0;
+    width: .4375em;
+    height: .4375em;
+    margin: auto 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: .1875em;
+    transform: rotate(45deg);
+}
+
+.kh-guidance--draft {
+  font-style: italic;
+  background-color: #fbfbdc;
+  padding: 10px;
+}
+
+/* Prevent overlap of nav and logo on tablet */
+
+@media (min-width: 769px) {
+  .govuk-header__logo,
+  .govuk-header__content {
+    width: auto !important;
+  }
+
+  .govuk-header__content {
+    float: right !important;
+  }
+
+  .govuk-header__navigation-list {
+    max-height: unset !important;
+  }
+}
+
+.govuk-table {
+  table-layout: fixed;
 }
