@@ -24,7 +24,8 @@ const addGovukClasses = (htmlString) => {
     .replaceAll('<tr>', '<tr class="govuk-table__row">')
     .replaceAll('<th>', '<th scope="col" class="govuk-table__header">')
     .replaceAll('<td>', '<td class="govuk-table__cell">')
-    .replaceAll('<blockquote>', '<blockquote class="govuk-inset-text">');
+    .replaceAll('<blockquote>', '<blockquote class="govuk-inset-text">')
+    .replaceAll('<img', '<img class="govuk-!-width-full"');
 };
 
 if (typeof(module) !== 'undefined') {
