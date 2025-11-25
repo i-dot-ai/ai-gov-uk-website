@@ -66,7 +66,7 @@ title: Prompt Library
                   data-subcategory="{{ prompt.subcategory }}"
                   data-profession="{% if prompt.tags == 'project management' %} Project management {% endif %}"
                 >
-                    <h3 class="govuk-heading-m"><a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/?directTo=library" class="govuk-link">{{ prompt.title }}</a></h3>
+                    <h3 class="govuk-heading-m"><a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/?directTo=library" class="govuk-link analytics-prompts-link-from-prompts-page">{{ prompt.title }}</a></h3>
                     <p class="govuk-body">{{ prompt.description }}</p>
                       <ul class="govuk-!-padding-0">
                         {% if prompt.verified %}
@@ -92,3 +92,13 @@ title: Prompt Library
 
 <script type="module" src="/js/lit-components/site-search.mjs"></script>
 <script type="module" src="/js/lit-components/usecase-filters.mjs"></script>
+<script>
+  const prompts = document.querySelectorAll('.analytics-prompts-link-from-prompts-page');
+  prompts.forEach(prompt => {
+    prompt.addEventListener('click', (event) => {
+      posthog.capture('kh_prompts_link_clicked_from_prompts_page', {
+        'prompt_name': event.currentTarget.textContent
+      });
+    });
+  });
+</script>

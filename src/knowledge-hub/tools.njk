@@ -77,7 +77,7 @@ title: Tools
               data-impact="{{ useCase.impact }}"
             >
                   <h3 class="govuk-heading-m">
-                      <a href="/knowledge-hub/tools/{{ useCase.title | slugify }}/?directTo=library" class="govuk-link">{{ useCase.title }}</a>
+                      <a href="/knowledge-hub/tools/{{ useCase.title | slugify }}/?directTo=library" class="govuk-link analytics-tools-link-from-tools-page">{{ useCase.title }}</a>
                   </h3>
                     <p class="govuk-body">{{ useCase.synopsis }}</p>
                     <ul class="govuk-!-padding-0">
@@ -113,3 +113,16 @@ title: Tools
   <div data-category="governmentBody">Scottish Government</div>
   <div data-category="governmentBody">Northern Ireland Executive</div>
 </div>
+
+<script>
+  const tools = document.querySelectorAll('.analytics-tools-link-from-tools-page');
+
+  console.log('tools', tools.length);
+  tools.forEach(tool => {
+    tool.addEventListener('click', (event) => {
+      posthog.capture('kh_tools_link_clicked_from_tools_page', {
+        'tool_name': event.currentTarget.textContent
+      });
+    });
+  });
+</script>

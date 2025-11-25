@@ -50,13 +50,11 @@
     }
 
     #hideElement(element) {
-        console.log('hiding element', element);
         element.classList.add('hidden');
         element.setAttribute('hidden', '');
     }
 
     #showElement(element) {
-        console.log('showing element', element);
         element.classList.remove('hidden');
         element.removeAttribute('hidden');
     }
@@ -64,11 +62,15 @@
     #handleYes() {
         this.#hideElement(this.querySelector('.kh-send-feedback'));
         this.#showElement(this.querySelector('#kh-send-feedback-thank-you'));
+
+        posthog.capture('kh_send_feedback_yes_button_clicked');
     }
 
     #handleNo() {
         this.#hideElement(this.querySelector('.kh-send-feedback'));
         this.#showElement(this.querySelector('#kh-send-feedback-fill-out-form'));
+
+        posthog.capture('kh_send_feedback_no_button_clicked');
     }
   
   }
