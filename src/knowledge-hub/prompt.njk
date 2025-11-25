@@ -92,13 +92,13 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
 
           <ul class="govuk-list">
               <li class="kh-light-box govuk-!-padding-3">
-                  <a class="govuk-heading-s govuk-link" href="/knowledge-hub/how-to/how-to-use-ai-at-work">
+                  <a class="govuk-heading-s govuk-link analytics-in-prompt-guidance" href="/knowledge-hub/how-to/how-to-use-ai-at-work">
                       How to use AI at work
                   </a>
                   <p class="govuk-body">What AI can do, when to use it and how to use it responsibly</p>
               </li>
               <li class="kh-light-box govuk-!-padding-3">
-                  <a class="govuk-heading-s govuk-link" href="/knowledge-hub/how-to/experiment-with-prompts">
+                  <a class="govuk-heading-s govuk-link analytics-in-prompt-guidance" href="/knowledge-hub/how-to/experiment-with-prompts">
                       Experiment with prompts
                   </a>
                   <p class="govuk-body">Best-practise to create simple and complex prompts.</p>
@@ -116,5 +116,25 @@ permalink: "knowledge-hub/prompts/{{ prompt.title | slugify }}/"
   window.addEventListener('load', () => {
     let copyButton = document.querySelector('.copy-button');
     copyButton?.classList.remove('copy-button');
+    copyButton?.classList.add('analytics-copy-button');
   });
+</script>
+<script>
+    const inPromptGuidance = document.querySelectorAll('.analytics-in-prompt-guidance');
+    const copyButton = document.querySelector('.analytics-copy-button');
+
+    inPromptGuidance.forEach(inPromptGuidance => {
+      inPromptGuidance.addEventListener('click', (event) => {
+        posthog.capture('kh_in_prompt_guidance_link_clicked', {
+          'guidance_page_name': event.currentTarget.textContent
+          'prompt_name': copyButton?.querySelector('span').textContent
+        });
+      });
+    });
+
+    copyButton.addEventListener('click', (event) => {
+      posthog.capture('kh_copy_button_clicked', {
+        'prompt_name': event.currentTarget.textContent.querySelector('span').textContent
+      });
+    });
 </script>

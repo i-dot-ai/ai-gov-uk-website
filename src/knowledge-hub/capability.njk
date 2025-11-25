@@ -58,14 +58,14 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
               {% endif %}
               <li>
                 <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-                  <a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/" class="govuk-link">{{ prompt.title }}</a>
+                  <a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/" class="govuk-link analytics-prompts-link-from-capability">{{ prompt.title }}</a>
                 </h4>
                 <p class="govuk-body">{{ prompt.description }}</p>
               </li>
             {% endif %}
           {% endfor %}
         </ul>
-        <a href="/knowledge-hub/prompts" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6">Explore all prompts</a>
+        <a href="/knowledge-hub/prompts" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6 analytics-explore-all-prompts-link-from-capability">Explore all prompts</a>
       </div>
     {% endif %}
     {% set showUseCases = false %}
@@ -94,14 +94,14 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
             {% endif %}
               <li>
                 <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-                  <a href="/knowledge-hub/tools/{{ useCase.title | slugify }}/" class="govuk-link">{{ useCase.title }}</a>
+                  <a href="/knowledge-hub/tools/{{ useCase.title | slugify }}/" class="govuk-link analytics-tools-link-from-capability" >{{ useCase.title }}</a>
                 </h4>
                 <p class="govuk-body">{{ useCase.synopsis }}</p>
               </li>
           {% endif %}
         {% endfor %}
           </ul>
-          <a href="/knowledge-hub/tools" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6">Explore all tools</a>
+          <a href="/knowledge-hub/tools" class="govuk-link govuk-link--call-to-action govuk-!-margin-top-6 analytics-explore-all-tools-link-from-capability">Explore all tools</a>
         </div>
       {% endif %}
     </div>
@@ -109,3 +109,34 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
 </main>
 
 <script type="module" src="/js/lit-components/on-this-page.mjs"></script>
+
+<script>
+  const prompts = document.querySelectorAll('.analytics-prompts-link-from-capability');
+  const tools = document.querySelectorAll('.analytics-tools-link-from-capability');
+  const exploreAllPrompts = document.querySelector('.analytics-explore-all-prompts-link-from-capability');
+  const exploreAllTools = document.querySelector('.analytics-explore-all-tools-link-from-capability');
+
+  prompts.forEach(prompt => {
+    prompt.addEventListener('click', (event) => {
+      posthog.capture('kh_prompts_link_clicked_from_capability_page', {
+        'prompt_name': event.currentTarget.textContent
+      });
+    });
+  });
+
+  tools.forEach(tool => {
+    tool.addEventListener('click', (event) => {
+      posthog.capture('kh_tools_link_clicked_from_capability_page', {
+        'tool_name': event.currentTarget.textContent
+      });
+    });
+  });
+
+  exploreAllPrompts?.addEventListener('click', (event) => {
+    posthog.capture('kh_explore_all_prompts_link_clicked_from_capability_page');
+  });
+
+  exploreAllTools?.addEventListener('click', (event) => {
+    posthog.capture('kh_explore_all_tools_link_clicked_from_capability_page');
+  });
+</script>
