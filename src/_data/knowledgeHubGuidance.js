@@ -21,7 +21,7 @@ const pageNameToTitleMap = {
   'procurement': 'Understand procurement and partnerships for AI solutions (draft)',
   'legal': 'Legal',
   'ethics': 'Using AI ethically and responsibly (draft)',
-  'ethics-building-ai': 'Building with AI ethically and sustainably (draft)',
+  'ethics-building-ai': 'Build AI sustainably (draft)',
   'understanding-ai': 'Understanding AI',
   'security': 'Security',
   'governance': 'Governance',
