@@ -64,7 +64,8 @@ title: Prompt Library
                   data-card-type="prompt" 
                   data-category="{{ prompt.category }}"
                   data-subcategory="{{ prompt.subcategory }}"
-                  data-profession="{% if prompt.tags == 'project management' %} Project management {% endif %}"
+                  data-profession="{% if prompt.tags == 'project management' %}Project management{% endif %}"
+                  data-verified-by-profession="{% if prompt.verified and prompt.tags == 'project management' %}Project delivery{% endif %}"
                 >
                     <h3 class="govuk-heading-m"><a href="/knowledge-hub/prompts/{{ prompt.title | slugify }}/?directTo=library" class="govuk-link">{{ prompt.title }}</a></h3>
                     <p class="govuk-body">{{ prompt.description }}</p>
