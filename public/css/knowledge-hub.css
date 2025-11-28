@@ -249,3 +249,7 @@
 .govuk-table {
   table-layout: fixed;
 }
+
+.kh-how-to-gov-tag {
+  max-width: none;
+}
