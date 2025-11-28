@@ -21,7 +21,6 @@
 
     createRenderRoot() {
       this.innerHTML = "";
-      console.log(this.productName);
       return this;
     }
 

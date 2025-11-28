@@ -172,8 +172,8 @@
         Object.keys(UsecaseFilters.properties).map((property) => {
           let value = (this.querySelector(`#${property}`))?.value;
           if (value) {
-            // temporarily add project management to category
             if (property === 'category' && value === 'Project management') {
+              // temporarily add project management to category
               const profession = card.getAttribute(`data-profession`);
               if (!profession || !profession.trim().includes('Project management')) {
                 cardIsVisible = false;
