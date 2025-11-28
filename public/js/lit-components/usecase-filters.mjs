@@ -220,8 +220,8 @@
 
           const newSubcategoryOptions = [];
 
-          // temporarily add project management to category
           const visibleCards = Array.from(cards).filter((card) => {
+            // temporarily add project management to category
             if (categorySelect.value === 'Project management') {
               const profession = card.getAttribute(`data-profession`);
               return profession && profession.trim().includes('Project management');
