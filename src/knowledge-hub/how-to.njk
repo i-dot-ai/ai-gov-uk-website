@@ -72,3 +72,16 @@ permalink: "knowledge-hub/how-to/{{ guidance.slug }}/"
 
 <script type="module" src="/js/lit-components/on-this-page.mjs"></script>
 <script type="module" src="/js/lit-components/back-to-top-link.mjs"></script>
+<script>
+  window.addEventListener('load', () => {
+    const onThisPageLinks = document.querySelectorAll('.analytics-on-this-page-link');
+
+    onThisPageLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        posthog.capture('kh_contents_link_clicked', {
+          'guidance_page_name': event.currentTarget.textContent
+        });
+      });
+    });
+  });
+</script>

@@ -35,12 +35,25 @@ const FILTER_PROPERTIES = ['organisation', 'governmentBody', 'userGroup', 'typeO
       if (searchInput && searchValue) {
         searchInput.value = searchValue;
       }
-
+      
+      let testerTimeout;
   
       this.#filterCards(searchInput?.value ?? '', searchType?.value);
       
       searchInput?.addEventListener('input', () => {
         this.#filterCards(searchInput.value, searchType?.value);
+        
+        clearTimeout(testerTimeout);
+        
+        // Capture search input typed event after 1 seconds of no typing
+        testerTimeout = setTimeout(() => {
+          if (searchInput?.value) {
+            posthog.capture('kh_search_input_typed', {
+              'search_term': searchInput?.value,
+              'page_type': searchType?.value
+            });
+          }
+        }, 1000);
       });
       
       // Also re-apply search when filter dropdowns change

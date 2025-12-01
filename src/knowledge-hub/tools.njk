@@ -117,7 +117,6 @@ title: Tools
 <script>
   const tools = document.querySelectorAll('.analytics-tools-link-from-tools-page');
 
-  console.log('tools', tools.length);
   tools.forEach(tool => {
     tool.addEventListener('click', (event) => {
       posthog.capture('kh_tools_link_clicked_from_tools_page', {

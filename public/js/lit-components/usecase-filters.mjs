@@ -164,6 +164,14 @@
         }
       });
 
+      const pageType = window.location.pathname.split('/').includes('prompts') ? 'prompts' : 'tools';
+      const filters = activeFilters.join(', ').replace(/<strong>/g, '').replace(/<\/strong>/g, '').trim();
+
+      posthog.capture('kh_filters_applied', {
+        'filters': filters,
+        'page_type': pageType
+      });
+
 
       // show/hide cards based on selected filters
       cards.forEach((card) => {

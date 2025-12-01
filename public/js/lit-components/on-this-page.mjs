@@ -48,7 +48,7 @@
                 <h2 class="govuk-heading-s govuk-!-font-weight-regular kh-sticky-sidebar__nav-title">Contents</h2>
                   <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0 kh-sticky-sidebar__nav-list">
                     ${this.headings.map((heading) => html`
-                      <li class="kh-sticky-sidebar__list-item--dashed govuk-!-padding-right-5 govuk-!-padding-left-6"><a href="#${heading.id}">${heading.content}</a></li>
+                      <li class="kh-sticky-sidebar__list-item--dashed govuk-!-padding-right-5 govuk-!-padding-left-6"><a href="#${heading.id}" class="analytics-on-this-page-link">${heading.content}</a></li>
                     `)}
                   </ul>
                 </nav>`
