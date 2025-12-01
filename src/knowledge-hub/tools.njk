@@ -115,12 +115,14 @@ title: Tools
 </div>
 
 <script>
-  const tools = document.querySelectorAll('.analytics-tools-link-from-tools-page');
+  window.addEventListener('load', () => {
+    const tools = document.querySelectorAll('.analytics-tools-link-from-tools-page');
 
-  tools.forEach(tool => {
-    tool.addEventListener('click', (event) => {
-      posthog.capture('kh_tools_link_clicked_from_tools_page', {
-        'tool_name': event.currentTarget.textContent
+    tools.forEach(tool => {
+      tool.addEventListener('click', (event) => {
+        posthog.capture('kh_tools_link_clicked_from_tools_page', {
+          'tool_name': event.currentTarget.textContent
+        });
       });
     });
   });
