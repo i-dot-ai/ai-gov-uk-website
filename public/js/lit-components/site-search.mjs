@@ -36,17 +36,17 @@ const FILTER_PROPERTIES = ['organisation', 'governmentBody', 'userGroup', 'typeO
         searchInput.value = searchValue;
       }
       
-      let testerTimeout;
+      let sendSearchAnalyticsTimeout;
   
       this.#filterCards(searchInput?.value ?? '', searchType?.value);
       
       searchInput?.addEventListener('input', () => {
         this.#filterCards(searchInput.value, searchType?.value);
         
-        clearTimeout(testerTimeout);
+        clearTimeout(sendSearchAnalyticsTimeout);
         
         // Capture search input typed event after 1 seconds of no typing
-        testerTimeout = setTimeout(() => {
+        sendSearchAnalyticsTimeout = setTimeout(() => {
           if (searchInput?.value) {
             posthog.capture('kh_search_input_typed', {
               'search_term': searchInput?.value,
