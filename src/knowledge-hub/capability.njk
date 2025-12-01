@@ -111,32 +111,35 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
 <script type="module" src="/js/lit-components/on-this-page.mjs"></script>
 
 <script>
-  const prompts = document.querySelectorAll('.analytics-prompts-link-from-capability');
-  const tools = document.querySelectorAll('.analytics-tools-link-from-capability');
-  const exploreAllPrompts = document.querySelector('.analytics-explore-all-prompts-link-from-capability');
-  const exploreAllTools = document.querySelector('.analytics-explore-all-tools-link-from-capability');
+  window.addEventListener('load', () => {
 
-  prompts.forEach(prompt => {
-    prompt.addEventListener('click', (event) => {
-      posthog.capture('kh_prompts_link_clicked_from_capability_page', {
-        'prompt_name': event.currentTarget.textContent
+    const prompts = document.querySelectorAll('.analytics-prompts-link-from-capability');
+    const tools = document.querySelectorAll('.analytics-tools-link-from-capability');
+    const exploreAllPrompts = document.querySelector('.analytics-explore-all-prompts-link-from-capability');
+    const exploreAllTools = document.querySelector('.analytics-explore-all-tools-link-from-capability');
+
+    prompts.forEach(prompt => {
+      prompt.addEventListener('click', (event) => {
+        posthog.capture('kh_prompts_link_clicked_from_capability_page', {
+          'prompt_name': event.currentTarget.textContent
+        });
       });
     });
-  });
 
-  tools.forEach(tool => {
-    tool.addEventListener('click', (event) => {
-      posthog.capture('kh_tools_link_clicked_from_capability_page', {
-        'tool_name': event.currentTarget.textContent
+    tools.forEach(tool => {
+      tool.addEventListener('click', (event) => {
+        posthog.capture('kh_tools_link_clicked_from_capability_page', {
+          'tool_name': event.currentTarget.textContent
+        });
       });
     });
-  });
 
-  exploreAllPrompts?.addEventListener('click', (event) => {
-    posthog.capture('kh_explore_all_prompts_link_clicked_from_capability_page');
-  });
+    exploreAllPrompts?.addEventListener('click', (event) => {
+      posthog.capture('kh_explore_all_prompts_link_clicked_from_capability_page');
+    });
 
-  exploreAllTools?.addEventListener('click', (event) => {
-    posthog.capture('kh_explore_all_tools_link_clicked_from_capability_page');
+    exploreAllTools?.addEventListener('click', (event) => {
+      posthog.capture('kh_explore_all_tools_link_clicked_from_capability_page');
+    });
   });
 </script>

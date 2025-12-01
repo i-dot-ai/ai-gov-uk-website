@@ -94,11 +94,14 @@ title: Prompt Library
 <script type="module" src="/js/lit-components/site-search.mjs"></script>
 <script type="module" src="/js/lit-components/usecase-filters.mjs"></script>
 <script>
-  const prompts = document.querySelectorAll('.analytics-prompts-link-from-prompts-page');
-  prompts.forEach(prompt => {
-    prompt.addEventListener('click', (event) => {
-      posthog.capture('kh_prompts_link_clicked_from_prompts_page', {
-        'prompt_name': event.currentTarget.textContent
+  window.addEventListener('load', () => {
+    const prompts = document.querySelectorAll('.analytics-prompts-link-from-prompts-page');
+
+    prompts.forEach(prompt => {
+      prompt.addEventListener('click', (event) => {
+        posthog.capture('kh_prompts_link_clicked_from_prompts_page', {
+          'prompt_name': event.currentTarget.textContent
+        });
       });
     });
   });

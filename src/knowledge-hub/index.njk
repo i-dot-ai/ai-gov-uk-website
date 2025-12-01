@@ -76,11 +76,14 @@ templateEngineOverride: njk
 </main>
 
 <script>
-  const capabilities = document.querySelectorAll('.analytics-capabilities-home-page-link');
-  capabilities.forEach(capability => {
-    capability.addEventListener('click', (event) => {
-      posthog.capture('kh_home_page_capability_from_homepage_clicked', {
-        'capability_name': event.currentTarget.querySelector('h3').textContent
+  window.addEventListener('load', () => {
+    const capabilities = document.querySelectorAll('.analytics-capabilities-home-page-link');
+
+    capabilities.forEach(capability => {
+      capability.addEventListener('click', (event) => {
+        posthog.capture('kh_home_page_capability_from_homepage_clicked', {
+          'capability_name': event.currentTarget.querySelector('h3').textContent
+        });
       });
     });
   });
