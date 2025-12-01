@@ -18,7 +18,7 @@
       subcategory: {type: Array, state: true },
       organisation: { type: Array, state: true },
       governmentBody: {type: Array, state: true },
-      profession: {type: Array, state: true },
+      verifiedByProfession: {type: Array, state: true },
     };
 
     createRenderRoot() {
@@ -50,6 +50,19 @@
               let itemStr = item.trim().trimStart();
               if ( itemStr && !this[property].includes(itemStr) ) {
                 this[property].push(itemStr);
+                // temporarily add project management to category
+                if (property === 'category') {
+                  const profession = card.getAttribute(`data-profession`);
+                  if (profession && !this['category'].includes(profession)) {
+                    this['category'].push(profession);
+                  }
+                }
+                // temporarily add Personal productivity to category
+                if (property === 'subcategory') {
+                  if (itemStr === 'Personal productivity' && !this['category'].includes(itemStr)) {
+                    this['category'].push(itemStr);
+                  }
+                }
               }
             });
           }
@@ -100,7 +113,7 @@
         subcategory: "Subtask",
         organisation: "Organisation",
         governmentBody: "Government body",
-        profession: "Function",
+        verifiedByProfession: "Verified by function",
       }
       return html`
         <div class="govuk-grid-row">
@@ -159,11 +172,26 @@
         Object.keys(UsecaseFilters.properties).map((property) => {
           let value = (this.querySelector(`#${property}`))?.value;
           if (value) {
-            // Convert camelCase to kebab-case for data attributes
-            const dataAttr = property.replace(/([A-Z])/g, '-$1').toLowerCase();
-            const cardValue = card.getAttribute(`data-${dataAttr}`);
-            if (!cardValue || !cardValue.includes(value)) {
-              cardIsVisible = false;
+            if (property === 'category' && value === 'Project management') {
+              // temporarily add project management to category
+              const profession = card.getAttribute(`data-profession`);
+              if (!profession || !profession.trim().includes('Project management')) {
+                cardIsVisible = false;
+              }
+            } else if (property === 'category' && value === 'Personal productivity') {
+              // temporarily add Personal productivity to category
+              const subcategory = card.getAttribute(`data-subcategory`);
+              if (!subcategory || !subcategory.includes('Personal productivity')) {
+                cardIsVisible = false;
+              }
+            } else {
+              // Convert camelCase to kebab-case for data attributes
+              const dataAttr = property.replace(/([A-Z])/g, '-$1').toLowerCase();
+              const cardValue = card.getAttribute(`data-${dataAttr}`);
+              
+              if (!cardValue || !cardValue.includes(value)) {
+                cardIsVisible = false;
+              }
             }
           }
         });
@@ -192,7 +220,19 @@
 
           const newSubcategoryOptions = [];
 
-          const visibleCards = Array.from(cards).filter((card) => card.getAttribute(`data-category`) === categorySelect.value);
+          const visibleCards = Array.from(cards).filter((card) => {
+            // temporarily add project management to category
+            if (categorySelect.value === 'Project management') {
+              const profession = card.getAttribute(`data-profession`);
+              return profession && profession.trim().includes('Project management');
+            } else if (categorySelect.value === 'Personal productivity') {
+              // temporarily add Personal productivity to category
+              const subcategory = card.getAttribute(`data-subcategory`);
+              return subcategory && subcategory.includes('Personal productivity');
+            } else {
+              return card.getAttribute(`data-category`) === categorySelect.value;
+            }
+          });
 
           visibleCards.forEach((card) => {
             const value = card.getAttribute(`data-subcategory`);
