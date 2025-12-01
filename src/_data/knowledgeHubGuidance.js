@@ -18,7 +18,7 @@ const pageNameToDataNameMap = {
 const pageNameToTitleMap = {
   'how-to-use-ai-at-work': 'How to use AI at work (draft)',
   'principles': 'The 10 AI Principles',
-  'procurement': 'Understand procurement and partnerships for AI solutions (draft)',
+  'procurement': 'Procure AI (draft)',
   'legal': 'Legal',
   'ethics': 'Using AI ethically and responsibly (draft)',
   'ethics-building-ai': 'Build AI sustainably (draft)',
