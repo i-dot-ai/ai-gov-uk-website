@@ -40,7 +40,7 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
       {% endfor %}
       {% if showPrompts %}
         <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-7">
-          <h2 class="govuk-heading-l">Get started with example prompts</h2>
+          <h2 class="govuk-heading-l" id="get-started-with-example-prompts">Get started with example prompts</h2>
           <p class="govuk-body">Copy, adapt and learn from instructions (prompts) that have worked for similar tasks.</p>
           {% set currentSubcategory = "" %}
           {% set inSubcategoryList = false %}
@@ -76,7 +76,7 @@ permalink: "knowledge-hub/capability/{{ capability.title | slugify }}/"
     {% endfor %}
     {% if showUseCases %}
       <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-7 govuk-!-padding-bottom-5">
-        <h2 class="govuk-heading-l">Find AI tools built by other teams</h2>
+        <h2 class="govuk-heading-l" id="find-ai-tools-built-by-other-teams">Find AI tools built by other teams</h2>
         <p class="govuk-body">See examples of custom tools developed across the public sector.</p>
         {% set currentSubcategory = "" %}
         {% set inSubcategoryList = false %}
