@@ -23,6 +23,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "src/google3a3ba1da5272ff32.html" : "/google3a3ba1da5272ff32.html"
   });
+  // Copy knowledge hub static build files as-is
+  eleventyConfig.addPassthroughCopy({
+    "src/knowledge-hub/": "/knowledge-hub/"
+  });
 
   eleventyConfig.addPlugin(litPlugin, {
     mode: "worker",
@@ -42,6 +46,10 @@ module.exports = function (eleventyConfig) {
       const entries = _fs.readdirSync(dir, { withFileTypes: true });
       for (const entry of entries) {
         const fullPath = path.join(dir, entry.name);
+        // Skip knowledge hub directory - it's static build files
+        if (entry.isDirectory() && entry.name === "knowledge-hub") {
+          continue;
+        }
         if (entry.isDirectory()) {
           processHTMLFiles(fullPath);
         } else if (entry.isFile() && entry.name.endsWith(".html")) {
@@ -54,6 +62,93 @@ module.exports = function (eleventyConfig) {
       }
     }
     processHTMLFiles("_site");
+
+    // Fix paths in knowledge hub HTML files to include /knowledge-hub/ prefix
+    const fixKnowledgeHubPaths = (dir) => {
+      if (!_fs.existsSync(dir)) {
+        return;
+      }
+      const entries = _fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          fixKnowledgeHubPaths(fullPath);
+        } else if (entry.isFile() && entry.name.endsWith(".html")) {
+          let content = _fs.readFileSync(fullPath, "utf8");
+          
+          // List of path prefixes that need /knowledge-hub/ prefix
+          // Ordered from longest to shortest to avoid substring matches
+          const knowledgeHubPrefixes = [
+            '/how-tos/',
+            '/how-tos',
+            '/how-to/',
+            '/capability/',
+            '/tools/',
+            '/tools',
+            '/prompts/',
+            '/prompts',
+            '/generic-error',
+            '/unauthorised',
+            '/accessibility',
+            '/directory',
+            '/site-map',
+            '/_astro/',
+            '/assets/',
+            '/fonts/',
+            '/about',
+            '/favicon.svg'
+          ];
+          
+          const prefix = '/knowledge-hub';
+          
+          // Fix href and src attributes with knowledge hub paths
+          knowledgeHubPrefixes.forEach(pathPrefix => {
+            const escaped = pathPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            
+            // For paths without trailing slash, match exactly or with query params
+            let matchPattern = escaped;
+            if (!pathPrefix.endsWith('/') && !pathPrefix.endsWith('.svg')) {
+              matchPattern = escaped + '(?=["\']|/|\\?|$)';
+            }
+            
+            // Replace in href="..." attributes (internal links only, not anchors or already prefixed)
+            content = content.replace(
+              new RegExp(`(href=["'])(?!#|${prefix.replace(/\//g, '\\/')})${matchPattern}([^"']*)`, 'g'),
+              (match, attr, pathValue) => {
+                // Never add prefix if it already exists in the full path value
+                if (match.includes(prefix)) {
+                  return match;
+                }
+                return attr + prefix + pathPrefix + (pathValue || '');
+              }
+            );
+            
+            // Replace in src="..." attributes (internal paths only, not already prefixed)
+            content = content.replace(
+              new RegExp(`(src=["'])(?!${prefix.replace(/\//g, '\\/')})${matchPattern}([^"']*)`, 'g'),
+              (match, attr, pathValue) => {
+                // Never add prefix if it already exists in the full path value
+                if (match.includes(prefix)) {
+                  return match;
+                }
+                return attr + prefix + pathPrefix + (pathValue || '');
+              }
+            );
+          });
+          
+          // Handle root home link separately - convert "/" to "/knowledge-hub/" 
+          // but only if it's not already prefixed and not an anchor
+          content = content.replace(
+            /(href=["'])(?!#|\/knowledge-hub)\/["']/g,
+            '$1/knowledge-hub/"'
+          );
+          
+          _fs.writeFileSync(fullPath, content, "utf8");
+        }
+      }
+    };
+    
+    fixKnowledgeHubPaths("_site/knowledge-hub");
   });
 
   eleventyConfig.addTransform("htmlmin", function (content) {

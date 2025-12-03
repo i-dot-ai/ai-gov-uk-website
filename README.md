@@ -80,3 +80,7 @@ This is for the old CMS, which still contains some data. Our new CMS is backed u
 ## Search
 
 Search is powered by [Pagefind](https://pagefind.app/). To re-index the site when running locally, first ensure you've done a website build, and then run `npm run index`.
+
+## Knowledge Hub
+
+To add knowledge hub pages - you must run static build from the knowledge hub repository and copy the dist to the src/knowledge-hub folder here
