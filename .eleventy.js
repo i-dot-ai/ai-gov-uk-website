@@ -76,9 +76,7 @@ module.exports = function (eleventyConfig) {
         } else if (entry.isFile() && entry.name.endsWith(".html")) {
           let content = _fs.readFileSync(fullPath, "utf8");
           
-          // List of path prefixes that need /knowledge-hub/ prefix
-          // Ordered from longest to shortest to avoid substring matches
-          const knowledgeHubPrefixes = [
+          const pathsToPrefix = [
             '/how-tos/',
             '/how-tos',
             '/how-to/',
@@ -102,7 +100,7 @@ module.exports = function (eleventyConfig) {
           const prefix = '/knowledge-hub';
           
           // Fix href and src attributes with knowledge hub paths
-          knowledgeHubPrefixes.forEach(pathPrefix => {
+          pathsToPrefix.forEach(pathPrefix => {
             const escaped = pathPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
             
             // For paths without trailing slash, match exactly or with query params
