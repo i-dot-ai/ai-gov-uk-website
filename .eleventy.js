@@ -63,7 +63,7 @@ module.exports = function (eleventyConfig) {
     }
     processHTMLFiles("_site");
 
-    // Fix paths in knowledge hub HTML files to include /knowledge-hub/ prefix
+    // Fix paths in knowledge hub HTML and JS files to include /knowledge-hub/ prefix
     const fixKnowledgeHubPaths = (dir) => {
       if (!_fs.existsSync(dir)) {
         return;
@@ -73,7 +73,7 @@ module.exports = function (eleventyConfig) {
         const fullPath = path.join(dir, entry.name);
         if (entry.isDirectory()) {
           fixKnowledgeHubPaths(fullPath);
-        } else if (entry.isFile() && entry.name.endsWith(".html")) {
+        } else if (entry.isFile() && (entry.name.endsWith(".html") || entry.name.endsWith(".js"))) {
           let content = _fs.readFileSync(fullPath, "utf8");
           
           const pathsToPrefix = [
@@ -139,6 +139,13 @@ module.exports = function (eleventyConfig) {
           content = content.replace(
             /(href=["'])(?!#|\/knowledge-hub)\/["']/g,
             '$1/knowledge-hub/"'
+          );
+          
+          // Handle root home link with hash anchors - convert href="/#..." to href="/knowledge-hub#..."
+          // This handles cases like href="/#common-tasks-with-ai" in template literals
+          content = content.replace(
+            /(href=["'])(?!#|\/knowledge-hub)\/(#)/g,
+            '$1/knowledge-hub$2'
           );
           
           _fs.writeFileSync(fullPath, content, "utf8");
