@@ -83,4 +83,15 @@ Search is powered by [Pagefind](https://pagefind.app/). To re-index the site whe
 
 ## Knowledge Hub
 
-To add knowledge hub pages - you must run static build from the knowledge hub repository and copy the dist to the src/knowledge-hub folder here
+To release the public version of the knowledge hub you must run a static build and copy the dist files to the ai-gov-website-repo
+
+- Go to the [knowledge-hub repository](https://github.com/i-dot-ai/knowledge-hub)
+- Checkout the [develop branch](https://github.com/i-dot-ai/knowledge-hub/tree/develop)
+- Run 'make build:static' in the root folder
+- Copy contents from /dist folder to the '/src/knowledge-hub' folder in this repo
+    - Simplest way to do this:
+        1. Delete the current `knowledge-hub` folder 
+        2. Copy the `dist` folder from the knowledge-hub repo to the `src` folder in this repo
+        3. Rename `dist` to `knowledge-hub`
+- Run `npm run dev` to check changes
+- Merge changes to `main`
