@@ -17,6 +17,10 @@ resource "aws_s3_bucket_website_configuration" "website" {
     suffix = "index.html"
   }
 
+  error_document {
+    key = "404.html"
+  }
+
   dynamic "routing_rule" {
     for_each = var.s3_redirection_rules
 

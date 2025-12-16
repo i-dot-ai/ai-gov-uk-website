@@ -1,0 +1,28 @@
+---
+title: Page not found
+layout: base.njk
+templateEngineOverride: njk
+permalink: /404.html
+noIndex: true
+---
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Page not found") }}
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds"> 
+        
+        <p class="govuk-body">The page you are looking for could not be found:</p>
+
+          <ul class="govuk-list govuk-list--spaced">
+            <li><a class="govuk-link" href="/">Go to the i.AI homepage</a></li>
+            <li><a class="govuk-link" href="/knowledge-hub">Go to the Knowledge Hub</a></li>
+          </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
