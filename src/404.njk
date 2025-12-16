@@ -1,0 +1,30 @@
+---
+title: Page not found
+layout: base.njk
+templateEngineOverride: njk
+permalink: /404.html
+noIndex: true
+---
+
+{% from "./_includes/banner.njk" import banner %}
+{{ banner("Page not found") }}
+
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper govuk-!-padding-bottom-0">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds"> 
+        
+        <p class="govuk-body">The page you are looking for could not be found.</p>
+
+        <p class="govuk-body">You can: 
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a class="govuk-link" href="/">go to the Incubator for Artificial Intelligence homepage</a></li>
+            <li><a class="govuk-link" href="/knowledge-hub">go to the Knowledge Hub</a></li>
+            <li><a class="govuk-link" href="/search">search the site</a></li>
+          </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
