@@ -153,7 +153,7 @@ module.exports = async () => {
         picture: {
           fields: {
             file: {
-              url: "https://t4.ftcdn.net/jpg/00/93/85/69/360_F_93856984_YszdhleLIiJzQG9L9pSGDCIvNu5GEWCc.jpg",
+              url: "/img/video-placeholder.jpg",
             },
           },
         },
