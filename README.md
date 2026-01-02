@@ -14,9 +14,8 @@ Create a `.env` file based on the `.env_example`.
 To deploy the site, only the `_site` folder is needed.
 
 1. `npm install`
-2. `npx @11ty/eleventy --serve`
-3. Or to build css and run the app locally use `npm run dev`
-4. You can also use `npm run build` to build the `_site` folder
+2. `npm run dev`
+3. You can also use `npm run build` to build the `_site` folder
 
 
 ## Environment Variables
