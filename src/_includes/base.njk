@@ -8,7 +8,7 @@
             "default-src 'self' https://ai.gov.uk",
             "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://plausible.io https://*.i.posthog.com https://cdn.matomo.cloud https://cloud.umami.is",
             "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
-            "img-src 'self' https:",
+            "img-src 'self' http://images.ctfassets.net https://images.ctfassets.net https://i-dot-ai-cms.netlify.app",
             "connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://plausible.io https://*.i.posthog.com https://aigovuk.matomo.cloud https://cdn.matomo.cloud https://cloud.umami.is https://api-gateway.umami.dev"
         ] | join("; ") %}
         <meta http-equiv="Content-Security-Policy" content="{{ csp }}">
