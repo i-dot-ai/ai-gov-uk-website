@@ -25,12 +25,12 @@
     "@playwright/test": "^1.41.2",
     "@types/node": "^20.11.18",
     "autoprefixer": "^10.4.16",
-    "axios": "^1.7.4",
+    "axios": "^1.13.5",
     "gray-matter": "^4.0.3",
     "postcss": "^8.4.31"
   },
   "dependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.1.2",
     "@contentful/rich-text-html-renderer": "^16.5.2",
     "@lit-labs/eleventy-plugin-lit": "^1.0.3",
     "clean-css": "^5.3.2",
@@ -44,5 +44,8 @@
     "postcss-cli": "^10.1.0",
     "showdown": "^2.1.0",
     "yaml": "^2.8.0"
+  },
+  "overrides": {
+    "brace-expansion@<=2.0.2": "2.0.2"
   }
 }
