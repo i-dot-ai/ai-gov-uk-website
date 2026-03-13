@@ -67,11 +67,13 @@ jobs:
           node-version: latest
 
       - name: Create .env
+        env:
+          ENVIRONMENT: ${{ inputs.environment }}
         run: |
           echo CONTENTFUL_SPACE="${{ secrets.CONTENTFUL_SPACE }}" >> .env
           echo CONTENTFUL_ACCESS_TOKEN="${{ secrets.CONTENTFUL_ACCESS_TOKEN }}" >> .env
           echo CMS_REPO_TOKEN="${{ secrets.CMS_REPO_TOKEN }}" >> .env
-          if [[ ${{ inputs.environment }} != "prod" ]]; then
+          if [[ $ENVIRONMENT != "prod" ]]; then
             echo PREVIEW_ACCESS_TOKEN="${{ secrets.PREVIEW_ACCESS_TOKEN }}" >> .env
           fi
       
